@@ -116,9 +116,7 @@ namespace Zahrada{
 
         //public Form prirazenyFormular = null;
 
-        #endregion
-
-       
+        #endregion       
 
         #region Konstruktor tridy Platno
 
