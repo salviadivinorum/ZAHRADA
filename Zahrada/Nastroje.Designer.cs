@@ -54,7 +54,15 @@
             this.rozsireneVlastnosti = new System.Windows.Forms.TabPage();
             this.mujPropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.knihovna = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.funkce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -65,6 +73,7 @@
             this.zmenitGroupBox.SuspendLayout();
             this.strucneVlastnosti.SuspendLayout();
             this.rozsireneVlastnosti.SuspendLayout();
+            this.knihovna.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -355,12 +364,30 @@
             // 
             // knihovna
             // 
+            this.knihovna.Controls.Add(this.label3);
+            this.knihovna.Controls.Add(this.label2);
+            this.knihovna.Controls.Add(this.checkBox5);
+            this.knihovna.Controls.Add(this.checkBox4);
+            this.knihovna.Controls.Add(this.checkBox3);
+            this.knihovna.Controls.Add(this.checkBox2);
+            this.knihovna.Controls.Add(this.checkBox1);
+            this.knihovna.Controls.Add(this.label1);
             this.knihovna.Location = new System.Drawing.Point(4, 25);
             this.knihovna.Name = "knihovna";
             this.knihovna.Size = new System.Drawing.Size(312, 571);
             this.knihovna.TabIndex = 3;
             this.knihovna.Text = "Knihovna";
             this.knihovna.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(2, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(236, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "A) Zakreslení stávajícího stavu:";
             // 
             // mujFilteredPropertyGrid
             // 
@@ -373,6 +400,76 @@
             this.mujFilteredPropertyGrid.Size = new System.Drawing.Size(306, 565);
             this.mujFilteredPropertyGrid.TabIndex = 0;
             this.mujFilteredPropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.mujFilteredPropertyGrid_PropertyValueChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 47);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(175, 21);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "Tvar pozemku zahrady";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 74);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(147, 21);
+            this.checkBox2.TabIndex = 2;
+            this.checkBox2.Text = "Oplocení pozemku";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(6, 102);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(287, 21);
+            this.checkBox3.TabIndex = 3;
+            this.checkBox3.Text = "Stavby na pozemku nebo na jeho hranici";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(6, 130);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(220, 21);
+            this.checkBox4.TabIndex = 4;
+            this.checkBox4.Text = "Zpevněné plochy na pozemku";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(6, 158);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(212, 21);
+            this.checkBox5.TabIndex = 5;
+            this.checkBox5.Text = "Stávající rostliny na pozemku";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(3, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(265, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Stručný průvodce návrhem zahrady";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(3, 182);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(212, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "B) Zakreslení nového stavu:";
             // 
             // Nastroje
             // 
@@ -391,6 +488,8 @@
             this.zmenitGroupBox.ResumeLayout(false);
             this.strucneVlastnosti.ResumeLayout(false);
             this.rozsireneVlastnosti.ResumeLayout(false);
+            this.knihovna.ResumeLayout(false);
+            this.knihovna.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -423,5 +522,13 @@
         public System.Windows.Forms.PropertyGrid mujPropertyGrid;
         private System.Windows.Forms.TabPage knihovna;
         public OdvozenyPropertyGrid.FilteredPropertyGrid mujFilteredPropertyGrid;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
