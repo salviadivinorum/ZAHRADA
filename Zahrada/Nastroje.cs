@@ -34,6 +34,8 @@ namespace Zahrada
         {
 
             InitializeComponent();
+           // panelVpruvodci.HorizontalScroll.Enabled = false;
+            //pruvodce.HorizontalScroll.Enabled = false;
             //NajdiUndoReodBtnsVmainForm();
         }
 
@@ -420,6 +422,16 @@ namespace Zahrada
         private void copyBtn_Click(object sender, EventArgs e)
         {
             mojeplatno.CpSelected();
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
