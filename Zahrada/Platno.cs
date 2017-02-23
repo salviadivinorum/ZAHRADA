@@ -7,7 +7,7 @@ using System.Linq;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using System.IO; 						//streamer io  -- pokus 2 
+using System.IO; 						//streamer io  -- pokus Undo Redo prace
 using System.Runtime.Serialization;     // io
 using System.Runtime.Serialization.Formatters.Binary; // io
 using System.Drawing;
