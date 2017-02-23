@@ -433,6 +433,21 @@ namespace Zahrada
         {
 
         }
+
+        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitter2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
     }
 }
 

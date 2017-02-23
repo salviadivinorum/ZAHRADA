@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HlavniForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,6 +88,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.vlozenyToolBox = new Zahrada.Nastroje();
             this.vlozenePlatno = new Zahrada.Platno();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -596,10 +598,11 @@
             // 
             this.vlozenyToolBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.vlozenyToolBox.AutoScroll = true;
             this.vlozenyToolBox.Location = new System.Drawing.Point(0, 62);
             this.vlozenyToolBox.Margin = new System.Windows.Forms.Padding(4);
             this.vlozenyToolBox.Name = "vlozenyToolBox";
-            this.vlozenyToolBox.Size = new System.Drawing.Size(320, 473);
+            this.vlozenyToolBox.Size = new System.Drawing.Size(350, 473);
             this.vlozenyToolBox.TabIndex = 8;
             // 
             // vlozenePlatno
@@ -613,20 +616,29 @@
             this.vlozenePlatno.BackColor = System.Drawing.Color.Moccasin;
             this.vlozenePlatno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.vlozenePlatno.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.Default;
-            this.vlozenePlatno.dx = 0;
-            this.vlozenePlatno.dy = 0;
+            this.vlozenePlatno.dx = -172;
+            this.vlozenePlatno.dy = 114;
             this.vlozenePlatno.gridSize = 0;
             this.vlozenePlatno.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-            this.vlozenePlatno.Location = new System.Drawing.Point(332, 69);
+            this.vlozenePlatno.Location = new System.Drawing.Point(356, 62);
             this.vlozenePlatno.Margin = new System.Windows.Forms.Padding(0);
             this.vlozenePlatno.Name = "vlozenePlatno";
             this.vlozenePlatno.ShowDebug = false;
-            this.vlozenePlatno.Size = new System.Drawing.Size(986, 466);
+            this.vlozenePlatno.Size = new System.Drawing.Size(962, 473);
             this.vlozenePlatno.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.vlozenePlatno.TabIndex = 9;
             this.vlozenePlatno.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.vlozenePlatno.Zoom = 1F;
+            this.vlozenePlatno.Zoom = 2F;
             this.vlozenePlatno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.vlozenePlatno_KeyDown);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "funkce.ico");
+            this.imageList1.Images.SetKeyName(1, "vlastnosti.ico");
+            this.imageList1.Images.SetKeyName(2, "pruvodce.ico");
+            this.imageList1.Images.SetKeyName(3, "prani.ico");
             // 
             // HlavniForm
             // 
@@ -714,6 +726,7 @@
         private System.Windows.Forms.ToolStripButton saveAsToolStripButton;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
