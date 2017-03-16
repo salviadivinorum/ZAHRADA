@@ -186,16 +186,32 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ikony\dolu.ico" />
+    <Content Include="Ikony\elipsa.ico" />
     <Content Include="Ikony\jablko.ico" />
+    <Content Include="Ikony\kopiruj.ico" />
+    <Content Include="Ikony\line.ico" />
+    <Content Include="Ikony\nahoru.ico" />
+    <Content Include="Ikony\nastavení.ico" />
     <Content Include="Ikony\newdoc.ico" />
+    <Content Include="Ikony\oblouk.ico" />
+    <Content Include="Ikony\obrazek.ico" />
     <Content Include="Ikony\open.ico" />
+    <Content Include="Ikony\polyline.ico" />
     <Content Include="Ikony\redo.ico" />
     <Content Include="Ikony\save.ico" />
     <Content Include="Ikony\saveas.ico" />
+    <Content Include="Ikony\select.ico" />
+    <Content Include="Ikony\sloucit.ico" />
+    <Content Include="Ikony\smaz.ico" />
+    <Content Include="Ikony\spline.ico" />
+    <Content Include="Ikony\text.ico" />
     <Content Include="Ikony\undo.ico" />
+    <Content Include="Ikony\zoom.ico" />
     <Content Include="Ikony\zoomin.ico" />
     <Content Include="Ikony\zoomout.ico" />
     <Content Include="jablko.ico" />
+    <None Include="Resources\line.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

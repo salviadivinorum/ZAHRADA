@@ -2117,8 +2117,12 @@ namespace Zahrada{
 
 
 
+
         #endregion
 
-        
+        private void Platno_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

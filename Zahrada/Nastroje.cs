@@ -15,6 +15,7 @@ using Zahrada.OdvozenyPropertyGrid;
 // poznamka 2
 
 
+
 namespace Zahrada
 {
     public partial class UserControlNastroje : UserControl
@@ -200,8 +201,9 @@ namespace Zahrada
         // Cara
         private void lineBtn_Click(object sender, EventArgs e)
         {
+            
             DeselectAll();
-            lineBtn.BackColor = Color.White;
+            lineBtn.BackColor = Color.FromArgb(20, Color.Gray);
             mojeplatno.option = "LINE";
             mojeplatno.krivka = false;
         }
@@ -220,7 +222,7 @@ namespace Zahrada
         private void polygonBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            polygonBtn.BackColor = Color.White;
+            polygonBtn.BackColor = Color.FromArgb(20, Color.Gray);
             mojeplatno.option = "POLY";
             mojeplatno.krivka = true;
         }
@@ -229,7 +231,7 @@ namespace Zahrada
         private void freeHandBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            freeHandBtn.BackColor = Color.White;
+            freeHandBtn.BackColor = Color.FromArgb(20, Color.Gray);
             mojeplatno.option = "PEN";
             mojeplatno.krivka = true;
 
@@ -239,7 +241,7 @@ namespace Zahrada
         private void rectBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            rectBtn.BackColor = Color.White;
+            rectBtn.BackColor = Color.FromArgb(20, Color.Gray);
             mojeplatno.option = "DR";
             mojeplatno.krivka = false;
 
@@ -260,7 +262,7 @@ namespace Zahrada
         private void circBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            circBtn.BackColor = Color.White;
+            circBtn.BackColor = Color.FromArgb(20, Color.Gray);
             mojeplatno.option = "ELL";
             mojeplatno.krivka = false;
         }
@@ -270,7 +272,7 @@ namespace Zahrada
         private void arcBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            arcBtn.BackColor = Color.White;
+            arcBtn.BackColor = Color.FromArgb(20, Color.Gray);
             mojeplatno.option = "ARC";
             mojeplatno.krivka = false;
         }
@@ -280,7 +282,7 @@ namespace Zahrada
         private void simpleTextBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            simpleTextBtn.BackColor = Color.White;
+            simpleTextBtn.BackColor = Color.FromArgb(20, Color.Gray);
             mojeplatno.option = "STB";
             mojeplatno.krivka = false;
         }
@@ -290,7 +292,7 @@ namespace Zahrada
         private void imageBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            imageBtn.BackColor = Color.White;            
+            imageBtn.BackColor = Color.FromArgb(20, Color.Gray);
             mojeplatno.option = "IB";
             mojeplatno.krivka = false;
 
@@ -452,6 +454,11 @@ namespace Zahrada
         }
 
         private void TableLayoutPanelSeznamPrani_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void mirrorXbtn_Click(object sender, EventArgs e)
         {
 
         }

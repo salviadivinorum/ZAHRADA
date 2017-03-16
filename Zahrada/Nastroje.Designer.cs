@@ -35,23 +35,28 @@
             this.TabPageFunkce = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.vytvoritGroupBox = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lineBtn = new System.Windows.Forms.Button();
+            this.imageListProVytvoritZmenit = new System.Windows.Forms.ImageList(this.components);
             this.freeHandBtn = new System.Windows.Forms.Button();
             this.rectBtn = new System.Windows.Forms.Button();
-            this.polygonBtn = new System.Windows.Forms.Button();
             this.circBtn = new System.Windows.Forms.Button();
-            this.arcBtn = new System.Windows.Forms.Button();
+            this.polygonBtn = new System.Windows.Forms.Button();
             this.imageBtn = new System.Windows.Forms.Button();
+            this.arcBtn = new System.Windows.Forms.Button();
             this.simpleTextBtn = new System.Windows.Forms.Button();
             this.zmenitGroupBox = new System.Windows.Forms.GroupBox();
-            this.copyBtn = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            this.toBackBtn = new System.Windows.Forms.Button();
-            this.toFrontBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBtn = new System.Windows.Forms.Button();
             this.mirrorYbtn = new System.Windows.Forms.Button();
             this.mirrorXbtn = new System.Windows.Forms.Button();
+            this.btnSelectAll = new System.Windows.Forms.Button();
             this.deGroupBtn = new System.Windows.Forms.Button();
-            this.groupBtn = new System.Windows.Forms.Button();
+            this.toFrontBtn = new System.Windows.Forms.Button();
+            this.toBackBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.copyBtn = new System.Windows.Forms.Button();
+            this.btnDeSelectAll = new System.Windows.Forms.Button();
             this.TabPageStrucneVlastnosti = new System.Windows.Forms.TabPage();
             this.TabPageRozsireneVlastnosti = new System.Windows.Forms.TabPage();
             this.mujPropertyGrid = new System.Windows.Forms.PropertyGrid();
@@ -100,14 +105,94 @@
             this.splitter6 = new System.Windows.Forms.Splitter();
             this.label10 = new System.Windows.Forms.Label();
             this.TabPagSeznamPrani = new System.Windows.Forms.TabPage();
-            this.imageListProTabControl = new System.Windows.Forms.ImageList(this.components);
             this.TableLayoutPanelSeznamPrani = new System.Windows.Forms.TableLayoutPanel();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.radioButton82 = new System.Windows.Forms.RadioButton();
+            this.radioButton83 = new System.Windows.Forms.RadioButton();
+            this.radioButton84 = new System.Windows.Forms.RadioButton();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.radioButton79 = new System.Windows.Forms.RadioButton();
+            this.radioButton80 = new System.Windows.Forms.RadioButton();
+            this.radioButton81 = new System.Windows.Forms.RadioButton();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.radioButton76 = new System.Windows.Forms.RadioButton();
+            this.radioButton77 = new System.Windows.Forms.RadioButton();
+            this.radioButton78 = new System.Windows.Forms.RadioButton();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.radioButton73 = new System.Windows.Forms.RadioButton();
+            this.radioButton74 = new System.Windows.Forms.RadioButton();
+            this.radioButton75 = new System.Windows.Forms.RadioButton();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.radioButton13 = new System.Windows.Forms.RadioButton();
+            this.radioButton71 = new System.Windows.Forms.RadioButton();
+            this.radioButton72 = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.radioButton11 = new System.Windows.Forms.RadioButton();
+            this.radioButton12 = new System.Windows.Forms.RadioButton();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.radioButton65 = new System.Windows.Forms.RadioButton();
+            this.radioButton66 = new System.Windows.Forms.RadioButton();
+            this.radioButton67 = new System.Windows.Forms.RadioButton();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.radioButton62 = new System.Windows.Forms.RadioButton();
+            this.radioButton63 = new System.Windows.Forms.RadioButton();
+            this.radioButton64 = new System.Windows.Forms.RadioButton();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.radioButton59 = new System.Windows.Forms.RadioButton();
+            this.radioButton60 = new System.Windows.Forms.RadioButton();
+            this.radioButton61 = new System.Windows.Forms.RadioButton();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.radioButton56 = new System.Windows.Forms.RadioButton();
+            this.radioButton57 = new System.Windows.Forms.RadioButton();
+            this.radioButton58 = new System.Windows.Forms.RadioButton();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.radioButton53 = new System.Windows.Forms.RadioButton();
+            this.radioButton54 = new System.Windows.Forms.RadioButton();
+            this.radioButton55 = new System.Windows.Forms.RadioButton();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.radioButton50 = new System.Windows.Forms.RadioButton();
+            this.radioButton51 = new System.Windows.Forms.RadioButton();
+            this.radioButton52 = new System.Windows.Forms.RadioButton();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.radioButton47 = new System.Windows.Forms.RadioButton();
+            this.radioButton48 = new System.Windows.Forms.RadioButton();
+            this.radioButton49 = new System.Windows.Forms.RadioButton();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.radioButton25 = new System.Windows.Forms.RadioButton();
+            this.radioButton27 = new System.Windows.Forms.RadioButton();
+            this.radioButton28 = new System.Windows.Forms.RadioButton();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.radioButton44 = new System.Windows.Forms.RadioButton();
+            this.radioButton45 = new System.Windows.Forms.RadioButton();
+            this.radioButton46 = new System.Windows.Forms.RadioButton();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.radioButton41 = new System.Windows.Forms.RadioButton();
+            this.radioButton42 = new System.Windows.Forms.RadioButton();
+            this.radioButton43 = new System.Windows.Forms.RadioButton();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.radioButton38 = new System.Windows.Forms.RadioButton();
+            this.radioButton39 = new System.Windows.Forms.RadioButton();
+            this.radioButton40 = new System.Windows.Forms.RadioButton();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.radioButton32 = new System.Windows.Forms.RadioButton();
+            this.radioButton33 = new System.Windows.Forms.RadioButton();
+            this.radioButton34 = new System.Windows.Forms.RadioButton();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.radioButton29 = new System.Windows.Forms.RadioButton();
+            this.radioButton30 = new System.Windows.Forms.RadioButton();
+            this.radioButton31 = new System.Windows.Forms.RadioButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -116,45 +201,20 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.radioButton29 = new System.Windows.Forms.RadioButton();
-            this.radioButton30 = new System.Windows.Forms.RadioButton();
-            this.radioButton31 = new System.Windows.Forms.RadioButton();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.radioButton32 = new System.Windows.Forms.RadioButton();
-            this.radioButton33 = new System.Windows.Forms.RadioButton();
-            this.radioButton34 = new System.Windows.Forms.RadioButton();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.radioButton35 = new System.Windows.Forms.RadioButton();
             this.radioButton36 = new System.Windows.Forms.RadioButton();
             this.radioButton37 = new System.Windows.Forms.RadioButton();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.radioButton38 = new System.Windows.Forms.RadioButton();
-            this.radioButton39 = new System.Windows.Forms.RadioButton();
-            this.radioButton40 = new System.Windows.Forms.RadioButton();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.radioButton41 = new System.Windows.Forms.RadioButton();
-            this.radioButton42 = new System.Windows.Forms.RadioButton();
-            this.radioButton43 = new System.Windows.Forms.RadioButton();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.radioButton25 = new System.Windows.Forms.RadioButton();
-            this.radioButton27 = new System.Windows.Forms.RadioButton();
-            this.radioButton28 = new System.Windows.Forms.RadioButton();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -164,34 +224,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.splitter7 = new System.Windows.Forms.Splitter();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.radioButton47 = new System.Windows.Forms.RadioButton();
-            this.radioButton48 = new System.Windows.Forms.RadioButton();
-            this.radioButton49 = new System.Windows.Forms.RadioButton();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.radioButton50 = new System.Windows.Forms.RadioButton();
-            this.radioButton51 = new System.Windows.Forms.RadioButton();
-            this.radioButton52 = new System.Windows.Forms.RadioButton();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.radioButton53 = new System.Windows.Forms.RadioButton();
-            this.radioButton54 = new System.Windows.Forms.RadioButton();
-            this.radioButton55 = new System.Windows.Forms.RadioButton();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.radioButton56 = new System.Windows.Forms.RadioButton();
-            this.radioButton57 = new System.Windows.Forms.RadioButton();
-            this.radioButton58 = new System.Windows.Forms.RadioButton();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.radioButton59 = new System.Windows.Forms.RadioButton();
-            this.radioButton60 = new System.Windows.Forms.RadioButton();
-            this.radioButton61 = new System.Windows.Forms.RadioButton();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.radioButton62 = new System.Windows.Forms.RadioButton();
-            this.radioButton63 = new System.Windows.Forms.RadioButton();
-            this.radioButton64 = new System.Windows.Forms.RadioButton();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.radioButton65 = new System.Windows.Forms.RadioButton();
-            this.radioButton66 = new System.Windows.Forms.RadioButton();
-            this.radioButton67 = new System.Windows.Forms.RadioButton();
             this.panel19 = new System.Windows.Forms.Panel();
             this.radioButton68 = new System.Windows.Forms.RadioButton();
             this.radioButton69 = new System.Windows.Forms.RadioButton();
@@ -201,36 +233,10 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.radioButton46 = new System.Windows.Forms.RadioButton();
-            this.radioButton45 = new System.Windows.Forms.RadioButton();
-            this.radioButton44 = new System.Windows.Forms.RadioButton();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.splitter8 = new System.Windows.Forms.Splitter();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton71 = new System.Windows.Forms.RadioButton();
-            this.radioButton72 = new System.Windows.Forms.RadioButton();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.radioButton73 = new System.Windows.Forms.RadioButton();
-            this.radioButton74 = new System.Windows.Forms.RadioButton();
-            this.radioButton75 = new System.Windows.Forms.RadioButton();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.radioButton76 = new System.Windows.Forms.RadioButton();
-            this.radioButton77 = new System.Windows.Forms.RadioButton();
-            this.radioButton78 = new System.Windows.Forms.RadioButton();
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.radioButton79 = new System.Windows.Forms.RadioButton();
-            this.radioButton80 = new System.Windows.Forms.RadioButton();
-            this.radioButton81 = new System.Windows.Forms.RadioButton();
             this.label37 = new System.Windows.Forms.Label();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.radioButton82 = new System.Windows.Forms.RadioButton();
-            this.radioButton83 = new System.Windows.Forms.RadioButton();
-            this.radioButton84 = new System.Windows.Forms.RadioButton();
+            this.imageListProTabControl = new System.Windows.Forms.ImageList(this.components);
+            this.ToolTipProTalcitka = new System.Windows.Forms.ToolTip(this.components);
             this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
             this.tabControlProNastroje.SuspendLayout();
             this.TabPageFunkce.SuspendLayout();
@@ -239,7 +245,9 @@
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             this.vytvoritGroupBox.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.zmenitGroupBox.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.TabPageStrucneVlastnosti.SuspendLayout();
             this.TabPageRozsireneVlastnosti.SuspendLayout();
             this.TabPagePruvodce.SuspendLayout();
@@ -250,30 +258,30 @@
             this.PanelFormalniTypZahrady.SuspendLayout();
             this.TabPagSeznamPrani.SuspendLayout();
             this.TableLayoutPanelSeznamPrani.SuspendLayout();
+            this.panel24.SuspendLayout();
+            this.panel23.SuspendLayout();
+            this.panel22.SuspendLayout();
+            this.panel21.SuspendLayout();
+            this.panel20.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
-            this.panel15.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel17.SuspendLayout();
-            this.panel18.SuspendLayout();
             this.panel19.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel20.SuspendLayout();
-            this.panel21.SuspendLayout();
-            this.panel22.SuspendLayout();
-            this.panel23.SuspendLayout();
-            this.panel24.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProNastroje
@@ -334,14 +342,8 @@
             // 
             // vytvoritGroupBox
             // 
-            this.vytvoritGroupBox.Controls.Add(this.lineBtn);
-            this.vytvoritGroupBox.Controls.Add(this.freeHandBtn);
-            this.vytvoritGroupBox.Controls.Add(this.rectBtn);
-            this.vytvoritGroupBox.Controls.Add(this.polygonBtn);
-            this.vytvoritGroupBox.Controls.Add(this.circBtn);
-            this.vytvoritGroupBox.Controls.Add(this.arcBtn);
-            this.vytvoritGroupBox.Controls.Add(this.imageBtn);
-            this.vytvoritGroupBox.Controls.Add(this.simpleTextBtn);
+            this.vytvoritGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.vytvoritGroupBox.Controls.Add(this.tableLayoutPanel1);
             this.vytvoritGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vytvoritGroupBox.Location = new System.Drawing.Point(0, 0);
             this.vytvoritGroupBox.Name = "vytvoritGroupBox";
@@ -350,104 +352,209 @@
             this.vytvoritGroupBox.TabStop = false;
             this.vytvoritGroupBox.Text = "Vytvořit";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.lineBtn, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.freeHandBtn, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rectBtn, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.circBtn, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.polygonBtn, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.imageBtn, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.arcBtn, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.simpleTextBtn, 2, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(289, 160);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
             // lineBtn
             // 
+            this.lineBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lineBtn.BackColor = System.Drawing.Color.Transparent;
+            this.lineBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lineBtn.FlatAppearance.BorderSize = 0;
+            this.lineBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lineBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.lineBtn.Location = new System.Drawing.Point(8, 21);
+            this.lineBtn.ForeColor = System.Drawing.Color.Transparent;
+            this.lineBtn.ImageKey = "linejinak.ico";
+            this.lineBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.lineBtn.Location = new System.Drawing.Point(3, 7);
+            this.lineBtn.Margin = new System.Windows.Forms.Padding(0);
             this.lineBtn.Name = "lineBtn";
-            this.lineBtn.Size = new System.Drawing.Size(45, 45);
+            this.lineBtn.Size = new System.Drawing.Size(65, 65);
             this.lineBtn.TabIndex = 1;
-            this.lineBtn.Text = "Čára";
-            this.lineBtn.UseVisualStyleBackColor = true;
+            this.lineBtn.Text = "\r\n";
+            this.ToolTipProTalcitka.SetToolTip(this.lineBtn, "čára");
+            this.lineBtn.UseVisualStyleBackColor = false;
             this.lineBtn.Click += new System.EventHandler(this.lineBtn_Click);
+            // 
+            // imageListProVytvoritZmenit
+            // 
+            this.imageListProVytvoritZmenit.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListProVytvoritZmenit.ImageStream")));
+            this.imageListProVytvoritZmenit.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListProVytvoritZmenit.Images.SetKeyName(0, "close.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(1, "dolu.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(2, "elipsa.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(3, "kopiruj.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(4, "line.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(5, "nahoru.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(6, "nastavení.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(7, "oblouk.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(8, "obrazek.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(9, "polyline.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(10, "select.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(11, "sloucit.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(12, "smaz.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(13, "spline.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(14, "text.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(15, "zoom.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(16, "polylinejinak.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(17, "linejinak.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(18, "spline2.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(19, "multiline.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(20, "rectangle.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(21, "leaf.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(22, "oblouklepsi.png");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(23, "circ.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(24, "obl.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(25, "oblouk4.png");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(26, "de-sloucit.png");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(27, "de-sloucit2.png");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(28, "de-sloucit3.png");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(29, "de-sloucit4.png");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(30, "solo.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(31, "selectall.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(32, "escape.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(33, "1489693363_delete.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(34, "home.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(35, "escapepng.png");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(36, "mirrorX.ico");
+            this.imageListProVytvoritZmenit.Images.SetKeyName(37, "mirrorY.ico");
             // 
             // freeHandBtn
             // 
+            this.freeHandBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.freeHandBtn.FlatAppearance.BorderSize = 0;
+            this.freeHandBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.freeHandBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.freeHandBtn.Location = new System.Drawing.Point(110, 21);
+            this.freeHandBtn.ImageKey = "spline2.ico";
+            this.freeHandBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.freeHandBtn.Location = new System.Drawing.Point(147, 7);
             this.freeHandBtn.Name = "freeHandBtn";
-            this.freeHandBtn.Size = new System.Drawing.Size(45, 45);
+            this.freeHandBtn.Size = new System.Drawing.Size(65, 65);
             this.freeHandBtn.TabIndex = 10;
-            this.freeHandBtn.Text = "Volná čára";
+            this.ToolTipProTalcitka.SetToolTip(this.freeHandBtn, "volná čára");
             this.freeHandBtn.UseVisualStyleBackColor = true;
             this.freeHandBtn.Click += new System.EventHandler(this.freeHandBtn_Click);
             // 
             // rectBtn
             // 
+            this.rectBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rectBtn.FlatAppearance.BorderSize = 0;
+            this.rectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.rectBtn.Location = new System.Drawing.Point(161, 21);
+            this.rectBtn.ImageKey = "rectangle.ico";
+            this.rectBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.rectBtn.Location = new System.Drawing.Point(220, 7);
             this.rectBtn.Name = "rectBtn";
-            this.rectBtn.Size = new System.Drawing.Size(45, 45);
+            this.rectBtn.Size = new System.Drawing.Size(65, 65);
             this.rectBtn.TabIndex = 0;
-            this.rectBtn.Text = "Obdél";
+            this.ToolTipProTalcitka.SetToolTip(this.rectBtn, "obdélník");
             this.rectBtn.UseVisualStyleBackColor = false;
             this.rectBtn.Click += new System.EventHandler(this.rectBtn_Click);
             // 
-            // polygonBtn
-            // 
-            this.polygonBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.polygonBtn.Location = new System.Drawing.Point(59, 21);
-            this.polygonBtn.Name = "polygonBtn";
-            this.polygonBtn.Size = new System.Drawing.Size(45, 45);
-            this.polygonBtn.TabIndex = 9;
-            this.polygonBtn.Text = "Poly gon";
-            this.polygonBtn.UseVisualStyleBackColor = true;
-            this.polygonBtn.Click += new System.EventHandler(this.polygonBtn_Click);
-            // 
             // circBtn
             // 
+            this.circBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.circBtn.FlatAppearance.BorderSize = 0;
+            this.circBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.circBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.circBtn.Location = new System.Drawing.Point(59, 72);
+            this.circBtn.ImageKey = "circ.ico";
+            this.circBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.circBtn.Location = new System.Drawing.Point(75, 87);
             this.circBtn.Name = "circBtn";
-            this.circBtn.Size = new System.Drawing.Size(45, 45);
+            this.circBtn.Size = new System.Drawing.Size(65, 65);
             this.circBtn.TabIndex = 2;
-            this.circBtn.Text = "Elipsa";
+            this.ToolTipProTalcitka.SetToolTip(this.circBtn, "elipsa");
             this.circBtn.UseVisualStyleBackColor = true;
             this.circBtn.Click += new System.EventHandler(this.circBtn_Click);
             // 
-            // arcBtn
+            // polygonBtn
             // 
-            this.arcBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.arcBtn.Location = new System.Drawing.Point(8, 72);
-            this.arcBtn.Name = "arcBtn";
-            this.arcBtn.Size = new System.Drawing.Size(45, 45);
-            this.arcBtn.TabIndex = 8;
-            this.arcBtn.Text = "Obl";
-            this.arcBtn.UseVisualStyleBackColor = true;
-            this.arcBtn.Click += new System.EventHandler(this.arcBtn_Click);
+            this.polygonBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.polygonBtn.FlatAppearance.BorderSize = 0;
+            this.polygonBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.polygonBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.polygonBtn.ImageKey = "multiline.ico";
+            this.polygonBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.polygonBtn.Location = new System.Drawing.Point(75, 7);
+            this.polygonBtn.Name = "polygonBtn";
+            this.polygonBtn.Size = new System.Drawing.Size(65, 65);
+            this.polygonBtn.TabIndex = 9;
+            this.ToolTipProTalcitka.SetToolTip(this.polygonBtn, "polygon");
+            this.polygonBtn.UseVisualStyleBackColor = true;
+            this.polygonBtn.Click += new System.EventHandler(this.polygonBtn_Click);
             // 
             // imageBtn
             // 
+            this.imageBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imageBtn.FlatAppearance.BorderSize = 0;
+            this.imageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.imageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.imageBtn.Location = new System.Drawing.Point(161, 72);
+            this.imageBtn.ImageKey = "leaf.ico";
+            this.imageBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.imageBtn.Location = new System.Drawing.Point(220, 87);
             this.imageBtn.Name = "imageBtn";
-            this.imageBtn.Size = new System.Drawing.Size(45, 45);
+            this.imageBtn.Size = new System.Drawing.Size(65, 65);
             this.imageBtn.TabIndex = 7;
-            this.imageBtn.Text = "Obr";
+            this.ToolTipProTalcitka.SetToolTip(this.imageBtn, "zahradní prvek");
             this.imageBtn.UseVisualStyleBackColor = true;
             this.imageBtn.Click += new System.EventHandler(this.imageBtn_Click);
             // 
+            // arcBtn
+            // 
+            this.arcBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.arcBtn.FlatAppearance.BorderSize = 0;
+            this.arcBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.arcBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.arcBtn.ImageKey = "oblouk.ico";
+            this.arcBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.arcBtn.Location = new System.Drawing.Point(3, 87);
+            this.arcBtn.Name = "arcBtn";
+            this.arcBtn.Size = new System.Drawing.Size(65, 65);
+            this.arcBtn.TabIndex = 8;
+            this.ToolTipProTalcitka.SetToolTip(this.arcBtn, "oblouk");
+            this.arcBtn.UseVisualStyleBackColor = true;
+            this.arcBtn.Click += new System.EventHandler(this.arcBtn_Click);
+            // 
             // simpleTextBtn
             // 
+            this.simpleTextBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.simpleTextBtn.FlatAppearance.BorderSize = 0;
+            this.simpleTextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.simpleTextBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.simpleTextBtn.Location = new System.Drawing.Point(110, 72);
+            this.simpleTextBtn.ImageKey = "text.ico";
+            this.simpleTextBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.simpleTextBtn.Location = new System.Drawing.Point(147, 87);
             this.simpleTextBtn.Name = "simpleTextBtn";
-            this.simpleTextBtn.Size = new System.Drawing.Size(45, 45);
+            this.simpleTextBtn.Size = new System.Drawing.Size(65, 65);
             this.simpleTextBtn.TabIndex = 5;
-            this.simpleTextBtn.Text = "Text";
+            this.ToolTipProTalcitka.SetToolTip(this.simpleTextBtn, "text");
             this.simpleTextBtn.UseVisualStyleBackColor = true;
             this.simpleTextBtn.Click += new System.EventHandler(this.simpleTextBtn_Click);
             // 
             // zmenitGroupBox
             // 
-            this.zmenitGroupBox.Controls.Add(this.copyBtn);
-            this.zmenitGroupBox.Controls.Add(this.deleteBtn);
-            this.zmenitGroupBox.Controls.Add(this.toBackBtn);
-            this.zmenitGroupBox.Controls.Add(this.toFrontBtn);
-            this.zmenitGroupBox.Controls.Add(this.mirrorYbtn);
-            this.zmenitGroupBox.Controls.Add(this.mirrorXbtn);
-            this.zmenitGroupBox.Controls.Add(this.deGroupBtn);
-            this.zmenitGroupBox.Controls.Add(this.groupBtn);
+            this.zmenitGroupBox.Controls.Add(this.tableLayoutPanel2);
             this.zmenitGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zmenitGroupBox.Location = new System.Drawing.Point(0, 0);
             this.zmenitGroupBox.Name = "zmenitGroupBox";
@@ -456,91 +563,190 @@
             this.zmenitGroupBox.TabStop = false;
             this.zmenitGroupBox.Text = "Změnit";
             // 
-            // copyBtn
+            // tableLayoutPanel2
             // 
-            this.copyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.copyBtn.Location = new System.Drawing.Point(161, 72);
-            this.copyBtn.Name = "copyBtn";
-            this.copyBtn.Size = new System.Drawing.Size(45, 45);
-            this.copyBtn.TabIndex = 9;
-            this.copyBtn.Text = "Kopie";
-            this.copyBtn.UseVisualStyleBackColor = true;
-            this.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.groupBtn, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.mirrorYbtn, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.mirrorXbtn, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.btnSelectAll, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.deGroupBtn, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.toFrontBtn, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.toBackBtn, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.deleteBtn, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.copyBtn, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnDeSelectAll, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(289, 320);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // deleteBtn
+            // groupBtn
             // 
-            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.deleteBtn.Location = new System.Drawing.Point(110, 72);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(45, 45);
-            this.deleteBtn.TabIndex = 8;
-            this.deleteBtn.Text = "Smaž";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
-            // 
-            // toBackBtn
-            // 
-            this.toBackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.toBackBtn.Location = new System.Drawing.Point(59, 72);
-            this.toBackBtn.Name = "toBackBtn";
-            this.toBackBtn.Size = new System.Drawing.Size(45, 45);
-            this.toBackBtn.TabIndex = 7;
-            this.toBackBtn.Text = "Vzad";
-            this.toBackBtn.UseVisualStyleBackColor = true;
-            this.toBackBtn.Click += new System.EventHandler(this.toBackBtn_Click);
-            // 
-            // toFrontBtn
-            // 
-            this.toFrontBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.toFrontBtn.Location = new System.Drawing.Point(8, 72);
-            this.toFrontBtn.Name = "toFrontBtn";
-            this.toFrontBtn.Size = new System.Drawing.Size(45, 45);
-            this.toFrontBtn.TabIndex = 6;
-            this.toFrontBtn.Text = "Vpřed";
-            this.toFrontBtn.UseVisualStyleBackColor = true;
-            this.toFrontBtn.Click += new System.EventHandler(this.toFrontBtn_Click);
+            this.groupBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBtn.FlatAppearance.BorderSize = 0;
+            this.groupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBtn.ImageKey = "sloucit.ico";
+            this.groupBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.groupBtn.Location = new System.Drawing.Point(3, 7);
+            this.groupBtn.Name = "groupBtn";
+            this.groupBtn.Size = new System.Drawing.Size(65, 65);
+            this.groupBtn.TabIndex = 2;
+            this.ToolTipProTalcitka.SetToolTip(this.groupBtn, "seskupit");
+            this.groupBtn.UseVisualStyleBackColor = true;
+            this.groupBtn.Click += new System.EventHandler(this.groupBtn_Click);
             // 
             // mirrorYbtn
             // 
+            this.mirrorYbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.mirrorYbtn.FlatAppearance.BorderSize = 0;
+            this.mirrorYbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mirrorYbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mirrorYbtn.Location = new System.Drawing.Point(161, 21);
+            this.mirrorYbtn.ImageKey = "mirrorY.ico";
+            this.mirrorYbtn.ImageList = this.imageListProVytvoritZmenit;
+            this.mirrorYbtn.Location = new System.Drawing.Point(75, 167);
             this.mirrorYbtn.Name = "mirrorYbtn";
-            this.mirrorYbtn.Size = new System.Drawing.Size(45, 45);
+            this.mirrorYbtn.Size = new System.Drawing.Size(65, 65);
             this.mirrorYbtn.TabIndex = 5;
-            this.mirrorYbtn.Text = "Zrcadli Y";
+            this.ToolTipProTalcitka.SetToolTip(this.mirrorYbtn, "zrcadlit podle osy Y");
             this.mirrorYbtn.UseVisualStyleBackColor = true;
             // 
             // mirrorXbtn
             // 
+            this.mirrorXbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.mirrorXbtn.FlatAppearance.BorderSize = 0;
+            this.mirrorXbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mirrorXbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mirrorXbtn.Location = new System.Drawing.Point(110, 21);
+            this.mirrorXbtn.ImageKey = "mirrorX.ico";
+            this.mirrorXbtn.ImageList = this.imageListProVytvoritZmenit;
+            this.mirrorXbtn.Location = new System.Drawing.Point(3, 167);
             this.mirrorXbtn.Name = "mirrorXbtn";
-            this.mirrorXbtn.Size = new System.Drawing.Size(45, 45);
+            this.mirrorXbtn.Size = new System.Drawing.Size(65, 65);
             this.mirrorXbtn.TabIndex = 4;
-            this.mirrorXbtn.Text = "Zracdli X";
+            this.ToolTipProTalcitka.SetToolTip(this.mirrorXbtn, "zrcadlit podle osy X");
             this.mirrorXbtn.UseVisualStyleBackColor = true;
+            this.mirrorXbtn.Click += new System.EventHandler(this.mirrorXbtn_Click);
+            // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSelectAll.FlatAppearance.BorderSize = 0;
+            this.btnSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSelectAll.ImageKey = "selectall.ico";
+            this.btnSelectAll.ImageList = this.imageListProVytvoritZmenit;
+            this.btnSelectAll.Location = new System.Drawing.Point(75, 87);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(65, 65);
+            this.btnSelectAll.TabIndex = 6;
+            this.ToolTipProTalcitka.SetToolTip(this.btnSelectAll, "vybrat vše");
+            this.btnSelectAll.UseVisualStyleBackColor = true;
             // 
             // deGroupBtn
             // 
+            this.deGroupBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.deGroupBtn.FlatAppearance.BorderSize = 0;
+            this.deGroupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deGroupBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.deGroupBtn.Location = new System.Drawing.Point(59, 21);
+            this.deGroupBtn.ImageKey = "solo.ico";
+            this.deGroupBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.deGroupBtn.Location = new System.Drawing.Point(75, 7);
             this.deGroupBtn.Name = "deGroupBtn";
-            this.deGroupBtn.Size = new System.Drawing.Size(45, 45);
+            this.deGroupBtn.Size = new System.Drawing.Size(65, 65);
             this.deGroupBtn.TabIndex = 3;
-            this.deGroupBtn.Text = "Rozkl skup";
+            this.ToolTipProTalcitka.SetToolTip(this.deGroupBtn, "zrušit seskupení");
             this.deGroupBtn.UseVisualStyleBackColor = true;
             this.deGroupBtn.Click += new System.EventHandler(this.deGroupBtn_Click);
             // 
-            // groupBtn
+            // toFrontBtn
             // 
-            this.groupBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBtn.Location = new System.Drawing.Point(8, 21);
-            this.groupBtn.Name = "groupBtn";
-            this.groupBtn.Size = new System.Drawing.Size(45, 45);
-            this.groupBtn.TabIndex = 2;
-            this.groupBtn.Text = "Skup";
-            this.groupBtn.UseVisualStyleBackColor = true;
-            this.groupBtn.Click += new System.EventHandler(this.groupBtn_Click);
+            this.toFrontBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.toFrontBtn.FlatAppearance.BorderSize = 0;
+            this.toFrontBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toFrontBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.toFrontBtn.ImageKey = "nahoru.ico";
+            this.toFrontBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.toFrontBtn.Location = new System.Drawing.Point(147, 7);
+            this.toFrontBtn.Name = "toFrontBtn";
+            this.toFrontBtn.Size = new System.Drawing.Size(65, 65);
+            this.toFrontBtn.TabIndex = 6;
+            this.ToolTipProTalcitka.SetToolTip(this.toFrontBtn, "posunout nahoru");
+            this.toFrontBtn.UseVisualStyleBackColor = true;
+            this.toFrontBtn.Click += new System.EventHandler(this.toFrontBtn_Click);
+            // 
+            // toBackBtn
+            // 
+            this.toBackBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.toBackBtn.FlatAppearance.BorderSize = 0;
+            this.toBackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toBackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.toBackBtn.ImageKey = "dolu.ico";
+            this.toBackBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.toBackBtn.Location = new System.Drawing.Point(220, 7);
+            this.toBackBtn.Name = "toBackBtn";
+            this.toBackBtn.Size = new System.Drawing.Size(65, 65);
+            this.toBackBtn.TabIndex = 7;
+            this.ToolTipProTalcitka.SetToolTip(this.toBackBtn, "posunout dolů");
+            this.toBackBtn.UseVisualStyleBackColor = true;
+            this.toBackBtn.Click += new System.EventHandler(this.toBackBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.deleteBtn.FlatAppearance.BorderSize = 0;
+            this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.deleteBtn.ImageKey = "smaz.ico";
+            this.deleteBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.deleteBtn.Location = new System.Drawing.Point(220, 87);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(65, 65);
+            this.deleteBtn.TabIndex = 8;
+            this.ToolTipProTalcitka.SetToolTip(this.deleteBtn, "smazat");
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // copyBtn
+            // 
+            this.copyBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.copyBtn.FlatAppearance.BorderSize = 0;
+            this.copyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.copyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.copyBtn.ImageKey = "kopiruj.ico";
+            this.copyBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.copyBtn.Location = new System.Drawing.Point(147, 87);
+            this.copyBtn.Name = "copyBtn";
+            this.copyBtn.Size = new System.Drawing.Size(65, 65);
+            this.copyBtn.TabIndex = 9;
+            this.ToolTipProTalcitka.SetToolTip(this.copyBtn, "kopírovat");
+            this.copyBtn.UseVisualStyleBackColor = true;
+            this.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
+            // 
+            // btnDeSelectAll
+            // 
+            this.btnDeSelectAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeSelectAll.FlatAppearance.BorderSize = 0;
+            this.btnDeSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeSelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnDeSelectAll.ImageKey = "escape.ico";
+            this.btnDeSelectAll.ImageList = this.imageListProVytvoritZmenit;
+            this.btnDeSelectAll.Location = new System.Drawing.Point(3, 87);
+            this.btnDeSelectAll.Name = "btnDeSelectAll";
+            this.btnDeSelectAll.Size = new System.Drawing.Size(65, 65);
+            this.btnDeSelectAll.TabIndex = 6;
+            this.ToolTipProTalcitka.SetToolTip(this.btnDeSelectAll, "zrušit akci");
+            this.btnDeSelectAll.UseVisualStyleBackColor = true;
             // 
             // TabPageStrucneVlastnosti
             // 
@@ -1167,19 +1373,6 @@
             this.TabPagSeznamPrani.Text = "Seznam přání";
             this.TabPagSeznamPrani.UseVisualStyleBackColor = true;
             // 
-            // imageListProTabControl
-            // 
-            this.imageListProTabControl.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListProTabControl.ImageStream")));
-            this.imageListProTabControl.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListProTabControl.Images.SetKeyName(0, "funkce.ico");
-            this.imageListProTabControl.Images.SetKeyName(1, "vlastnosti.ico");
-            this.imageListProTabControl.Images.SetKeyName(2, "pruvodce.ico");
-            this.imageListProTabControl.Images.SetKeyName(3, "prani.ico");
-            this.imageListProTabControl.Images.SetKeyName(4, "balonky.ico");
-            this.imageListProTabControl.Images.SetKeyName(5, "prani2.ico");
-            this.imageListProTabControl.Images.SetKeyName(6, "prani3.ico");
-            this.imageListProTabControl.Images.SetKeyName(7, "prani4.ico");
-            // 
             // TableLayoutPanelSeznamPrani
             // 
             this.TableLayoutPanelSeznamPrani.ColumnCount = 4;
@@ -1283,11 +1476,934 @@
             this.TableLayoutPanelSeznamPrani.TabIndex = 49;
             this.TableLayoutPanelSeznamPrani.Paint += new System.Windows.Forms.PaintEventHandler(this.TableLayoutPanelSeznamPrani_Paint);
             // 
+            // panel24
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel24, 3);
+            this.panel24.Controls.Add(this.radioButton82);
+            this.panel24.Controls.Add(this.radioButton83);
+            this.panel24.Controls.Add(this.radioButton84);
+            this.panel24.Location = new System.Drawing.Point(171, 670);
+            this.panel24.Margin = new System.Windows.Forms.Padding(0);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(120, 25);
+            this.panel24.TabIndex = 58;
+            // 
+            // radioButton82
+            // 
+            this.radioButton82.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton82.AutoSize = true;
+            this.radioButton82.Location = new System.Drawing.Point(90, 4);
+            this.radioButton82.Name = "radioButton82";
+            this.radioButton82.Size = new System.Drawing.Size(17, 16);
+            this.radioButton82.TabIndex = 2;
+            this.radioButton82.TabStop = true;
+            this.radioButton82.UseVisualStyleBackColor = true;
+            // 
+            // radioButton83
+            // 
+            this.radioButton83.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton83.AutoSize = true;
+            this.radioButton83.Location = new System.Drawing.Point(50, 4);
+            this.radioButton83.Name = "radioButton83";
+            this.radioButton83.Size = new System.Drawing.Size(17, 16);
+            this.radioButton83.TabIndex = 1;
+            this.radioButton83.TabStop = true;
+            this.radioButton83.UseVisualStyleBackColor = true;
+            // 
+            // radioButton84
+            // 
+            this.radioButton84.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton84.AutoSize = true;
+            this.radioButton84.Location = new System.Drawing.Point(10, 4);
+            this.radioButton84.Name = "radioButton84";
+            this.radioButton84.Size = new System.Drawing.Size(17, 16);
+            this.radioButton84.TabIndex = 0;
+            this.radioButton84.TabStop = true;
+            this.radioButton84.UseVisualStyleBackColor = true;
+            // 
+            // panel23
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel23, 3);
+            this.panel23.Controls.Add(this.radioButton79);
+            this.panel23.Controls.Add(this.radioButton80);
+            this.panel23.Controls.Add(this.radioButton81);
+            this.panel23.Location = new System.Drawing.Point(171, 645);
+            this.panel23.Margin = new System.Windows.Forms.Padding(0);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(120, 25);
+            this.panel23.TabIndex = 57;
+            // 
+            // radioButton79
+            // 
+            this.radioButton79.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton79.AutoSize = true;
+            this.radioButton79.Location = new System.Drawing.Point(90, 4);
+            this.radioButton79.Name = "radioButton79";
+            this.radioButton79.Size = new System.Drawing.Size(17, 16);
+            this.radioButton79.TabIndex = 2;
+            this.radioButton79.TabStop = true;
+            this.radioButton79.UseVisualStyleBackColor = true;
+            // 
+            // radioButton80
+            // 
+            this.radioButton80.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton80.AutoSize = true;
+            this.radioButton80.Location = new System.Drawing.Point(50, 4);
+            this.radioButton80.Name = "radioButton80";
+            this.radioButton80.Size = new System.Drawing.Size(17, 16);
+            this.radioButton80.TabIndex = 1;
+            this.radioButton80.TabStop = true;
+            this.radioButton80.UseVisualStyleBackColor = true;
+            // 
+            // radioButton81
+            // 
+            this.radioButton81.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton81.AutoSize = true;
+            this.radioButton81.Location = new System.Drawing.Point(10, 4);
+            this.radioButton81.Name = "radioButton81";
+            this.radioButton81.Size = new System.Drawing.Size(17, 16);
+            this.radioButton81.TabIndex = 0;
+            this.radioButton81.TabStop = true;
+            this.radioButton81.UseVisualStyleBackColor = true;
+            // 
+            // panel22
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel22, 3);
+            this.panel22.Controls.Add(this.radioButton76);
+            this.panel22.Controls.Add(this.radioButton77);
+            this.panel22.Controls.Add(this.radioButton78);
+            this.panel22.Location = new System.Drawing.Point(171, 620);
+            this.panel22.Margin = new System.Windows.Forms.Padding(0);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(120, 25);
+            this.panel22.TabIndex = 57;
+            // 
+            // radioButton76
+            // 
+            this.radioButton76.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton76.AutoSize = true;
+            this.radioButton76.Location = new System.Drawing.Point(90, 4);
+            this.radioButton76.Name = "radioButton76";
+            this.radioButton76.Size = new System.Drawing.Size(17, 16);
+            this.radioButton76.TabIndex = 2;
+            this.radioButton76.TabStop = true;
+            this.radioButton76.UseVisualStyleBackColor = true;
+            // 
+            // radioButton77
+            // 
+            this.radioButton77.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton77.AutoSize = true;
+            this.radioButton77.Location = new System.Drawing.Point(50, 4);
+            this.radioButton77.Name = "radioButton77";
+            this.radioButton77.Size = new System.Drawing.Size(17, 16);
+            this.radioButton77.TabIndex = 1;
+            this.radioButton77.TabStop = true;
+            this.radioButton77.UseVisualStyleBackColor = true;
+            // 
+            // radioButton78
+            // 
+            this.radioButton78.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton78.AutoSize = true;
+            this.radioButton78.Location = new System.Drawing.Point(10, 4);
+            this.radioButton78.Name = "radioButton78";
+            this.radioButton78.Size = new System.Drawing.Size(17, 16);
+            this.radioButton78.TabIndex = 0;
+            this.radioButton78.TabStop = true;
+            this.radioButton78.UseVisualStyleBackColor = true;
+            // 
+            // panel21
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel21, 3);
+            this.panel21.Controls.Add(this.radioButton73);
+            this.panel21.Controls.Add(this.radioButton74);
+            this.panel21.Controls.Add(this.radioButton75);
+            this.panel21.Location = new System.Drawing.Point(171, 591);
+            this.panel21.Margin = new System.Windows.Forms.Padding(0);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(120, 25);
+            this.panel21.TabIndex = 57;
+            // 
+            // radioButton73
+            // 
+            this.radioButton73.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton73.AutoSize = true;
+            this.radioButton73.Location = new System.Drawing.Point(90, 4);
+            this.radioButton73.Name = "radioButton73";
+            this.radioButton73.Size = new System.Drawing.Size(17, 16);
+            this.radioButton73.TabIndex = 2;
+            this.radioButton73.TabStop = true;
+            this.radioButton73.UseVisualStyleBackColor = true;
+            // 
+            // radioButton74
+            // 
+            this.radioButton74.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton74.AutoSize = true;
+            this.radioButton74.Location = new System.Drawing.Point(50, 4);
+            this.radioButton74.Name = "radioButton74";
+            this.radioButton74.Size = new System.Drawing.Size(17, 16);
+            this.radioButton74.TabIndex = 1;
+            this.radioButton74.TabStop = true;
+            this.radioButton74.UseVisualStyleBackColor = true;
+            // 
+            // radioButton75
+            // 
+            this.radioButton75.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton75.AutoSize = true;
+            this.radioButton75.Location = new System.Drawing.Point(10, 4);
+            this.radioButton75.Name = "radioButton75";
+            this.radioButton75.Size = new System.Drawing.Size(17, 16);
+            this.radioButton75.TabIndex = 0;
+            this.radioButton75.TabStop = true;
+            this.radioButton75.UseVisualStyleBackColor = true;
+            // 
+            // panel20
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel20, 3);
+            this.panel20.Controls.Add(this.radioButton13);
+            this.panel20.Controls.Add(this.radioButton71);
+            this.panel20.Controls.Add(this.radioButton72);
+            this.panel20.Location = new System.Drawing.Point(171, 566);
+            this.panel20.Margin = new System.Windows.Forms.Padding(0);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(120, 25);
+            this.panel20.TabIndex = 57;
+            // 
+            // radioButton13
+            // 
+            this.radioButton13.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton13.AutoSize = true;
+            this.radioButton13.Location = new System.Drawing.Point(90, 4);
+            this.radioButton13.Name = "radioButton13";
+            this.radioButton13.Size = new System.Drawing.Size(17, 16);
+            this.radioButton13.TabIndex = 2;
+            this.radioButton13.TabStop = true;
+            this.radioButton13.UseVisualStyleBackColor = true;
+            // 
+            // radioButton71
+            // 
+            this.radioButton71.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton71.AutoSize = true;
+            this.radioButton71.Location = new System.Drawing.Point(50, 4);
+            this.radioButton71.Name = "radioButton71";
+            this.radioButton71.Size = new System.Drawing.Size(17, 16);
+            this.radioButton71.TabIndex = 1;
+            this.radioButton71.TabStop = true;
+            this.radioButton71.UseVisualStyleBackColor = true;
+            // 
+            // radioButton72
+            // 
+            this.radioButton72.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton72.AutoSize = true;
+            this.radioButton72.Location = new System.Drawing.Point(10, 4);
+            this.radioButton72.Name = "radioButton72";
+            this.radioButton72.Size = new System.Drawing.Size(17, 16);
+            this.radioButton72.TabIndex = 0;
+            this.radioButton72.TabStop = true;
+            this.radioButton72.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel1, 3);
+            this.panel1.Controls.Add(this.radioButton10);
+            this.panel1.Controls.Add(this.radioButton11);
+            this.panel1.Controls.Add(this.radioButton12);
+            this.panel1.Location = new System.Drawing.Point(171, 541);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(120, 25);
+            this.panel1.TabIndex = 57;
+            // 
+            // radioButton10
+            // 
+            this.radioButton10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Location = new System.Drawing.Point(90, 4);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(17, 16);
+            this.radioButton10.TabIndex = 2;
+            this.radioButton10.TabStop = true;
+            this.radioButton10.UseVisualStyleBackColor = true;
+            // 
+            // radioButton11
+            // 
+            this.radioButton11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton11.AutoSize = true;
+            this.radioButton11.Location = new System.Drawing.Point(50, 4);
+            this.radioButton11.Name = "radioButton11";
+            this.radioButton11.Size = new System.Drawing.Size(17, 16);
+            this.radioButton11.TabIndex = 1;
+            this.radioButton11.TabStop = true;
+            this.radioButton11.UseVisualStyleBackColor = true;
+            // 
+            // radioButton12
+            // 
+            this.radioButton12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton12.AutoSize = true;
+            this.radioButton12.Location = new System.Drawing.Point(10, 4);
+            this.radioButton12.Name = "radioButton12";
+            this.radioButton12.Size = new System.Drawing.Size(17, 16);
+            this.radioButton12.TabIndex = 0;
+            this.radioButton12.TabStop = true;
+            this.radioButton12.UseVisualStyleBackColor = true;
+            // 
+            // panel18
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel18, 3);
+            this.panel18.Controls.Add(this.radioButton65);
+            this.panel18.Controls.Add(this.radioButton66);
+            this.panel18.Controls.Add(this.radioButton67);
+            this.panel18.Location = new System.Drawing.Point(171, 312);
+            this.panel18.Margin = new System.Windows.Forms.Padding(0);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(120, 25);
+            this.panel18.TabIndex = 56;
+            // 
+            // radioButton65
+            // 
+            this.radioButton65.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton65.AutoSize = true;
+            this.radioButton65.Location = new System.Drawing.Point(90, 4);
+            this.radioButton65.Name = "radioButton65";
+            this.radioButton65.Size = new System.Drawing.Size(17, 16);
+            this.radioButton65.TabIndex = 2;
+            this.radioButton65.TabStop = true;
+            this.radioButton65.UseVisualStyleBackColor = true;
+            // 
+            // radioButton66
+            // 
+            this.radioButton66.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton66.AutoSize = true;
+            this.radioButton66.Location = new System.Drawing.Point(50, 4);
+            this.radioButton66.Name = "radioButton66";
+            this.radioButton66.Size = new System.Drawing.Size(17, 16);
+            this.radioButton66.TabIndex = 1;
+            this.radioButton66.TabStop = true;
+            this.radioButton66.UseVisualStyleBackColor = true;
+            // 
+            // radioButton67
+            // 
+            this.radioButton67.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton67.AutoSize = true;
+            this.radioButton67.Location = new System.Drawing.Point(10, 4);
+            this.radioButton67.Name = "radioButton67";
+            this.radioButton67.Size = new System.Drawing.Size(17, 16);
+            this.radioButton67.TabIndex = 0;
+            this.radioButton67.TabStop = true;
+            this.radioButton67.UseVisualStyleBackColor = true;
+            // 
+            // panel17
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel17, 3);
+            this.panel17.Controls.Add(this.radioButton62);
+            this.panel17.Controls.Add(this.radioButton63);
+            this.panel17.Controls.Add(this.radioButton64);
+            this.panel17.Location = new System.Drawing.Point(171, 287);
+            this.panel17.Margin = new System.Windows.Forms.Padding(0);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(120, 25);
+            this.panel17.TabIndex = 56;
+            // 
+            // radioButton62
+            // 
+            this.radioButton62.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton62.AutoSize = true;
+            this.radioButton62.Location = new System.Drawing.Point(90, 4);
+            this.radioButton62.Name = "radioButton62";
+            this.radioButton62.Size = new System.Drawing.Size(17, 16);
+            this.radioButton62.TabIndex = 2;
+            this.radioButton62.TabStop = true;
+            this.radioButton62.UseVisualStyleBackColor = true;
+            // 
+            // radioButton63
+            // 
+            this.radioButton63.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton63.AutoSize = true;
+            this.radioButton63.Location = new System.Drawing.Point(50, 4);
+            this.radioButton63.Name = "radioButton63";
+            this.radioButton63.Size = new System.Drawing.Size(17, 16);
+            this.radioButton63.TabIndex = 1;
+            this.radioButton63.TabStop = true;
+            this.radioButton63.UseVisualStyleBackColor = true;
+            // 
+            // radioButton64
+            // 
+            this.radioButton64.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton64.AutoSize = true;
+            this.radioButton64.Location = new System.Drawing.Point(10, 4);
+            this.radioButton64.Name = "radioButton64";
+            this.radioButton64.Size = new System.Drawing.Size(17, 16);
+            this.radioButton64.TabIndex = 0;
+            this.radioButton64.TabStop = true;
+            this.radioButton64.UseVisualStyleBackColor = true;
+            // 
+            // panel16
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel16, 3);
+            this.panel16.Controls.Add(this.radioButton59);
+            this.panel16.Controls.Add(this.radioButton60);
+            this.panel16.Controls.Add(this.radioButton61);
+            this.panel16.Location = new System.Drawing.Point(171, 262);
+            this.panel16.Margin = new System.Windows.Forms.Padding(0);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(120, 25);
+            this.panel16.TabIndex = 56;
+            // 
+            // radioButton59
+            // 
+            this.radioButton59.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton59.AutoSize = true;
+            this.radioButton59.Location = new System.Drawing.Point(90, 4);
+            this.radioButton59.Name = "radioButton59";
+            this.radioButton59.Size = new System.Drawing.Size(17, 16);
+            this.radioButton59.TabIndex = 2;
+            this.radioButton59.TabStop = true;
+            this.radioButton59.UseVisualStyleBackColor = true;
+            // 
+            // radioButton60
+            // 
+            this.radioButton60.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton60.AutoSize = true;
+            this.radioButton60.Location = new System.Drawing.Point(50, 4);
+            this.radioButton60.Name = "radioButton60";
+            this.radioButton60.Size = new System.Drawing.Size(17, 16);
+            this.radioButton60.TabIndex = 1;
+            this.radioButton60.TabStop = true;
+            this.radioButton60.UseVisualStyleBackColor = true;
+            // 
+            // radioButton61
+            // 
+            this.radioButton61.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton61.AutoSize = true;
+            this.radioButton61.Location = new System.Drawing.Point(10, 4);
+            this.radioButton61.Name = "radioButton61";
+            this.radioButton61.Size = new System.Drawing.Size(17, 16);
+            this.radioButton61.TabIndex = 0;
+            this.radioButton61.TabStop = true;
+            this.radioButton61.UseVisualStyleBackColor = true;
+            // 
+            // panel15
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel15, 3);
+            this.panel15.Controls.Add(this.radioButton56);
+            this.panel15.Controls.Add(this.radioButton57);
+            this.panel15.Controls.Add(this.radioButton58);
+            this.panel15.Location = new System.Drawing.Point(171, 237);
+            this.panel15.Margin = new System.Windows.Forms.Padding(0);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(120, 25);
+            this.panel15.TabIndex = 56;
+            // 
+            // radioButton56
+            // 
+            this.radioButton56.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton56.AutoSize = true;
+            this.radioButton56.Location = new System.Drawing.Point(90, 4);
+            this.radioButton56.Name = "radioButton56";
+            this.radioButton56.Size = new System.Drawing.Size(17, 16);
+            this.radioButton56.TabIndex = 2;
+            this.radioButton56.TabStop = true;
+            this.radioButton56.UseVisualStyleBackColor = true;
+            // 
+            // radioButton57
+            // 
+            this.radioButton57.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton57.AutoSize = true;
+            this.radioButton57.Location = new System.Drawing.Point(50, 4);
+            this.radioButton57.Name = "radioButton57";
+            this.radioButton57.Size = new System.Drawing.Size(17, 16);
+            this.radioButton57.TabIndex = 1;
+            this.radioButton57.TabStop = true;
+            this.radioButton57.UseVisualStyleBackColor = true;
+            // 
+            // radioButton58
+            // 
+            this.radioButton58.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton58.AutoSize = true;
+            this.radioButton58.Location = new System.Drawing.Point(10, 4);
+            this.radioButton58.Name = "radioButton58";
+            this.radioButton58.Size = new System.Drawing.Size(17, 16);
+            this.radioButton58.TabIndex = 0;
+            this.radioButton58.TabStop = true;
+            this.radioButton58.UseVisualStyleBackColor = true;
+            // 
+            // panel14
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel14, 3);
+            this.panel14.Controls.Add(this.radioButton53);
+            this.panel14.Controls.Add(this.radioButton54);
+            this.panel14.Controls.Add(this.radioButton55);
+            this.panel14.Location = new System.Drawing.Point(171, 212);
+            this.panel14.Margin = new System.Windows.Forms.Padding(0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(120, 25);
+            this.panel14.TabIndex = 56;
+            // 
+            // radioButton53
+            // 
+            this.radioButton53.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton53.AutoSize = true;
+            this.radioButton53.Location = new System.Drawing.Point(90, 4);
+            this.radioButton53.Name = "radioButton53";
+            this.radioButton53.Size = new System.Drawing.Size(17, 16);
+            this.radioButton53.TabIndex = 2;
+            this.radioButton53.TabStop = true;
+            this.radioButton53.UseVisualStyleBackColor = true;
+            // 
+            // radioButton54
+            // 
+            this.radioButton54.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton54.AutoSize = true;
+            this.radioButton54.Location = new System.Drawing.Point(50, 4);
+            this.radioButton54.Name = "radioButton54";
+            this.radioButton54.Size = new System.Drawing.Size(17, 16);
+            this.radioButton54.TabIndex = 1;
+            this.radioButton54.TabStop = true;
+            this.radioButton54.UseVisualStyleBackColor = true;
+            // 
+            // radioButton55
+            // 
+            this.radioButton55.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton55.AutoSize = true;
+            this.radioButton55.Location = new System.Drawing.Point(10, 4);
+            this.radioButton55.Name = "radioButton55";
+            this.radioButton55.Size = new System.Drawing.Size(17, 16);
+            this.radioButton55.TabIndex = 0;
+            this.radioButton55.TabStop = true;
+            this.radioButton55.UseVisualStyleBackColor = true;
+            // 
+            // panel13
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel13, 3);
+            this.panel13.Controls.Add(this.radioButton50);
+            this.panel13.Controls.Add(this.radioButton51);
+            this.panel13.Controls.Add(this.radioButton52);
+            this.panel13.Location = new System.Drawing.Point(171, 187);
+            this.panel13.Margin = new System.Windows.Forms.Padding(0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(120, 25);
+            this.panel13.TabIndex = 56;
+            // 
+            // radioButton50
+            // 
+            this.radioButton50.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton50.AutoSize = true;
+            this.radioButton50.Location = new System.Drawing.Point(90, 4);
+            this.radioButton50.Name = "radioButton50";
+            this.radioButton50.Size = new System.Drawing.Size(17, 16);
+            this.radioButton50.TabIndex = 2;
+            this.radioButton50.TabStop = true;
+            this.radioButton50.UseVisualStyleBackColor = true;
+            // 
+            // radioButton51
+            // 
+            this.radioButton51.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton51.AutoSize = true;
+            this.radioButton51.Location = new System.Drawing.Point(50, 4);
+            this.radioButton51.Name = "radioButton51";
+            this.radioButton51.Size = new System.Drawing.Size(17, 16);
+            this.radioButton51.TabIndex = 1;
+            this.radioButton51.TabStop = true;
+            this.radioButton51.UseVisualStyleBackColor = true;
+            // 
+            // radioButton52
+            // 
+            this.radioButton52.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton52.AutoSize = true;
+            this.radioButton52.Location = new System.Drawing.Point(10, 4);
+            this.radioButton52.Name = "radioButton52";
+            this.radioButton52.Size = new System.Drawing.Size(17, 16);
+            this.radioButton52.TabIndex = 0;
+            this.radioButton52.TabStop = true;
+            this.radioButton52.UseVisualStyleBackColor = true;
+            // 
+            // panel12
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel12, 3);
+            this.panel12.Controls.Add(this.radioButton47);
+            this.panel12.Controls.Add(this.radioButton48);
+            this.panel12.Controls.Add(this.radioButton49);
+            this.panel12.Location = new System.Drawing.Point(171, 162);
+            this.panel12.Margin = new System.Windows.Forms.Padding(0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(120, 25);
+            this.panel12.TabIndex = 56;
+            // 
+            // radioButton47
+            // 
+            this.radioButton47.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton47.AutoSize = true;
+            this.radioButton47.Location = new System.Drawing.Point(90, 4);
+            this.radioButton47.Name = "radioButton47";
+            this.radioButton47.Size = new System.Drawing.Size(17, 16);
+            this.radioButton47.TabIndex = 2;
+            this.radioButton47.TabStop = true;
+            this.radioButton47.UseVisualStyleBackColor = true;
+            // 
+            // radioButton48
+            // 
+            this.radioButton48.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton48.AutoSize = true;
+            this.radioButton48.Location = new System.Drawing.Point(50, 4);
+            this.radioButton48.Name = "radioButton48";
+            this.radioButton48.Size = new System.Drawing.Size(17, 16);
+            this.radioButton48.TabIndex = 1;
+            this.radioButton48.TabStop = true;
+            this.radioButton48.UseVisualStyleBackColor = true;
+            // 
+            // radioButton49
+            // 
+            this.radioButton49.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton49.AutoSize = true;
+            this.radioButton49.Location = new System.Drawing.Point(10, 4);
+            this.radioButton49.Name = "radioButton49";
+            this.radioButton49.Size = new System.Drawing.Size(17, 16);
+            this.radioButton49.TabIndex = 0;
+            this.radioButton49.TabStop = true;
+            this.radioButton49.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel5, 3);
+            this.panel5.Controls.Add(this.radioButton25);
+            this.panel5.Controls.Add(this.radioButton27);
+            this.panel5.Controls.Add(this.radioButton28);
+            this.panel5.Location = new System.Drawing.Point(171, 366);
+            this.panel5.Margin = new System.Windows.Forms.Padding(0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(120, 25);
+            this.panel5.TabIndex = 57;
+            // 
+            // radioButton25
+            // 
+            this.radioButton25.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton25.AutoSize = true;
+            this.radioButton25.Location = new System.Drawing.Point(90, 4);
+            this.radioButton25.Name = "radioButton25";
+            this.radioButton25.Size = new System.Drawing.Size(17, 16);
+            this.radioButton25.TabIndex = 2;
+            this.radioButton25.TabStop = true;
+            this.radioButton25.UseVisualStyleBackColor = true;
+            // 
+            // radioButton27
+            // 
+            this.radioButton27.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton27.AutoSize = true;
+            this.radioButton27.Location = new System.Drawing.Point(50, 4);
+            this.radioButton27.Name = "radioButton27";
+            this.radioButton27.Size = new System.Drawing.Size(17, 16);
+            this.radioButton27.TabIndex = 1;
+            this.radioButton27.TabStop = true;
+            this.radioButton27.UseVisualStyleBackColor = true;
+            // 
+            // radioButton28
+            // 
+            this.radioButton28.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton28.AutoSize = true;
+            this.radioButton28.Location = new System.Drawing.Point(10, 4);
+            this.radioButton28.Name = "radioButton28";
+            this.radioButton28.Size = new System.Drawing.Size(17, 16);
+            this.radioButton28.TabIndex = 0;
+            this.radioButton28.TabStop = true;
+            this.radioButton28.UseVisualStyleBackColor = true;
+            // 
+            // panel11
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel11, 3);
+            this.panel11.Controls.Add(this.radioButton44);
+            this.panel11.Controls.Add(this.radioButton45);
+            this.panel11.Controls.Add(this.radioButton46);
+            this.panel11.Location = new System.Drawing.Point(171, 516);
+            this.panel11.Margin = new System.Windows.Forms.Padding(0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(120, 25);
+            this.panel11.TabIndex = 56;
+            // 
+            // radioButton44
+            // 
+            this.radioButton44.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton44.AutoSize = true;
+            this.radioButton44.Location = new System.Drawing.Point(90, 4);
+            this.radioButton44.Name = "radioButton44";
+            this.radioButton44.Size = new System.Drawing.Size(17, 16);
+            this.radioButton44.TabIndex = 2;
+            this.radioButton44.TabStop = true;
+            this.radioButton44.UseVisualStyleBackColor = true;
+            // 
+            // radioButton45
+            // 
+            this.radioButton45.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton45.AutoSize = true;
+            this.radioButton45.Location = new System.Drawing.Point(50, 4);
+            this.radioButton45.Name = "radioButton45";
+            this.radioButton45.Size = new System.Drawing.Size(17, 16);
+            this.radioButton45.TabIndex = 1;
+            this.radioButton45.TabStop = true;
+            this.radioButton45.UseVisualStyleBackColor = true;
+            // 
+            // radioButton46
+            // 
+            this.radioButton46.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton46.AutoSize = true;
+            this.radioButton46.Location = new System.Drawing.Point(10, 4);
+            this.radioButton46.Name = "radioButton46";
+            this.radioButton46.Size = new System.Drawing.Size(17, 16);
+            this.radioButton46.TabIndex = 0;
+            this.radioButton46.TabStop = true;
+            this.radioButton46.UseVisualStyleBackColor = true;
+            // 
+            // panel10
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel10, 3);
+            this.panel10.Controls.Add(this.radioButton41);
+            this.panel10.Controls.Add(this.radioButton42);
+            this.panel10.Controls.Add(this.radioButton43);
+            this.panel10.Location = new System.Drawing.Point(171, 491);
+            this.panel10.Margin = new System.Windows.Forms.Padding(0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(120, 25);
+            this.panel10.TabIndex = 56;
+            // 
+            // radioButton41
+            // 
+            this.radioButton41.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton41.AutoSize = true;
+            this.radioButton41.Location = new System.Drawing.Point(90, 4);
+            this.radioButton41.Name = "radioButton41";
+            this.radioButton41.Size = new System.Drawing.Size(17, 16);
+            this.radioButton41.TabIndex = 2;
+            this.radioButton41.TabStop = true;
+            this.radioButton41.UseVisualStyleBackColor = true;
+            // 
+            // radioButton42
+            // 
+            this.radioButton42.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton42.AutoSize = true;
+            this.radioButton42.Location = new System.Drawing.Point(50, 4);
+            this.radioButton42.Name = "radioButton42";
+            this.radioButton42.Size = new System.Drawing.Size(17, 16);
+            this.radioButton42.TabIndex = 1;
+            this.radioButton42.TabStop = true;
+            this.radioButton42.UseVisualStyleBackColor = true;
+            // 
+            // radioButton43
+            // 
+            this.radioButton43.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton43.AutoSize = true;
+            this.radioButton43.Location = new System.Drawing.Point(10, 4);
+            this.radioButton43.Name = "radioButton43";
+            this.radioButton43.Size = new System.Drawing.Size(17, 16);
+            this.radioButton43.TabIndex = 0;
+            this.radioButton43.TabStop = true;
+            this.radioButton43.UseVisualStyleBackColor = true;
+            // 
+            // panel9
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel9, 3);
+            this.panel9.Controls.Add(this.radioButton38);
+            this.panel9.Controls.Add(this.radioButton39);
+            this.panel9.Controls.Add(this.radioButton40);
+            this.panel9.Location = new System.Drawing.Point(171, 466);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(120, 25);
+            this.panel9.TabIndex = 56;
+            // 
+            // radioButton38
+            // 
+            this.radioButton38.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton38.AutoSize = true;
+            this.radioButton38.Location = new System.Drawing.Point(90, 2);
+            this.radioButton38.Name = "radioButton38";
+            this.radioButton38.Size = new System.Drawing.Size(17, 16);
+            this.radioButton38.TabIndex = 2;
+            this.radioButton38.TabStop = true;
+            this.radioButton38.UseVisualStyleBackColor = true;
+            // 
+            // radioButton39
+            // 
+            this.radioButton39.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton39.AutoSize = true;
+            this.radioButton39.Location = new System.Drawing.Point(50, 2);
+            this.radioButton39.Name = "radioButton39";
+            this.radioButton39.Size = new System.Drawing.Size(17, 16);
+            this.radioButton39.TabIndex = 1;
+            this.radioButton39.TabStop = true;
+            this.radioButton39.UseVisualStyleBackColor = true;
+            // 
+            // radioButton40
+            // 
+            this.radioButton40.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton40.AutoSize = true;
+            this.radioButton40.Location = new System.Drawing.Point(10, 2);
+            this.radioButton40.Name = "radioButton40";
+            this.radioButton40.Size = new System.Drawing.Size(17, 16);
+            this.radioButton40.TabIndex = 0;
+            this.radioButton40.TabStop = true;
+            this.radioButton40.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel7, 3);
+            this.panel7.Controls.Add(this.radioButton32);
+            this.panel7.Controls.Add(this.radioButton33);
+            this.panel7.Controls.Add(this.radioButton34);
+            this.panel7.Location = new System.Drawing.Point(171, 416);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(120, 25);
+            this.panel7.TabIndex = 55;
+            // 
+            // radioButton32
+            // 
+            this.radioButton32.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton32.AutoSize = true;
+            this.radioButton32.Location = new System.Drawing.Point(90, 4);
+            this.radioButton32.Name = "radioButton32";
+            this.radioButton32.Size = new System.Drawing.Size(17, 16);
+            this.radioButton32.TabIndex = 2;
+            this.radioButton32.TabStop = true;
+            this.radioButton32.UseVisualStyleBackColor = true;
+            // 
+            // radioButton33
+            // 
+            this.radioButton33.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton33.AutoSize = true;
+            this.radioButton33.Location = new System.Drawing.Point(50, 4);
+            this.radioButton33.Name = "radioButton33";
+            this.radioButton33.Size = new System.Drawing.Size(17, 16);
+            this.radioButton33.TabIndex = 1;
+            this.radioButton33.TabStop = true;
+            this.radioButton33.UseVisualStyleBackColor = true;
+            // 
+            // radioButton34
+            // 
+            this.radioButton34.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton34.AutoSize = true;
+            this.radioButton34.Location = new System.Drawing.Point(10, 4);
+            this.radioButton34.Name = "radioButton34";
+            this.radioButton34.Size = new System.Drawing.Size(17, 16);
+            this.radioButton34.TabIndex = 0;
+            this.radioButton34.TabStop = true;
+            this.radioButton34.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel6, 3);
+            this.panel6.Controls.Add(this.radioButton29);
+            this.panel6.Controls.Add(this.radioButton30);
+            this.panel6.Controls.Add(this.radioButton31);
+            this.panel6.Location = new System.Drawing.Point(171, 391);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(120, 25);
+            this.panel6.TabIndex = 55;
+            // 
+            // radioButton29
+            // 
+            this.radioButton29.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton29.AutoSize = true;
+            this.radioButton29.Location = new System.Drawing.Point(90, 2);
+            this.radioButton29.Name = "radioButton29";
+            this.radioButton29.Size = new System.Drawing.Size(17, 16);
+            this.radioButton29.TabIndex = 2;
+            this.radioButton29.TabStop = true;
+            this.radioButton29.UseVisualStyleBackColor = true;
+            // 
+            // radioButton30
+            // 
+            this.radioButton30.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton30.AutoSize = true;
+            this.radioButton30.Location = new System.Drawing.Point(50, 2);
+            this.radioButton30.Name = "radioButton30";
+            this.radioButton30.Size = new System.Drawing.Size(17, 16);
+            this.radioButton30.TabIndex = 1;
+            this.radioButton30.TabStop = true;
+            this.radioButton30.UseVisualStyleBackColor = true;
+            // 
+            // radioButton31
+            // 
+            this.radioButton31.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton31.AutoSize = true;
+            this.radioButton31.Location = new System.Drawing.Point(10, 2);
+            this.radioButton31.Name = "radioButton31";
+            this.radioButton31.Size = new System.Drawing.Size(17, 16);
+            this.radioButton31.TabIndex = 0;
+            this.radioButton31.TabStop = true;
+            this.radioButton31.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel4, 3);
+            this.panel4.Controls.Add(this.radioButton7);
+            this.panel4.Controls.Add(this.radioButton8);
+            this.panel4.Controls.Add(this.radioButton9);
+            this.panel4.Location = new System.Drawing.Point(171, 137);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(120, 25);
+            this.panel4.TabIndex = 55;
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Location = new System.Drawing.Point(90, 4);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(17, 16);
+            this.radioButton7.TabIndex = 2;
+            this.radioButton7.TabStop = true;
+            this.radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(50, 4);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(17, 16);
+            this.radioButton8.TabIndex = 1;
+            this.radioButton8.TabStop = true;
+            this.radioButton8.UseVisualStyleBackColor = true;
+            // 
+            // radioButton9
+            // 
+            this.radioButton9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(10, 4);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(17, 16);
+            this.radioButton9.TabIndex = 0;
+            this.radioButton9.TabStop = true;
+            this.radioButton9.UseVisualStyleBackColor = true;
+            // 
+            // splitter1
+            // 
+            this.splitter1.BackColor = System.Drawing.Color.Black;
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.splitter1, 4);
+            this.splitter1.Location = new System.Drawing.Point(3, 86);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(288, 1);
+            this.splitter1.TabIndex = 55;
+            this.splitter1.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label13.AutoSize = true;
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.label13, 4);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label13.Location = new System.Drawing.Point(0, 29);
+            this.label13.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(274, 17);
+            this.label13.TabIndex = 51;
+            this.label13.Text = "1=Důležité | 2=Podstatné | 3=Nepodstatné";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.label1, 4);
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.Green;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
@@ -1320,19 +2436,6 @@
             this.label3.Text = "1";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(220, 62);
-            this.label4.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 17);
-            this.label4.TabIndex = 48;
-            this.label4.Text = "2";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // label12
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1346,18 +2449,18 @@
             this.label12.Text = "3";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label13
+            // label4
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label13.AutoSize = true;
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.label13, 4);
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label13.Location = new System.Drawing.Point(0, 29);
-            this.label13.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(274, 17);
-            this.label13.TabIndex = 51;
-            this.label13.Text = "1=Důležité | 2=Podstatné | 3=Nepodstatné";
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(220, 62);
+            this.label4.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 17);
+            this.label4.TabIndex = 48;
+            this.label4.Text = "2";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel3
             // 
@@ -1449,16 +2552,6 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // splitter1
-            // 
-            this.splitter1.BackColor = System.Drawing.Color.Black;
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.splitter1, 4);
-            this.splitter1.Location = new System.Drawing.Point(3, 86);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(288, 1);
-            this.splitter1.TabIndex = 55;
-            this.splitter1.TabStop = false;
-            // 
             // label14
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -1498,140 +2591,65 @@
             this.label17.TabIndex = 58;
             this.label17.Text = "zpevněné plochy";
             // 
-            // panel4
+            // label18
             // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel4, 3);
-            this.panel4.Controls.Add(this.radioButton7);
-            this.panel4.Controls.Add(this.radioButton8);
-            this.panel4.Controls.Add(this.radioButton9);
-            this.panel4.Location = new System.Drawing.Point(171, 137);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(120, 25);
-            this.panel4.TabIndex = 55;
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 395);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(56, 17);
+            this.label18.TabIndex = 59;
+            this.label18.Text = "pergola";
             // 
-            // radioButton7
+            // label19
             // 
-            this.radioButton7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(90, 4);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(17, 16);
-            this.radioButton7.TabIndex = 2;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(3, 420);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(109, 17);
+            this.label19.TabIndex = 60;
+            this.label19.Text = "zahradní domek";
             // 
-            // radioButton8
+            // label20
             // 
-            this.radioButton8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(50, 4);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(17, 16);
-            this.radioButton8.TabIndex = 1;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(3, 445);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(117, 17);
+            this.label20.TabIndex = 61;
+            this.label20.Text = "zahradní nábytek";
             // 
-            // radioButton9
+            // label21
             // 
-            this.radioButton9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(10, 4);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(17, 16);
-            this.radioButton9.TabIndex = 0;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(3, 470);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(140, 17);
+            this.label21.TabIndex = 62;
+            this.label21.Text = "gril přenosný / zděný";
             // 
-            // panel6
+            // label22
             // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel6, 3);
-            this.panel6.Controls.Add(this.radioButton29);
-            this.panel6.Controls.Add(this.radioButton30);
-            this.panel6.Controls.Add(this.radioButton31);
-            this.panel6.Location = new System.Drawing.Point(171, 391);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(120, 25);
-            this.panel6.TabIndex = 55;
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(3, 495);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(150, 17);
+            this.label22.TabIndex = 63;
+            this.label22.Text = "skleník nebo pařeniště";
             // 
-            // radioButton29
+            // label23
             // 
-            this.radioButton29.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton29.AutoSize = true;
-            this.radioButton29.Location = new System.Drawing.Point(90, 2);
-            this.radioButton29.Name = "radioButton29";
-            this.radioButton29.Size = new System.Drawing.Size(17, 16);
-            this.radioButton29.TabIndex = 2;
-            this.radioButton29.TabStop = true;
-            this.radioButton29.UseVisualStyleBackColor = true;
-            // 
-            // radioButton30
-            // 
-            this.radioButton30.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton30.AutoSize = true;
-            this.radioButton30.Location = new System.Drawing.Point(50, 2);
-            this.radioButton30.Name = "radioButton30";
-            this.radioButton30.Size = new System.Drawing.Size(17, 16);
-            this.radioButton30.TabIndex = 1;
-            this.radioButton30.TabStop = true;
-            this.radioButton30.UseVisualStyleBackColor = true;
-            // 
-            // radioButton31
-            // 
-            this.radioButton31.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton31.AutoSize = true;
-            this.radioButton31.Location = new System.Drawing.Point(10, 2);
-            this.radioButton31.Name = "radioButton31";
-            this.radioButton31.Size = new System.Drawing.Size(17, 16);
-            this.radioButton31.TabIndex = 0;
-            this.radioButton31.TabStop = true;
-            this.radioButton31.UseVisualStyleBackColor = true;
-            // 
-            // panel7
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel7, 3);
-            this.panel7.Controls.Add(this.radioButton32);
-            this.panel7.Controls.Add(this.radioButton33);
-            this.panel7.Controls.Add(this.radioButton34);
-            this.panel7.Location = new System.Drawing.Point(171, 416);
-            this.panel7.Margin = new System.Windows.Forms.Padding(0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(120, 25);
-            this.panel7.TabIndex = 55;
-            // 
-            // radioButton32
-            // 
-            this.radioButton32.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton32.AutoSize = true;
-            this.radioButton32.Location = new System.Drawing.Point(90, 4);
-            this.radioButton32.Name = "radioButton32";
-            this.radioButton32.Size = new System.Drawing.Size(17, 16);
-            this.radioButton32.TabIndex = 2;
-            this.radioButton32.TabStop = true;
-            this.radioButton32.UseVisualStyleBackColor = true;
-            // 
-            // radioButton33
-            // 
-            this.radioButton33.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton33.AutoSize = true;
-            this.radioButton33.Location = new System.Drawing.Point(50, 4);
-            this.radioButton33.Name = "radioButton33";
-            this.radioButton33.Size = new System.Drawing.Size(17, 16);
-            this.radioButton33.TabIndex = 1;
-            this.radioButton33.TabStop = true;
-            this.radioButton33.UseVisualStyleBackColor = true;
-            // 
-            // radioButton34
-            // 
-            this.radioButton34.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton34.AutoSize = true;
-            this.radioButton34.Location = new System.Drawing.Point(10, 4);
-            this.radioButton34.Name = "radioButton34";
-            this.radioButton34.Size = new System.Drawing.Size(17, 16);
-            this.radioButton34.TabIndex = 0;
-            this.radioButton34.TabStop = true;
-            this.radioButton34.UseVisualStyleBackColor = true;
+            this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(3, 520);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(47, 17);
+            this.label23.TabIndex = 64;
+            this.label23.Text = "bazén";
             // 
             // panel8
             // 
@@ -1677,201 +2695,6 @@
             this.radioButton37.TabIndex = 0;
             this.radioButton37.TabStop = true;
             this.radioButton37.UseVisualStyleBackColor = true;
-            // 
-            // panel9
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel9, 3);
-            this.panel9.Controls.Add(this.radioButton38);
-            this.panel9.Controls.Add(this.radioButton39);
-            this.panel9.Controls.Add(this.radioButton40);
-            this.panel9.Location = new System.Drawing.Point(171, 466);
-            this.panel9.Margin = new System.Windows.Forms.Padding(0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(120, 25);
-            this.panel9.TabIndex = 56;
-            // 
-            // radioButton38
-            // 
-            this.radioButton38.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton38.AutoSize = true;
-            this.radioButton38.Location = new System.Drawing.Point(90, 2);
-            this.radioButton38.Name = "radioButton38";
-            this.radioButton38.Size = new System.Drawing.Size(17, 16);
-            this.radioButton38.TabIndex = 2;
-            this.radioButton38.TabStop = true;
-            this.radioButton38.UseVisualStyleBackColor = true;
-            // 
-            // radioButton39
-            // 
-            this.radioButton39.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton39.AutoSize = true;
-            this.radioButton39.Location = new System.Drawing.Point(50, 2);
-            this.radioButton39.Name = "radioButton39";
-            this.radioButton39.Size = new System.Drawing.Size(17, 16);
-            this.radioButton39.TabIndex = 1;
-            this.radioButton39.TabStop = true;
-            this.radioButton39.UseVisualStyleBackColor = true;
-            // 
-            // radioButton40
-            // 
-            this.radioButton40.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton40.AutoSize = true;
-            this.radioButton40.Location = new System.Drawing.Point(10, 2);
-            this.radioButton40.Name = "radioButton40";
-            this.radioButton40.Size = new System.Drawing.Size(17, 16);
-            this.radioButton40.TabIndex = 0;
-            this.radioButton40.TabStop = true;
-            this.radioButton40.UseVisualStyleBackColor = true;
-            // 
-            // panel10
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel10, 3);
-            this.panel10.Controls.Add(this.radioButton41);
-            this.panel10.Controls.Add(this.radioButton42);
-            this.panel10.Controls.Add(this.radioButton43);
-            this.panel10.Location = new System.Drawing.Point(171, 491);
-            this.panel10.Margin = new System.Windows.Forms.Padding(0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(120, 25);
-            this.panel10.TabIndex = 56;
-            // 
-            // radioButton41
-            // 
-            this.radioButton41.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton41.AutoSize = true;
-            this.radioButton41.Location = new System.Drawing.Point(90, 4);
-            this.radioButton41.Name = "radioButton41";
-            this.radioButton41.Size = new System.Drawing.Size(17, 16);
-            this.radioButton41.TabIndex = 2;
-            this.radioButton41.TabStop = true;
-            this.radioButton41.UseVisualStyleBackColor = true;
-            // 
-            // radioButton42
-            // 
-            this.radioButton42.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton42.AutoSize = true;
-            this.radioButton42.Location = new System.Drawing.Point(50, 4);
-            this.radioButton42.Name = "radioButton42";
-            this.radioButton42.Size = new System.Drawing.Size(17, 16);
-            this.radioButton42.TabIndex = 1;
-            this.radioButton42.TabStop = true;
-            this.radioButton42.UseVisualStyleBackColor = true;
-            // 
-            // radioButton43
-            // 
-            this.radioButton43.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton43.AutoSize = true;
-            this.radioButton43.Location = new System.Drawing.Point(10, 4);
-            this.radioButton43.Name = "radioButton43";
-            this.radioButton43.Size = new System.Drawing.Size(17, 16);
-            this.radioButton43.TabIndex = 0;
-            this.radioButton43.TabStop = true;
-            this.radioButton43.UseVisualStyleBackColor = true;
-            // 
-            // label23
-            // 
-            this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(3, 520);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(47, 17);
-            this.label23.TabIndex = 64;
-            this.label23.Text = "bazén";
-            // 
-            // label22
-            // 
-            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(3, 495);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(150, 17);
-            this.label22.TabIndex = 63;
-            this.label22.Text = "skleník nebo pařeniště";
-            // 
-            // label21
-            // 
-            this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(3, 470);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(140, 17);
-            this.label21.TabIndex = 62;
-            this.label21.Text = "gril přenosný / zděný";
-            // 
-            // label20
-            // 
-            this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(3, 445);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(117, 17);
-            this.label20.TabIndex = 61;
-            this.label20.Text = "zahradní nábytek";
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 420);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(109, 17);
-            this.label19.TabIndex = 60;
-            this.label19.Text = "zahradní domek";
-            // 
-            // label18
-            // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 395);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(56, 17);
-            this.label18.TabIndex = 59;
-            this.label18.Text = "pergola";
-            // 
-            // panel5
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel5, 3);
-            this.panel5.Controls.Add(this.radioButton25);
-            this.panel5.Controls.Add(this.radioButton27);
-            this.panel5.Controls.Add(this.radioButton28);
-            this.panel5.Location = new System.Drawing.Point(171, 366);
-            this.panel5.Margin = new System.Windows.Forms.Padding(0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(120, 25);
-            this.panel5.TabIndex = 57;
-            // 
-            // radioButton25
-            // 
-            this.radioButton25.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton25.AutoSize = true;
-            this.radioButton25.Location = new System.Drawing.Point(90, 4);
-            this.radioButton25.Name = "radioButton25";
-            this.radioButton25.Size = new System.Drawing.Size(17, 16);
-            this.radioButton25.TabIndex = 2;
-            this.radioButton25.TabStop = true;
-            this.radioButton25.UseVisualStyleBackColor = true;
-            // 
-            // radioButton27
-            // 
-            this.radioButton27.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton27.AutoSize = true;
-            this.radioButton27.Location = new System.Drawing.Point(50, 4);
-            this.radioButton27.Name = "radioButton27";
-            this.radioButton27.Size = new System.Drawing.Size(17, 16);
-            this.radioButton27.TabIndex = 1;
-            this.radioButton27.TabStop = true;
-            this.radioButton27.UseVisualStyleBackColor = true;
-            // 
-            // radioButton28
-            // 
-            this.radioButton28.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton28.AutoSize = true;
-            this.radioButton28.Location = new System.Drawing.Point(10, 4);
-            this.radioButton28.Name = "radioButton28";
-            this.radioButton28.Size = new System.Drawing.Size(17, 16);
-            this.radioButton28.TabIndex = 0;
-            this.radioButton28.TabStop = true;
-            this.radioButton28.UseVisualStyleBackColor = true;
             // 
             // label24
             // 
@@ -1962,321 +2785,6 @@
             this.splitter7.Size = new System.Drawing.Size(287, 1);
             this.splitter7.TabIndex = 75;
             this.splitter7.TabStop = false;
-            // 
-            // panel12
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel12, 3);
-            this.panel12.Controls.Add(this.radioButton47);
-            this.panel12.Controls.Add(this.radioButton48);
-            this.panel12.Controls.Add(this.radioButton49);
-            this.panel12.Location = new System.Drawing.Point(171, 162);
-            this.panel12.Margin = new System.Windows.Forms.Padding(0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(120, 25);
-            this.panel12.TabIndex = 56;
-            // 
-            // radioButton47
-            // 
-            this.radioButton47.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton47.AutoSize = true;
-            this.radioButton47.Location = new System.Drawing.Point(90, 4);
-            this.radioButton47.Name = "radioButton47";
-            this.radioButton47.Size = new System.Drawing.Size(17, 16);
-            this.radioButton47.TabIndex = 2;
-            this.radioButton47.TabStop = true;
-            this.radioButton47.UseVisualStyleBackColor = true;
-            // 
-            // radioButton48
-            // 
-            this.radioButton48.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton48.AutoSize = true;
-            this.radioButton48.Location = new System.Drawing.Point(50, 4);
-            this.radioButton48.Name = "radioButton48";
-            this.radioButton48.Size = new System.Drawing.Size(17, 16);
-            this.radioButton48.TabIndex = 1;
-            this.radioButton48.TabStop = true;
-            this.radioButton48.UseVisualStyleBackColor = true;
-            // 
-            // radioButton49
-            // 
-            this.radioButton49.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton49.AutoSize = true;
-            this.radioButton49.Location = new System.Drawing.Point(10, 4);
-            this.radioButton49.Name = "radioButton49";
-            this.radioButton49.Size = new System.Drawing.Size(17, 16);
-            this.radioButton49.TabIndex = 0;
-            this.radioButton49.TabStop = true;
-            this.radioButton49.UseVisualStyleBackColor = true;
-            // 
-            // panel13
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel13, 3);
-            this.panel13.Controls.Add(this.radioButton50);
-            this.panel13.Controls.Add(this.radioButton51);
-            this.panel13.Controls.Add(this.radioButton52);
-            this.panel13.Location = new System.Drawing.Point(171, 187);
-            this.panel13.Margin = new System.Windows.Forms.Padding(0);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(120, 25);
-            this.panel13.TabIndex = 56;
-            // 
-            // radioButton50
-            // 
-            this.radioButton50.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton50.AutoSize = true;
-            this.radioButton50.Location = new System.Drawing.Point(90, 4);
-            this.radioButton50.Name = "radioButton50";
-            this.radioButton50.Size = new System.Drawing.Size(17, 16);
-            this.radioButton50.TabIndex = 2;
-            this.radioButton50.TabStop = true;
-            this.radioButton50.UseVisualStyleBackColor = true;
-            // 
-            // radioButton51
-            // 
-            this.radioButton51.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton51.AutoSize = true;
-            this.radioButton51.Location = new System.Drawing.Point(50, 4);
-            this.radioButton51.Name = "radioButton51";
-            this.radioButton51.Size = new System.Drawing.Size(17, 16);
-            this.radioButton51.TabIndex = 1;
-            this.radioButton51.TabStop = true;
-            this.radioButton51.UseVisualStyleBackColor = true;
-            // 
-            // radioButton52
-            // 
-            this.radioButton52.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton52.AutoSize = true;
-            this.radioButton52.Location = new System.Drawing.Point(10, 4);
-            this.radioButton52.Name = "radioButton52";
-            this.radioButton52.Size = new System.Drawing.Size(17, 16);
-            this.radioButton52.TabIndex = 0;
-            this.radioButton52.TabStop = true;
-            this.radioButton52.UseVisualStyleBackColor = true;
-            // 
-            // panel14
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel14, 3);
-            this.panel14.Controls.Add(this.radioButton53);
-            this.panel14.Controls.Add(this.radioButton54);
-            this.panel14.Controls.Add(this.radioButton55);
-            this.panel14.Location = new System.Drawing.Point(171, 212);
-            this.panel14.Margin = new System.Windows.Forms.Padding(0);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(120, 25);
-            this.panel14.TabIndex = 56;
-            // 
-            // radioButton53
-            // 
-            this.radioButton53.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton53.AutoSize = true;
-            this.radioButton53.Location = new System.Drawing.Point(90, 4);
-            this.radioButton53.Name = "radioButton53";
-            this.radioButton53.Size = new System.Drawing.Size(17, 16);
-            this.radioButton53.TabIndex = 2;
-            this.radioButton53.TabStop = true;
-            this.radioButton53.UseVisualStyleBackColor = true;
-            // 
-            // radioButton54
-            // 
-            this.radioButton54.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton54.AutoSize = true;
-            this.radioButton54.Location = new System.Drawing.Point(50, 4);
-            this.radioButton54.Name = "radioButton54";
-            this.radioButton54.Size = new System.Drawing.Size(17, 16);
-            this.radioButton54.TabIndex = 1;
-            this.radioButton54.TabStop = true;
-            this.radioButton54.UseVisualStyleBackColor = true;
-            // 
-            // radioButton55
-            // 
-            this.radioButton55.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton55.AutoSize = true;
-            this.radioButton55.Location = new System.Drawing.Point(10, 4);
-            this.radioButton55.Name = "radioButton55";
-            this.radioButton55.Size = new System.Drawing.Size(17, 16);
-            this.radioButton55.TabIndex = 0;
-            this.radioButton55.TabStop = true;
-            this.radioButton55.UseVisualStyleBackColor = true;
-            // 
-            // panel15
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel15, 3);
-            this.panel15.Controls.Add(this.radioButton56);
-            this.panel15.Controls.Add(this.radioButton57);
-            this.panel15.Controls.Add(this.radioButton58);
-            this.panel15.Location = new System.Drawing.Point(171, 237);
-            this.panel15.Margin = new System.Windows.Forms.Padding(0);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(120, 25);
-            this.panel15.TabIndex = 56;
-            // 
-            // radioButton56
-            // 
-            this.radioButton56.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton56.AutoSize = true;
-            this.radioButton56.Location = new System.Drawing.Point(90, 4);
-            this.radioButton56.Name = "radioButton56";
-            this.radioButton56.Size = new System.Drawing.Size(17, 16);
-            this.radioButton56.TabIndex = 2;
-            this.radioButton56.TabStop = true;
-            this.radioButton56.UseVisualStyleBackColor = true;
-            // 
-            // radioButton57
-            // 
-            this.radioButton57.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton57.AutoSize = true;
-            this.radioButton57.Location = new System.Drawing.Point(50, 4);
-            this.radioButton57.Name = "radioButton57";
-            this.radioButton57.Size = new System.Drawing.Size(17, 16);
-            this.radioButton57.TabIndex = 1;
-            this.radioButton57.TabStop = true;
-            this.radioButton57.UseVisualStyleBackColor = true;
-            // 
-            // radioButton58
-            // 
-            this.radioButton58.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton58.AutoSize = true;
-            this.radioButton58.Location = new System.Drawing.Point(10, 4);
-            this.radioButton58.Name = "radioButton58";
-            this.radioButton58.Size = new System.Drawing.Size(17, 16);
-            this.radioButton58.TabIndex = 0;
-            this.radioButton58.TabStop = true;
-            this.radioButton58.UseVisualStyleBackColor = true;
-            // 
-            // panel16
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel16, 3);
-            this.panel16.Controls.Add(this.radioButton59);
-            this.panel16.Controls.Add(this.radioButton60);
-            this.panel16.Controls.Add(this.radioButton61);
-            this.panel16.Location = new System.Drawing.Point(171, 262);
-            this.panel16.Margin = new System.Windows.Forms.Padding(0);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(120, 25);
-            this.panel16.TabIndex = 56;
-            // 
-            // radioButton59
-            // 
-            this.radioButton59.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton59.AutoSize = true;
-            this.radioButton59.Location = new System.Drawing.Point(90, 4);
-            this.radioButton59.Name = "radioButton59";
-            this.radioButton59.Size = new System.Drawing.Size(17, 16);
-            this.radioButton59.TabIndex = 2;
-            this.radioButton59.TabStop = true;
-            this.radioButton59.UseVisualStyleBackColor = true;
-            // 
-            // radioButton60
-            // 
-            this.radioButton60.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton60.AutoSize = true;
-            this.radioButton60.Location = new System.Drawing.Point(50, 4);
-            this.radioButton60.Name = "radioButton60";
-            this.radioButton60.Size = new System.Drawing.Size(17, 16);
-            this.radioButton60.TabIndex = 1;
-            this.radioButton60.TabStop = true;
-            this.radioButton60.UseVisualStyleBackColor = true;
-            // 
-            // radioButton61
-            // 
-            this.radioButton61.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton61.AutoSize = true;
-            this.radioButton61.Location = new System.Drawing.Point(10, 4);
-            this.radioButton61.Name = "radioButton61";
-            this.radioButton61.Size = new System.Drawing.Size(17, 16);
-            this.radioButton61.TabIndex = 0;
-            this.radioButton61.TabStop = true;
-            this.radioButton61.UseVisualStyleBackColor = true;
-            // 
-            // panel17
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel17, 3);
-            this.panel17.Controls.Add(this.radioButton62);
-            this.panel17.Controls.Add(this.radioButton63);
-            this.panel17.Controls.Add(this.radioButton64);
-            this.panel17.Location = new System.Drawing.Point(171, 287);
-            this.panel17.Margin = new System.Windows.Forms.Padding(0);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(120, 25);
-            this.panel17.TabIndex = 56;
-            // 
-            // radioButton62
-            // 
-            this.radioButton62.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton62.AutoSize = true;
-            this.radioButton62.Location = new System.Drawing.Point(90, 4);
-            this.radioButton62.Name = "radioButton62";
-            this.radioButton62.Size = new System.Drawing.Size(17, 16);
-            this.radioButton62.TabIndex = 2;
-            this.radioButton62.TabStop = true;
-            this.radioButton62.UseVisualStyleBackColor = true;
-            // 
-            // radioButton63
-            // 
-            this.radioButton63.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton63.AutoSize = true;
-            this.radioButton63.Location = new System.Drawing.Point(50, 4);
-            this.radioButton63.Name = "radioButton63";
-            this.radioButton63.Size = new System.Drawing.Size(17, 16);
-            this.radioButton63.TabIndex = 1;
-            this.radioButton63.TabStop = true;
-            this.radioButton63.UseVisualStyleBackColor = true;
-            // 
-            // radioButton64
-            // 
-            this.radioButton64.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton64.AutoSize = true;
-            this.radioButton64.Location = new System.Drawing.Point(10, 4);
-            this.radioButton64.Name = "radioButton64";
-            this.radioButton64.Size = new System.Drawing.Size(17, 16);
-            this.radioButton64.TabIndex = 0;
-            this.radioButton64.TabStop = true;
-            this.radioButton64.UseVisualStyleBackColor = true;
-            // 
-            // panel18
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel18, 3);
-            this.panel18.Controls.Add(this.radioButton65);
-            this.panel18.Controls.Add(this.radioButton66);
-            this.panel18.Controls.Add(this.radioButton67);
-            this.panel18.Location = new System.Drawing.Point(171, 312);
-            this.panel18.Margin = new System.Windows.Forms.Padding(0);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(120, 25);
-            this.panel18.TabIndex = 56;
-            // 
-            // radioButton65
-            // 
-            this.radioButton65.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton65.AutoSize = true;
-            this.radioButton65.Location = new System.Drawing.Point(90, 4);
-            this.radioButton65.Name = "radioButton65";
-            this.radioButton65.Size = new System.Drawing.Size(17, 16);
-            this.radioButton65.TabIndex = 2;
-            this.radioButton65.TabStop = true;
-            this.radioButton65.UseVisualStyleBackColor = true;
-            // 
-            // radioButton66
-            // 
-            this.radioButton66.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton66.AutoSize = true;
-            this.radioButton66.Location = new System.Drawing.Point(50, 4);
-            this.radioButton66.Name = "radioButton66";
-            this.radioButton66.Size = new System.Drawing.Size(17, 16);
-            this.radioButton66.TabIndex = 1;
-            this.radioButton66.TabStop = true;
-            this.radioButton66.UseVisualStyleBackColor = true;
-            // 
-            // radioButton67
-            // 
-            this.radioButton67.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton67.AutoSize = true;
-            this.radioButton67.Location = new System.Drawing.Point(10, 4);
-            this.radioButton67.Name = "radioButton67";
-            this.radioButton67.Size = new System.Drawing.Size(17, 16);
-            this.radioButton67.TabIndex = 0;
-            this.radioButton67.TabStop = true;
-            this.radioButton67.UseVisualStyleBackColor = true;
             // 
             // panel19
             // 
@@ -2373,51 +2881,6 @@
             this.label33.TabIndex = 83;
             this.label33.Text = "osvětlení zahrady";
             // 
-            // radioButton46
-            // 
-            this.radioButton46.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton46.AutoSize = true;
-            this.radioButton46.Location = new System.Drawing.Point(10, 4);
-            this.radioButton46.Name = "radioButton46";
-            this.radioButton46.Size = new System.Drawing.Size(17, 16);
-            this.radioButton46.TabIndex = 0;
-            this.radioButton46.TabStop = true;
-            this.radioButton46.UseVisualStyleBackColor = true;
-            // 
-            // radioButton45
-            // 
-            this.radioButton45.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton45.AutoSize = true;
-            this.radioButton45.Location = new System.Drawing.Point(50, 4);
-            this.radioButton45.Name = "radioButton45";
-            this.radioButton45.Size = new System.Drawing.Size(17, 16);
-            this.radioButton45.TabIndex = 1;
-            this.radioButton45.TabStop = true;
-            this.radioButton45.UseVisualStyleBackColor = true;
-            // 
-            // radioButton44
-            // 
-            this.radioButton44.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton44.AutoSize = true;
-            this.radioButton44.Location = new System.Drawing.Point(90, 4);
-            this.radioButton44.Name = "radioButton44";
-            this.radioButton44.Size = new System.Drawing.Size(17, 16);
-            this.radioButton44.TabIndex = 2;
-            this.radioButton44.TabStop = true;
-            this.radioButton44.UseVisualStyleBackColor = true;
-            // 
-            // panel11
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel11, 3);
-            this.panel11.Controls.Add(this.radioButton44);
-            this.panel11.Controls.Add(this.radioButton45);
-            this.panel11.Controls.Add(this.radioButton46);
-            this.panel11.Location = new System.Drawing.Point(171, 516);
-            this.panel11.Margin = new System.Windows.Forms.Padding(0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(120, 25);
-            this.panel11.TabIndex = 56;
-            // 
             // splitter8
             // 
             this.splitter8.BackColor = System.Drawing.Color.Black;
@@ -2427,231 +2890,6 @@
             this.splitter8.Size = new System.Drawing.Size(287, 1);
             this.splitter8.TabIndex = 84;
             this.splitter8.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel1, 3);
-            this.panel1.Controls.Add(this.radioButton10);
-            this.panel1.Controls.Add(this.radioButton11);
-            this.panel1.Controls.Add(this.radioButton12);
-            this.panel1.Location = new System.Drawing.Point(171, 541);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(120, 25);
-            this.panel1.TabIndex = 57;
-            // 
-            // radioButton10
-            // 
-            this.radioButton10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(90, 4);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(17, 16);
-            this.radioButton10.TabIndex = 2;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.UseVisualStyleBackColor = true;
-            // 
-            // radioButton11
-            // 
-            this.radioButton11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(50, 4);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(17, 16);
-            this.radioButton11.TabIndex = 1;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.UseVisualStyleBackColor = true;
-            // 
-            // radioButton12
-            // 
-            this.radioButton12.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(10, 4);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(17, 16);
-            this.radioButton12.TabIndex = 0;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.UseVisualStyleBackColor = true;
-            // 
-            // panel20
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel20, 3);
-            this.panel20.Controls.Add(this.radioButton13);
-            this.panel20.Controls.Add(this.radioButton71);
-            this.panel20.Controls.Add(this.radioButton72);
-            this.panel20.Location = new System.Drawing.Point(171, 566);
-            this.panel20.Margin = new System.Windows.Forms.Padding(0);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(120, 25);
-            this.panel20.TabIndex = 57;
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(90, 4);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(17, 16);
-            this.radioButton13.TabIndex = 2;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.UseVisualStyleBackColor = true;
-            // 
-            // radioButton71
-            // 
-            this.radioButton71.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton71.AutoSize = true;
-            this.radioButton71.Location = new System.Drawing.Point(50, 4);
-            this.radioButton71.Name = "radioButton71";
-            this.radioButton71.Size = new System.Drawing.Size(17, 16);
-            this.radioButton71.TabIndex = 1;
-            this.radioButton71.TabStop = true;
-            this.radioButton71.UseVisualStyleBackColor = true;
-            // 
-            // radioButton72
-            // 
-            this.radioButton72.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton72.AutoSize = true;
-            this.radioButton72.Location = new System.Drawing.Point(10, 4);
-            this.radioButton72.Name = "radioButton72";
-            this.radioButton72.Size = new System.Drawing.Size(17, 16);
-            this.radioButton72.TabIndex = 0;
-            this.radioButton72.TabStop = true;
-            this.radioButton72.UseVisualStyleBackColor = true;
-            // 
-            // panel21
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel21, 3);
-            this.panel21.Controls.Add(this.radioButton73);
-            this.panel21.Controls.Add(this.radioButton74);
-            this.panel21.Controls.Add(this.radioButton75);
-            this.panel21.Location = new System.Drawing.Point(171, 591);
-            this.panel21.Margin = new System.Windows.Forms.Padding(0);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(120, 25);
-            this.panel21.TabIndex = 57;
-            // 
-            // radioButton73
-            // 
-            this.radioButton73.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton73.AutoSize = true;
-            this.radioButton73.Location = new System.Drawing.Point(90, 4);
-            this.radioButton73.Name = "radioButton73";
-            this.radioButton73.Size = new System.Drawing.Size(17, 16);
-            this.radioButton73.TabIndex = 2;
-            this.radioButton73.TabStop = true;
-            this.radioButton73.UseVisualStyleBackColor = true;
-            // 
-            // radioButton74
-            // 
-            this.radioButton74.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton74.AutoSize = true;
-            this.radioButton74.Location = new System.Drawing.Point(50, 4);
-            this.radioButton74.Name = "radioButton74";
-            this.radioButton74.Size = new System.Drawing.Size(17, 16);
-            this.radioButton74.TabIndex = 1;
-            this.radioButton74.TabStop = true;
-            this.radioButton74.UseVisualStyleBackColor = true;
-            // 
-            // radioButton75
-            // 
-            this.radioButton75.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton75.AutoSize = true;
-            this.radioButton75.Location = new System.Drawing.Point(10, 4);
-            this.radioButton75.Name = "radioButton75";
-            this.radioButton75.Size = new System.Drawing.Size(17, 16);
-            this.radioButton75.TabIndex = 0;
-            this.radioButton75.TabStop = true;
-            this.radioButton75.UseVisualStyleBackColor = true;
-            // 
-            // panel22
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel22, 3);
-            this.panel22.Controls.Add(this.radioButton76);
-            this.panel22.Controls.Add(this.radioButton77);
-            this.panel22.Controls.Add(this.radioButton78);
-            this.panel22.Location = new System.Drawing.Point(171, 620);
-            this.panel22.Margin = new System.Windows.Forms.Padding(0);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(120, 25);
-            this.panel22.TabIndex = 57;
-            // 
-            // radioButton76
-            // 
-            this.radioButton76.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton76.AutoSize = true;
-            this.radioButton76.Location = new System.Drawing.Point(90, 4);
-            this.radioButton76.Name = "radioButton76";
-            this.radioButton76.Size = new System.Drawing.Size(17, 16);
-            this.radioButton76.TabIndex = 2;
-            this.radioButton76.TabStop = true;
-            this.radioButton76.UseVisualStyleBackColor = true;
-            // 
-            // radioButton77
-            // 
-            this.radioButton77.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton77.AutoSize = true;
-            this.radioButton77.Location = new System.Drawing.Point(50, 4);
-            this.radioButton77.Name = "radioButton77";
-            this.radioButton77.Size = new System.Drawing.Size(17, 16);
-            this.radioButton77.TabIndex = 1;
-            this.radioButton77.TabStop = true;
-            this.radioButton77.UseVisualStyleBackColor = true;
-            // 
-            // radioButton78
-            // 
-            this.radioButton78.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton78.AutoSize = true;
-            this.radioButton78.Location = new System.Drawing.Point(10, 4);
-            this.radioButton78.Name = "radioButton78";
-            this.radioButton78.Size = new System.Drawing.Size(17, 16);
-            this.radioButton78.TabIndex = 0;
-            this.radioButton78.TabStop = true;
-            this.radioButton78.UseVisualStyleBackColor = true;
-            // 
-            // panel23
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel23, 3);
-            this.panel23.Controls.Add(this.radioButton79);
-            this.panel23.Controls.Add(this.radioButton80);
-            this.panel23.Controls.Add(this.radioButton81);
-            this.panel23.Location = new System.Drawing.Point(171, 645);
-            this.panel23.Margin = new System.Windows.Forms.Padding(0);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(120, 25);
-            this.panel23.TabIndex = 57;
-            // 
-            // radioButton79
-            // 
-            this.radioButton79.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton79.AutoSize = true;
-            this.radioButton79.Location = new System.Drawing.Point(90, 4);
-            this.radioButton79.Name = "radioButton79";
-            this.radioButton79.Size = new System.Drawing.Size(17, 16);
-            this.radioButton79.TabIndex = 2;
-            this.radioButton79.TabStop = true;
-            this.radioButton79.UseVisualStyleBackColor = true;
-            // 
-            // radioButton80
-            // 
-            this.radioButton80.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton80.AutoSize = true;
-            this.radioButton80.Location = new System.Drawing.Point(50, 4);
-            this.radioButton80.Name = "radioButton80";
-            this.radioButton80.Size = new System.Drawing.Size(17, 16);
-            this.radioButton80.TabIndex = 1;
-            this.radioButton80.TabStop = true;
-            this.radioButton80.UseVisualStyleBackColor = true;
-            // 
-            // radioButton81
-            // 
-            this.radioButton81.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton81.AutoSize = true;
-            this.radioButton81.Location = new System.Drawing.Point(10, 4);
-            this.radioButton81.Name = "radioButton81";
-            this.radioButton81.Size = new System.Drawing.Size(17, 16);
-            this.radioButton81.TabIndex = 0;
-            this.radioButton81.TabStop = true;
-            this.radioButton81.UseVisualStyleBackColor = true;
             // 
             // label37
             // 
@@ -2663,50 +2901,18 @@
             this.label37.TabIndex = 85;
             this.label37.Text = "dětský nábytek";
             // 
-            // panel24
+            // imageListProTabControl
             // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel24, 3);
-            this.panel24.Controls.Add(this.radioButton82);
-            this.panel24.Controls.Add(this.radioButton83);
-            this.panel24.Controls.Add(this.radioButton84);
-            this.panel24.Location = new System.Drawing.Point(171, 670);
-            this.panel24.Margin = new System.Windows.Forms.Padding(0);
-            this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(120, 25);
-            this.panel24.TabIndex = 58;
-            // 
-            // radioButton82
-            // 
-            this.radioButton82.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton82.AutoSize = true;
-            this.radioButton82.Location = new System.Drawing.Point(90, 4);
-            this.radioButton82.Name = "radioButton82";
-            this.radioButton82.Size = new System.Drawing.Size(17, 16);
-            this.radioButton82.TabIndex = 2;
-            this.radioButton82.TabStop = true;
-            this.radioButton82.UseVisualStyleBackColor = true;
-            // 
-            // radioButton83
-            // 
-            this.radioButton83.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton83.AutoSize = true;
-            this.radioButton83.Location = new System.Drawing.Point(50, 4);
-            this.radioButton83.Name = "radioButton83";
-            this.radioButton83.Size = new System.Drawing.Size(17, 16);
-            this.radioButton83.TabIndex = 1;
-            this.radioButton83.TabStop = true;
-            this.radioButton83.UseVisualStyleBackColor = true;
-            // 
-            // radioButton84
-            // 
-            this.radioButton84.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton84.AutoSize = true;
-            this.radioButton84.Location = new System.Drawing.Point(10, 4);
-            this.radioButton84.Name = "radioButton84";
-            this.radioButton84.Size = new System.Drawing.Size(17, 16);
-            this.radioButton84.TabIndex = 0;
-            this.radioButton84.TabStop = true;
-            this.radioButton84.UseVisualStyleBackColor = true;
+            this.imageListProTabControl.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListProTabControl.ImageStream")));
+            this.imageListProTabControl.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListProTabControl.Images.SetKeyName(0, "funkce.ico");
+            this.imageListProTabControl.Images.SetKeyName(1, "vlastnosti.ico");
+            this.imageListProTabControl.Images.SetKeyName(2, "pruvodce.ico");
+            this.imageListProTabControl.Images.SetKeyName(3, "prani.ico");
+            this.imageListProTabControl.Images.SetKeyName(4, "balonky.ico");
+            this.imageListProTabControl.Images.SetKeyName(5, "prani2.ico");
+            this.imageListProTabControl.Images.SetKeyName(6, "prani3.ico");
+            this.imageListProTabControl.Images.SetKeyName(7, "prani4.ico");
             // 
             // mujFilteredPropertyGrid
             // 
@@ -2735,7 +2941,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.vytvoritGroupBox.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.zmenitGroupBox.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.TabPageStrucneVlastnosti.ResumeLayout(false);
             this.TabPageRozsireneVlastnosti.ResumeLayout(false);
             this.TabPagePruvodce.ResumeLayout(false);
@@ -2752,54 +2960,54 @@
             this.TabPagSeznamPrani.ResumeLayout(false);
             this.TableLayoutPanelSeznamPrani.ResumeLayout(false);
             this.TableLayoutPanelSeznamPrani.PerformLayout();
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
-            this.panel17.ResumeLayout(false);
-            this.panel17.PerformLayout();
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
-            this.panel21.ResumeLayout(false);
-            this.panel21.PerformLayout();
-            this.panel22.ResumeLayout(false);
-            this.panel22.PerformLayout();
-            this.panel23.ResumeLayout(false);
-            this.panel23.PerformLayout();
-            this.panel24.ResumeLayout(false);
-            this.panel24.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3007,5 +3215,11 @@
         private System.Windows.Forms.RadioButton radioButton12;
         private System.Windows.Forms.Splitter splitter8;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ImageList imageListProVytvoritZmenit;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button btnDeSelectAll;
+        private System.Windows.Forms.Button btnSelectAll;
+        private System.Windows.Forms.ToolTip ToolTipProTalcitka;
     }
 }
