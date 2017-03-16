@@ -58,6 +58,10 @@
             this.pruvodce = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.radioButton23 = new System.Windows.Forms.RadioButton();
+            this.radioButton24 = new System.Windows.Forms.RadioButton();
+            this.radioButton26 = new System.Windows.Forms.RadioButton();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
@@ -89,11 +93,12 @@
             this.checkBox21 = new System.Windows.Forms.CheckBox();
             this.checkBox20 = new System.Windows.Forms.CheckBox();
             this.checkBox23 = new System.Windows.Forms.CheckBox();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.splitter4 = new System.Windows.Forms.Splitter();
+            this.splitter5 = new System.Windows.Forms.Splitter();
+            this.splitter6 = new System.Windows.Forms.Splitter();
             this.label10 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.radioButton23 = new System.Windows.Forms.RadioButton();
-            this.radioButton24 = new System.Windows.Forms.RadioButton();
-            this.radioButton26 = new System.Windows.Forms.RadioButton();
             this.prani = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.radioButton10 = new System.Windows.Forms.RadioButton();
@@ -101,11 +106,6 @@
             this.radioButton12 = new System.Windows.Forms.RadioButton();
             this.radioButton13 = new System.Windows.Forms.RadioButton();
             this.imageListProTabControl = new System.Windows.Forms.ImageList(this.components);
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.splitter3 = new System.Windows.Forms.Splitter();
-            this.splitter4 = new System.Windows.Forms.Splitter();
-            this.splitter5 = new System.Windows.Forms.Splitter();
-            this.splitter6 = new System.Windows.Forms.Splitter();
             this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
             this.tabControl.SuspendLayout();
             this.funkce.SuspendLayout();
@@ -119,10 +119,10 @@
             this.rozsireneVlastnosti.SuspendLayout();
             this.pruvodce.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.prani.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -141,6 +141,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
+            this.tabControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
             this.tabControl.Size = new System.Drawing.Size(330, 1263);
@@ -172,10 +173,12 @@
             // splitContainer.Panel1
             // 
             this.splitContainer.Panel1.Controls.Add(this.vytvoritGroupBox);
+            this.splitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.zmenitGroupBox);
+            this.splitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer.Size = new System.Drawing.Size(295, 1249);
             this.splitContainer.SplitterDistance = 576;
             this.splitContainer.TabIndex = 0;
@@ -540,6 +543,53 @@
             this.label11.TabIndex = 67;
             this.label11.Text = "E) Při návrhu je potřeba zohlednit:";
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.radioButton23);
+            this.panel8.Controls.Add(this.radioButton24);
+            this.panel8.Controls.Add(this.radioButton26);
+            this.panel8.Location = new System.Drawing.Point(3, 933);
+            this.panel8.Name = "panel8";
+            this.tableLayoutPanel1.SetRowSpan(this.panel8, 7);
+            this.panel8.Size = new System.Drawing.Size(288, 141);
+            this.panel8.TabIndex = 64;
+            // 
+            // radioButton23
+            // 
+            this.radioButton23.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton23.AutoSize = true;
+            this.radioButton23.Location = new System.Drawing.Point(0, 91);
+            this.radioButton23.Name = "radioButton23";
+            this.radioButton23.Size = new System.Drawing.Size(253, 38);
+            this.radioButton23.TabIndex = 3;
+            this.radioButton23.TabStop = true;
+            this.radioButton23.Text = "Funkce převážně ke stínění domu a\r\nohlučnění přilehlých staveb\r\n";
+            this.radioButton23.UseVisualStyleBackColor = true;
+            // 
+            // radioButton24
+            // 
+            this.radioButton24.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton24.AutoSize = true;
+            this.radioButton24.Location = new System.Drawing.Point(0, 47);
+            this.radioButton24.Name = "radioButton24";
+            this.radioButton24.Size = new System.Drawing.Size(245, 38);
+            this.radioButton24.TabIndex = 2;
+            this.radioButton24.TabStop = true;
+            this.radioButton24.Text = "Vyšší nároky na údržbu, květinové\r\nzáhony, nižší keře a stromy";
+            this.radioButton24.UseVisualStyleBackColor = true;
+            // 
+            // radioButton26
+            // 
+            this.radioButton26.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton26.AutoSize = true;
+            this.radioButton26.Location = new System.Drawing.Point(0, 3);
+            this.radioButton26.Name = "radioButton26";
+            this.radioButton26.Size = new System.Drawing.Size(245, 38);
+            this.radioButton26.TabIndex = 0;
+            this.radioButton26.TabStop = true;
+            this.radioButton26.Text = "Minimální údržba, např. jen trávník\r\nnebo zpevněné plochy\r\n";
+            this.radioButton26.UseVisualStyleBackColor = true;
+            // 
             // checkBox13
             // 
             this.checkBox13.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -895,6 +945,54 @@
             this.checkBox23.Text = "Pohyb zvířat na pozemku";
             this.checkBox23.UseVisualStyleBackColor = true;
             // 
+            // splitter2
+            // 
+            this.splitter2.BackColor = System.Drawing.Color.Black;
+            this.splitter2.Location = new System.Drawing.Point(3, 178);
+            this.splitter2.MinExtra = 2;
+            this.splitter2.MinSize = 2;
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(287, 1);
+            this.splitter2.TabIndex = 73;
+            this.splitter2.TabStop = false;
+            this.splitter2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitter2_SplitterMoved);
+            // 
+            // splitter3
+            // 
+            this.splitter3.BackColor = System.Drawing.Color.Black;
+            this.splitter3.Location = new System.Drawing.Point(3, 282);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(287, 1);
+            this.splitter3.TabIndex = 74;
+            this.splitter3.TabStop = false;
+            // 
+            // splitter4
+            // 
+            this.splitter4.BackColor = System.Drawing.Color.Black;
+            this.splitter4.Location = new System.Drawing.Point(3, 611);
+            this.splitter4.Name = "splitter4";
+            this.splitter4.Size = new System.Drawing.Size(285, 1);
+            this.splitter4.TabIndex = 75;
+            this.splitter4.TabStop = false;
+            // 
+            // splitter5
+            // 
+            this.splitter5.BackColor = System.Drawing.Color.Black;
+            this.splitter5.Location = new System.Drawing.Point(3, 765);
+            this.splitter5.Name = "splitter5";
+            this.splitter5.Size = new System.Drawing.Size(287, 1);
+            this.splitter5.TabIndex = 76;
+            this.splitter5.TabStop = false;
+            // 
+            // splitter6
+            // 
+            this.splitter6.BackColor = System.Drawing.Color.Black;
+            this.splitter6.Location = new System.Drawing.Point(3, 901);
+            this.splitter6.Name = "splitter6";
+            this.splitter6.Size = new System.Drawing.Size(285, 1);
+            this.splitter6.TabIndex = 77;
+            this.splitter6.TabStop = false;
+            // 
             // label10
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -907,53 +1005,6 @@
             this.label10.TabIndex = 63;
             this.label10.Text = "F) Plánuji předzahrádku před domem";
             this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.radioButton23);
-            this.panel8.Controls.Add(this.radioButton24);
-            this.panel8.Controls.Add(this.radioButton26);
-            this.panel8.Location = new System.Drawing.Point(3, 933);
-            this.panel8.Name = "panel8";
-            this.tableLayoutPanel1.SetRowSpan(this.panel8, 7);
-            this.panel8.Size = new System.Drawing.Size(288, 141);
-            this.panel8.TabIndex = 64;
-            // 
-            // radioButton23
-            // 
-            this.radioButton23.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton23.AutoSize = true;
-            this.radioButton23.Location = new System.Drawing.Point(0, 91);
-            this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(253, 38);
-            this.radioButton23.TabIndex = 3;
-            this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "Funkce převážně ke stínění domu a\r\nohlučnění přilehlých staveb\r\n";
-            this.radioButton23.UseVisualStyleBackColor = true;
-            // 
-            // radioButton24
-            // 
-            this.radioButton24.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton24.AutoSize = true;
-            this.radioButton24.Location = new System.Drawing.Point(0, 47);
-            this.radioButton24.Name = "radioButton24";
-            this.radioButton24.Size = new System.Drawing.Size(245, 38);
-            this.radioButton24.TabIndex = 2;
-            this.radioButton24.TabStop = true;
-            this.radioButton24.Text = "Vyšší nároky na údržbu, květinové\r\nzáhony, nižší keře a stromy";
-            this.radioButton24.UseVisualStyleBackColor = true;
-            // 
-            // radioButton26
-            // 
-            this.radioButton26.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton26.AutoSize = true;
-            this.radioButton26.Location = new System.Drawing.Point(0, 3);
-            this.radioButton26.Name = "radioButton26";
-            this.radioButton26.Size = new System.Drawing.Size(245, 38);
-            this.radioButton26.TabIndex = 0;
-            this.radioButton26.TabStop = true;
-            this.radioButton26.Text = "Minimální údržba, např. jen trávník\r\nnebo zpevněné plochy\r\n";
-            this.radioButton26.UseVisualStyleBackColor = true;
             // 
             // prani
             // 
@@ -1035,54 +1086,6 @@
             this.imageListProTabControl.Images.SetKeyName(6, "prani3.ico");
             this.imageListProTabControl.Images.SetKeyName(7, "prani4.ico");
             // 
-            // splitter2
-            // 
-            this.splitter2.BackColor = System.Drawing.Color.Black;
-            this.splitter2.Location = new System.Drawing.Point(3, 178);
-            this.splitter2.MinExtra = 2;
-            this.splitter2.MinSize = 2;
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(287, 1);
-            this.splitter2.TabIndex = 73;
-            this.splitter2.TabStop = false;
-            this.splitter2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitter2_SplitterMoved);
-            // 
-            // splitter3
-            // 
-            this.splitter3.BackColor = System.Drawing.Color.Black;
-            this.splitter3.Location = new System.Drawing.Point(3, 282);
-            this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(287, 1);
-            this.splitter3.TabIndex = 74;
-            this.splitter3.TabStop = false;
-            // 
-            // splitter4
-            // 
-            this.splitter4.BackColor = System.Drawing.Color.Black;
-            this.splitter4.Location = new System.Drawing.Point(3, 611);
-            this.splitter4.Name = "splitter4";
-            this.splitter4.Size = new System.Drawing.Size(285, 1);
-            this.splitter4.TabIndex = 75;
-            this.splitter4.TabStop = false;
-            // 
-            // splitter5
-            // 
-            this.splitter5.BackColor = System.Drawing.Color.Black;
-            this.splitter5.Location = new System.Drawing.Point(3, 765);
-            this.splitter5.Name = "splitter5";
-            this.splitter5.Size = new System.Drawing.Size(287, 1);
-            this.splitter5.TabIndex = 76;
-            this.splitter5.TabStop = false;
-            // 
-            // splitter6
-            // 
-            this.splitter6.BackColor = System.Drawing.Color.Black;
-            this.splitter6.Location = new System.Drawing.Point(3, 901);
-            this.splitter6.Name = "splitter6";
-            this.splitter6.Size = new System.Drawing.Size(285, 1);
-            this.splitter6.TabIndex = 77;
-            this.splitter6.TabStop = false;
-            // 
             // mujFilteredPropertyGrid
             // 
             this.mujFilteredPropertyGrid.BrowsableProperties = null;
@@ -1116,14 +1119,14 @@
             this.pruvodce.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.prani.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
