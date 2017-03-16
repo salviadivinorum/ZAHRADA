@@ -36,27 +36,8 @@
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.vytvoritGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lineBtn = new System.Windows.Forms.Button();
             this.imageListProVytvoritZmenit = new System.Windows.Forms.ImageList(this.components);
-            this.freeHandBtn = new System.Windows.Forms.Button();
-            this.rectBtn = new System.Windows.Forms.Button();
-            this.circBtn = new System.Windows.Forms.Button();
-            this.polygonBtn = new System.Windows.Forms.Button();
-            this.imageBtn = new System.Windows.Forms.Button();
-            this.arcBtn = new System.Windows.Forms.Button();
-            this.simpleTextBtn = new System.Windows.Forms.Button();
             this.zmenitGroupBox = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBtn = new System.Windows.Forms.Button();
-            this.mirrorYbtn = new System.Windows.Forms.Button();
-            this.mirrorXbtn = new System.Windows.Forms.Button();
-            this.btnSelectAll = new System.Windows.Forms.Button();
-            this.deGroupBtn = new System.Windows.Forms.Button();
-            this.toFrontBtn = new System.Windows.Forms.Button();
-            this.toBackBtn = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            this.copyBtn = new System.Windows.Forms.Button();
-            this.btnDeSelectAll = new System.Windows.Forms.Button();
             this.TabPageStrucneVlastnosti = new System.Windows.Forms.TabPage();
             this.TabPageRozsireneVlastnosti = new System.Windows.Forms.TabPage();
             this.mujPropertyGrid = new System.Windows.Forms.PropertyGrid();
@@ -237,6 +218,27 @@
             this.label37 = new System.Windows.Forms.Label();
             this.imageListProTabControl = new System.Windows.Forms.ImageList(this.components);
             this.ToolTipProTalcitka = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.splitter9 = new System.Windows.Forms.Splitter();
+            this.lineBtn = new System.Windows.Forms.Button();
+            this.freeHandBtn = new System.Windows.Forms.Button();
+            this.rectBtn = new System.Windows.Forms.Button();
+            this.circBtn = new System.Windows.Forms.Button();
+            this.polygonBtn = new System.Windows.Forms.Button();
+            this.imageBtn = new System.Windows.Forms.Button();
+            this.arcBtn = new System.Windows.Forms.Button();
+            this.simpleTextBtn = new System.Windows.Forms.Button();
+            this.groupBtn = new System.Windows.Forms.Button();
+            this.deGroupBtn = new System.Windows.Forms.Button();
+            this.toFrontBtn = new System.Windows.Forms.Button();
+            this.toBackBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.copyBtn = new System.Windows.Forms.Button();
+            this.mirrorXbtn = new System.Windows.Forms.Button();
+            this.mirrorYbtn = new System.Windows.Forms.Button();
+            this.btnZoomAll = new System.Windows.Forms.Button();
+            this.btnVybratVse = new System.Windows.Forms.Button();
+            this.btnEscape = new System.Windows.Forms.Button();
             this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
             this.tabControlProNastroje.SuspendLayout();
             this.TabPageFunkce.SuspendLayout();
@@ -247,7 +249,6 @@
             this.vytvoritGroupBox.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.zmenitGroupBox.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.TabPageStrucneVlastnosti.SuspendLayout();
             this.TabPageRozsireneVlastnosti.SuspendLayout();
             this.TabPagePruvodce.SuspendLayout();
@@ -282,6 +283,7 @@
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel19.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProNastroje
@@ -376,27 +378,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(289, 160);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // lineBtn
-            // 
-            this.lineBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lineBtn.BackColor = System.Drawing.Color.Transparent;
-            this.lineBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.lineBtn.FlatAppearance.BorderSize = 0;
-            this.lineBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lineBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.lineBtn.ForeColor = System.Drawing.Color.Transparent;
-            this.lineBtn.ImageKey = "linejinak.ico";
-            this.lineBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.lineBtn.Location = new System.Drawing.Point(3, 7);
-            this.lineBtn.Margin = new System.Windows.Forms.Padding(0);
-            this.lineBtn.Name = "lineBtn";
-            this.lineBtn.Size = new System.Drawing.Size(65, 65);
-            this.lineBtn.TabIndex = 1;
-            this.lineBtn.Text = "\r\n";
-            this.ToolTipProTalcitka.SetToolTip(this.lineBtn, "čára");
-            this.lineBtn.UseVisualStyleBackColor = false;
-            this.lineBtn.Click += new System.EventHandler(this.lineBtn_Click);
-            // 
             // imageListProVytvoritZmenit
             // 
             this.imageListProVytvoritZmenit.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListProVytvoritZmenit.ImageStream")));
@@ -440,118 +421,6 @@
             this.imageListProVytvoritZmenit.Images.SetKeyName(36, "mirrorX.ico");
             this.imageListProVytvoritZmenit.Images.SetKeyName(37, "mirrorY.ico");
             // 
-            // freeHandBtn
-            // 
-            this.freeHandBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.freeHandBtn.FlatAppearance.BorderSize = 0;
-            this.freeHandBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.freeHandBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.freeHandBtn.ImageKey = "spline2.ico";
-            this.freeHandBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.freeHandBtn.Location = new System.Drawing.Point(147, 7);
-            this.freeHandBtn.Name = "freeHandBtn";
-            this.freeHandBtn.Size = new System.Drawing.Size(65, 65);
-            this.freeHandBtn.TabIndex = 10;
-            this.ToolTipProTalcitka.SetToolTip(this.freeHandBtn, "volná čára");
-            this.freeHandBtn.UseVisualStyleBackColor = true;
-            this.freeHandBtn.Click += new System.EventHandler(this.freeHandBtn_Click);
-            // 
-            // rectBtn
-            // 
-            this.rectBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rectBtn.FlatAppearance.BorderSize = 0;
-            this.rectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.rectBtn.ImageKey = "rectangle.ico";
-            this.rectBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.rectBtn.Location = new System.Drawing.Point(220, 7);
-            this.rectBtn.Name = "rectBtn";
-            this.rectBtn.Size = new System.Drawing.Size(65, 65);
-            this.rectBtn.TabIndex = 0;
-            this.ToolTipProTalcitka.SetToolTip(this.rectBtn, "obdélník");
-            this.rectBtn.UseVisualStyleBackColor = false;
-            this.rectBtn.Click += new System.EventHandler(this.rectBtn_Click);
-            // 
-            // circBtn
-            // 
-            this.circBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.circBtn.FlatAppearance.BorderSize = 0;
-            this.circBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.circBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.circBtn.ImageKey = "circ.ico";
-            this.circBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.circBtn.Location = new System.Drawing.Point(75, 87);
-            this.circBtn.Name = "circBtn";
-            this.circBtn.Size = new System.Drawing.Size(65, 65);
-            this.circBtn.TabIndex = 2;
-            this.ToolTipProTalcitka.SetToolTip(this.circBtn, "elipsa");
-            this.circBtn.UseVisualStyleBackColor = true;
-            this.circBtn.Click += new System.EventHandler(this.circBtn_Click);
-            // 
-            // polygonBtn
-            // 
-            this.polygonBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.polygonBtn.FlatAppearance.BorderSize = 0;
-            this.polygonBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.polygonBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.polygonBtn.ImageKey = "multiline.ico";
-            this.polygonBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.polygonBtn.Location = new System.Drawing.Point(75, 7);
-            this.polygonBtn.Name = "polygonBtn";
-            this.polygonBtn.Size = new System.Drawing.Size(65, 65);
-            this.polygonBtn.TabIndex = 9;
-            this.ToolTipProTalcitka.SetToolTip(this.polygonBtn, "polygon");
-            this.polygonBtn.UseVisualStyleBackColor = true;
-            this.polygonBtn.Click += new System.EventHandler(this.polygonBtn_Click);
-            // 
-            // imageBtn
-            // 
-            this.imageBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageBtn.FlatAppearance.BorderSize = 0;
-            this.imageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.imageBtn.ImageKey = "leaf.ico";
-            this.imageBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.imageBtn.Location = new System.Drawing.Point(220, 87);
-            this.imageBtn.Name = "imageBtn";
-            this.imageBtn.Size = new System.Drawing.Size(65, 65);
-            this.imageBtn.TabIndex = 7;
-            this.ToolTipProTalcitka.SetToolTip(this.imageBtn, "zahradní prvek");
-            this.imageBtn.UseVisualStyleBackColor = true;
-            this.imageBtn.Click += new System.EventHandler(this.imageBtn_Click);
-            // 
-            // arcBtn
-            // 
-            this.arcBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.arcBtn.FlatAppearance.BorderSize = 0;
-            this.arcBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.arcBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.arcBtn.ImageKey = "oblouk.ico";
-            this.arcBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.arcBtn.Location = new System.Drawing.Point(3, 87);
-            this.arcBtn.Name = "arcBtn";
-            this.arcBtn.Size = new System.Drawing.Size(65, 65);
-            this.arcBtn.TabIndex = 8;
-            this.ToolTipProTalcitka.SetToolTip(this.arcBtn, "oblouk");
-            this.arcBtn.UseVisualStyleBackColor = true;
-            this.arcBtn.Click += new System.EventHandler(this.arcBtn_Click);
-            // 
-            // simpleTextBtn
-            // 
-            this.simpleTextBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.simpleTextBtn.FlatAppearance.BorderSize = 0;
-            this.simpleTextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.simpleTextBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.simpleTextBtn.ImageKey = "text.ico";
-            this.simpleTextBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.simpleTextBtn.Location = new System.Drawing.Point(147, 87);
-            this.simpleTextBtn.Name = "simpleTextBtn";
-            this.simpleTextBtn.Size = new System.Drawing.Size(65, 65);
-            this.simpleTextBtn.TabIndex = 5;
-            this.ToolTipProTalcitka.SetToolTip(this.simpleTextBtn, "text");
-            this.simpleTextBtn.UseVisualStyleBackColor = true;
-            this.simpleTextBtn.Click += new System.EventHandler(this.simpleTextBtn_Click);
-            // 
             // zmenitGroupBox
             // 
             this.zmenitGroupBox.Controls.Add(this.tableLayoutPanel2);
@@ -562,191 +431,6 @@
             this.zmenitGroupBox.TabIndex = 12;
             this.zmenitGroupBox.TabStop = false;
             this.zmenitGroupBox.Text = "Změnit";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.groupBtn, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.mirrorYbtn, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.mirrorXbtn, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.btnSelectAll, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.deGroupBtn, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.toFrontBtn, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.toBackBtn, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.deleteBtn, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.copyBtn, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btnDeSelectAll, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 19);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(289, 320);
-            this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // groupBtn
-            // 
-            this.groupBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBtn.FlatAppearance.BorderSize = 0;
-            this.groupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBtn.ImageKey = "sloucit.ico";
-            this.groupBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.groupBtn.Location = new System.Drawing.Point(3, 7);
-            this.groupBtn.Name = "groupBtn";
-            this.groupBtn.Size = new System.Drawing.Size(65, 65);
-            this.groupBtn.TabIndex = 2;
-            this.ToolTipProTalcitka.SetToolTip(this.groupBtn, "seskupit");
-            this.groupBtn.UseVisualStyleBackColor = true;
-            this.groupBtn.Click += new System.EventHandler(this.groupBtn_Click);
-            // 
-            // mirrorYbtn
-            // 
-            this.mirrorYbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mirrorYbtn.FlatAppearance.BorderSize = 0;
-            this.mirrorYbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mirrorYbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mirrorYbtn.ImageKey = "mirrorY.ico";
-            this.mirrorYbtn.ImageList = this.imageListProVytvoritZmenit;
-            this.mirrorYbtn.Location = new System.Drawing.Point(75, 167);
-            this.mirrorYbtn.Name = "mirrorYbtn";
-            this.mirrorYbtn.Size = new System.Drawing.Size(65, 65);
-            this.mirrorYbtn.TabIndex = 5;
-            this.ToolTipProTalcitka.SetToolTip(this.mirrorYbtn, "zrcadlit podle osy Y");
-            this.mirrorYbtn.UseVisualStyleBackColor = true;
-            // 
-            // mirrorXbtn
-            // 
-            this.mirrorXbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mirrorXbtn.FlatAppearance.BorderSize = 0;
-            this.mirrorXbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mirrorXbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mirrorXbtn.ImageKey = "mirrorX.ico";
-            this.mirrorXbtn.ImageList = this.imageListProVytvoritZmenit;
-            this.mirrorXbtn.Location = new System.Drawing.Point(3, 167);
-            this.mirrorXbtn.Name = "mirrorXbtn";
-            this.mirrorXbtn.Size = new System.Drawing.Size(65, 65);
-            this.mirrorXbtn.TabIndex = 4;
-            this.ToolTipProTalcitka.SetToolTip(this.mirrorXbtn, "zrcadlit podle osy X");
-            this.mirrorXbtn.UseVisualStyleBackColor = true;
-            this.mirrorXbtn.Click += new System.EventHandler(this.mirrorXbtn_Click);
-            // 
-            // btnSelectAll
-            // 
-            this.btnSelectAll.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSelectAll.FlatAppearance.BorderSize = 0;
-            this.btnSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnSelectAll.ImageKey = "selectall.ico";
-            this.btnSelectAll.ImageList = this.imageListProVytvoritZmenit;
-            this.btnSelectAll.Location = new System.Drawing.Point(75, 87);
-            this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(65, 65);
-            this.btnSelectAll.TabIndex = 6;
-            this.ToolTipProTalcitka.SetToolTip(this.btnSelectAll, "vybrat vše");
-            this.btnSelectAll.UseVisualStyleBackColor = true;
-            // 
-            // deGroupBtn
-            // 
-            this.deGroupBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.deGroupBtn.FlatAppearance.BorderSize = 0;
-            this.deGroupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deGroupBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.deGroupBtn.ImageKey = "solo.ico";
-            this.deGroupBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.deGroupBtn.Location = new System.Drawing.Point(75, 7);
-            this.deGroupBtn.Name = "deGroupBtn";
-            this.deGroupBtn.Size = new System.Drawing.Size(65, 65);
-            this.deGroupBtn.TabIndex = 3;
-            this.ToolTipProTalcitka.SetToolTip(this.deGroupBtn, "zrušit seskupení");
-            this.deGroupBtn.UseVisualStyleBackColor = true;
-            this.deGroupBtn.Click += new System.EventHandler(this.deGroupBtn_Click);
-            // 
-            // toFrontBtn
-            // 
-            this.toFrontBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.toFrontBtn.FlatAppearance.BorderSize = 0;
-            this.toFrontBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toFrontBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.toFrontBtn.ImageKey = "nahoru.ico";
-            this.toFrontBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.toFrontBtn.Location = new System.Drawing.Point(147, 7);
-            this.toFrontBtn.Name = "toFrontBtn";
-            this.toFrontBtn.Size = new System.Drawing.Size(65, 65);
-            this.toFrontBtn.TabIndex = 6;
-            this.ToolTipProTalcitka.SetToolTip(this.toFrontBtn, "posunout nahoru");
-            this.toFrontBtn.UseVisualStyleBackColor = true;
-            this.toFrontBtn.Click += new System.EventHandler(this.toFrontBtn_Click);
-            // 
-            // toBackBtn
-            // 
-            this.toBackBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.toBackBtn.FlatAppearance.BorderSize = 0;
-            this.toBackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toBackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.toBackBtn.ImageKey = "dolu.ico";
-            this.toBackBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.toBackBtn.Location = new System.Drawing.Point(220, 7);
-            this.toBackBtn.Name = "toBackBtn";
-            this.toBackBtn.Size = new System.Drawing.Size(65, 65);
-            this.toBackBtn.TabIndex = 7;
-            this.ToolTipProTalcitka.SetToolTip(this.toBackBtn, "posunout dolů");
-            this.toBackBtn.UseVisualStyleBackColor = true;
-            this.toBackBtn.Click += new System.EventHandler(this.toBackBtn_Click);
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.deleteBtn.FlatAppearance.BorderSize = 0;
-            this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.deleteBtn.ImageKey = "smaz.ico";
-            this.deleteBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.deleteBtn.Location = new System.Drawing.Point(220, 87);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(65, 65);
-            this.deleteBtn.TabIndex = 8;
-            this.ToolTipProTalcitka.SetToolTip(this.deleteBtn, "smazat");
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
-            // 
-            // copyBtn
-            // 
-            this.copyBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.copyBtn.FlatAppearance.BorderSize = 0;
-            this.copyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.copyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.copyBtn.ImageKey = "kopiruj.ico";
-            this.copyBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.copyBtn.Location = new System.Drawing.Point(147, 87);
-            this.copyBtn.Name = "copyBtn";
-            this.copyBtn.Size = new System.Drawing.Size(65, 65);
-            this.copyBtn.TabIndex = 9;
-            this.ToolTipProTalcitka.SetToolTip(this.copyBtn, "kopírovat");
-            this.copyBtn.UseVisualStyleBackColor = true;
-            this.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
-            // 
-            // btnDeSelectAll
-            // 
-            this.btnDeSelectAll.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeSelectAll.FlatAppearance.BorderSize = 0;
-            this.btnDeSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeSelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnDeSelectAll.ImageKey = "escape.ico";
-            this.btnDeSelectAll.ImageList = this.imageListProVytvoritZmenit;
-            this.btnDeSelectAll.Location = new System.Drawing.Point(3, 87);
-            this.btnDeSelectAll.Name = "btnDeSelectAll";
-            this.btnDeSelectAll.Size = new System.Drawing.Size(65, 65);
-            this.btnDeSelectAll.TabIndex = 6;
-            this.ToolTipProTalcitka.SetToolTip(this.btnDeSelectAll, "zrušit akci");
-            this.btnDeSelectAll.UseVisualStyleBackColor = true;
             // 
             // TabPageStrucneVlastnosti
             // 
@@ -2914,6 +2598,352 @@
             this.imageListProTabControl.Images.SetKeyName(6, "prani3.ico");
             this.imageListProTabControl.Images.SetKeyName(7, "prani4.ico");
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.groupBtn, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.deGroupBtn, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.toFrontBtn, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.toBackBtn, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.deleteBtn, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.copyBtn, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.mirrorXbtn, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.mirrorYbtn, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnZoomAll, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.btnVybratVse, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.btnEscape, 2, 3);
+            this.tableLayoutPanel2.Controls.Add(this.splitter9, 0, 2);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(289, 250);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // splitter9
+            // 
+            this.splitter9.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.tableLayoutPanel2.SetColumnSpan(this.splitter9, 4);
+            this.splitter9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitter9.Location = new System.Drawing.Point(3, 163);
+            this.splitter9.Name = "splitter9";
+            this.splitter9.Size = new System.Drawing.Size(283, 1);
+            this.splitter9.TabIndex = 11;
+            this.splitter9.TabStop = false;
+            // 
+            // lineBtn
+            // 
+            this.lineBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lineBtn.BackColor = System.Drawing.Color.Transparent;
+            this.lineBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lineBtn.FlatAppearance.BorderSize = 0;
+            this.lineBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lineBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.lineBtn.ForeColor = System.Drawing.Color.Transparent;
+            this.lineBtn.ImageKey = "linejinak.ico";
+            this.lineBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.lineBtn.Location = new System.Drawing.Point(3, 7);
+            this.lineBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.lineBtn.Name = "lineBtn";
+            this.lineBtn.Size = new System.Drawing.Size(65, 65);
+            this.lineBtn.TabIndex = 1;
+            this.lineBtn.Text = "\r\n";
+            this.ToolTipProTalcitka.SetToolTip(this.lineBtn, "čára");
+            this.lineBtn.UseVisualStyleBackColor = false;
+            this.lineBtn.Click += new System.EventHandler(this.lineBtn_Click);
+            // 
+            // freeHandBtn
+            // 
+            this.freeHandBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.freeHandBtn.FlatAppearance.BorderSize = 0;
+            this.freeHandBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.freeHandBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.freeHandBtn.ImageKey = "spline2.ico";
+            this.freeHandBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.freeHandBtn.Location = new System.Drawing.Point(147, 7);
+            this.freeHandBtn.Name = "freeHandBtn";
+            this.freeHandBtn.Size = new System.Drawing.Size(65, 65);
+            this.freeHandBtn.TabIndex = 10;
+            this.ToolTipProTalcitka.SetToolTip(this.freeHandBtn, "volná čára");
+            this.freeHandBtn.UseVisualStyleBackColor = true;
+            this.freeHandBtn.Click += new System.EventHandler(this.freeHandBtn_Click);
+            // 
+            // rectBtn
+            // 
+            this.rectBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rectBtn.FlatAppearance.BorderSize = 0;
+            this.rectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.rectBtn.ImageKey = "rectangle.ico";
+            this.rectBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.rectBtn.Location = new System.Drawing.Point(220, 7);
+            this.rectBtn.Name = "rectBtn";
+            this.rectBtn.Size = new System.Drawing.Size(65, 65);
+            this.rectBtn.TabIndex = 0;
+            this.ToolTipProTalcitka.SetToolTip(this.rectBtn, "obdélník");
+            this.rectBtn.UseVisualStyleBackColor = false;
+            this.rectBtn.Click += new System.EventHandler(this.rectBtn_Click);
+            // 
+            // circBtn
+            // 
+            this.circBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.circBtn.FlatAppearance.BorderSize = 0;
+            this.circBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.circBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.circBtn.ImageKey = "circ.ico";
+            this.circBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.circBtn.Location = new System.Drawing.Point(75, 87);
+            this.circBtn.Name = "circBtn";
+            this.circBtn.Size = new System.Drawing.Size(65, 65);
+            this.circBtn.TabIndex = 2;
+            this.ToolTipProTalcitka.SetToolTip(this.circBtn, "elipsa");
+            this.circBtn.UseVisualStyleBackColor = true;
+            this.circBtn.Click += new System.EventHandler(this.circBtn_Click);
+            // 
+            // polygonBtn
+            // 
+            this.polygonBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.polygonBtn.FlatAppearance.BorderSize = 0;
+            this.polygonBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.polygonBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.polygonBtn.ImageKey = "multiline.ico";
+            this.polygonBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.polygonBtn.Location = new System.Drawing.Point(75, 7);
+            this.polygonBtn.Name = "polygonBtn";
+            this.polygonBtn.Size = new System.Drawing.Size(65, 65);
+            this.polygonBtn.TabIndex = 9;
+            this.ToolTipProTalcitka.SetToolTip(this.polygonBtn, "polygon");
+            this.polygonBtn.UseVisualStyleBackColor = true;
+            this.polygonBtn.Click += new System.EventHandler(this.polygonBtn_Click);
+            // 
+            // imageBtn
+            // 
+            this.imageBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imageBtn.FlatAppearance.BorderSize = 0;
+            this.imageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.imageBtn.ImageKey = "leaf.ico";
+            this.imageBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.imageBtn.Location = new System.Drawing.Point(220, 87);
+            this.imageBtn.Name = "imageBtn";
+            this.imageBtn.Size = new System.Drawing.Size(65, 65);
+            this.imageBtn.TabIndex = 7;
+            this.ToolTipProTalcitka.SetToolTip(this.imageBtn, "zahradní prvek ...");
+            this.imageBtn.UseVisualStyleBackColor = true;
+            this.imageBtn.Click += new System.EventHandler(this.imageBtn_Click);
+            // 
+            // arcBtn
+            // 
+            this.arcBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.arcBtn.FlatAppearance.BorderSize = 0;
+            this.arcBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.arcBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.arcBtn.ImageKey = "oblouk.ico";
+            this.arcBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.arcBtn.Location = new System.Drawing.Point(3, 87);
+            this.arcBtn.Name = "arcBtn";
+            this.arcBtn.Size = new System.Drawing.Size(65, 65);
+            this.arcBtn.TabIndex = 8;
+            this.ToolTipProTalcitka.SetToolTip(this.arcBtn, "oblouk");
+            this.arcBtn.UseVisualStyleBackColor = true;
+            this.arcBtn.Click += new System.EventHandler(this.arcBtn_Click);
+            // 
+            // simpleTextBtn
+            // 
+            this.simpleTextBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.simpleTextBtn.FlatAppearance.BorderSize = 0;
+            this.simpleTextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.simpleTextBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.simpleTextBtn.ImageKey = "text.ico";
+            this.simpleTextBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.simpleTextBtn.Location = new System.Drawing.Point(147, 87);
+            this.simpleTextBtn.Name = "simpleTextBtn";
+            this.simpleTextBtn.Size = new System.Drawing.Size(65, 65);
+            this.simpleTextBtn.TabIndex = 5;
+            this.ToolTipProTalcitka.SetToolTip(this.simpleTextBtn, "text");
+            this.simpleTextBtn.UseVisualStyleBackColor = true;
+            this.simpleTextBtn.Click += new System.EventHandler(this.simpleTextBtn_Click);
+            // 
+            // groupBtn
+            // 
+            this.groupBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBtn.FlatAppearance.BorderSize = 0;
+            this.groupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBtn.ImageKey = "sloucit.ico";
+            this.groupBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.groupBtn.Location = new System.Drawing.Point(3, 7);
+            this.groupBtn.Name = "groupBtn";
+            this.groupBtn.Size = new System.Drawing.Size(65, 65);
+            this.groupBtn.TabIndex = 2;
+            this.ToolTipProTalcitka.SetToolTip(this.groupBtn, "seskupit");
+            this.groupBtn.UseVisualStyleBackColor = true;
+            this.groupBtn.Click += new System.EventHandler(this.groupBtn_Click);
+            // 
+            // deGroupBtn
+            // 
+            this.deGroupBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.deGroupBtn.FlatAppearance.BorderSize = 0;
+            this.deGroupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deGroupBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.deGroupBtn.ImageKey = "solo.ico";
+            this.deGroupBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.deGroupBtn.Location = new System.Drawing.Point(75, 7);
+            this.deGroupBtn.Name = "deGroupBtn";
+            this.deGroupBtn.Size = new System.Drawing.Size(65, 65);
+            this.deGroupBtn.TabIndex = 3;
+            this.ToolTipProTalcitka.SetToolTip(this.deGroupBtn, "zrušit seskupení");
+            this.deGroupBtn.UseVisualStyleBackColor = true;
+            this.deGroupBtn.Click += new System.EventHandler(this.deGroupBtn_Click);
+            // 
+            // toFrontBtn
+            // 
+            this.toFrontBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.toFrontBtn.FlatAppearance.BorderSize = 0;
+            this.toFrontBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toFrontBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.toFrontBtn.ImageKey = "nahoru.ico";
+            this.toFrontBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.toFrontBtn.Location = new System.Drawing.Point(147, 7);
+            this.toFrontBtn.Name = "toFrontBtn";
+            this.toFrontBtn.Size = new System.Drawing.Size(65, 65);
+            this.toFrontBtn.TabIndex = 6;
+            this.ToolTipProTalcitka.SetToolTip(this.toFrontBtn, "posunout objekt do popředí");
+            this.toFrontBtn.UseVisualStyleBackColor = true;
+            this.toFrontBtn.Click += new System.EventHandler(this.toFrontBtn_Click);
+            // 
+            // toBackBtn
+            // 
+            this.toBackBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.toBackBtn.FlatAppearance.BorderSize = 0;
+            this.toBackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toBackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.toBackBtn.ImageKey = "dolu.ico";
+            this.toBackBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.toBackBtn.Location = new System.Drawing.Point(220, 7);
+            this.toBackBtn.Name = "toBackBtn";
+            this.toBackBtn.Size = new System.Drawing.Size(65, 65);
+            this.toBackBtn.TabIndex = 7;
+            this.ToolTipProTalcitka.SetToolTip(this.toBackBtn, "posunout objekt do pozadí");
+            this.toBackBtn.UseVisualStyleBackColor = true;
+            this.toBackBtn.Click += new System.EventHandler(this.toBackBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.deleteBtn.FlatAppearance.BorderSize = 0;
+            this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.deleteBtn.ImageKey = "smaz.ico";
+            this.deleteBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.deleteBtn.Location = new System.Drawing.Point(220, 87);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(65, 65);
+            this.deleteBtn.TabIndex = 8;
+            this.ToolTipProTalcitka.SetToolTip(this.deleteBtn, "smazat");
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // copyBtn
+            // 
+            this.copyBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.copyBtn.FlatAppearance.BorderSize = 0;
+            this.copyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.copyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.copyBtn.ImageKey = "kopiruj.ico";
+            this.copyBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.copyBtn.Location = new System.Drawing.Point(147, 87);
+            this.copyBtn.Name = "copyBtn";
+            this.copyBtn.Size = new System.Drawing.Size(65, 65);
+            this.copyBtn.TabIndex = 9;
+            this.ToolTipProTalcitka.SetToolTip(this.copyBtn, "kopírovat");
+            this.copyBtn.UseVisualStyleBackColor = true;
+            this.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
+            // 
+            // mirrorXbtn
+            // 
+            this.mirrorXbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.mirrorXbtn.FlatAppearance.BorderSize = 0;
+            this.mirrorXbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mirrorXbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.mirrorXbtn.ImageKey = "mirrorX.ico";
+            this.mirrorXbtn.ImageList = this.imageListProVytvoritZmenit;
+            this.mirrorXbtn.Location = new System.Drawing.Point(3, 87);
+            this.mirrorXbtn.Name = "mirrorXbtn";
+            this.mirrorXbtn.Size = new System.Drawing.Size(65, 65);
+            this.mirrorXbtn.TabIndex = 4;
+            this.ToolTipProTalcitka.SetToolTip(this.mirrorXbtn, "zrcadlit podle osy X");
+            this.mirrorXbtn.UseVisualStyleBackColor = true;
+            this.mirrorXbtn.Click += new System.EventHandler(this.mirrorXbtn_Click);
+            // 
+            // mirrorYbtn
+            // 
+            this.mirrorYbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.mirrorYbtn.FlatAppearance.BorderSize = 0;
+            this.mirrorYbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mirrorYbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.mirrorYbtn.ImageKey = "mirrorY.ico";
+            this.mirrorYbtn.ImageList = this.imageListProVytvoritZmenit;
+            this.mirrorYbtn.Location = new System.Drawing.Point(75, 87);
+            this.mirrorYbtn.Name = "mirrorYbtn";
+            this.mirrorYbtn.Size = new System.Drawing.Size(65, 65);
+            this.mirrorYbtn.TabIndex = 5;
+            this.ToolTipProTalcitka.SetToolTip(this.mirrorYbtn, "zrcadlit podle osy Y");
+            this.mirrorYbtn.UseVisualStyleBackColor = true;
+            // 
+            // btnZoomAll
+            // 
+            this.btnZoomAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnZoomAll.FlatAppearance.BorderSize = 0;
+            this.btnZoomAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZoomAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnZoomAll.ImageKey = "selectall.ico";
+            this.btnZoomAll.ImageList = this.imageListProVytvoritZmenit;
+            this.btnZoomAll.Location = new System.Drawing.Point(3, 174);
+            this.btnZoomAll.Name = "btnZoomAll";
+            this.btnZoomAll.Size = new System.Drawing.Size(65, 65);
+            this.btnZoomAll.TabIndex = 6;
+            this.ToolTipProTalcitka.SetToolTip(this.btnZoomAll, "zobrazit vše");
+            this.btnZoomAll.UseVisualStyleBackColor = true;
+            // 
+            // btnVybratVse
+            // 
+            this.btnVybratVse.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVybratVse.FlatAppearance.BorderSize = 0;
+            this.btnVybratVse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVybratVse.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnVybratVse.ImageKey = "select.ico";
+            this.btnVybratVse.ImageList = this.imageListProVytvoritZmenit;
+            this.btnVybratVse.Location = new System.Drawing.Point(75, 174);
+            this.btnVybratVse.Name = "btnVybratVse";
+            this.btnVybratVse.Size = new System.Drawing.Size(65, 65);
+            this.btnVybratVse.TabIndex = 10;
+            this.ToolTipProTalcitka.SetToolTip(this.btnVybratVse, "vybrat vše");
+            this.btnVybratVse.UseVisualStyleBackColor = true;
+            // 
+            // btnEscape
+            // 
+            this.btnEscape.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEscape.FlatAppearance.BorderSize = 0;
+            this.btnEscape.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnEscape.ImageKey = "escape.ico";
+            this.btnEscape.ImageList = this.imageListProVytvoritZmenit;
+            this.btnEscape.Location = new System.Drawing.Point(147, 174);
+            this.btnEscape.Name = "btnEscape";
+            this.btnEscape.Size = new System.Drawing.Size(65, 65);
+            this.btnEscape.TabIndex = 6;
+            this.ToolTipProTalcitka.SetToolTip(this.btnEscape, "zrušit akci");
+            this.btnEscape.UseVisualStyleBackColor = true;
+            // 
             // mujFilteredPropertyGrid
             // 
             this.mujFilteredPropertyGrid.BrowsableProperties = null;
@@ -2943,7 +2973,6 @@
             this.vytvoritGroupBox.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.zmenitGroupBox.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.TabPageStrucneVlastnosti.ResumeLayout(false);
             this.TabPageRozsireneVlastnosti.ResumeLayout(false);
             this.TabPagePruvodce.ResumeLayout(false);
@@ -3008,6 +3037,7 @@
             this.panel8.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3029,14 +3059,6 @@
         private System.Windows.Forms.Button imageBtn;
         private System.Windows.Forms.Button simpleTextBtn;
         private System.Windows.Forms.GroupBox zmenitGroupBox;
-        private System.Windows.Forms.Button copyBtn;
-        private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.Button toBackBtn;
-        private System.Windows.Forms.Button toFrontBtn;
-        private System.Windows.Forms.Button mirrorYbtn;
-        private System.Windows.Forms.Button mirrorXbtn;
-        private System.Windows.Forms.Button deGroupBtn;
-        private System.Windows.Forms.Button groupBtn;
         public System.Windows.Forms.PropertyGrid mujPropertyGrid;
         public OdvozenyPropertyGrid.FilteredPropertyGrid mujFilteredPropertyGrid;
         private System.Windows.Forms.TabPage TabPagSeznamPrani;
@@ -3217,9 +3239,19 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ImageList imageListProVytvoritZmenit;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button btnDeSelectAll;
-        private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.ToolTip ToolTipProTalcitka;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button groupBtn;
+        private System.Windows.Forms.Button deGroupBtn;
+        private System.Windows.Forms.Button toFrontBtn;
+        private System.Windows.Forms.Button toBackBtn;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button copyBtn;
+        private System.Windows.Forms.Button mirrorXbtn;
+        private System.Windows.Forms.Button mirrorYbtn;
+        private System.Windows.Forms.Button btnZoomAll;
+        private System.Windows.Forms.Button btnVybratVse;
+        private System.Windows.Forms.Button btnEscape;
+        private System.Windows.Forms.Splitter splitter9;
     }
 }
