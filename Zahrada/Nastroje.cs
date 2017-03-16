@@ -12,7 +12,8 @@ using System.Windows.Forms;
 using Zahrada.PomocneTridy;
 using Zahrada.OdvozenyPropertyGrid;
 
-// poznamka
+// poznamka 2
+
 
 namespace Zahrada
 {
