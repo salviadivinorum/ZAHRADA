@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Zahrada.PomocneTridy;
 using Zahrada.OdvozenyPropertyGrid;
 
+// poznamka
 
 namespace Zahrada
 {
