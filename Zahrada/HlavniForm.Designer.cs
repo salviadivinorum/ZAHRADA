@@ -86,7 +86,7 @@
             this.mujColorDialog = new System.Windows.Forms.ColorDialog();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.vlozenyToolBox = new Zahrada.Nastroje();
+            this.vlozenyToolBox = new Zahrada.UserControlNastroje();
             this.vlozenePlatno = new Zahrada.Platno();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
@@ -704,7 +704,7 @@
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ColorDialog mujColorDialog;
-        public Nastroje vlozenyToolBox;
+        public UserControlNastroje vlozenyToolBox;
         public Platno vlozenePlatno;
         public System.Windows.Forms.StatusStrip statusStrip;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;

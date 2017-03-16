@@ -17,7 +17,7 @@ using Zahrada.OdvozenyPropertyGrid;
 
 namespace Zahrada
 {
-    public partial class Nastroje : UserControl
+    public partial class UserControlNastroje : UserControl
     {
         #region Clenske promenne tridy Nastroje
         //jedina promenna je objekt Platno
@@ -32,7 +32,7 @@ namespace Zahrada
         #endregion
 
         #region Konstruktor tridy Nastroje
-        public Nastroje()
+        public UserControlNastroje()
         {
 
             InitializeComponent();
@@ -447,6 +447,11 @@ namespace Zahrada
         }
 
         private void splitter2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void TableLayoutPanelSeznamPrani_Paint(object sender, PaintEventArgs e)
         {
 
         }
