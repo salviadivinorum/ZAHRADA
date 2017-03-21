@@ -101,7 +101,7 @@ namespace Zahrada.OdvozeneTridyEle
 			newE.PenColor = PenColor;
 			newE.PenWidth = PenWidth;
 			newE.FillColor = FillColor;
-			newE.Filled = Filled;
+			newE.ColorFilled = ColorFilled;
 			newE.iAmAline = iAmAline;
 			newE.Alpha = Alpha;
 			newE.DashStyleMy = DashStyleMy;
@@ -155,7 +155,7 @@ namespace Zahrada.OdvozeneTridyEle
 				myPen.Width = myPen.Width + 1;
 			}
 
-			if (Filled)
+			if (ColorFilled)
 			{
 				g.FillRectangle(myBrush, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
 			}

@@ -420,7 +420,7 @@ namespace Zahrada
 					{
 						newL.Add(new PointWrapper(p.Point));
 					}
-					this.AddPoly(sRec.GetX, sRec.GetY, sRec.GetX1, sRec.GetY1, sRec.PenColor, sRec.FillColor, sRec.PenWidth, sRec.Filled, newL, false, false);
+					this.AddPoly(sRec.GetX, sRec.GetY, sRec.GetX1, sRec.GetY1, sRec.PenColor, sRec.FillColor, sRec.PenWidth, sRec.ColorFilled, newL, false, false);
 				}
 
 			}
@@ -824,7 +824,7 @@ namespace Zahrada
 			r.PenColor = penC;
 			r.PenWidth = penW;
 			r.FillColor = fillC;
-			r.Filled = filled;
+			r.ColorFilled = filled;
 			r.Curved = curv;
 
 			List.Add(r);            
@@ -851,7 +851,7 @@ namespace Zahrada
 			r.PenColor = penC;
 			r.PenWidth = penW;
 			r.FillColor = fillC;
-			r.Filled = filled;
+			r.ColorFilled = filled;
 
 			List.Add(r);
 			
@@ -878,7 +878,7 @@ namespace Zahrada
 			r.PenColor = penC;
 			r.PenWidth = penW;
 			r.FillColor = fillC;
-			r.Filled = filled;
+			r.ColorFilled = filled;
 
 			List.Add(r);
 			
@@ -992,7 +992,7 @@ namespace Zahrada
 			r.PenColor = penC;
 			r.PenWidth = penW;
 			r.FillColor = fillC;
-			r.Filled = filled;
+			r.ColorFilled = filled;
 
 			List.Add(r);
 			
@@ -1042,7 +1042,7 @@ namespace Zahrada
 		/// <summary>
 		/// Adds Ellipse
 		/// </summary>
-		public void AddEllipse(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled)
+		public void AddEllipse(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool colorFilled, bool textureFilled, TextureBrush textura)
 		{
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
@@ -1054,7 +1054,9 @@ namespace Zahrada
 			r.PenColor = penC;
 			r.PenWidth = penW;
 			r.FillColor = fillC;
-			r.Filled = filled;
+			r.ColorFilled = colorFilled;
+            r.TextureFilled = textureFilled;
+            r.FillTexture = textura;
 
 			this.List.Add(r);
 			

@@ -64,39 +64,179 @@ namespace Zahrada
         {
             this.WindowState = FormWindowState.Maximized; // maximalizace formul. okna
             penWidthtoolStripComboBox.SelectedIndex = 0; // comboboxy nahe v toolstripu
-            fillingOnOffToolStripComboBox.SelectedIndex = 0;
+            colorFillingOnOffToolStripComboBox.SelectedIndex = 0;
+            textureFillingOnOffToolStripComboBox.SelectedIndex = 0;
             gridToolStripComboBox.SelectedIndex = 0;
             zoomToolStripComboBox.SelectedIndex = 1;
             closedToolStripComboBox.SelectedIndex = 0;
             vlozenePlatno.Zoom = 0.25f;
+            
             // vlozenePlatno.Scale(new Size(2f, 2f))
         }
 
         #endregion
 
         #region Obsluha Click udalosti na polozky v Hlavnim formulari - menustrip, toolstrip, statusstrip
-       // private void OnBasicObjectSelected(object sender, PropertyEventArgs e)
-       // { }
+        // private void OnBasicObjectSelected(object sender, PropertyEventArgs e)
+        // { }
         // Pen color - generalni
         private void penColortoolStripButton_Click(object sender, EventArgs e)
         {
-            mujColorDialog.Color = penColortoolStripButton.BackColor;
+            // mujColorDialog.Color = penColorToolStripButton.BackColor;
             mujColorDialog.ShowDialog(this);
-            penColortoolStripButton.BackColor = mujColorDialog.Color;
+            //penColorToolStripButton.BackColor = mujColorDialog.Color;
             vlozenePlatno.SetPenColor(mujColorDialog.Color);
             //vlozenePlatno.Focus();
         }
 
-        // Fill color - generalni
-        private void fillColorToolStripButton_Click(object sender, EventArgs e)
+
+
+        private const int RGBMAX = 255;
+
+        // zneguje mi barvu ....
+        private Color InvertMeAColour(Color ColourToInvert)
         {
-            mujColorDialog.Color = fillColorToolStripButton.BackColor;
-            mujColorDialog.ShowDialog(this);
-            fillColorToolStripButton.BackColor = mujColorDialog.Color;
-            vlozenePlatno.SetFillColor(mujColorDialog.Color);
-            //vlozenePlatno.Focus();
+            return Color.FromArgb(RGBMAX - ColourToInvert.R,
+              RGBMAX - ColourToInvert.G, RGBMAX - ColourToInvert.B);
         }
+
+
+        // Label namisto tlacitka PenColor
+        #region PenColorLabel
+        private void PokusToolStripLabel_Click(object sender, EventArgs e)
+        {
+            mujColorDialog.ShowDialog(this);
+            vlozenePlatno.SetPenColor(mujColorDialog.Color);
+        }
+
+        private void PenColorToolStripLabel_MouseEnter(object sender, EventArgs e)
+        {
+            Color barva = vlozenePlatno.creationPenColor;
+            Color barvaPera = InvertMeAColour(vlozenePlatno.creationPenColor);
+            // Cast to allow reuse of method.
+            ToolStripItem tsi = (ToolStripItem)sender;
+
+            // Create semi-transparent picture.
+            Bitmap bm = new Bitmap(tsi.Width, tsi.Height);
+            for (int y = 0; y < tsi.Height; y++)
+            {
+                for (int x = 0; x < tsi.Width; x++)
+                    //bm.SetPixel(x, y, Color.FromArgb(150, barva));
+                bm.SetPixel(x, y, barva);
+            }
+
+            // Set background.
+            tsi.BackgroundImage = bm;
+            tsi.ForeColor = barvaPera;
+
+        }
+
+        private void PenColorToolStripLabel_MouseLeave(object sender, EventArgs e)
+        {
+            (sender as ToolStripItem).BackgroundImage = null;
+            (sender as ToolStripItem).ForeColor = Color.Black;
+        }
+
+        #endregion
+
+
+        // Label namisto tlacitka FillColor
+        #region FillColor Label
+        private void fillColorToolStripLabel_Click(object sender, EventArgs e)
+        {
+            //mujColorDialog.Color = fillColorToolStripButton.BackColor;
+            mujColorDialog.ShowDialog(this);
+            //fillColorToolStripButton.BackColor = mujColorDialog.Color;
+            vlozenePlatno.SetFillColor(mujColorDialog.Color);
+        }
+
+
+        private void fillColorToolStripLabel_MouseEnter(object sender, EventArgs e)
+        {
+            Color barva = vlozenePlatno.creationFillColor;
+            Color barvaPera = InvertMeAColour(vlozenePlatno.creationFillColor);
+            // Cast to allow reuse of method.
+            ToolStripItem tsi = (ToolStripItem)sender;
+
+            // Create semi-transparent picture.
+            Bitmap bm = new Bitmap(tsi.Width, tsi.Height);
+            for (int y = 0; y < tsi.Height; y++)
+            {
+                for (int x = 0; x < tsi.Width; x++)
+                    //bm.SetPixel(x, y, Color.FromArgb(150, barva));
+                bm.SetPixel(x, y, barva);
+            }
+
+            // Set background.
+            tsi.BackgroundImage = bm;
+            tsi.ForeColor = barvaPera;
+        }
+
+
+        private void fillColorToolStripLabel_MouseLeave(object sender, EventArgs e)
+        {
+            (sender as ToolStripItem).BackgroundImage = null;
+            (sender as ToolStripItem).ForeColor = Color.Black;
+        }
+        #endregion
+
+
+        // Label namisto tlacitka VzorTextury
+        #region Vzor Textury Label
+        private void texturaToolStripLabel_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dil = new OpenFileDialog())
+            {
+                dil.Title = "Vyber texturu";
+                dil.Filter = "png files (*.png)|*.png|jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
+
+                if (dil.ShowDialog() == DialogResult.OK)
+                {
+                    Image obr = new Bitmap(dil.FileName);
+                    TextureBrush tBrush = new TextureBrush(obr);
+                    tBrush.WrapMode = System.Drawing.Drawing2D.WrapMode.Tile;
+                    vlozenePlatno.SetTexture(tBrush);
+
+                }
+
+            }
+        }
+
         
+
+        private void texturaToolStripLabel_MouseEnter(object sender, EventArgs e)
+        {
+            
+            Image bitm = vlozenePlatno.creationTexturePattern.Image;
+            
+
+            // Cast to allow reuse of method.
+            ToolStripItem tsi = (ToolStripItem)sender;
+
+            
+            // Set background.
+            tsi.BackgroundImage = bitm;
+            tsi.ForeColor = Color.White;
+            //tsi.ImageTransparentColor = Color.LimeGreen;
+
+
+        }
+
+        private void texturaToolStripLabel_MouseLeave(object sender, EventArgs e)
+        {
+            (sender as ToolStripItem).BackgroundImage = null;
+            (sender as ToolStripItem).ForeColor = Color.Black;
+        }
+
+
+
+
+        #endregion
+
+
+        // Fill color - generalni
+
+
         // Zmena Grid
         private void gridToolStripComboBox_DropDownClosed(object sender, EventArgs e)
         {
@@ -201,32 +341,52 @@ namespace Zahrada
             vlozenePlatno.Focus();
         }
 
-
+        // FILLING barvou On/Off
         private void fillingOnOffToolStripComboBox_DropDownClosed(object sender, EventArgs e)
         {
-            if (fillingOnOffToolStripComboBox.SelectedIndex == 0)
+            if (colorFillingOnOffToolStripComboBox.SelectedIndex == 0)
             {
                 // fillColorToolStripButton.BackColor = Color.Transparent;
-                vlozenePlatno.SetFilled(false);                
+                vlozenePlatno.SetColorFilled(false);                
                 vlozenePlatno.Redraw(true);             
             }
-            else if (fillingOnOffToolStripComboBox.SelectedIndex == 1)
+            else if (colorFillingOnOffToolStripComboBox.SelectedIndex == 1)
             {
-                
-                if (fillColorToolStripButton.BackColor.Equals((zoomInToolStripButton.BackColor)))
-                {
-                    vlozenePlatno.SetFillColor(fillColorToolStripButton.BackColor);
-                    fillColorToolStripButton.BackColor = Color.Black;
-                    fillColorToolStripButton.ForeColor = Color.White;
-                }
+                textureFillingOnOffToolStripComboBox.SelectedIndex = 0;
+                vlozenePlatno.SetTextureFilled(false);               
 
                     
-                vlozenePlatno.SetFilled(true);
+                vlozenePlatno.SetColorFilled(true);
                 
                 vlozenePlatno.Redraw(true);
             }
             vlozenePlatno.Focus();
         }
+
+
+        private void textureFillingOnOffToolStripComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (textureFillingOnOffToolStripComboBox.SelectedIndex == 0)
+            {
+                vlozenePlatno.SetTextureFilled(false);
+               
+
+
+            }
+            else
+            {
+                vlozenePlatno.SetTextureFilled(true);
+                colorFillingOnOffToolStripComboBox.SelectedIndex = 0;
+                vlozenePlatno.SetColorFilled(false);
+               
+
+            }
+
+            vlozenePlatno.Redraw(true);
+            vlozenePlatno.Focus();
+        }
+
+
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -385,6 +545,29 @@ namespace Zahrada
             vlozenePlatno.Focus();
 
         }
+
+        
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

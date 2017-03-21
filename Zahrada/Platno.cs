@@ -87,8 +87,10 @@ namespace Zahrada{
         public Color creationPenColor;
         public float creationPenWidth;
         public Color creationFillColor;
-        public bool creationFilled;
+        public bool creationColorFilled;
+        public bool creationTextureFilled;
         public bool creationClosed;
+        public TextureBrush creationTexturePattern;
 
         // prirazeni event-handleru mym udalostem na platne (pozdeji budu prirazovat take pro toolbox, ale se zmenymi parametry)
         public event OptionChangedEventHandler OptionChanged;
@@ -195,7 +197,14 @@ namespace Zahrada{
             creationPenColor = Color.Black;
             creationPenWidth = 1f;
             creationFillColor = Color.Black;
-            creationFilled = false;
+            creationColorFilled = false;
+            creationTextureFilled = false;
+
+            // zakladni textura mych Pathu
+            Image obr = Properties.Resources.trava_velmi_husta; // toto funguje dobre
+            TextureBrush tBrush = new TextureBrush(obr);
+            tBrush.WrapMode = WrapMode.Tile;
+            creationTexturePattern = tBrush;
 
             // skutecne prirazeni (new) udalosti v inicializaci MyInit() prvku platno
             OptionChanged += new OptionChangedEventHandler(OnBasicOptionChanged);
@@ -526,13 +535,32 @@ namespace Zahrada{
             }
         }
 
-        public void SetFilled(bool f)
+        public void SetTexture(TextureBrush t)
         {
-            creationFilled = f;
+            creationTexturePattern = t;
             if (shapes.selEle != null)
             {
-                shapes.selEle.Filled = f;
+                shapes.selEle.FillTexture = t;
             }
+        }
+
+        public void SetColorFilled(bool f)
+        {
+            creationColorFilled = f;
+            if (shapes.selEle != null)
+            {
+                shapes.selEle.ColorFilled = f;
+            }
+        }
+
+        public void SetTextureFilled(bool f)
+        {
+            creationTextureFilled = f;
+            if (shapes.selEle != null)
+            {
+                shapes.selEle.TextureFilled = f;
+            }
+           
         }
 
         public void SetPenWidth(float f)
@@ -1431,7 +1459,7 @@ namespace Zahrada{
 
                         if (this.status == "drawrect")
                         {
-                            this.shapes.AddRect(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationFilled);
+                            this.shapes.AddRect(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled);
                             //this.Option = "select";
                             ChangeOption("select");
                         }
@@ -1451,7 +1479,7 @@ namespace Zahrada{
                     case "ARC": //Arc
                         if (this.status == "drawrect")
                         {
-                            this.shapes.AddArc(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationFilled);
+                            this.shapes.AddArc(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled);
                             ChangeOption("select");
                         }
                         break;
@@ -1461,7 +1489,7 @@ namespace Zahrada{
                         //if (this.Status == "drawrect")
                         //{ 
                        
-                        this.shapes.AddPoly(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationFilled, penPointList, true, uzavrenaKrivka);
+                        this.shapes.AddPoly(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, penPointList, true, uzavrenaKrivka);
                         penPointList = null;
                         visPenPointList = null;
                         ChangeOption("select");
@@ -1481,7 +1509,7 @@ namespace Zahrada{
                             }
                             
                             
-                            shapes.AddPoly(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationFilled, penPointList, false, uzavrenaKrivka);
+                            shapes.AddPoly(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, penPointList, false, uzavrenaKrivka);
                             //bb = null;
                             penPointList = null;
                             visPenPointList = null;
@@ -1517,7 +1545,7 @@ namespace Zahrada{
                         if (this.status == "drawrect")
                         {
 
-                            this.shapes.AddEllipse(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationFilled);
+                            this.shapes.AddEllipse(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, creationTextureFilled, creationTexturePattern);
                             //this.Option = "select";
                             ChangeOption("select");
                         }
@@ -1548,7 +1576,7 @@ namespace Zahrada{
                             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
                             editorForm.ShowDialog();
                             this.Cursor = System.Windows.Forms.Cursors.Arrow;
-                            this.shapes.AddSimpleTextBox(startX, startY, tmpX, tmpY, r, this.creationPenColor, creationFillColor, creationPenWidth, creationFilled);
+                            this.shapes.AddSimpleTextBox(startX, startY, tmpX, tmpY, r, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled);
                             ChangeOption("select");
                         }
                         break;
@@ -2101,7 +2129,7 @@ namespace Zahrada{
             {
                 OpenFileDialog DialogueCharger = new OpenFileDialog();
                 DialogueCharger.Title = "Load background image";
-                DialogueCharger.Filter = "jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
+                DialogueCharger.Filter = "png files (*.png)|*.png|jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
                 //DialogueCharger.DefaultExt = "frame";
                 if (DialogueCharger.ShowDialog() == DialogResult.OK)
                 {

@@ -331,19 +331,19 @@ namespace Zahrada.OdvozeneTridyEle
 
         #region Prepsane zdedene Vlastnosti tridy Group
 
-        public override bool Filled
+        public override bool ColorFilled
         {
             get
             {
-                return base.Filled;
+                return base.ColorFilled;
             }
             set
             {
-                base.Filled = value;
+                base.ColorFilled = value;
                 if (objs != null)
                     foreach (Ele e in this.objs)
                     {
-                        e.Filled = value;
+                        e.ColorFilled = value;
                     }
             }
         }       
@@ -527,7 +527,7 @@ namespace Zahrada.OdvozeneTridyEle
                 newE.PenColor = PenColor;
                 newE.PenWidth = PenWidth;
                 newE.FillColor = FillColor;
-                newE.Filled = Filled;
+                newE.ColorFilled = ColorFilled;
                 newE.DashStyleMy = DashStyleMy;
                 newE.Alpha = Alpha;
                 newE.iAmAline = iAmAline;
@@ -686,7 +686,7 @@ namespace Zahrada.OdvozeneTridyEle
                    
                 }
                 
-                if (Filled)
+                if (ColorFilled)
                 {
 
                     g.FillPath(myBrush, gp);

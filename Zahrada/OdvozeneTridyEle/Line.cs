@@ -94,7 +94,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.PenColor = PenColor;
             newE.PenWidth = PenWidth;
             newE.FillColor = FillColor;
-            newE.Filled = Filled;
+            newE.ColorFilled = ColorFilled;
             newE.Alpha = Alpha;
             newE.OnGrpXRes = OnGrpXRes;
             newE.OnGrpX1Res = OnGrpX1Res;

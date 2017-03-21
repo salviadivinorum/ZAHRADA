@@ -60,7 +60,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.PenColor = PenColor;
             newE.PenWidth = PenWidth;
             newE.FillColor = FillColor;
-            newE.Filled = Filled;
+            newE.ColorFilled = ColorFilled;
             newE.iAmAline = iAmAline;
             newE.Alpha = Alpha;
             newE.DashStyleMy = DashStyleMy;
@@ -89,8 +89,30 @@ namespace Zahrada.OdvozeneTridyEle
         }
 
         public override void Draw(Graphics g, int dx, int dy, float zoom)
-        {           
+        {
             Brush myBrush = GetBrush(dx, dy, zoom);
+
+            // puvodni textura
+            TextureBrush texture = GetTextureBrush();
+            Image obr = texture.Image;         
+            
+            //Nova textura zvetsujici se podle zoomu
+            TextureBrush texture2 = new TextureBrush(obr);            
+            float scalX = zoom;
+            float scalY = zoom;            
+            texture2.Transform = new Matrix(
+                scalX,
+                0.0f,
+                0.0f,
+                scalY,
+                0.0f,
+                0.0f);
+                
+          
+            // timto lze take zmenit velikost TextureBrush ....  
+            //texture2.ScaleTransform(scalX, scalY);
+
+
             Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
             if (selected)
@@ -107,20 +129,39 @@ namespace Zahrada.OdvozeneTridyEle
             myPath.AddEllipse((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
             Matrix translateMatrix = new Matrix();
             translateMatrix.RotateAt(Rotation, new PointF((X + dx + (X1 - X) / 2) * zoom, (Y + dy + (Y1 - Y) / 2) * zoom));
+            
             myPath.Transform(translateMatrix);
 
             // Nakresli transformovanou elipsu na obrazovku
-            if (Filled)
+            /*
+            if (ColorFilled)
             {
-                g.FillPath(myBrush, myPath);
+                //g.FillPath(myBrush, myPath);
+                g.FillPath(texture2, myPath);
+                if (ShowBorder)
+                    g.DrawPath(myPen, myPath);
+            }
+            */
+
+            if (TextureFilled || ColorFilled)
+            {
+                if (TextureFilled)                
+                    g.FillPath(texture2, myPath);                
+                else
+                    g.FillPath(myBrush, myPath);
+
                 if (ShowBorder)
                     g.DrawPath(myPen, myPath);
             }
             else
                 g.DrawPath(myPen, myPath);
 
+            texture2.Dispose();
+            obr.Dispose();    
             myPath.Dispose();
             myPen.Dispose();
+            translateMatrix.Dispose();
+
             if (myBrush != null)
                 myBrush.Dispose();
         }

@@ -74,7 +74,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.PenColor = PenColor;
             newE.PenWidth = PenWidth;
             newE.FillColor = FillColor;
-            newE.Filled = Filled;
+            newE.ColorFilled = ColorFilled;
             newE.DashStyleMy = DashStyleMy;
             newE.Alpha = Alpha;
             newE.iAmAline = iAmAline;
@@ -133,7 +133,7 @@ namespace Zahrada.OdvozeneTridyEle
             myPath.Transform(translateMatrix);
 
             // Konecne nakresli transformovany ctverec na obrazovku
-            if (Filled)
+            if (ColorFilled)
             {
                 g.FillPath(myBrush, myPath);
                 if (ShowBorder)

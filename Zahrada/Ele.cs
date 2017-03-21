@@ -78,11 +78,15 @@ namespace Zahrada
 		private Color _penColor;
 		private float _penWidth;
 		private Color _fillColor;
-		private bool _filled;
+		private bool _colorFilled;
+        private bool _textureFilled;
 		private bool _showBorder;
 		private DashStyle _dashStyle; // proc je to uvedeno podruhe ?
 		private int _aplha;
 		private bool _closed;
+
+		// pouziti Textury:
+		private TextureBrush _texture;
 
 		// Linear Gradient:
 		private bool _useGradientLine = false;
@@ -104,15 +108,46 @@ namespace Zahrada
 		#region Konstruktor tridy Ele
 		public Ele()
 		{
-			// nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele
-			PenColor = Color.Black;
-			PenWidth = 1f;
+            // nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele
+
+
+
+            // predvyplnena textura pro Element
+            //Image obr = GetImageByName("trava-velmi-husta"); // ... tohle mel byt pokus univerzlani ....
+
+
+            Image obr = Properties.Resources.trava_velmi_husta; // toto funguje dobre
+			TextureBrush tBrush = new TextureBrush(obr);
+			tBrush.WrapMode = WrapMode.Tile;
+			FillTexture = tBrush;
+
+			// predvyplnena barva pro Element
 			FillColor = Color.Black;
-			Filled = false;
+
+			// zakladni barva pera - Cerna
+			PenColor = Color.Black;
+
+			// ostattni predvyplnene vlastnosti elementu
+			PenWidth = 1f;			
+			ColorFilled = false;
 			ShowBorder = true;
 			DashStyleMy = DashStyle.Solid;
 			Alpha = 255;    
 		}
+
+		// Tohle mel byt pokus jak dostat obrazek y Resources
+		// blbost to byla ....
+		/*
+		public static Bitmap GetImageByName(string imageName)
+		{
+			System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
+			string resourceName = asm.GetName().Name + ".Properties.Resources";
+			var rm = new System.Resources.ResourceManager(resourceName, asm);
+			return (Bitmap)rm.GetObject(imageName);
+
+		}
+		*/
+
 		#endregion
 
 		#region Destruktor tridy Ele - jen pro zajimavost
@@ -395,6 +430,7 @@ namespace Zahrada
 			}
 		}
 
+        // jakou barvoy vyplneny:
 		[Category("Vzhled"), Description("Nastav barvu výplně")]
 		public virtual Color FillColor
 		{
@@ -408,33 +444,67 @@ namespace Zahrada
 			}
 		}
 
-		[Category("Vzhled"), Description("Nastav šířku pera")]
-		public virtual float PenWidth
+		// jakou TEXTUROU vyplnen
+		[Category("Vzhled"), Description("Nastav TEXTURU výplně")]
+		public virtual TextureBrush FillTexture
 		{
 			get
 			{
-				return _penWidth;
+				return _texture;
 			}
 			set
 			{
-				_penWidth = value;
+				_texture = value;
 			}
 		}
 
-		[Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
-		public virtual bool Filled
+
+        // vyplneny texturou ANO/ NE
+        [Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
+        public virtual bool TextureFilled
+        {
+            get
+            {
+                return _textureFilled;
+            }
+            set
+            {
+                _textureFilled = value;
+            }
+        }
+
+
+
+        // vzplneny barvou ANO/NE
+        [Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
+		public virtual bool ColorFilled
 		{
 			get
 			{
-				return _filled;
+				return _colorFilled;
 			}
 			set
 			{
-				_filled = value;
+				_colorFilled = value;
 			}
 		}
 
-		[Category("Vzhled"), Description("Průhlednost")]
+
+        [Category("Vzhled"), Description("Nastav šířku pera")]
+        public virtual float PenWidth
+        {
+            get
+            {
+                return _penWidth;
+            }
+            set
+            {
+                _penWidth = value;
+            }
+        }
+
+
+        [Category("Vzhled"), Description("Průhlednost")]
 		public virtual int Alpha
 		{
 			get
@@ -556,6 +626,13 @@ namespace Zahrada
 		{
 			SetRotation = (GetRotation + a);
 		}
+
+		// metoda pro resize textury v pozadi Elementu
+		public static Image resizeImage(Image imgToResize, Size size)
+		{
+			return (Image)(new Bitmap(imgToResize, size));
+		}
+
 
 		#endregion
 
@@ -921,15 +998,18 @@ namespace Zahrada
 			return Color.FromArgb(v, c);
 		}
 
-
-
+		// doplneno at mi Ele vrati texture Brush !!
+		protected TextureBrush GetTextureBrush()
+		{
+			return FillTexture;
+		}
 
 		/// <summary>
 		/// Vybere stetec Brush z vlastnosti Elementu (pokud je Element vyplnen Filled)
 		/// </summary>
 		protected Brush GetBrush(int dx, int dy, float zoom)
 		{
-			if (Filled)
+			if (ColorFilled)
 			{
 				if (UseGradientLineColor)
 				{
@@ -956,6 +1036,8 @@ namespace Zahrada
 				else
 				{
 					return new SolidBrush(Transparency(FillColor, Alpha));
+					//return FillTexture;
+				   
 				}
 			}
 			else
@@ -997,7 +1079,7 @@ namespace Zahrada
 			// zapouzdrene clenske promenne:
 			to.Alpha = from.Alpha;			
 			to.FillColor = from.FillColor;
-			to.Filled = from.Filled;
+			to.ColorFilled = from.ColorFilled;
 			to.PenColor = from.PenColor;
 			to.PenWidth = from.PenWidth;
 			to.ShowBorder = from.ShowBorder;	

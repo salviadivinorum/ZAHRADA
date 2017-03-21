@@ -206,11 +206,13 @@
     <Content Include="Ikony\smaz.ico" />
     <Content Include="Ikony\spline.ico" />
     <Content Include="Ikony\text.ico" />
+    <Content Include="Ikony\trava-velmi-husta.png" />
     <Content Include="Ikony\undo.ico" />
     <Content Include="Ikony\zoom.ico" />
     <Content Include="Ikony\zoomin.ico" />
     <Content Include="Ikony\zoomout.ico" />
     <Content Include="jablko.ico" />
+    <None Include="Resources\trava-velmi-husta.png" />
     <None Include="Resources\jablko.ico" />
     <None Include="Resources\1489699641_help.ico" />
     <None Include="Resources\escape.ico" />
