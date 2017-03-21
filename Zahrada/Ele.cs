@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing.Drawing2D;
 using System.Drawing;
+using System.Drawing.Design;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
+
 using Zahrada.PomocneTridy;
 
 
@@ -103,10 +106,13 @@ namespace Zahrada
 		public bool selected;
 		public bool deleted;
 		public Ele undoEle;
-		#endregion
 
-		#region Konstruktor tridy Ele
-		public Ele()
+        // cesta k me nove texture pro tvary ...
+        private string filePath;
+        #endregion
+
+        #region Konstruktor tridy Ele
+        public Ele()
 		{
             // nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele
 
@@ -229,14 +235,17 @@ namespace Zahrada
 			// set { IamGroup = value;}
 		}
 
+        
 
 
-		#endregion
 
-		#region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid		
-		
-		//[DisplayName("Orientace")]
-		[Category("Pozice"), Description("X ")]
+
+        #endregion
+
+        #region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid		
+
+        //[DisplayName("Orientace")]
+        [Category("Pozice"), Description("X ")]
 		public int PosX
 		{
 			get
@@ -444,19 +453,43 @@ namespace Zahrada
 			}
 		}
 
-		// jakou TEXTUROU vyplnen
-		[Category("Vzhled"), Description("Nastav TEXTURU výplně")]
-		public virtual TextureBrush FillTexture
-		{
-			get
-			{
-				return _texture;
-			}
-			set
-			{
-				_texture = value;
-			}
-		}
+       
+
+        
+        // nastavuju cestu k nove texture ... pouzivam zde svou pomocnou tridu FileLocationEditor
+        [Category("Vyber Texturu"), Description("Textura vyberem souboru ")]
+        [Editor(typeof(FileLocationEditor), typeof(UITypeEditor))]
+        public string FilePath
+        {
+            get
+            {
+                //string cesta = _texture.Image(FilePath);
+                return filePath;
+            }
+            set
+            {
+                filePath = value;                
+                Bitmap bitm = new Bitmap(filePath);   
+                TextureBrush tBrush = new TextureBrush(bitm);
+                tBrush.WrapMode = WrapMode.Tile;
+                FillTexture = tBrush;
+            }
+        }
+
+        // Nastavuju texturu
+        public virtual TextureBrush FillTexture
+        {
+            get
+            {
+                return _texture;
+            }
+            set
+            {
+                _texture = value;
+            }
+        }
+
+
 
 
         // vyplneny texturou ANO/ NE
@@ -475,7 +508,7 @@ namespace Zahrada
 
 
 
-        // vzplneny barvou ANO/NE
+        // vyplneny barvou ANO/NE
         [Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
 		public virtual bool ColorFilled
 		{
@@ -632,16 +665,19 @@ namespace Zahrada
 		{
 			return (Image)(new Bitmap(imgToResize, size));
 		}
+        // jakou TEXTUROU vyplnen
+
+        
 
 
-		#endregion
+        #endregion
 
-		#region Virtualni + verejne pristupne metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
+        #region Virtualni + verejne pristupne metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
 
-		/// <summary>
-		/// Nakresli tento Element do objektu Graphics
-		/// </summary>        
-		public virtual void Draw(Graphics g, int dx, int dy, float zoom)
+        /// <summary>
+        /// Nakresli tento Element do objektu Graphics
+        /// </summary>        
+        public virtual void Draw(Graphics g, int dx, int dy, float zoom)
 		{ }
 
 
