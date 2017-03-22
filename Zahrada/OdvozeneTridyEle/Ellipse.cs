@@ -127,6 +127,7 @@ namespace Zahrada.OdvozeneTridyEle
             // Vytvori Graphics path a prida tam objekt Ellipse
             GraphicsPath myPath = new GraphicsPath();
             myPath.AddEllipse((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
+
             Matrix translateMatrix = new Matrix();
             translateMatrix.RotateAt(Rotation, new PointF((X + dx + (X1 - X) / 2) * zoom, (Y + dy + (Y1 - Y) / 2) * zoom));
             

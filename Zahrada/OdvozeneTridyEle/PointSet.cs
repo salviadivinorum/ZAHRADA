@@ -421,6 +421,23 @@ namespace Zahrada.OdvozeneTridyEle
         public override void Draw(Graphics g, int dx, int dy, float zoom)
         {
             Brush myBrush = GetBrush(dx, dy, zoom);
+
+            // puvodni textura
+            TextureBrush texture = GetTextureBrush();
+            Image obr = texture.Image;
+
+            //Nova textura zvetsujici se podle zoomu
+            TextureBrush texture2 = new TextureBrush(obr);
+            float scalX = zoom;
+            float scalY = zoom;
+            texture2.Transform = new Matrix(
+                scalX,
+                0.0f,
+                0.0f,
+                scalY,
+                0.0f,
+                0.0f);
+
             Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
 
@@ -465,17 +482,26 @@ namespace Zahrada.OdvozeneTridyEle
             myPath.Transform(translateMatrix);
 
             // A konecne nakresli transformovany objekt polygon na obrazovku:
-            if (ColorFilled)
+            if (TextureFilled || ColorFilled)
             {
-                g.FillPath(myBrush, myPath);
+                if (TextureFilled)
+                    g.FillPath(texture2, myPath);
+                else
+                    g.FillPath(myBrush, myPath);
+
                 if (ShowBorder)
                     g.DrawPath(myPen, myPath);
             }
             else
                 g.DrawPath(myPen, myPath);
 
+            texture2.Dispose();
+            obr.Dispose();
             myPath.Dispose();
             myPen.Dispose();
+            translateMatrix.Dispose();
+
+
             if (myBrush != null)
                 myBrush.Dispose();
 

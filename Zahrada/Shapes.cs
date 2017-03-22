@@ -388,7 +388,8 @@ namespace Zahrada
 		}
 
 
-
+        // Take nula pouziti teto metody
+        /*
 		public void DelPoints()
 		{
 			if (sRec is SelPoly)
@@ -404,11 +405,15 @@ namespace Zahrada
 				sRec = new SelPoly(selEle);// vytvori uchopovy obdelnik
 			}
 		}
+        */
 
-		/// <summary>
-		/// Vytvori novy polygon z vybranych bodu
-		/// </summary>
-		public void ExtPoints()
+        /// <summary>
+        /// Vytvori novy polygon z vybranych bodu
+        /// </summary>
+        
+            // vubec nepouzivam tuto metodu - nikde
+            /*
+        public void ExtPoints()
 		{
 			if (sRec is SelPoly)
 			{
@@ -420,12 +425,13 @@ namespace Zahrada
 					{
 						newL.Add(new PointWrapper(p.Point));
 					}
-					this.AddPoly(sRec.GetX, sRec.GetY, sRec.GetX1, sRec.GetY1, sRec.PenColor, sRec.FillColor, sRec.PenWidth, sRec.ColorFilled, newL, false, false);
+					this.AddPoly(sRec.GetX, sRec.GetY, sRec.GetX1, sRec.GetY1, sRec.PenColor, sRec.FillColor, sRec.PenWidth, sRec.ColorFilled, newL, false, false, bool textureFilled, TextureBrush textura));
 				}
 
 			}
 
 		}
+        */
 
 		public void Move(int dx, int dy)
 		{
@@ -810,8 +816,8 @@ namespace Zahrada
 		/// <summary>
 		/// Do Listu prida Polygon
 		/// </summary>
-		public void AddPoly(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, ArrayList aa, bool curv, bool closed)
-		{    
+		public void AddPoly(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, ArrayList aa, bool curv, bool closed, bool textureFilled, TextureBrush textura)
+        {    
 			/*if (x1 - minDim <= x)
 				x1 = x + minDim;
 			if (y1 - minDim <= y)
@@ -826,8 +832,10 @@ namespace Zahrada
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
 			r.Curved = curv;
+            r.TextureFilled = textureFilled;
+            r.FillTexture = textura;
 
-			List.Add(r);            
+            List.Add(r);            
 			StoreDo("I", r); // uloz do undo/redo bufferu
 
 			sRec = new SelPoly(r);
@@ -836,11 +844,11 @@ namespace Zahrada
 		}
 
 
-		/// <summary>
-		/// Do Listu prida Obdelnik
-		/// </summary>
-		public void AddRect(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled)
-		{
+        /// <summary>
+        /// Do Listu prida Obdelnik
+        /// </summary>
+        public void AddRect(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
+        {
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
 			if (y1 - minDim <= y)
@@ -852,8 +860,10 @@ namespace Zahrada
 			r.PenWidth = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
+            r.TextureFilled = textureFilled;
+            r.FillTexture = textura;
 
-			List.Add(r);
+            List.Add(r);
 			
 			StoreDo("I", r);
 
@@ -866,8 +876,8 @@ namespace Zahrada
 		/// <summary>
 		/// Do Listu prida Oblouk
 		/// </summary>
-		public void AddArc(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled)
-		{
+		public void AddArc(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
+        {
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
 			if (y1 - minDim <= y)
@@ -879,8 +889,10 @@ namespace Zahrada
 			r.PenWidth = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
+            r.TextureFilled = textureFilled;
+            r.FillTexture = textura;
 
-			List.Add(r);
+            List.Add(r);
 			
 			StoreDo("I", r);
 
@@ -975,8 +987,8 @@ namespace Zahrada
 		/// <summary>
 		/// Do Listu prida Jednoduchy text
 		/// </summary>
-		public void AddSimpleTextBox(int x, int y, int x1, int y1, RichTextBox t, Color penC, Color fillC, float penW, bool filled)
-		{
+		public void AddSimpleTextBox(int x, int y, int x1, int y1, RichTextBox t, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
+        {
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
 			if (y1 - minDim <= y)
@@ -993,8 +1005,10 @@ namespace Zahrada
 			r.PenWidth = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
+            r.TextureFilled = textureFilled;
+            r.FillTexture = textura;
 
-			List.Add(r);
+            List.Add(r);
 			
 			StoreDo("I", r);
 

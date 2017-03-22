@@ -1459,7 +1459,7 @@ namespace Zahrada{
 
                         if (this.status == "drawrect")
                         {
-                            this.shapes.AddRect(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled);
+                            this.shapes.AddRect(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, creationTextureFilled, creationTexturePattern);
                             //this.Option = "select";
                             ChangeOption("select");
                         }
@@ -1479,7 +1479,7 @@ namespace Zahrada{
                     case "ARC": //Arc
                         if (this.status == "drawrect")
                         {
-                            this.shapes.AddArc(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled);
+                            this.shapes.AddArc(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, creationTextureFilled, creationTexturePattern);
                             ChangeOption("select");
                         }
                         break;
@@ -1489,7 +1489,7 @@ namespace Zahrada{
                         //if (this.Status == "drawrect")
                         //{ 
                        
-                        this.shapes.AddPoly(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, penPointList, true, uzavrenaKrivka);
+                        this.shapes.AddPoly(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, penPointList, true, uzavrenaKrivka, creationTextureFilled, creationTexturePattern);
                         penPointList = null;
                         visPenPointList = null;
                         ChangeOption("select");
@@ -1509,7 +1509,7 @@ namespace Zahrada{
                             }
                             
                             
-                            shapes.AddPoly(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, penPointList, false, uzavrenaKrivka);
+                            shapes.AddPoly(startX, startY, tmpX, tmpY, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, penPointList, false, uzavrenaKrivka, creationTextureFilled, creationTexturePattern);
                             //bb = null;
                             penPointList = null;
                             visPenPointList = null;
@@ -1576,7 +1576,7 @@ namespace Zahrada{
                             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
                             editorForm.ShowDialog();
                             this.Cursor = System.Windows.Forms.Cursors.Arrow;
-                            this.shapes.AddSimpleTextBox(startX, startY, tmpX, tmpY, r, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled);
+                            this.shapes.AddSimpleTextBox(startX, startY, tmpX, tmpY, r, this.creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, creationTextureFilled, creationTexturePattern);
                             ChangeOption("select");
                         }
                         break;

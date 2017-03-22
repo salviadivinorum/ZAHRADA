@@ -145,7 +145,27 @@ namespace Zahrada.OdvozeneTridyEle
 
 			g.Transform = mx;
 
+            // pozadi textove bloku
 			Brush myBrush = GetBrush(dx, dy, zoom);
+
+            // puvodni textura
+            TextureBrush texture = GetTextureBrush();
+            Image obr = texture.Image;         
+            
+            //Nova textura zvetsujici se podle zoomu
+            TextureBrush texture2 = new TextureBrush(obr);            
+            float scalX = zoom;
+            float scalY = zoom;            
+            texture2.Transform = new Matrix(
+                scalX,
+                0.0f,
+                0.0f,
+                scalY,
+                0.0f,
+                0.0f);
+
+
+
 			Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
 			myPen.DashStyle = DashStyleMy;
 			if (selected)
@@ -155,12 +175,47 @@ namespace Zahrada.OdvozeneTridyEle
 				myPen.Width = myPen.Width + 1;
 			}
 
-			if (ColorFilled)
+
+
+
+            if (TextureFilled || ColorFilled)
+            {
+                if (TextureFilled)
+                    g.FillRectangle(texture2, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
+                //g.FillPath(texture2, myPath);
+                else
+                    g.FillRectangle(myBrush, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
+                //g.FillPath(myBrush, myPath);
+
+                if (ShowBorder || selected)
+                    g.DrawRectangle(myPen, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
+                //g.DrawPath(myPen, myPath);
+            }
+            //else
+               // g.DrawPath(myPen, myPath);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*
+
+            if (ColorFilled)
 			{
 				g.FillRectangle(myBrush, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
 			}
 			if (ShowBorder || selected)
 				g.DrawRectangle(myPen, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
+            */
 
 			StringFormat stringFormat = new StringFormat();
 			stringFormat.Alignment = sa;
@@ -168,8 +223,21 @@ namespace Zahrada.OdvozeneTridyEle
 
 			Font tmpf = new Font(CharFont.FontFamily, CharFont.Size * zoom, CharFont.Style);
 			g.DrawString(Text, tmpf, new SolidBrush(this.PenColor), new RectangleF((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom), stringFormat);
-			tmpf.Dispose();
+
+
+
+            texture2.Dispose();
+            obr.Dispose();
+            // myPath.Dispose();
+            myPen.Dispose();
+            // translateMatrix.Dispose();
+
+
+            tmpf.Dispose();
 			myPen.Dispose();
+
+
+
 			if (myBrush != null)
 				myBrush.Dispose();
 
