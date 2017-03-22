@@ -9,6 +9,7 @@ namespace Zahrada.PomocneTridy
     /// <summary>
     /// Uchop pro rotaci elementu
     /// </summary>
+    [Serializable]
     public class RotHandle : Handle
     {
         #region Konstruktor tridy RotHandle

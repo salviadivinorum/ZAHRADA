@@ -19,12 +19,11 @@ namespace Zahrada
 	/// <summary>
 	/// Zakladni abstraktni trida Ele - je to nejaky Element od ktereho se dedi dalsi tridy pro kresleni
 	/// </summary>
-	
+	[Serializable]
 	public abstract class Ele
 	{
 		#region Clenske promenne tridy Ele
-		// pozor - nektere clenske promenne nemam spravne zapouzdrene - pres vlastnosti Get/Set
-		// copak je to dpix a dpiy - ??? - nevim to, zjistit je potreba
+		// pozor - nektere clenske promenne nemam spravne zapouzdrene - pres vlastnosti Get/Set		
 		public static float dpix; // public - tento clen je pristupny absolutne odevsad
 		public static float dpiy; // static - v kazdem elementu Ele je tento clen stejny - staticky
 
@@ -88,11 +87,10 @@ namespace Zahrada
 		private int _aplha;
 		private bool _closed;
 
-		// pouziti Textury:
-		private TextureBrush _texture;
+        
 
-		// Linear Gradient:
-		private bool _useGradientLine = false;
+        // Linear Gradient:
+        private bool _useGradientLine = false;
 		private Color _endColor = Color.White;
 		private int _endalpha = 255;
 		private int _gradientAngle = 0;
@@ -109,6 +107,19 @@ namespace Zahrada
 
         // cesta k me nove texture pro tvary ...
         private string filePath;
+
+
+        // pouziti Textury:       
+        [NonSerialized]
+        private TextureBrush _texture;
+        private Bitmap imgOfTexture;
+
+        // prace se swapovanim textur do Bitmap / Image pri Save / Load:
+        // automaticke vlastnosti get+set, jmeno zapozdrene promenne je nevylovitelne-unspeakable....
+        public Bitmap ObrBitmap { get; set; }
+        public Image ObrImage { get; set; }        
+        public Bitmap PrevodImageNaBitmap { get; set; }
+
         #endregion
 
         #region Konstruktor tridy Ele
@@ -116,16 +127,13 @@ namespace Zahrada
 		{
             // nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele
 
-
-
             // predvyplnena textura pro Element
-            //Image obr = GetImageByName("trava-velmi-husta"); // ... tohle mel byt pokus univerzlani ....
-
-
+            /*
             Image obr = Properties.Resources.trava_velmi_husta; // toto funguje dobre
 			TextureBrush tBrush = new TextureBrush(obr);
 			tBrush.WrapMode = WrapMode.Tile;
 			FillTexture = tBrush;
+            */
 
 			// predvyplnena barva pro Element
 			FillColor = Color.Black;
@@ -140,19 +148,7 @@ namespace Zahrada
 			DashStyleMy = DashStyle.Solid;
 			Alpha = 255;    
 		}
-
-		// Tohle mel byt pokus jak dostat obrazek y Resources
-		// blbost to byla ....
-		/*
-		public static Bitmap GetImageByName(string imageName)
-		{
-			System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
-			string resourceName = asm.GetName().Name + ".Properties.Resources";
-			var rm = new System.Resources.ResourceManager(resourceName, asm);
-			return (Bitmap)rm.GetObject(imageName);
-
-		}
-		*/
+		
 
 		#endregion
 
@@ -163,9 +159,19 @@ namespace Zahrada
 			string vystup = "Znicene objekty Carbage Collectorem: " + GetX.ToString() + " " + GetY.ToString();
 			System.Diagnostics.Trace.WriteLine(vystup);
 		}
-		#endregion
+        #endregion
 
-		#region Základní vlastnosti - neboli GETTERY pro tridu Ele, SETTERY mam pouze v zaloze
+        #region Základní vlastnosti - neboli GETTERY pro tridu Ele, SETTERY mam pouze v zaloze
+        // vkladani img textury elementu
+
+
+        public Bitmap ImageOfTexture
+        {
+            get { return imgOfTexture; }
+            set { imgOfTexture = value; }
+        }
+        
+
 		public int GetX
 		{
 			get { return X; }

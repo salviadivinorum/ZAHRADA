@@ -197,6 +197,7 @@
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.printToolStripMenuItem.Text = "Tisk ...";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // printPreviewToolStripMenuItem
             // 
@@ -204,6 +205,7 @@
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
             this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.printPreviewToolStripMenuItem.Text = "Náhled tisku ...";
+            this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -512,6 +514,7 @@
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(24, 27);
             this.openToolStripButton.Text = "Otevřít soubor";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
             // 
             // saveToolStripButton
             // 
@@ -530,6 +533,7 @@
             this.saveAsToolStripButton.Name = "saveAsToolStripButton";
             this.saveAsToolStripButton.Size = new System.Drawing.Size(24, 27);
             this.saveAsToolStripButton.Text = "Uložit jako";
+            this.saveAsToolStripButton.Click += new System.EventHandler(this.saveAsToolStripButton_Click);
             // 
             // toolStripSeparator4
             // 

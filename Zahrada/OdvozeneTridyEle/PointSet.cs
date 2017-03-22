@@ -9,6 +9,7 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    [Serializable]
     public class PointSet : Ele
     {
         #region Clenske promenne tridy PointSet - coz je vlastne Polygon
@@ -422,12 +423,25 @@ namespace Zahrada.OdvozeneTridyEle
         {
             Brush myBrush = GetBrush(dx, dy, zoom);
 
-            // puvodni textura
+            // prace s texturou a osetreni pri Load / Save protoze C# neumi serializaci TextureBrush tridy
+            // musim zde zbytecne tvorit 2 tridy Texturebrush ....
             TextureBrush texture = GetTextureBrush();
-            Image obr = texture.Image;
+            TextureBrush texture2;
 
-            //Nova textura zvetsujici se podle zoomu
-            TextureBrush texture2 = new TextureBrush(obr);
+            if (texture == null)
+            {
+                ObrBitmap = ImageOfTexture;
+                texture2 = new TextureBrush(ObrBitmap);
+            }
+            else
+            {
+                ObrImage = texture.Image;
+                texture2 = new TextureBrush(ObrImage);
+                PrevodImageNaBitmap = new Bitmap(ObrImage);
+                ImageOfTexture = PrevodImageNaBitmap;
+
+            }
+
             float scalX = zoom;
             float scalY = zoom;
             texture2.Transform = new Matrix(
@@ -496,7 +510,7 @@ namespace Zahrada.OdvozeneTridyEle
                 g.DrawPath(myPen, myPath);
 
             texture2.Dispose();
-            obr.Dispose();
+            //obr.Dispose();
             myPath.Dispose();
             myPen.Dispose();
             translateMatrix.Dispose();

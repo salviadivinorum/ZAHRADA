@@ -38,7 +38,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Name = "Platno";
             this.Size = new System.Drawing.Size(378, 248);
-            this.Load += new System.EventHandler(this.Platno_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Platno_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Platno_KeyDown);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Platno_MouseDoubleClick);

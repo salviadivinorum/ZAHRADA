@@ -205,7 +205,7 @@ namespace Zahrada
             DeselectAll();
             lineBtn.BackColor = Color.FromArgb(20, Color.Gray);
             mojeplatno.option = "LINE";
-            mojeplatno.krivka = false;
+            mojeplatno.krivka = true;
         }
 
         // slepa ulicka - vertikala

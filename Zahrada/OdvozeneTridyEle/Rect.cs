@@ -9,6 +9,7 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    [Serializable]
     public class Rect : Ele
     {
 
@@ -112,12 +113,27 @@ namespace Zahrada.OdvozeneTridyEle
 
             Brush myBrush = GetBrush(dx, dy, zoom);
 
-            // puvodni textura
-            TextureBrush texture = GetTextureBrush();
-            Image obr = texture.Image;
+            // prace s texturou a osetreni pri Load / Save protoze C# neumi serializaci TextureBrush tridy
+            // musim zde zbytecne tvorit 2 tridy Texturebrush ....
+            TextureBrush texture = GetTextureBrush();                  
+            TextureBrush texture2;
+
+            if (texture == null)
+            {
+                ObrBitmap = ImageOfTexture;
+                texture2 = new TextureBrush(ObrBitmap);
+            }
+            else
+            {
+                ObrImage = texture.Image;
+                texture2 = new TextureBrush(ObrImage);
+                PrevodImageNaBitmap = new Bitmap(ObrImage);
+                ImageOfTexture = PrevodImageNaBitmap;
+               
+            }
+
 
             //Nova textura zvetsujici se podle zoomu
-            TextureBrush texture2 = new TextureBrush(obr);
             float scalX = zoom;
             float scalY = zoom;
             texture2.Transform = new Matrix(
@@ -127,6 +143,7 @@ namespace Zahrada.OdvozeneTridyEle
                 scalY,
                 0.0f,
                 0.0f);
+
 
             Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
@@ -163,8 +180,7 @@ namespace Zahrada.OdvozeneTridyEle
             else
                 g.DrawPath(myPen, myPath);
 
-            texture2.Dispose();
-            obr.Dispose();
+            texture2.Dispose();            
             myPath.Dispose();
             myPen.Dispose();
             translateMatrix.Dispose();

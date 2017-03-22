@@ -12,6 +12,7 @@ namespace Zahrada.OdvozeneTridyEle
     /// <summary>
     /// Trida Group - seskupeni elementu
     /// </summary>
+    [Serializable]
     public class Group : Ele
     {
         #region Clenske promenne tridy Group

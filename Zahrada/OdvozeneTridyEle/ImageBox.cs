@@ -9,6 +9,7 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    [Serializable]
     public class ImageBox : Ele
     {
         #region Clenske promenne tridy ImageBox

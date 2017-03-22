@@ -546,9 +546,32 @@ namespace Zahrada
 
         }
 
-        
+        private void saveAsToolStripButton_Click(object sender, EventArgs e)
+        {
+            vlozenePlatno.Saver();
+            //vlozenePlatno.SerializujBinarne();
+        }
 
-       
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+            vlozenePlatno.Loader();
+            //vlozenePlatno.DeserializujBinarne();
+        }
+
+        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenePlatno.PreviewBeforePrinting(0.25f);
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenePlatno.PrintMe();
+        }
+
+
+
+
+
 
 
 

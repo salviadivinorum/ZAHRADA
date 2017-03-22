@@ -55,6 +55,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,11 +75,11 @@
     <Compile Include="HlavniForm.Designer.cs">
       <DependentUpon>HlavniForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NahledForm.cs">
+    <Compile Include="NahledTisku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NahledForm.Designer.cs">
-      <DependentUpon>NahledForm.cs</DependentUpon>
+    <Compile Include="NahledTisku.Designer.cs">
+      <DependentUpon>NahledTisku.cs</DependentUpon>
     </Compile>
     <Compile Include="OdvozeneTridyEle\Arc.cs" />
     <Compile Include="OdvozeneTridyEle\Ellipse.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="OdvozeneTridyEle\PointSet.cs" />
     <Compile Include="OdvozeneTridyEle\Rect.cs" />
     <Compile Include="OdvozeneTridyEle\Stext.cs" />
+    <Compile Include="OdvozeneTridyEle\Textura.cs" />
     <Compile Include="OdvozenyPropertyGrid\FilteredPropertyGrid.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -102,6 +104,7 @@
       <DependentUpon>Platno.cs</DependentUpon>
     </Compile>
     <Compile Include="PomocneTridy\AbstractSel.cs" />
+    <Compile Include="PomocneTridy\BindableBrush.cs" />
     <Compile Include="PomocneTridy\FileLocationEditor.cs" />
     <Compile Include="PomocneTridy\Handle.cs" />
     <Compile Include="PomocneTridy\MouseWheelHandler.cs" />
@@ -134,8 +137,8 @@
     <EmbeddedResource Include="HlavniForm.resx">
       <DependentUpon>HlavniForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NahledForm.resx">
-      <DependentUpon>NahledForm.cs</DependentUpon>
+    <EmbeddedResource Include="NahledTisku.resx">
+      <DependentUpon>NahledTisku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OdvozenyPropertyGrid\FilteredPropertyGrid.resx">
       <DependentUpon>FilteredPropertyGrid.cs</DependentUpon>

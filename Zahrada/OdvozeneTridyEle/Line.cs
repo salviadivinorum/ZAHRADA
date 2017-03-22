@@ -8,6 +8,7 @@ using System.ComponentModel;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    [Serializable]
     public class Line : Ele
     {
         #region Clenske promenne tridy Line

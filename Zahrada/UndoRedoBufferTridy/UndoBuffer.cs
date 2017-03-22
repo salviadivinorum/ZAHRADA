@@ -7,6 +7,7 @@ using Zahrada.UndoRedoBufferTridy;
 
 namespace Zahrada.UndoRedoBufferTridy
 {
+    [Serializable]
     public class UndoBuffer
     {
         #region Clenske promenne tridy UndoBuffer
