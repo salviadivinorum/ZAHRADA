@@ -892,8 +892,7 @@ namespace Zahrada
             r.TextureFilled = textureFilled;
             r.FillTexture = textura;
 
-            List.Add(r);
-			
+            List.Add(r);			
 			StoreDo("I", r);
 
 			sRec = new SelRect(r); // nad obloukem je uchopovy obdelnik do tvaru obdelnika nad hranici tavru
@@ -924,66 +923,7 @@ namespace Zahrada
 			selEle = r;
 			selEle.Select();
 		}
-
-		// nebudu pouzivat ...
-		/*
-		/// <summary>
-		/// Do Listu prida Vertikalu - svislou caru
-		/// </summary>
-		public void AddVLine(int x, int y, int x1, int y1, Color penC, float penW)
-		{
-
-			DeSelect();
-			//Linea r = new Linea(x, y, x1, y1);
-			VerticalLine r = new VerticalLine(x, y, x1, y1);
-			//OLine r = new OLine(x, y, x1, y1);
-
-			r.PenColor = penC;
-			r.PenWidth = penW;
-
-			this.List.Add(r);
-			// store the operation in undo/redo buffer
-			StoreDo("I", r);
-
-			sRec = new SelRect(r);
-
-			selEle = r;
-			selEle.Select();
-		}
-		*/
-
-		// nebudu pouzivat
-		/*
-		/// <summary>
-		/// Do Listu prida Horizobtalu - vodorovnou caru
-		/// </summary>
-		public void AddHLine(int x, int y, int x1, int y1, Color penC, float penW)
-		{
-
-			this.DeSelect();
-			//Linea r = new Linea(x, y, x1, y1);
-			//VLine r = new VLine(x, y, x1, y1);
-			HorizontalLine r = new HorizontalLine(x, y, x1, y1);
-
-			r.PenColor = penC;
-			r.PenWidth = penW;
-
-			this.List.Add(r);
-			// store the operation in undo/redo buffer
-			StoreDo("I", r);
-
-			sRec = new SelRect(r);
-
-			selEle = r;
-			selEle.Select();
-		}
-		*/
-
-
-
-
-
-
+		
 		/// <summary>
 		/// Do Listu prida Jednoduchy text
 		/// </summary>
