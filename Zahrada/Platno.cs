@@ -14,6 +14,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using System.Drawing.Text;
+using System.Drawing.Imaging;
 using Zahrada.OdvozeneTridyEle;
 using Zahrada.PomocneTridy;
 using Zahrada.UndoRedoBufferTridy;
@@ -41,11 +42,13 @@ namespace Zahrada{
        
 
 
-        public bool showDebug;
+        public bool showDebug = true;
 
         private float _zoom = 1f;
         private bool _A4 = true;
-        // private bool paintUdalostObslouzena = false;
+        private int _Ax = 2100;
+        private int _Ay = 2970;
+       
 
         private int _dx = 0;
         private int _dy = 0;
@@ -69,7 +72,8 @@ namespace Zahrada{
         
         // Grid mrizka
         public int _gridSize = 0;
-        public bool fit2grid = true;
+        //public bool Fit2grid = true;
+        public bool Fit2grid { get; set; } = true;
 
         //Graphic - zakladni nastaveni System.Drawing
         private CompositingQuality _compositingQuality = CompositingQuality.Default;
@@ -128,6 +132,12 @@ namespace Zahrada{
         //[NonSerialized]
         private Textura textura = new Textura();
 
+        // neco pro mys a mi ukayuje zmenu rozmeru obbjektu pri pohybu mysi...
+        private int plusX;
+        private int plusY;
+        private int pocX;
+        private int pocY;
+
 
 
         #endregion       
@@ -152,6 +162,7 @@ namespace Zahrada{
             // Event Handler - obsluha udalosti MouseWheel pro User Control Platno (musel jsem ji k Platnu vytvorit externe a zde ji pridavam)
             MouseWheelHandler.Add(this, MyOnMouseWheel); // ovladaci metoda udalosti - k presnemu zoomovani         
             bb.Add(new PointWrapper(0, 0));
+            tip.ForeColor = Color.LightGray;
 
         }
 
@@ -282,6 +293,35 @@ namespace Zahrada{
         #region Vlastnosti pro Graphics, kterym navic nastavuji Category a Description v mem Property Gridu
 
         // Nastavuji si viditelnost promenne showDebug pro pomocne vypisky pri kresleni
+        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Šířka zahrady (cm)")]
+        public int Ax
+        {
+            get { return _Ax; }
+            set { _Ax = value; }
+        }
+
+        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Vška zahrady (cm)")]
+        public int Ay
+        {
+            get { return _Ay; }
+            set { _Ay = value; }
+        }
+
+        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Zobraz rámeček")]
+        public bool Rámeček
+        {
+            get
+            {
+                return _A4;
+            }
+            set
+            {
+                _A4 = value;
+            }
+        }
+
+
+
         [Category("Seznam elementů"),Description("Seznam elelemntů na kreslícím plátně")]
         public ArrayList GetElements
         {
@@ -408,18 +448,7 @@ namespace Zahrada{
         }
 
 
-        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Zobraz A4 rámeček")]
-        public bool A4
-        {
-            get
-            {
-                return _A4;
-            }
-            set
-            {
-                _A4 = value;
-            }
-        }
+        
 
         [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Plátno OriginX")]
         public int dx
@@ -471,7 +500,7 @@ namespace Zahrada{
             status = s;
         }
 
-        private void ChangeOption(string s)
+        public void ChangeOption(string s)
         {
             option = s;
             // oznam "option" zmenu smerem k poslouchajicim objektum - napr. toolBoxu Nastroje
@@ -706,7 +735,7 @@ namespace Zahrada{
            
 
             //int kolikjeGrid = gridSize;
-            if (fit2grid & gridSize > 0)
+            if (Fit2grid & gridSize > 0)
             {
                 //kolikjeGrid = gridSize;
                 //dx = gridSize * ((dx) / gridSize);
@@ -840,35 +869,26 @@ namespace Zahrada{
             DrawDebugInfo(offScreenDC);
 
             //Nakresli A4 ramecek 210 x 297 mm a pomocne merici linky po 10mm
-            if (A4)
+            if (Rámeček)
             {
                 //GraphicsUnit u = offScreenDC.PageUnit;
                 //offScreenDC.PageUnit = GraphicsUnit.Millimeter;
                 Pen myPen = new Pen(Color.Blue, 0.5f);
                 myPen.DashStyle = DashStyle.Dash;
-                //offScreenDC.DrawRectangle(myPen, (1 + dx) * Zoom, (1 + dy) * Zoom, 810 * Zoom, 1140 * Zoom);
-
-                // toto mi nevyslo - budu resit pozdeji ...
-                /*
-                float onePointX = offScreenDC.DpiX;
-                float onePointY = offScreenDC.DpiY;
-
-                float xA4size = onePointX  *210/25.4f;
-                float yA4size = onePointY*297/25.4f;
-                */
-
 
                 // vykresleni jednotek
                 StringFormat drawFormat = new StringFormat();
                 Font drawFont = new Font("Arial", 7);
                 SolidBrush drawBrush = new SolidBrush(Color.Blue);
+
                 // nechavam to na 1pixel = 1mm
                 // + 20 znaci primarni odstup pri vzkreslovani ramecku
-                offScreenDC.DrawRectangle(myPen, (dx) * Zoom, (dy) * Zoom, (2100) * Zoom, (2970) * Zoom);
+                // nakresli samotny ramecek
+                offScreenDC.DrawRectangle(myPen, (dx) * Zoom, (dy) * Zoom, (Ax) * Zoom, (Ay) * Zoom);
 
                
-
-                for (int i =0; i <= 2100; i=i+10)
+                // nakresli cisla nad ramecek
+                for (int i =0; i <= Ax; i=i+10)
                 {
                     offScreenDC.DrawLine(myPen, (dx+i)*Zoom, (dy+3)*Zoom, (dx+i)*Zoom, ((dy)*Zoom));
 
@@ -883,7 +903,7 @@ namespace Zahrada{
 
 
                 }   
-                for (int a = 0; a <= 2970; a = a + 10)
+                for (int a = 0; a <= Ay; a = a + 10)
                 {
                     offScreenDC.DrawLine(myPen, (dx) * Zoom, (dy + a) * Zoom, (dx + 3) * Zoom, ((dy+ a) * Zoom));
                     
@@ -944,18 +964,20 @@ namespace Zahrada{
             
         }        
 
-        // budu pouzivat pri pohyby mysi - bude mi to hlasit pozici kurzoru
+        // budu pouzivat pri pohyby mysi - bude mi to hlasit pozici kurzoru // funguje ale pouzil jsem radeji mouse tool tip
         private void DrawDebugInfo(Graphics g)
         {
             
             //Kontrolni zprava pri Draw ...
             if (ShowDebug)
             {
-                msg = " Status : " + this.status;
-                msg = msg + " Option : " + this.option;
-                msg = msg + " redimStatus : " + this.redimStatus;
-                Font tmpf = new System.Drawing.Font("Arial", 7);
-                g.DrawString(msg, tmpf, new SolidBrush(Color.Gray), new PointF((tempX + this.dx) * this.Zoom, (tempY + this.dy) * this.Zoom), StringFormat.GenericDefault);
+               // msg = " Status : " + this.status;
+               // msg = msg + " Option : " + this.option;
+               // msg = msg + " redimStatus : " + this.redimStatus;
+                Font tmpf = new Font("Arial", 7);
+                //msg = "       x="+(tempX).ToString()+" , y="+(tempY).ToString();
+                msg = "      dx= " + (plusX).ToString() + " , dy= " + (plusY).ToString();
+                g.DrawString(msg, tmpf, new SolidBrush(Color.Gray), new PointF((tempX + dx) * Zoom, (tempY + dy) * Zoom), StringFormat.GenericTypographic);
                 tmpf.Dispose();
             }
         }
@@ -985,8 +1007,10 @@ namespace Zahrada{
 
         private void Platno_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            // ukazovat tooltip pri pohybu mysi .... po platne/u polygonu
-            
+
+            pocX = (int)(e.X);
+            pocY = (int)(e.Y);
+            //Redraw(true);
 
 
             startX = (int)((e.X) / Zoom - dx);
@@ -1004,8 +1028,9 @@ namespace Zahrada{
             {
                 #region START LEFT MOUSE BUTTON PRESSED
                 mouseSx = true; // I start pressing SX
+                
 
-               
+
 
 
 
@@ -1093,20 +1118,44 @@ namespace Zahrada{
             if (e.Button == MouseButtons.Left)
             #region left mouse button pressed
             {
+                //ShowDebug = true;
+                plusX = (int)((e.X - pocX) / Zoom);
+                plusY = (int)((e.Y - pocY) / Zoom);
+                tip.Active = true;
+                
+                tip.Show("dx="+plusX.ToString()+" dy="+plusY.ToString(), this, e.X + 15, e.Y + 15);
+                //tip.Show(plusX.ToString())
+
                 if (mouseSx)
                 {
+                    
+
                     tempX = (int)(e.X / Zoom);
                     tempY = (int)(e.Y / Zoom);
-                    if (fit2grid & gridSize > 0)
+                   
+
+
+                    if (Fit2grid & gridSize > 0)
                     {                       
                         tempX = gridSize * (int)((e.X / Zoom) / gridSize);
                         tempY = gridSize * (int)((e.Y / Zoom) / gridSize);
+
+                        //plusX = gridSize * (int)(((e.X - pocX) / Zoom)/gridSize);
+                        //plusY = gridSize * (int)(((e.Y - pocY) / Zoom)/gridSize);
                     }
                     tempX = tempX - dx;
                     tempY = tempY - dy;
 
+                   
+
                 }
 
+                // ukazovat dx,dy pri pohybu mysi .... po platne
+                 
+                
+
+
+                
 
                 if (status == "redim")
                 {                 
@@ -1116,9 +1165,10 @@ namespace Zahrada{
                     int tmpY = (int)(e.Y / Zoom - dy);
                     int tmpstartX = startX;
                     int tmpstartY = startY;
-                    
 
-                    if (fit2grid & gridSize > 0)
+
+
+                    if (Fit2grid & gridSize > 0)
                     {
                         tmpX = gridSize * (int)((e.X / Zoom - dx) / gridSize);
                         tmpY = gridSize * (int)((e.Y / Zoom - dy) / gridSize);
@@ -1145,7 +1195,7 @@ namespace Zahrada{
                                 shapes.MovePoint(tmpstartX - tmpX, tmpstartY - tmpY);
                                
                             }
-                            if (fit2grid & gridSize > 0)
+                            if (Fit2grid & gridSize > 0)
                             {
                                 shapes.Fit2Grid(gridSize);
                                 shapes.sRec.Fit2grid(gridSize);
@@ -1197,8 +1247,10 @@ namespace Zahrada{
                 else
                 {
                     if (this.option == "PEN")
-                    {                       
-                        
+                    {
+
+                       
+
                         //this.s.addEllipse(tempX,tempY,tempX+1,tempY+1,Color.Blue,Color.Blue,1f,false);
                         visPenPointList.Add(new PointWrapper(tempX - startX, tempY - startY));
                         if (Math.Sqrt(Math.Pow(penPrecX - tempX, 2) + Math.Pow(penPrecY - tempY, 2)) > 15)
@@ -1218,7 +1270,9 @@ namespace Zahrada{
                         //tip.Show("My tooltip", this, Cursor.Position.X, Cursor.Position.Y);
                         //tip.Show("My tooltip", this, (int)((e.X) / Zoom - dx), (int)((e.Y) / Zoom - dy));
                         tip.Active = true;
-                        tip.Show("A=další bod", this, e.X+15, e.Y+15);
+                        tip.Show("dx=" + plusX.ToString() + " dy=" + plusY.ToString()+Environment.NewLine+
+                            "A=další bod", this, e.X + 15, e.Y + 15);
+                       //tip.Show("A=další bod", this, e.X+15, e.Y+15);
                         //tip.Show("Shift=další bod", this, Control.MousePosition.X, MousePosition.Y);
 
                         if (visPenPointList.Count % 2 == 0)
@@ -1257,7 +1311,7 @@ namespace Zahrada{
 
                    //this.dx = (this.startDX + this.truestartX - e.X);
                    // this.dy = (this.startDY + this.truestartY - e.Y);
-                if (fit2grid & gridSize > 0)
+                if (Fit2grid & gridSize > 0)
                     {                    
                         dx = gridSize * ((dx) / gridSize); // toto moc nechapu, ale funguje to dobre - prichytava to A4 papir na mrizku
                         dy = gridSize * ((dy) / gridSize);
@@ -1358,7 +1412,15 @@ namespace Zahrada{
 
 
 
+        // simuluje stisk Esc klavesy;
+        public void ForceEsc()
+        {
+            shapes.DeSelect();
+            PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
+            ObjectSelected(this, e1);// raise event
 
+            Redraw(true); //redraw all=true   
+        }
 
 
 
@@ -1378,17 +1440,26 @@ namespace Zahrada{
             }
             if (e.KeyCode == Keys.Escape)
             {
+                ForceEsc();
+                /*
                 shapes.DeSelect();
                 PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
                 ObjectSelected(this, e1);// raise event
 
-                Redraw(true); //redraw all=true    
+                Redraw(true); //redraw all=true  
+                */  
 
+            }
+            if (e.KeyCode == Keys.Delete)
+            {
+                RmSelected();
+                Redraw(true);
             }
         }
 
         public void Platno_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            //showDebug = false;
             tip.Active = false;
             // podle comboboxu v Main Form ridim uzavreni POLY/PEN
             NajdiClosedCBvMainForm();
@@ -1401,7 +1472,7 @@ namespace Zahrada{
             {
                 int tmpX = (int)((e.X) / Zoom - dx);
                 int tmpY = (int)((e.Y) / Zoom - dy);
-                if (fit2grid & this.gridSize > 0)
+                if (Fit2grid & this.gridSize > 0)
                 {
                     tmpX = gridSize * (int)((e.X / Zoom - dx) / gridSize);
                     tmpY = gridSize * (int)((e.Y / Zoom - dy) / gridSize);
@@ -1423,7 +1494,7 @@ namespace Zahrada{
                                 
 
                                 //((PointSet)this.shapes.selEle).RePos();
-                                if (fit2grid & this.gridSize > 0)
+                                if (Fit2grid & this.gridSize > 0)
                                 {
                                     this.shapes.Fit2Grid(this.gridSize);
                                     
@@ -1683,7 +1754,7 @@ namespace Zahrada{
         {
             if (e.Button == MouseButtons.Middle)
             {
-                if (fit2grid & gridSize > 0)
+                if (Fit2grid & gridSize > 0)
                 {
                     dx = gridSize * ((100) / gridSize);
                     dy = gridSize * ((100) / gridSize);
@@ -1733,9 +1804,6 @@ namespace Zahrada{
         */
 
         #endregion
-
-        
-
         
 
         #region Zakladni udalosti pro Platno: Paint, Resize
@@ -1832,7 +1900,7 @@ namespace Zahrada{
 
             if (e.Delta < 0 && (Zoom > 0.21f && Zoom <= 21f) )
             {
-                if (fit2grid & gridSize > 0)
+                if (Fit2grid & gridSize > 0)
                 {
                     //int gr = gridSize;
                     dx = (int)(dx + (e.X / (Zoom)));
@@ -1892,7 +1960,7 @@ namespace Zahrada{
             {
 
 
-                if (fit2grid & gridSize > 0)
+                if (Fit2grid & gridSize > 0)
                 {
                     //int grid = gridSize;
                     dx = (int)(dx - (e.X / (Zoom * 2)));
@@ -1974,7 +2042,8 @@ namespace Zahrada{
         #endregion
 
 
-        #region Image Loader
+        #region Image Loader - zakladni Zahradni objekty
+
 
         // zakladni vstup obrazku zde touto metodou...
         public string ImgLoader()
@@ -1982,6 +2051,12 @@ namespace Zahrada{
             try
             {
                 OpenFileDialog dlg = new OpenFileDialog();
+
+                // nastavuje aktualni cestu k exe souboru zahrada.exe
+                string currentDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                dlg.InitialDirectory = currentDirectory;
+                dlg.RestoreDirectory = true;
+
                 dlg.Title = "Vybrat zahradní prvek";
                 dlg.Filter = "png files (*.png)|*.png|jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";               
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -1989,20 +2064,67 @@ namespace Zahrada{
                     return (dlg.FileName);
                 }
             }
-            catch { }
+            catch (Exception e)
+            {
+                MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
+            }
             return null;
         }
 
-        // Zakladni Load/Save mych souboru:
-
+        #endregion
         
 
+        #region Textur Loader - textury pro me vectory
+        public void TextureLoader()
+        {
+
+            try
+            {
+                using (OpenFileDialog dil = new OpenFileDialog())
+                {
+                    // nastavuje aktualni cestu k exe souboru zahrada.exe
+                    string currentDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                    dil.InitialDirectory = currentDirectory;
+                    dil.RestoreDirectory = true;
+
+                    dil.Title = "Vyber texturu";
+                    dil.Filter = "jpg files (*.jpg)|*.jpg|png files (*.png)|*.png|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
+
+                    if (dil.ShowDialog() == DialogResult.OK)
+                    {
+                        Image obr = new Bitmap(dil.FileName);
+                        TextureBrush tBrush = new TextureBrush(obr);
+                        tBrush.WrapMode = WrapMode.Tile;
+                        SetTexture(tBrush);
+
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
+            }
+
+        }
+
+        #endregion
+
+        // Zakladni Load/Save mych souboru:
+        #region Load/Save projektu
         public bool Saver()
         {
             try
             {
+                
                 Stream StreamWrite;
                 SaveFileDialog dlg = new SaveFileDialog();
+
+                // nastavuje aktualni cestu k exe souboru zahrada.exe
+                string currentDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                dlg.InitialDirectory = currentDirectory;
+                dlg.RestoreDirectory = true;
+
                 dlg.DefaultExt = "bin";
                 dlg.Title = "Uložit soubor";
                 dlg.Filter = "Zahrada soubor (*.bin)|*.bin|Všechny soubory (*.*)|*.*";
@@ -2011,7 +2133,7 @@ namespace Zahrada{
                     if ((StreamWrite = dlg.OpenFile()) != null)
                     {
                         BinaryFormatter BinaryWrite = new BinaryFormatter();
-                        BinaryWrite.Serialize(StreamWrite, this.shapes);
+                        BinaryWrite.Serialize(StreamWrite, shapes); // ukladam si instanci tridy Shapes - to je vse !
                         StreamWrite.Close();
                         return true;
                     }
@@ -2032,7 +2154,15 @@ namespace Zahrada{
             try
             {
                 Stream StreamRead;
+
+               
                 OpenFileDialog dlg = new OpenFileDialog();
+
+                // nastavuje aktualni cestu k exe souboru zahrada.exe
+                string currentDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                dlg.InitialDirectory = currentDirectory;
+                dlg.RestoreDirectory = true;
+
                 dlg.DefaultExt = "bin";
                 dlg.Title = "Otevřít soubor";
                 dlg.Filter = "Zahrada soubor (*.bin)|*.bin|Všechny soubory (*.*)|*.*";
@@ -2041,7 +2171,7 @@ namespace Zahrada{
                     if ((StreamRead = dlg.OpenFile()) != null)
                     {
                         BinaryFormatter BinaryRead = new BinaryFormatter();
-                        shapes = (Shapes)BinaryRead.Deserialize(StreamRead);                        
+                        shapes = (Shapes)BinaryRead.Deserialize(StreamRead);
                         StreamRead.Close();
 
                         shapes.AfterLoad();
@@ -2056,11 +2186,10 @@ namespace Zahrada{
                 MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
             }
             return false;
-        }
+        } 
+        #endregion
 
-
-
-
+        
         //*-------------------------------------------------------------------------------------------------------------
         //*-------------------------------------------------------------------------------------------------------------
         //*----------------------------T I S K --------------------------------------------------------------------------
@@ -2216,16 +2345,112 @@ namespace Zahrada{
         }
 
 
+
+
+
+
+
+
+
+
+
+
         #endregion
 
+        //** --------------------------------------------------------------------------------------------------------------
+        //** ------------------------------------------ EXPORT do JPG/PNG -------------------------------------------------
+        //** --------------------------------------------------------------------------------------------------------------
+
+        #region Export nakresleneho do PNG/JPG/GIF
+        public void ExportTo()
+        {
+            ForceEsc();
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            //txt files (*.txt)|*.txt|All files (*.*)|*.*"
+            saveFileDialog1.Filter = "Png files (*.png)|*.png|JPG files (*.jpg)|*.jpg|GIF files (*.gif)|*.gif";
+            //saveFileDialog1.InitialDirectory = Config.Instance().GetSetting("FileDir/Path", Application.StartupPath);
+            //string flnm = docManager.fileName;
+            string flnm = "Export.png";
+            /*
+            if (flnm.Length == 0)
+                flnm = "New.svg";
+            else
+                flnm = flnm.Substring(0, flnm.IndexOf(".svg"));
+                */
+            saveFileDialog1.FileName = flnm;
+            DialogResult res = saveFileDialog1.ShowDialog(this);
+            if (res != DialogResult.OK)
+                return;
+            flnm = saveFileDialog1.FileName;
 
 
 
+            //Graphics g = this.drawArea.CreateGraphics();
+            //this.drawArea.Draw(g);
 
+            //System.Drawing.Bitmap bp = new Bitmap(this.drawArea.Width, this.drawArea.Height, g);
+
+            //Bitmap bp2 = new Bitmap(Width, this.Height, offScreenBackBmp);
+            Bitmap bp2 = offScreenBackBmp;
+
+            //Graphics g2 = Graphics.FromImage(bp);
+
+
+
+            //drawArea.Draw(g2);
+            //bp2.Save(flnm);
+
+            SaveImage(bp2, flnm);
+        }
+
+        void SaveImage(Image img, string flnm)
+        {
+            ImageCodecInfo myImageCodecInfo;
+            System.Drawing.Imaging.Encoder myEncoder;
+            EncoderParameter myEncoderParameter;
+            EncoderParameters myEncoderParameters;
+            string mimetype = GetMimeType(flnm);
+            if (mimetype.Length == 0)
+                return;
+            myImageCodecInfo = GetEncoderInfo(mimetype);
+            myEncoder = System.Drawing.Imaging.Encoder.Quality;
+            myEncoderParameters = new EncoderParameters(1);
+            myEncoderParameter = new EncoderParameter(myEncoder, (long)55);
+            myEncoderParameters.Param[0] = myEncoderParameter;
+
+            img.Save(flnm, myImageCodecInfo, myEncoderParameters);
+        }
+
+        string GetMimeType(string flnm)
+        {
+            if (flnm.LastIndexOf("jpg") > 0)
+                return "image/" + "jpeg";
+            if (flnm.LastIndexOf("png") > 0)
+                return "image/" + "png";
+            if (flnm.LastIndexOf("gif") > 0)
+                return "image/" + "gif";
+            return "";
+        }
+        private static ImageCodecInfo GetEncoderInfo(String mimeType)
+        {
+            int j;
+            ImageCodecInfo[] encoders;
+            encoders = ImageCodecInfo.GetImageEncoders();
+            for (j = 0; j < encoders.Length; j++)
+            {
+                if (encoders[j].MimeType == mimeType)
+                {
+                    return encoders[j];
+                }
+            }
+            return null;
+        }
 
 
 
 
         #endregion
+
+       
     }
 }

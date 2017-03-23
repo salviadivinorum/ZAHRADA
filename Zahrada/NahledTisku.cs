@@ -33,6 +33,9 @@ namespace Zahrada
             PrintPreviewControl.Height = Height - PrintPreviewToolStrip.Height - 37;
         }
 
+
+
+        #region Zoomování náhledu tisku
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             PrintPreviewControl.Zoom = (float)Convert.ToDouble(toolStripMenuItem1.Text) / 100;
@@ -66,7 +69,8 @@ namespace Zahrada
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             PrintPreviewControl.Zoom = (float)Convert.ToDouble(toolStripMenuItem7.Text) / 100;
-        }
+        } 
+        #endregion
     }
 
 }
