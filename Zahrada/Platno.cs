@@ -197,7 +197,7 @@ namespace Zahrada{
 
             sizef = g_pr.MeasureString("YourStringHere", Font);
             x_pr = sizef.Width;
-            y_pr = sizef.Height;
+             y_pr = sizef.Height;
             //y_pr = Font.Height;
 
             float x_vi, y_vi = 0;
