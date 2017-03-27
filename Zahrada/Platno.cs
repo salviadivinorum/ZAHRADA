@@ -1049,8 +1049,11 @@ namespace Zahrada{
             {
                 // tady bude obsluha del/copy/cut/paste
                 #region START RIGHT MOUSE BUTTON PRESSED
+
                 startDX = dx;
                 startDY = dy;
+
+                    
                 //Cursor = System.Windows.Forms.Cursors.Cross; 
                 
                 #endregion
