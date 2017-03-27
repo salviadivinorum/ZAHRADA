@@ -100,6 +100,12 @@ namespace Zahrada.OdvozeneTridyEle
                 _lenAng = value;
             }
         }
+        [Description("Úhel rotace")]
+        public int Rotation
+        {
+            get { return _rotation; }
+            set { _rotation = value; }
+        }
 
 
         #endregion
@@ -158,6 +164,39 @@ namespace Zahrada.OdvozeneTridyEle
         public override void Draw(Graphics g, int dx, int dy, float zoom)
         {
             Brush myBrush = GetBrush(dx, dy, zoom);
+
+            // prace s texturou a osetreni pri Load / Save protoze C# neumi serializaci TextureBrush tridy
+            // musim zde zbytecne tvorit 2 tridy Texturebrush ....
+            TextureBrush texture = GetTextureBrush();
+            TextureBrush texture2;
+
+            if (texture == null)
+            {
+                ObrBitmap = ImageOfTexture;
+                texture2 = new TextureBrush(ObrBitmap);
+            }
+            else
+            {
+                ObrImage = texture.Image;
+                texture2 = new TextureBrush(ObrImage);
+                PrevodImageNaBitmap = new Bitmap(ObrImage);
+                ImageOfTexture = PrevodImageNaBitmap;
+
+            }
+
+            float scalX = zoom;
+            float scalY = zoom;
+            texture2.Transform = new Matrix(
+                scalX,
+                0.0f,
+                0.0f,
+                scalY,
+                0.0f,
+                0.0f);
+
+
+
+
             Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
             myPen.EndCap = EndCap;
@@ -181,22 +220,32 @@ namespace Zahrada.OdvozeneTridyEle
             myPath.AddArc((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom, StartAng, LenAng);
 
             // toto je vynechano - mozna pro test ucely zprovoznit na chvili - pozdeji:
-            //Matrix translateMatrix = new Matrix();
+            // rotace oblouku je SKAREDA - neni na obr hezka, ale jde to
+            Matrix translateMatrix = new Matrix();
             //translateMatrix.RotateAt(this.Rotation, new Point(this.X + (int)(this.X1 - this.X) / 2, this.Y + (int)(this.Y1 - this.Y) / 2));
-            //myPath.Transform(translateMatrix);
+            translateMatrix.RotateAt(Rotation, new PointF((X + dx + (X1 - X) / 2) * zoom, (Y + dy + (Y1 - Y) / 2) * zoom));
+
+            myPath.Transform(translateMatrix);
 
             // Konecne nakresli transformovany Arc na obrazovku:
-            if (ColorFilled)
+            if (TextureFilled || ColorFilled)
             {
-                g.FillPath(myBrush, myPath);
+                if (TextureFilled)
+                    g.FillPath(texture2, myPath);
+                else
+                    g.FillPath(myBrush, myPath);
+
                 if (ShowBorder)
                     g.DrawPath(myPen, myPath);
             }
             else
                 g.DrawPath(myPen, myPath);
 
+            texture2.Dispose();
+            //obr.Dispose();
             myPath.Dispose();
             myPen.Dispose();
+            translateMatrix.Dispose();
 
             if (myBrush != null)
                 myBrush.Dispose();

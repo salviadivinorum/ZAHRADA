@@ -9,6 +9,7 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    [Serializable]
     public class Ellipse : Ele
     {
         #region Konstruktor tridy Ellipse
@@ -61,6 +62,10 @@ namespace Zahrada.OdvozeneTridyEle
             newE.PenWidth = PenWidth;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
+            newE.TextureFilled = TextureFilled;
+            newE.ImageOfTexture = ImageOfTexture;
+
+
             newE.iAmAline = iAmAline;
             newE.Alpha = Alpha;
             newE.DashStyleMy = DashStyleMy;
@@ -92,12 +97,25 @@ namespace Zahrada.OdvozeneTridyEle
         {
             Brush myBrush = GetBrush(dx, dy, zoom);
 
-            // puvodni textura
+            // prace s texturou a osetreni pri Load / Save protoze C# neumi serializaci TextureBrush tridy
+            // musim zde zbytecne tvorit 2 tridy Texturebrush ....
             TextureBrush texture = GetTextureBrush();
-            Image obr = texture.Image;         
-            
-            //Nova textura zvetsujici se podle zoomu
-            TextureBrush texture2 = new TextureBrush(obr);            
+            TextureBrush texture2;
+
+            if (texture == null)
+            {
+                ObrBitmap = ImageOfTexture;
+                texture2 = new TextureBrush(ObrBitmap);
+            }
+            else
+            {
+                ObrImage = texture.Image;
+                texture2 = new TextureBrush(ObrImage);
+                PrevodImageNaBitmap = new Bitmap(ObrImage);
+                ImageOfTexture = PrevodImageNaBitmap;
+
+            }
+
             float scalX = zoom;
             float scalY = zoom;            
             texture2.Transform = new Matrix(
@@ -127,6 +145,7 @@ namespace Zahrada.OdvozeneTridyEle
             // Vytvori Graphics path a prida tam objekt Ellipse
             GraphicsPath myPath = new GraphicsPath();
             myPath.AddEllipse((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
+
             Matrix translateMatrix = new Matrix();
             translateMatrix.RotateAt(Rotation, new PointF((X + dx + (X1 - X) / 2) * zoom, (Y + dy + (Y1 - Y) / 2) * zoom));
             
@@ -157,7 +176,7 @@ namespace Zahrada.OdvozeneTridyEle
                 g.DrawPath(myPen, myPath);
 
             texture2.Dispose();
-            obr.Dispose();    
+            //obr.Dispose();    
             myPath.Dispose();
             myPen.Dispose();
             translateMatrix.Dispose();

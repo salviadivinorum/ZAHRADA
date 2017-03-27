@@ -11,6 +11,7 @@ namespace Zahrada.UndoRedoBufferTridy
     /// <summary>
     /// Dvou elementovy seznam ze 2 zakladnich undo/redo elementu
     /// </summary>
+    [Serializable]
     public class BufferedObject
     {
         #region Clenske promenne tridy BufferedObject

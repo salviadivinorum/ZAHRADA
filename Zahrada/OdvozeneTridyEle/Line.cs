@@ -8,6 +8,7 @@ using System.ComponentModel;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    [Serializable]
     public class Line : Ele
     {
         #region Clenske promenne tridy Line
@@ -95,6 +96,10 @@ namespace Zahrada.OdvozeneTridyEle
             newE.PenWidth = PenWidth;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
+            newE.TextureFilled = TextureFilled;
+            newE.ImageOfTexture = ImageOfTexture;
+
+
             newE.Alpha = Alpha;
             newE.OnGrpXRes = OnGrpXRes;
             newE.OnGrpX1Res = OnGrpX1Res;

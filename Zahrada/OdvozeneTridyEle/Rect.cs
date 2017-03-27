@@ -9,6 +9,7 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    [Serializable]
     public class Rect : Ele
     {
 
@@ -75,6 +76,10 @@ namespace Zahrada.OdvozeneTridyEle
             newE.PenWidth = PenWidth;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
+            newE.TextureFilled = TextureFilled;
+            newE.ImageOfTexture = ImageOfTexture;
+
+
             newE.DashStyleMy = DashStyleMy;
             newE.Alpha = Alpha;
             newE.iAmAline = iAmAline;
@@ -87,6 +92,8 @@ namespace Zahrada.OdvozeneTridyEle
             newE.OnGrpY1Res = this.OnGrpY1Res;
 
             newE.CopyGradProp(this);
+           
+
 
             return newE;
         }
@@ -111,6 +118,39 @@ namespace Zahrada.OdvozeneTridyEle
         {
 
             Brush myBrush = GetBrush(dx, dy, zoom);
+
+            // prace s texturou a osetreni pri Load / Save protoze C# neumi serializaci TextureBrush tridy
+            // musim zde zbytecne tvorit 2 tridy Texturebrush ....
+            TextureBrush texture = GetTextureBrush();                  
+            TextureBrush texture2;
+
+            if (texture == null)
+            {
+                ObrBitmap = ImageOfTexture;
+                texture2 = new TextureBrush(ObrBitmap);
+            }
+            else
+            {
+                ObrImage = texture.Image;
+                texture2 = new TextureBrush(ObrImage);
+                PrevodImageNaBitmap = new Bitmap(ObrImage);
+                ImageOfTexture = PrevodImageNaBitmap;
+               
+            }
+
+
+            //Nova textura zvetsujici se podle zoomu
+            float scalX = zoom;
+            float scalY = zoom;
+            texture2.Transform = new Matrix(
+                scalX,
+                0.0f,
+                0.0f,
+                scalY,
+                0.0f,
+                0.0f);
+
+
             Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
 
@@ -133,17 +173,24 @@ namespace Zahrada.OdvozeneTridyEle
             myPath.Transform(translateMatrix);
 
             // Konecne nakresli transformovany ctverec na obrazovku
-            if (ColorFilled)
+            if (TextureFilled || ColorFilled)
             {
-                g.FillPath(myBrush, myPath);
+                if (TextureFilled)
+                    g.FillPath(texture2, myPath);
+                else
+                    g.FillPath(myBrush, myPath);
+
                 if (ShowBorder)
                     g.DrawPath(myPen, myPath);
             }
             else
                 g.DrawPath(myPen, myPath);
 
+            texture2.Dispose();            
             myPath.Dispose();
             myPen.Dispose();
+            translateMatrix.Dispose();
+
             if (myBrush != null)
                 myBrush.Dispose();
         }

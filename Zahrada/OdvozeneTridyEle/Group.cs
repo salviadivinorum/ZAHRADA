@@ -12,6 +12,7 @@ namespace Zahrada.OdvozeneTridyEle
     /// <summary>
     /// Trida Group - seskupeni elementu
     /// </summary>
+    [Serializable]
     public class Group : Ele
     {
         #region Clenske promenne tridy Group
@@ -528,6 +529,11 @@ namespace Zahrada.OdvozeneTridyEle
                 newE.PenWidth = PenWidth;
                 newE.FillColor = FillColor;
                 newE.ColorFilled = ColorFilled;
+                newE.TextureFilled = TextureFilled;
+                newE.ImageOfTexture = ImageOfTexture;
+
+
+
                 newE.DashStyleMy = DashStyleMy;
                 newE.Alpha = Alpha;
                 newE.iAmAline = iAmAline;

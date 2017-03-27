@@ -9,6 +9,7 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    [Serializable]
     public class ImageBox : Ele
     {
         #region Clenske promenne tridy ImageBox
@@ -89,6 +90,10 @@ namespace Zahrada.OdvozeneTridyEle
             newE.PenWidth = PenWidth;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
+            newE.TextureFilled = TextureFilled;
+            newE.ImageOfTexture = ImageOfTexture;
+
+
             newE.iAmAline = iAmAline;
             newE.Alpha = Alpha;
             newE.DashStyleMy = DashStyleMy;

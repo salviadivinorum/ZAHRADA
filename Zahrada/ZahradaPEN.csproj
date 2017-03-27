@@ -55,6 +55,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,22 +75,21 @@
     <Compile Include="HlavniForm.Designer.cs">
       <DependentUpon>HlavniForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NahledForm.cs">
+    <Compile Include="NahledTisku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NahledForm.Designer.cs">
-      <DependentUpon>NahledForm.cs</DependentUpon>
+    <Compile Include="NahledTisku.Designer.cs">
+      <DependentUpon>NahledTisku.cs</DependentUpon>
     </Compile>
     <Compile Include="OdvozeneTridyEle\Arc.cs" />
     <Compile Include="OdvozeneTridyEle\Ellipse.cs" />
     <Compile Include="OdvozeneTridyEle\Group.cs" />
-    <Compile Include="OdvozeneTridyEle\HorizontalLine.cs" />
     <Compile Include="OdvozeneTridyEle\ImageBox.cs" />
     <Compile Include="OdvozeneTridyEle\Line.cs" />
     <Compile Include="OdvozeneTridyEle\PointSet.cs" />
     <Compile Include="OdvozeneTridyEle\Rect.cs" />
     <Compile Include="OdvozeneTridyEle\Stext.cs" />
-    <Compile Include="OdvozeneTridyEle\VerticalLine.cs" />
+    <Compile Include="OdvozeneTridyEle\Textura.cs" />
     <Compile Include="OdvozenyPropertyGrid\FilteredPropertyGrid.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -104,6 +104,7 @@
       <DependentUpon>Platno.cs</DependentUpon>
     </Compile>
     <Compile Include="PomocneTridy\AbstractSel.cs" />
+    <Compile Include="PomocneTridy\BindableBrush.cs" />
     <Compile Include="PomocneTridy\FileLocationEditor.cs" />
     <Compile Include="PomocneTridy\Handle.cs" />
     <Compile Include="PomocneTridy\MouseWheelHandler.cs" />
@@ -123,6 +124,12 @@
     <Compile Include="RichTextBoxForm.Designer.cs">
       <DependentUpon>RichTextBoxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RozmerPlanuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RozmerPlanuForm.Designer.cs">
+      <DependentUpon>RozmerPlanuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shapes.cs" />
     <Compile Include="Nastroje.cs">
       <SubType>UserControl</SubType>
@@ -136,8 +143,8 @@
     <EmbeddedResource Include="HlavniForm.resx">
       <DependentUpon>HlavniForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NahledForm.resx">
-      <DependentUpon>NahledForm.cs</DependentUpon>
+    <EmbeddedResource Include="NahledTisku.resx">
+      <DependentUpon>NahledTisku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OdvozenyPropertyGrid\FilteredPropertyGrid.resx">
       <DependentUpon>FilteredPropertyGrid.cs</DependentUpon>
@@ -160,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RichTextBoxForm.resx">
       <DependentUpon>RichTextBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RozmerPlanuForm.resx">
+      <DependentUpon>RozmerPlanuForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -200,6 +210,7 @@
     <Content Include="Ikony\open.ico" />
     <Content Include="Ikony\polyline.ico" />
     <Content Include="Ikony\redo.ico" />
+    <Content Include="Ikony\ruler.ico" />
     <Content Include="Ikony\save.ico" />
     <Content Include="Ikony\saveas.ico" />
     <Content Include="Ikony\select.ico" />
@@ -213,6 +224,7 @@
     <Content Include="Ikony\zoomin.ico" />
     <Content Include="Ikony\zoomout.ico" />
     <Content Include="jablko.ico" />
+    <None Include="Resources\ruler.ico" />
     <None Include="Resources\trava-velmi-husta.png" />
     <None Include="Resources\jablko.ico" />
     <None Include="Resources\1489699641_help.ico" />
