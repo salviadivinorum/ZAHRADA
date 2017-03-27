@@ -1091,8 +1091,17 @@ namespace Zahrada{
                 #region START RIGHT MOUSE BUTTON PRESSED
                 startDX = dx;
                 startDY = dy;
+
+
+                if (shapes.selEle != null & shapes.sRec != null)
+                {
+                    
+                    contextMenuStripProPlatno.Show(((Platno)sender).PointToScreen(e.Location));
+                    
+
+                }
                 //Cursor = System.Windows.Forms.Cursors.Cross; 
-                
+
                 #endregion
             }
             else
@@ -1108,8 +1117,17 @@ namespace Zahrada{
         }
 
 
-        
-        
+        // Co delat kdyz dam na context menu - vymazat
+        private void DeleteContextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (shapes.selEle != null & shapes.sRec != null)
+            {
+                RmSelected();
+                Redraw(true);
+            }
+
+        }
+
 
         private void Platno_MouseMove(object sender,System.Windows.Forms.MouseEventArgs e)
         {
@@ -2445,6 +2463,7 @@ namespace Zahrada{
             }
             return null;
         }
+
 
 
 

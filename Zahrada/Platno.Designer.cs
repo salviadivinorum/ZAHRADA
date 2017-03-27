@@ -52,6 +52,7 @@
             this.DeleteContextToolStripMenuItem.Name = "DeleteContextToolStripMenuItem";
             this.DeleteContextToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.DeleteContextToolStripMenuItem.Text = "Vymazat";
+            this.DeleteContextToolStripMenuItem.Click += new System.EventHandler(this.DeleteContextToolStripMenuItem_Click);
             // 
             // CopyContextToolStripMenuItem
             // 
@@ -70,7 +71,6 @@
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ContextMenuStrip = this.contextMenuStripProPlatno;
             this.Name = "Platno";
             this.Size = new System.Drawing.Size(378, 248);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Platno_Paint);
@@ -86,10 +86,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripProPlatno;
         private System.Windows.Forms.ToolStripMenuItem DeleteContextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CopyContextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AllContextToolStripMenuItem;
+        public System.Windows.Forms.ContextMenuStrip contextMenuStripProPlatno;
     }
 }

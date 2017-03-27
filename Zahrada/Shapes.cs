@@ -145,7 +145,7 @@ namespace Zahrada
 			}
 		}
 
-        
+		
 
 		/// <summary>
 		/// Vraci kopii vybraneho elementu
@@ -314,7 +314,7 @@ namespace Zahrada
 			}			
 
 		}      
-      
+	  
 
 		public void Move(int dx, int dy)
 		{
@@ -671,7 +671,7 @@ namespace Zahrada
 		/// Do Listu prida Polygon - vseobecny
 		/// </summary>
 		public void AddPoly(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, ArrayList aa, bool curv, bool closed, bool textureFilled, TextureBrush textura)
-        {    
+		{    
 			/*if (x1 - minDim <= x)
 				x1 = x + minDim;
 			if (y1 - minDim <= y)
@@ -686,10 +686,10 @@ namespace Zahrada
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
 			r.Curved = curv;
-            r.TextureFilled = textureFilled;
-            r.FillTexture = textura;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
-            List.Add(r);            
+			List.Add(r);            
 			StoreDo("I", r); // uloz do undo/redo bufferu
 
 			sRec = new SelPoly(r);
@@ -698,11 +698,11 @@ namespace Zahrada
 		}
 
 
-        /// <summary>
-        /// Do Listu prida Obdelnik
-        /// </summary>
-        public void AddRect(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
-        {
+		/// <summary>
+		/// Do Listu prida Obdelnik
+		/// </summary>
+		public void AddRect(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
+		{
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
 			if (y1 - minDim <= y)
@@ -714,10 +714,10 @@ namespace Zahrada
 			r.PenWidth = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
-            r.TextureFilled = textureFilled;
-            r.FillTexture = textura;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
-            List.Add(r);
+			List.Add(r);
 			
 			StoreDo("I", r);
 
@@ -731,7 +731,7 @@ namespace Zahrada
 		/// Do Listu prida Oblouk
 		/// </summary>
 		public void AddArc(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
-        {
+		{
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
 			if (y1 - minDim <= y)
@@ -743,17 +743,17 @@ namespace Zahrada
 			r.PenWidth = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
-            r.TextureFilled = textureFilled;
-            r.FillTexture = textura;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
-            List.Add(r);			
+			List.Add(r);			
 			StoreDo("I", r);
 
 			sRec = new SelRect(r); // nad obloukem je uchopovy obdelnik do tvaru obdelnika nad hranici tavru
 			selEle = r;
 			selEle.Select();
 		}
-        	
+			
 		/// <summary>
 		/// Do Listu prida Caru
 		/// </summary>
@@ -777,7 +777,7 @@ namespace Zahrada
 		/// Do Listu prida Jednoduchy text
 		/// </summary>
 		public void AddSimpleTextBox(int x, int y, int x1, int y1, RichTextBox t, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
-        {
+		{
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
 			if (y1 - minDim <= y)
@@ -794,10 +794,10 @@ namespace Zahrada
 			r.PenWidth = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
-            r.TextureFilled = textureFilled;
-            r.FillTexture = textura;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
-            List.Add(r);
+			List.Add(r);
 			
 			StoreDo("I", r);
 
@@ -858,8 +858,8 @@ namespace Zahrada
 			r.PenWidth = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = colorFilled;
-            r.TextureFilled = textureFilled;
-            r.FillTexture = textura;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
 			this.List.Add(r);
 			
@@ -869,7 +869,7 @@ namespace Zahrada
 			selEle = r;
 			selEle.Select();
 		}
-        
+		
 		#endregion
 
 
