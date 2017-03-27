@@ -102,7 +102,11 @@ namespace Zahrada.OdvozeneTridyEle
 			newE.PenWidth = PenWidth;
 			newE.FillColor = FillColor;
 			newE.ColorFilled = ColorFilled;
-			newE.iAmAline = iAmAline;
+            newE.TextureFilled = TextureFilled;
+            newE.ImageOfTexture = ImageOfTexture;
+
+
+            newE.iAmAline = iAmAline;
 			newE.Alpha = Alpha;
 			newE.DashStyleMy = DashStyleMy;
 			newE.ShowBorder = ShowBorder;

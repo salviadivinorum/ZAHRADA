@@ -49,6 +49,7 @@
             // 
             // DeleteContextToolStripMenuItem
             // 
+            this.DeleteContextToolStripMenuItem.Image = global::Zahrada.Properties.Resources.smaz;
             this.DeleteContextToolStripMenuItem.Name = "DeleteContextToolStripMenuItem";
             this.DeleteContextToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.DeleteContextToolStripMenuItem.Text = "Vymazat";
@@ -56,15 +57,19 @@
             // 
             // CopyContextToolStripMenuItem
             // 
+            this.CopyContextToolStripMenuItem.Image = global::Zahrada.Properties.Resources.kopiruj;
             this.CopyContextToolStripMenuItem.Name = "CopyContextToolStripMenuItem";
             this.CopyContextToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.CopyContextToolStripMenuItem.Text = "Kopírovat";
+            this.CopyContextToolStripMenuItem.Click += new System.EventHandler(this.CopyContextToolStripMenuItem_Click);
             // 
             // AllContextToolStripMenuItem
             // 
+            this.AllContextToolStripMenuItem.Image = global::Zahrada.Properties.Resources.select;
             this.AllContextToolStripMenuItem.Name = "AllContextToolStripMenuItem";
             this.AllContextToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.AllContextToolStripMenuItem.Text = "Vybrat vše";
+            this.AllContextToolStripMenuItem.Click += new System.EventHandler(this.AllContextToolStripMenuItem_Click);
             // 
             // Platno
             // 

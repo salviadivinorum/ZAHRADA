@@ -418,6 +418,10 @@ namespace Zahrada
         // FILLING texturou Ano/Ne
         private void textureFillingOnOffToolStripComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            
+
+
+
             if (textureFillingOnOffToolStripComboBox.SelectedIndex == 0)
             {
                 vlozenePlatno.SetTextureFilled(false);

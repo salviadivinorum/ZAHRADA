@@ -81,16 +81,16 @@ namespace Zahrada
 		private float _penWidth;
 		private Color _fillColor;
 		private bool _colorFilled;
-        private bool _textureFilled;
+		private bool _textureFilled;
 		private bool _showBorder;
 		private DashStyle _dashStyle; // proc je to uvedeno podruhe ?
 		private int _aplha;
 		private bool _closed;
 
-        
+		
 
-        // Linear Gradient:
-        private bool _useGradientLine = false;
+		// Linear Gradient:
+		private bool _useGradientLine = false;
 		private Color _endColor = Color.White;
 		private int _endalpha = 255;
 		private int _gradientAngle = 0;
@@ -105,37 +105,38 @@ namespace Zahrada
 		public bool deleted;
 		public Ele undoEle;
 
-        // cesta k me nove texture pro tvary ...
-        private string filePath;
+		// cesta k me nove texture pro tvary ...
+		private string filePath;
 
 
-        // pouziti Textury:       
-        [NonSerialized]
-        private TextureBrush _texture;
-        private Bitmap imgOfTexture;
+		// pouziti Textury:       
+		[NonSerialized]
+		private TextureBrush _texture;
+		private Bitmap imgOfTexture;
 
-        // prace se swapovanim textur do Bitmap / Image pri Save / Load:
-        // automaticke vlastnosti get+set, jmeno zapozdrene promenne je nevylovitelne-unspeakable....
-        public Bitmap ObrBitmap { get; set; }
-        public Image ObrImage { get; set; }        
-        public Bitmap PrevodImageNaBitmap { get; set; }
+		// prace se swapovanim textur do Bitmap / Image pri Save / Load:
+		// automaticke vlastnosti get+set, jmeno zapozdrene promenne je nevylovitelne-unspeakable....
+		public Bitmap ObrBitmap { get; set; }
+		public Image ObrImage { get; set; }        
+		public Bitmap PrevodImageNaBitmap { get; set; }
 
-        #endregion
+		#endregion
 
-        #region Konstruktor tridy Ele
-        public Ele()
+		#region Konstruktor tridy Ele
+		public Ele()
 		{
-            // nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele
+			// nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele
 
-            // predvyplnena textura pro Element
-            /*
-            Image obr = Properties.Resources.trava_velmi_husta; // toto funguje dobre
+			// predvyplnena textura pro Element
+			/*
+			Image obr = Properties.Resources.trava_velmi_husta; // toto funguje dobre
 			TextureBrush tBrush = new TextureBrush(obr);
 			tBrush.WrapMode = WrapMode.Tile;
 			FillTexture = tBrush;
-            */
-
-			// predvyplnena barva pro Element
+			*/
+			Image obr = Properties.Resources.trava_velmi_husta; // toto funguje dobre
+			ImageOfTexture = (Bitmap)obr;
+																
 			FillColor = Color.Black;
 
 			// zakladni barva pera - Cerna
@@ -159,18 +160,18 @@ namespace Zahrada
 			string vystup = "Znicene objekty Carbage Collectorem: " + GetX.ToString() + " " + GetY.ToString();
 			System.Diagnostics.Trace.WriteLine(vystup);
 		}
-        #endregion
+		#endregion
 
-        #region Základní vlastnosti - neboli GETTERY pro tridu Ele, SETTERY mam pouze v zaloze
-        // vkladani img textury elementu
+		#region Základní vlastnosti - neboli GETTERY pro tridu Ele, SETTERY mam pouze v zaloze
+		// vkladani img textury elementu
 
 
-        public Bitmap ImageOfTexture
-        {
-            get { return imgOfTexture; }
-            set { imgOfTexture = value; }
-        }
-        
+		public Bitmap ImageOfTexture
+		{
+			get { return imgOfTexture; }
+			set { imgOfTexture = value; }
+		}
+		
 
 		public int GetX
 		{
@@ -241,17 +242,17 @@ namespace Zahrada
 			// set { IamGroup = value;}
 		}
 
-        
+		
 
 
 
 
-        #endregion
+		#endregion
 
-        #region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid		
+		#region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid		
 
-        //[DisplayName("Orientace")]
-        [Category("Pozice"), Description("X ")]
+		//[DisplayName("Orientace")]
+		[Category("Pozice"), Description("X ")]
 		public int PosX
 		{
 			get
@@ -445,7 +446,7 @@ namespace Zahrada
 			}
 		}
 
-        // jakou barvoy vyplneny:
+		// jakou barvoy vyplneny:
 		[Category("Vzhled"), Description("Nastav barvu výplně")]
 		public virtual Color FillColor
 		{
@@ -459,63 +460,63 @@ namespace Zahrada
 			}
 		}
 
-       
+	   
 
-        
-        // nastavuju cestu k nove texture ... pouzivam zde svou pomocnou tridu FileLocationEditor
-        [Category("Vyber Texturu"), Description("Textura vyberem souboru ")]
-        [Editor(typeof(FileLocationEditor), typeof(UITypeEditor))]
-        public string FilePath
-        {
-            get
-            {
-                //string cesta = _texture.Image(FilePath);
-                return filePath;
-            }
-            set
-            {
-                filePath = value;                
-                Bitmap bitm = new Bitmap(filePath);   
-                TextureBrush tBrush = new TextureBrush(bitm);
-                tBrush.WrapMode = WrapMode.Tile;
-                FillTexture = tBrush;
-            }
-        }
+		
+		// nastavuju cestu k nove texture ... pouzivam zde svou pomocnou tridu FileLocationEditor
+		[Category("Vyber Texturu"), Description("Textura vyberem souboru ")]
+		[Editor(typeof(FileLocationEditor), typeof(UITypeEditor))]
+		public string FilePath
+		{
+			get
+			{
+				//string cesta = _texture.Image(FilePath);
+				return filePath;
+			}
+			set
+			{
+				filePath = value;                
+				Bitmap bitm = new Bitmap(filePath);   
+				TextureBrush tBrush = new TextureBrush(bitm);
+				tBrush.WrapMode = WrapMode.Tile;
+				FillTexture = tBrush;
+			}
+		}
 
-        // Nastavuju texturu
-        public virtual TextureBrush FillTexture
-        {
-            get
-            {
-                return _texture;
-            }
-            set
-            {
-                _texture = value;
-            }
-        }
-
-
-
-
-        // vyplneny texturou ANO/ NE
-        [Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
-        public virtual bool TextureFilled
-        {
-            get
-            {
-                return _textureFilled;
-            }
-            set
-            {
-                _textureFilled = value;
-            }
-        }
+		// Nastavuju texturu
+		public virtual TextureBrush FillTexture
+		{
+			get
+			{
+				return _texture;
+			}
+			set
+			{
+				_texture = value;
+			}
+		}
 
 
 
-        // vyplneny barvou ANO/NE
-        [Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
+
+		// vyplneny texturou ANO/ NE
+		[Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
+		public virtual bool TextureFilled
+		{
+			get
+			{
+				return _textureFilled;
+			}
+			set
+			{
+				_textureFilled = value;
+			}
+		}
+
+
+
+		// vyplneny barvou ANO/NE
+		[Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
 		public virtual bool ColorFilled
 		{
 			get
@@ -529,21 +530,21 @@ namespace Zahrada
 		}
 
 
-        [Category("Vzhled"), Description("Nastav šířku pera")]
-        public virtual float PenWidth
-        {
-            get
-            {
-                return _penWidth;
-            }
-            set
-            {
-                _penWidth = value;
-            }
-        }
+		[Category("Vzhled"), Description("Nastav šířku pera")]
+		public virtual float PenWidth
+		{
+			get
+			{
+				return _penWidth;
+			}
+			set
+			{
+				_penWidth = value;
+			}
+		}
 
 
-        [Category("Vzhled"), Description("Průhlednost")]
+		[Category("Vzhled"), Description("Průhlednost")]
 		public virtual int Alpha
 		{
 			get
@@ -671,19 +672,19 @@ namespace Zahrada
 		{
 			return (Image)(new Bitmap(imgToResize, size));
 		}
-        // jakou TEXTUROU vyplnen
+		// jakou TEXTUROU vyplnen
 
-        
+		
 
 
-        #endregion
+		#endregion
 
-        #region Virtualni + verejne pristupne metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
+		#region Virtualni + verejne pristupne metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
 
-        /// <summary>
-        /// Nakresli tento Element do objektu Graphics
-        /// </summary>        
-        public virtual void Draw(Graphics g, int dx, int dy, float zoom)
+		/// <summary>
+		/// Nakresli tento Element do objektu Graphics
+		/// </summary>        
+		public virtual void Draw(Graphics g, int dx, int dy, float zoom)
 		{ }
 
 

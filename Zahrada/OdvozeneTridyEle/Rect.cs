@@ -76,6 +76,10 @@ namespace Zahrada.OdvozeneTridyEle
             newE.PenWidth = PenWidth;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
+            newE.TextureFilled = TextureFilled;
+            newE.ImageOfTexture = ImageOfTexture;
+
+
             newE.DashStyleMy = DashStyleMy;
             newE.Alpha = Alpha;
             newE.iAmAline = iAmAline;
@@ -88,6 +92,8 @@ namespace Zahrada.OdvozeneTridyEle
             newE.OnGrpY1Res = this.OnGrpY1Res;
 
             newE.CopyGradProp(this);
+           
+
 
             return newE;
         }

@@ -225,13 +225,15 @@ namespace Zahrada{
             creationTextureFilled = false;
 
             // zakladni textura mych Pathu
-            /*
+            
             Image obr = Properties.Resources.trava_velmi_husta; // toto funguje dobre
-             
+            
+
             TextureBrush tBrush = new TextureBrush(obr);
             tBrush.WrapMode = WrapMode.Tile;
+            
             //creationTexturePattern = tBrush;
-            */
+            
 
             // pomocnu tridou si nastavuju texturu takto ...
             creationTexturePattern = textura.InicilizujPrviTexturu();
@@ -670,6 +672,12 @@ namespace Zahrada{
             Redraw(true);
         }
 
+        public void CpSelected(int x, int y)
+        {
+            shapes.CopyMultiSelected(x, y);
+            Redraw(true);
+        }
+
         public void MoveFront()
         {
             shapes.MoveFront();
@@ -1093,13 +1101,21 @@ namespace Zahrada{
                 startDY = dy;
 
 
-                if (shapes.selEle != null & shapes.sRec != null)
+                if (shapes.selEle != null & shapes.sRec != null & Cursor == System.Windows.Forms.Cursors.Hand)
                 {
-                    
-                    contextMenuStripProPlatno.Show(((Platno)sender).PointToScreen(e.Location));
+                    System.Drawing.Point p = new System.Drawing.Point();
+                    p = (((Platno)sender).PointToScreen(e.Location));
+                    // p.X = p.X + 5;
+                    p.Y = p.Y + 15;
+                    contextMenuStripProPlatno.Show(p);
+                    //contextMenuStripProPlatno.Show(((Platno)sender).PointToScreen(e.Location));
+                   
                     
 
                 }
+
+
+                
                 //Cursor = System.Windows.Forms.Cursors.Cross; 
 
                 #endregion
@@ -1126,6 +1142,21 @@ namespace Zahrada{
                 Redraw(true);
             }
 
+        }
+
+        // kopiruje po stisku context menu - copy selected
+        private void CopyContextToolStripMenuItem_Click(object sender, EventArgs e)
+        {           
+            CpSelected();
+        }
+
+        private void AllContextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Ele el in shapes.List)
+            {
+                el.selected = true;
+            }           
+            Redraw(true);
         }
 
 
@@ -2150,9 +2181,13 @@ namespace Zahrada{
                 {
                     if ((StreamWrite = dlg.OpenFile()) != null)
                     {
+                        // maze undo Buffer !!!
+                        shapes.AfterLoad();
+
                         BinaryFormatter BinaryWrite = new BinaryFormatter();
                         BinaryWrite.Serialize(StreamWrite, shapes); // ukladam si instanci tridy Shapes - to je vse !
                         StreamWrite.Close();
+
                         return true;
                     }
                 }
@@ -2463,6 +2498,8 @@ namespace Zahrada{
             }
             return null;
         }
+
+
 
 
 
