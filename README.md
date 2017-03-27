@@ -3,7 +3,7 @@ Projekt k mé aplikaci Navrhování zahrad
 
 Zdrojový kód
 --------------
-Spuštění projektu ve vývojovém prostředí Visual Studio 2015 souborem Zahrada.sln. Použitý programovací jazyk Visual C#/.NET verze 4.6.1
+Spuštění projektu ve vývojovém prostředí Visual Studio 2017 souborem Zahrada.sln. Použitý programovací jazyk Visual C#/.NET verze 4.6.1
 
 Spuštění
 ---------
