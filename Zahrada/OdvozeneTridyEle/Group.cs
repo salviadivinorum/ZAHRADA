@@ -347,7 +347,26 @@ namespace Zahrada.OdvozeneTridyEle
                         e.ColorFilled = value;
                     }
             }
-        }       
+        }
+
+        // doplneno k texture - musel jsem prepsat puvodni metodu a to pro vsecheny Ele v Group ...
+        public override bool TextureFilled
+        {
+            get
+            {
+               
+                return base.TextureFilled;
+            }
+            set
+            {
+                base.TextureFilled = value;
+                if (objs != null)
+                    foreach (Ele e in this.objs)
+                    {
+                        e.TextureFilled = value;
+                    }
+            }
+        }
 
 
         public override int Alpha
@@ -381,6 +400,24 @@ namespace Zahrada.OdvozeneTridyEle
                     foreach (Ele e in this.objs)
                     {
                         e.FillColor = value;
+                    }
+            }
+        }
+
+        // doplneno k texture - musel jsem prepsat puvodni metodu a to pro vsecheny Ele v Group ...
+        public override TextureBrush FillTexture        
+        {
+            get
+            {
+                return base.FillTexture;
+            }
+            set
+            {
+                base.FillTexture = value;
+                if (objs != null)
+                    foreach (Ele e in this.objs)
+                    {
+                        e.FillTexture = value;
                     }
             }
         }
@@ -672,8 +709,8 @@ namespace Zahrada.OdvozeneTridyEle
 
             if (_grapPath)
           
-            {                
-                Brush myBrush = GetBrush(dx, dy, zoom); 
+            {
+                Brush myBrush = GetBrush(dx, dy, zoom);   
                 Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
                 myPen.DashStyle = DashStyleMy;
 
@@ -691,7 +728,33 @@ namespace Zahrada.OdvozeneTridyEle
                     e.AddGraphPath(gp, dx, dy, zoom);
                    
                 }
+
+
+
+                /*
+
+                if (TextureFilled || ColorFilled)
+                {
+                    if (TextureFilled)
+                        g.FillPath(texture2, gp);
+                    else
+                        g.FillPath(myBrush, gp);
+
+                    if (ShowBorder)
+                        g.DrawPath(myPen, gp);
+                }
+                else
+                    g.DrawPath(myPen, gp);
+
+
+                */
+
                 
+
+
+
+                /*
+
                 if (ColorFilled)
                 {
 
@@ -702,8 +765,17 @@ namespace Zahrada.OdvozeneTridyEle
                 else
                 {
                     g.DrawPath(myPen, gp);
-                }                
+                }   
+                */
 
+
+
+
+
+
+
+
+               
                 if (myBrush != null)
                     myBrush.Dispose();
                 myPen.Dispose();
@@ -764,7 +836,9 @@ namespace Zahrada.OdvozeneTridyEle
 
             if (selected)
             {
-                Brush myBrush = GetBrush(dx, dy, zoom);               
+                Brush myBrush = GetBrush(dx, dy, zoom);    
+                
+
 
                 Pen myPen = new Pen(this.PenColor, ScaledPenWidth(zoom));
                 myPen.DashStyle = this.DashStyleMy;
@@ -772,6 +846,8 @@ namespace Zahrada.OdvozeneTridyEle
                 myPen.Color = this.Transparency(myPen.Color, 120);
                 myPen.Width = myPen.Width + 1;
                 g.DrawRectangle(myPen, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
+                      
+
                 if (myBrush != null)
                     myBrush.Dispose();
                 myPen.Dispose();
