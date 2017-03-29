@@ -436,38 +436,38 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        public override Color Barva_pera
+        public override Color Pero_barva
         {
             get
             {
-                return base.Barva_pera;
+                return base.Pero_barva;
             }
 
             set
             {
-                base.Barva_pera = value;
+                base.Pero_barva = value;
                 if (objs != null)
                     foreach (Ele e in objs)
                     {
-                        e.Barva_pera = value;
+                        e.Pero_barva = value;
                     }
             }
         }
 
-        public override float Šířka_pera
+        public override float Pero_šířka
         {
             get
             {
-                return base.Šířka_pera;
+                return base.Pero_šířka;
             }
 
             set
             {
-                base.Šířka_pera = value;
+                base.Pero_šířka = value;
                 if (objs != null)
                     foreach (Ele e in objs)
                     {
-                        e.Šířka_pera = value;
+                        e.Pero_šířka = value;
                     }
             }
 
@@ -580,8 +580,8 @@ namespace Zahrada.OdvozeneTridyEle
 
             if (newE._grapPath)
             {
-                newE.Barva_pera = Barva_pera;
-                newE.Šířka_pera = Šířka_pera;
+                newE.Pero_barva = Pero_barva;
+                newE.Pero_šířka = Pero_šířka;
                 newE.FillColor = FillColor;
                 newE.ColorFilled = ColorFilled;
                 newE.TextureFilled = TextureFilled;
@@ -729,7 +729,7 @@ namespace Zahrada.OdvozeneTridyEle
           
             {
                 Brush myBrush = GetBrush(dx, dy, zoom);   
-                Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
+                Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
                 myPen.DashStyle = DashStyleMy;
 
                 if (selected)
@@ -858,7 +858,7 @@ namespace Zahrada.OdvozeneTridyEle
                 
 
 
-                Pen myPen = new Pen(this.Barva_pera, ScaledPenWidth(zoom));
+                Pen myPen = new Pen(this.Pero_barva, ScaledPenWidth(zoom));
                 myPen.DashStyle = this.DashStyleMy;
                 myPen.Color = Color.Red;
                 myPen.Color = this.Transparency(myPen.Color, 120);

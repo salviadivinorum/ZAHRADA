@@ -106,8 +106,8 @@ namespace Zahrada.OdvozeneTridyEle
 		public override Ele Copy()
 		{
 			Stext newE = new Stext(X, Y, X1, Y1);
-			newE.Barva_pera = Barva_pera;
-			newE.Šířka_pera = Šířka_pera;
+			newE.Pero_barva = Pero_barva;
+			newE.Pero_šířka = Pero_šířka;
 			newE.FillColor = FillColor;
 			newE.ColorFilled = ColorFilled;
 			newE.TextureFilled = TextureFilled;
@@ -191,7 +191,7 @@ namespace Zahrada.OdvozeneTridyEle
 
 
 
-			Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
+			Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
 			myPen.DashStyle = DashStyleMy;
 			if (selected)
 			{
@@ -247,7 +247,7 @@ namespace Zahrada.OdvozeneTridyEle
 			stringFormat.LineAlignment = StringAlignment.Near;
 
 			Font tmpf = new Font(CharFont.FontFamily, CharFont.Size * zoom, CharFont.Style);
-			g.DrawString(Text, tmpf, new SolidBrush(this.Barva_pera), new RectangleF((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom), stringFormat);
+			g.DrawString(Text, tmpf, new SolidBrush(this.Pero_barva), new RectangleF((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom), stringFormat);
 
 
 

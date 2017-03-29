@@ -681,8 +681,8 @@ namespace Zahrada
 			PointSet r = new PointSet(x, y, x1, y1, aa);
 
 			r.Closed = closed;
-			r.Barva_pera = penC;
-			r.Šířka_pera = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
 			r.Zakřivení = curv;
@@ -710,8 +710,8 @@ namespace Zahrada
 
 			DeSelect();
 			Rect r = new Rect(x, y, x1, y1);
-			r.Barva_pera = penC;
-			r.Šířka_pera = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
 			r.TextureFilled = textureFilled;
@@ -764,8 +764,8 @@ namespace Zahrada
 
 			DeSelect();
 			Line r = new Line(x, y, x1, y1);	
-			r.Barva_pera = penC;
-			r.Šířka_pera = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 
 			List.Add(r);
 			StoreDo("I", r);
@@ -792,8 +792,8 @@ namespace Zahrada
 			r.CharFont = t.SelectionFont;  //t.Font;
 
 
-			r.Barva_pera = penC;
-			r.Šířka_pera = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
 			r.TextureFilled = textureFilled;
@@ -821,8 +821,8 @@ namespace Zahrada
 
 			DeSelect();
 			ImageBox r = new ImageBox(x, y, x1, y1);
-			r.Barva_pera = penC;
-			r.Šířka_pera = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 
 			List.Add(r);
 			
@@ -856,8 +856,8 @@ namespace Zahrada
 
 			DeSelect();
 			Ellipse r = new Ellipse(x, y, x1, y1);
-			r.Barva_pera = penC;
-			r.Šířka_pera = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = colorFilled;
 			r.TextureFilled = textureFilled;

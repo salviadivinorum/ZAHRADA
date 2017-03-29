@@ -27,7 +27,7 @@ namespace Zahrada.PomocneTridy
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Title = "Vyber texturu";
-                ofd.Filter = "png files (*.png)|*.png|jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
+                ofd.Filter = "jpg files (*.jpg)|*.jpg|png files (*.png)|*.png|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
 
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {

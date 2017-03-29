@@ -82,8 +82,8 @@ namespace Zahrada.OdvozeneTridyEle
         public override Ele Copy()
         {
             Ellipse newE = new Ellipse(X, Y, X1, Y1);
-            newE.Barva_pera = Barva_pera;
-            newE.Šířka_pera = Šířka_pera;
+            newE.Pero_barva = Pero_barva;
+            newE.Pero_šířka = Pero_šířka;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
@@ -155,7 +155,7 @@ namespace Zahrada.OdvozeneTridyEle
             //texture2.ScaleTransform(scalX, scalY);
 
 
-            Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
+            Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
             if (selected)
             {

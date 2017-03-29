@@ -93,8 +93,8 @@ namespace Zahrada.OdvozeneTridyEle
             Line newE = new Line(X, Y, X1, Y1);
 
             // Zapouzdreno
-            newE.Barva_pera = Barva_pera;
-            newE.Šířka_pera = Šířka_pera;
+            newE.Pero_barva = Pero_barva;
+            newE.Pero_šířka = Pero_šířka;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
@@ -154,13 +154,13 @@ namespace Zahrada.OdvozeneTridyEle
         /// </summary>
         public override void Draw(Graphics g, int dx, int dy, float zoom)
         {
-            Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
+            Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
             myPen.StartCap = StartCap;
             myPen.EndCap = EndCap;
 
 
-            myPen.Color = Transparency(Barva_pera, Alpha);
+            myPen.Color = Transparency(Pero_barva, Alpha);
 
             if (selected)
             {

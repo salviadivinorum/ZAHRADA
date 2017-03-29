@@ -126,24 +126,16 @@ namespace Zahrada
 		public Ele()
 		{
 			// nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele
-
-			// predvyplnena textura pro Element
-			/*
-			Image obr = Properties.Resources.trava_velmi_husta; // toto funguje dobre
-			TextureBrush tBrush = new TextureBrush(obr);
-			tBrush.WrapMode = WrapMode.Tile;
-			FillTexture = tBrush;
-			*/
-			Image obr = Properties.Resources.trava_velmi_husta; // toto funguje dobre
-			ImageOfTexture = (Bitmap)obr;
-																
+			// predvyplnena textura pro Element			
+			Image obr = Properties.Resources.trava_velmi_husta; 
+			ImageOfTexture = (Bitmap)obr;																
 			FillColor = Color.Black;
 
 			// zakladni barva pera - Cerna
-			Barva_pera = Color.Black;
+			Pero_barva = Color.Black;
 
 			// ostattni predvyplnene vlastnosti elementu
-			Šířka_pera = 1f;			
+			Pero_šířka = 1f;			
 			ColorFilled = false;
 			Zobrazit_hranici = true;
 			DashStyleMy = DashStyle.Solid;
@@ -164,8 +156,6 @@ namespace Zahrada
 
 		#region Základní vlastnosti - neboli GETTERY pro tridu Ele, SETTERY mam pouze v zaloze
 		// vkladani img textury elementu
-
-
 		public Bitmap ImageOfTexture
 		{
 			get { return imgOfTexture; }
@@ -239,12 +229,8 @@ namespace Zahrada
 		public bool AmIaGroup
 		{
 			get { return IamGroup; }
-			// set { IamGroup = value;}
+			
 		}
-
-		
-
-
 
 
 		#endregion
@@ -434,7 +420,7 @@ namespace Zahrada
 		}
 
 		[Category("Vzhled"), Description("Nastavit barvu Pera")]
-		public virtual Color Barva_pera
+		public virtual Color Pero_barva
 		{
 			get
 			{
@@ -531,7 +517,7 @@ namespace Zahrada
 
 
 		[Category("Vzhled"), Description("Nastavit šířku Pera")]
-		public virtual float Šířka_pera
+		public virtual float Pero_šířka
 		{
 			get
 			{
@@ -688,7 +674,6 @@ namespace Zahrada
 		{ }
 
 
-
 		/// <summary>
 		/// Nakresli tento Element do Graphics Path
 		/// </summary>
@@ -741,14 +726,7 @@ namespace Zahrada
 		public virtual void DeSelect()
 		{ }
 
-		// Zde Musim implementovat vlastni RichForm editor textu RTF
-		/*
-		/// <summary>
-		/// Toto pouziju pro editor textu vkladaneho do obrazku
-		/// </summary>
-		public virtual void ShowEditor(richForm f)
-		{ }
-		*/
+		
 
 		/// <summary>
 		/// Pouzije se po nahrani ze souboru. Zpracuj zde vytvoreni objektu, ktery neni serializovany
@@ -913,8 +891,7 @@ namespace Zahrada
 		#region Chranene - Protected - Metody pro tridu Ele (ktere dedi uplne stejne potomci tridy Ele)
 		/// <summary>
 		/// Z daneho objektu Element zkopiruje gradient vlastnosti
-		/// </summary>
-		/// <param name="ele"></param>
+		/// </summary>		
 		protected void CopyGradProp(Ele ele)
 		{
 			_useGradientLine = ele._useGradientLine;
@@ -961,16 +938,13 @@ namespace Zahrada
 		{
 			if (zoom < 0.1f) // pozor tady si menim zobrazovanou tlousku vsech elementu pri Zoomovani 
 				zoom = 0.1f; // sandardni tloustka 1 pixel - vpohode
-			return Šířka_pera * zoom;
+			return Pero_šířka * zoom;
 		}
 
 
 		/// <summary>
 		/// Prebira uhel rotace z vertikalni linky z centra Elementu a z linky z centra Elementu do bodu (x,y)
-		/// </summary>
-		/// <param name="x"></param>
-		/// <param name="y"></param>
-		/// <returns></returns>
+		/// </summary>		
 		protected float _Rotate(float x, float y)
 		{
 			Point c = new Point((X + (X1 - X) / 2), (Y + (Y1 - Y) / 2));
@@ -1015,10 +989,7 @@ namespace Zahrada
 
 		/// <summary>
 		/// Vraci bod ziskany rotaci bodu p podle uhlu rotAng, respektive (0,0)
-		/// </summary>
-		/// <param name="p"></param>
-		/// <param name="rotAng"></param>
-		/// <returns></returns>
+		/// </summary>		
 		protected PointF RotatePoint(PointF p, int rotAng)
 		{
 			double rotAngF = rotAng * Math.PI / 180;
@@ -1093,8 +1064,7 @@ namespace Zahrada
 		/// Kopirovani standardnich vlastnosti, ktere jsou platne pro vsechny Elementy
 		/// </summary>
 		protected void CopyStdProp(Ele from, Ele to)
-		{
-			// nezapouzdrene clenske promenne:
+		{			
 			to.X = from.X;
 			to.X1 = from.X1;
 			to.Y = from.Y;
@@ -1123,57 +1093,21 @@ namespace Zahrada
 			to.Alpha = from.Alpha;			
 			to.FillColor = from.FillColor;
 			to.ColorFilled = from.ColorFilled;
-			to.Barva_pera = from.Barva_pera;
-			to.Šířka_pera = from.Šířka_pera;
+			to.Pero_barva = from.Pero_barva;
+			to.Pero_šířka = from.Pero_šířka;
 			to.Zobrazit_hranici = from.Zobrazit_hranici;	
 			
 		}
 
-		/// <summary>
-		/// Vraci vzdalenost 2 bodu
-		/// </summary>
-		protected int Dist(int x, int y, int x1, int y1)
+        /// <summary>
+        /// Vraci vzdalenost 2 bodu
+        /// </summary>
+        // dulezite !
+        protected int Dist(int x, int y, int x1, int y1)
 		{
 			return (int)Math.Sqrt(Math.Pow((x - x1), 2) + Math.Pow((y - y1), 2));
 		}
-
-
-		/// <summary>
-		/// Barvu ztmavuje nebo zesvetluje
-		/// </summary>
-		protected Color Dark(Color c, int v, int a)
-		{
-			int r = c.R;
-			r = r - v;
-			if (r < 0)
-				r = 0;
-			if (r > 255)
-				r = 255;
-			int green = c.G;
-			green = green - v;
-			if (green < 0)
-				green = 0;
-			if (green > 255)
-				green = 255;
-			int b = c.B;
-			b = b - v;
-			if (b < 0)
-				b = 0;
-			if (b > 255)
-				b = 255;
-			if (a > 255)
-				a = 255;
-			if (a < 0)
-				a = 0;
-
-			return Color.FromArgb(a, r, green, b);
-		}
-
-		
-
-
-
-
+        		
 		#endregion
 
 		#region Soukrome metody - Private - pro tridu Ele
@@ -1194,21 +1128,12 @@ namespace Zahrada
 		{
 			return (float)(Math.Sqrt(Math.Pow(Sirka, 2) + Math.Pow(Vyska, 2)) - Vyska) / 2;
 		}
-
-
-
-
-
 		#endregion
 
 	}
 
 
-	// pak nasledovaly tridy (vceten straslivych metod pro ne), ktere nebyly nikdy v projektu pouzity.
-	// public class AbSel : Ele - nastroj pro redim/move/rotate
-	// public class SelRectBK : Ele - nastroj pro redim/move/rotate
-	// public class OLine : Linea - horizontalni line
-	// public class VLine : Linea - vertikalni line
+	
 
 
 

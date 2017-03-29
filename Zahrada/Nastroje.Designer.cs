@@ -1014,7 +1014,7 @@
             this.label35.Size = new System.Drawing.Size(70, 17);
             this.label35.TabIndex = 80;
             this.label35.Text = "pískoviště";
-            this.label35.Click += new System.EventHandler(this.label35_Click);
+            //this.label35.Click += new System.EventHandler(this.label35_Click);
             // 
             // panel23
             // 
@@ -2371,7 +2371,7 @@
             this.tabControlProNastroje.ShowToolTips = true;
             this.tabControlProNastroje.Size = new System.Drawing.Size(330, 1150);
             this.tabControlProNastroje.TabIndex = 0;
-            this.tabControlProNastroje.Click += new System.EventHandler(this.tabControl_Click);
+            //this.tabControlProNastroje.Click += new System.EventHandler(this.tabControl_Click);
             this.tabControlProNastroje.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControlProNastroje_KeyDown);
             this.tabControlProNastroje.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControlProNastroje_MouseUp);
             // 

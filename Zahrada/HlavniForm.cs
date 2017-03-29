@@ -49,7 +49,7 @@ namespace Zahrada
             vlozenePlatno.dx = 100;
             vlozenePlatno.dy = 100;
             vlozenePlatno.Zoom = 0.25f;
-            vlozenePlatno.NajdiZoomComboBoxvMainForm();
+            //vlozenePlatno.NajdiZoomComboBoxvMainForm();
             //vlozenePlatno.UpravZoomVComboBoxu(1);
 
             vlozenyToolBox.NajdiUndoReodBtnsVmainForm();

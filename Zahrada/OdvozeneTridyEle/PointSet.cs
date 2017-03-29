@@ -385,8 +385,8 @@ namespace Zahrada.OdvozeneTridyEle
             }
 
             PointSet newE = new PointSet(X, Y, X1, Y1, aa);
-            newE.Barva_pera = Barva_pera;
-            newE.Šířka_pera = Šířka_pera;
+            newE.Pero_barva = Pero_barva;
+            newE.Pero_šířka = Pero_šířka;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
@@ -480,7 +480,7 @@ namespace Zahrada.OdvozeneTridyEle
                 0.0f,
                 0.0f);
 
-            Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
+            Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
 
             if (selected)

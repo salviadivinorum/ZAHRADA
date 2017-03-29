@@ -103,7 +103,6 @@
       <DependentUpon>Platno.cs</DependentUpon>
     </Compile>
     <Compile Include="PomocneTridy\AbstractSel.cs" />
-    <Compile Include="PomocneTridy\BindableBrush.cs" />
     <Compile Include="PomocneTridy\FileLocationEditor.cs" />
     <Compile Include="PomocneTridy\Handle.cs" />
     <Compile Include="PomocneTridy\MouseWheelHandler.cs" />

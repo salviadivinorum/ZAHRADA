@@ -28,25 +28,12 @@ namespace Zahrada
         #region Konstruktor tridy Nastroje
         public UserControlNastroje()
         {
-
             InitializeComponent();
-            PruvodceListBox.SelectedIndex = 0;
-          
+            PruvodceListBox.SelectedIndex = 0;          
         }
+        
 
-
-
-
-        /*
-        public void MyInit()
-        {
-            mbrPropertyGrid.PropertyItemCategory catItem;
-            catItem = new mbrPropertyGrid.PropertyItemCategory("Hlavni kategorie");
-            //mujPropertyGrid.CategoryAdd("Hlavni k", catItem);
-            
-           
-        }
-        */
+        
 
         #endregion
 
@@ -58,12 +45,9 @@ namespace Zahrada
         // v MainForm potom pro konkretni instanci tridy vlozenyToolBox nastavim konkretni instanci tridy vlozenePlatno
         public void SetPlatno(Platno platno)
         {
-            this.mojeplatno = platno;
-            // prirazuju 2 nove udalosti pri konstrukci MainForm
-            this.mojeplatno.OptionChanged += new OptionChangedEventHandler(OnOptionChanged);
-            this.mojeplatno.ObjectSelected += new ObjectSelectedEventHandler(OnObjectSelected);
-            //mujFilteredPropertyGrid.SelectedObject = mojeplatno;
-            //mujFilteredPropertyGrid.Refresh();
+            mojeplatno = platno;           
+            mojeplatno.OptionChanged += new OptionChangedEventHandler(OnOptionChanged);
+            mojeplatno.ObjectSelected += new ObjectSelectedEventHandler(OnObjectSelected);
             
         }
 
@@ -74,9 +58,7 @@ namespace Zahrada
             if (e.option == "select")
             {
                 // zde donastavit enabled/disabled tlacitek
-                DeselectAllButtons();
-                // SelectBtn.Checked = true; // select button je navic a zbytecny
-
+                DeselectAllButtons();  
             }
         }
 
@@ -84,8 +66,8 @@ namespace Zahrada
 
         #endregion
 
-        #region Obsluha Property Gridu - obou dvou
-        // obsluha mensiho Property gridu
+        #region Obsluha meho upraveneho Custom Property Gridu
+        // obsluha meho Custom Property gridu
         private AttributeCollection ParseAttributes(string[] categorynames)
         {
             if (categorynames == null) return null;
@@ -96,8 +78,7 @@ namespace Zahrada
             }
             return new AttributeCollection(attributes);
         }
-
-        // obsluha mensiho Property gridu
+        
         private string[] ParseText(string Text)
         {
             return Text.Length > 0 ? Text.Replace("  ", "").Split(new char[] { ',' }) : null;
@@ -109,8 +90,6 @@ namespace Zahrada
         {
             nalezenyUndoBtn.Enabled = e.undoable;
             nalezenyRedoBtn.Enabled = e.redoable;
-
-
         }
 
         // pri inicializaci si hledam 2 tlacitka v MainForm ... volano z MainForm
@@ -132,32 +111,28 @@ namespace Zahrada
         {
 
             if (e.ele.Length == 0)
-            {
-                //mujPropertyGrid.SelectedObject = sender; // zobrazuje vlastnosti platna                     
+            {                     
                 mujFilteredPropertyGrid.SelectedObject = sender;
                 try
-                {   // na platno  si potlacuju nektere vlastnosti ....
-                    mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("Element,  Plán - popis"));
-                    //mujFilteredPropertyGrid.HiddenAttributes = ParseAttributes(ParseText("Chování, Rozložení, Vzhled, Fokus, Graphics, Usnadnění, Data, Debug "));
+                {   // na platno si potlacuju nektere vlastnosti podle Category !!! ....
+                    mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("Element,  Plán - popis"));                    
                     mujFilteredPropertyGrid.Refresh();
-                    mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("")); // pozor - navracebi zpet musi byt
-                    //mujFilteredPropertyGrid.HiddenAttributes = ParseAttributes(ParseText("")); // pozor - navraceni zpet musi byt
+                    mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("")); // pozor - navraceni zpet musi byt
+                   
                 }
                 catch (ArgumentException aex)
                 {
                     MessageBox.Show(aex.Message);
-
                 }
                 catch { }
 
             }
             else
-            {
-                //mujPropertyGrid.SelectedObject = e.ele.First(); // kdyz - (SelectedObjectS umi zobrazit vybrane objekty vsechny) - jinak zobrazi vlastnosti vybraneho objektu 
-                mujFilteredPropertyGrid.SelectedObject = e.ele.First();
+            {                
+                mujFilteredPropertyGrid.SelectedObject = e.ele.First();  // kdyz - (SelectedObjectS umi zobrazit vybrane objekty vsechny) - jinak zobrazi vlastnosti vybraneho objektu 
                 try
                 {
-                    // vyber urcitych vlastnosti elementu - pro zobrazeni v PG:
+                    // vyber urcitych vlastnosti elementu - pro zobrazeni v PG - opet podle Category !!!:
                     mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("Element,  Vzhled"));
                     mujFilteredPropertyGrid.Refresh();
                     mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("")); // pozor - navracebi zpet musi byt
@@ -166,7 +141,6 @@ namespace Zahrada
                 catch (ArgumentException aex)
                 {
                     MessageBox.Show(aex.Message);
-
                 }
                 catch { }
             }
@@ -191,36 +165,21 @@ namespace Zahrada
         #endregion
 
         #region Obsluha udalosti Click na tlacitka v casti VYTVORIT
-
         // Cara
         private void lineBtn_Click(object sender, EventArgs e)
-        {
-            
+        {            
             DeselectAllButtons();
             //lineBtn.BackColor = Color.FromArgb(Color.Gray);
             lineBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "LINE";
             mojeplatno.krivka = true;
-        }
-
-        // slepa ulicka - vertikala
-        /*
-        private void verticalBtn_Click(object sender, EventArgs e)
-        {
-            DeselectAll();
-            verticalBtn.BackColor = Color.White;
-            mojeplatno.option = "VLINE";
-        }
-        */
+        }        
 
         // Polygon
         private void polygonBtn_Click(object sender, EventArgs e)
         {
-            DeselectAllButtons();
-            //polygonBtn.BackColor = Color.FromArgb(20, Color.Gray);
-            polygonBtn.BackColor = SystemColors.GradientActiveCaption;
-            //polygonBtn.BackColor = SystemColors.ActiveCaption;
-            
+            DeselectAllButtons();            
+            polygonBtn.BackColor = SystemColors.GradientActiveCaption; 
             mojeplatno.option = "POLY";
             mojeplatno.krivka = true;
         }
@@ -243,18 +202,7 @@ namespace Zahrada
             mojeplatno.option = "DR";
             mojeplatno.krivka = false;
 
-        }
-
-        // Zaulaceny obdelnik
-        /*
-        private void rrectBtn_Click(object sender, EventArgs e)
-        {
-            DeselectAll();
-            rrectBtn.BackColor = Color.White;
-            mojeplatno.option = "DRR";
-
-        }
-        */
+        }       
 
         // Elipsa - kruznice
         private void circBtn_Click(object sender, EventArgs e)
@@ -263,19 +211,7 @@ namespace Zahrada
             circBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "ELL";
             mojeplatno.krivka = false;
-        }
-
-
-        // Oblouk
-        /*
-        private void arcBtn_Click(object sender, EventArgs e)
-        {
-            DeselectAll();
-            arcBtn.BackColor = SystemColors.GradientActiveCaption;
-            mojeplatno.option = "ARC";
-            mojeplatno.krivka = false;
-        }
-        */
+        }       
 
 
         // Jednoduchy text
@@ -301,10 +237,9 @@ namespace Zahrada
 
 
 
-                #endregion
+        #endregion
 
         #region Pomocne a ostatni metody
-
         private void DeselectAllButtons()
         {
             // obsluha viditelnosti tlacitek
@@ -319,19 +254,14 @@ namespace Zahrada
 
         }
 
-        
-
-        #endregion
-
-        #region Klik na Tab Control
-        private void tabControl_Click(object sender, EventArgs e)
+        // Musim aktualizovat muj PropertyGrid po stisku na Tab Vlastnosti
+        private void tabControlProNastroje_MouseUp(object sender, MouseEventArgs e)
         {
-           
-
+            mojeplatno.PushSelectionToShowInCustomGrid();
         }
-
         #endregion
 
+        #region Klikani na tlacitka v Nastroje
         private void groupBtn_Click(object sender, EventArgs e)
         {
             mojeplatno.GroupSelected();
@@ -361,23 +291,12 @@ namespace Zahrada
         {
             mojeplatno.CpSelected();
         }
-        
-       
+
 
         private void btnEscape_Click(object sender, EventArgs e)
         {
-           
             DeselectAllButtons();
-            /*
-            foreach (Ele el in mojeplatno.shapes.List)
-            {
-                el.selected = false;
-            }
-
-            */
             mojeplatno.ForceEsc();
-
-          
         }
 
         private void btnVybratVse_Click(object sender, EventArgs e)
@@ -386,16 +305,17 @@ namespace Zahrada
             {
                 el.selected = true;
             }
-
-            // mojeplatno.ChangeOption("select");
             mojeplatno.Redraw(true);
         }
 
+        #endregion
+
+        #region Stisk ESC pri volbe na Nastrojich
         // stisk ESC behem kresleni ....
         private void tabControlProNastroje_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape & tabControlProNastroje.SelectedIndex == 0)
-            {            
+            {
                 DeselectAllButtons();
                 foreach (Ele el in mojeplatno.shapes.List)
                 {
@@ -411,10 +331,12 @@ namespace Zahrada
             {
                 mojeplatno.Focus();
             }
-            
+
 
         }
+        #endregion
 
+        #region Tab Pruvodce - navrhem ... povidani
         // na obsluhu Pruvodce noveho
         private void PruvodceListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -422,7 +344,7 @@ namespace Zahrada
             if (ind == 0)
             {
                 PruvodceLabel1.Text = "A) Zakreslení stávajícího stavu";
-                PruvodceTextBox.Text ="a) Tvar pozemku a světové strany" +
+                PruvodceTextBox.Text = "a) Tvar pozemku a světové strany" +
                     Environment.NewLine + Environment.NewLine +
                     "b) Oplocení pozemku" +
                     Environment.NewLine + Environment.NewLine +
@@ -430,7 +352,7 @@ namespace Zahrada
                     Environment.NewLine + Environment.NewLine +
                     "d) Zpevněné plochy na pozemku" +
                     Environment.NewLine + Environment.NewLine +
-                    "e) Stávající rostliny na pozemku";                   
+                    "e) Stávající rostliny na pozemku";
             }
 
             if (ind == 1)
@@ -447,7 +369,7 @@ namespace Zahrada
             {
                 PruvodceLabel1.Text = "C) Návrh základního motivu";
                 PruvodceTextBox.Text = "FORMÁLNÍ TYP ZAHRADY" +
-                    Environment.NewLine+
+                    Environment.NewLine +
                     "------------------------------------------------------------" +
                     Environment.NewLine +
                     "a) PRAVOÚHLÉ tvary" +
@@ -459,22 +381,22 @@ namespace Zahrada
                     "- ojekty budou osazeny pod úhlem k některé ze stran zahrady" +
                     Environment.NewLine + Environment.NewLine +
                     "c) KRUHOVÉ tvary" +
-                    Environment.NewLine + 
+                    Environment.NewLine +
                     "- na zahradě převažují objekty kruhového nebo elipsovitého tvaru" +
                     Environment.NewLine + Environment.NewLine + Environment.NewLine +
                     "NEFORMÁLNÍ TYP ZAHRADY" +
                     Environment.NewLine +
                     "------------------------------------------------------------" +
-                    Environment.NewLine + 
-                    "a) UDRŽOVATELNÁ" + 
-                    Environment.NewLine + 
+                    Environment.NewLine +
+                    "a) UDRŽOVATELNÁ" +
+                    Environment.NewLine +
                     "- na zahradě budou převažovat volné tvary, v mezích možností všechny živé prvky budou udržovatelné" +
                     Environment.NewLine + Environment.NewLine +
                     "b) BEZÚDRŽBOVÁ" +
                     Environment.NewLine +
                     "- navržená zahrada bude pokud možno maximálně bezúdržbová";
 
-                
+
             }
 
             if (ind == 3)
@@ -511,7 +433,7 @@ namespace Zahrada
                 PruvodceTextBox.Text =
                     "a) MINIMÁLNÍ ÚDRŽBA" +
                     Environment.NewLine +
-                    "- např. jen trávník nebo zpevněné plochy"+
+                    "- např. jen trávník nebo zpevněné plochy" +
                     Environment.NewLine + Environment.NewLine +
                     "b) VYŠŠÍ NÁROKY NA ÚDRŽBU" +
                     Environment.NewLine +
@@ -524,29 +446,10 @@ namespace Zahrada
             }
         }
 
-        private void label35_Click(object sender, EventArgs e)
-        {
+        #endregion
 
-        }
 
-        private void tabControlProNastroje_MouseUp(object sender, MouseEventArgs e)
-        {
-            //mojeplatno.MouseUp(null,null)
-           // Ele odesilatel = (Ele)(mojeplatno.shapes.List[0]);
-
-            // mojeplatno.Platno_MouseDown(odesilatel, e);
-            //mojeplatno.Focus();
-            //mojeplatno.Platno_MouseDown(odesilatel, e);
-            //mojeplatno.Platno_MouseUp(odesilatel, e);
-            //mojeplatno.Redraw(true);
-
-            //PropertyEventArgs e1 = new PropertyEventArgs(mojeplatno.shapes.GetSelectedArray(),mojeplatno.shapes.RedoEnabled(), mojeplatno.shapes.UndoEnabled());
-            //mojeplatno.ObjectSelected(this, e1);// raise event
-
-            //mojeplatno.shapes.GetSelectedList()
-            mojeplatno.PushSelectionToShowInCustomGrid();
-
-        }
+       
     }
 }
 
