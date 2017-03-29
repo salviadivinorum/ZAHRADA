@@ -473,6 +473,8 @@ namespace Zahrada.OdvozeneTridyEle
 
         }
 
+
+
         //[Category("Vzhled"), Description("Zobrazit hraniční čáru elementu")]
         public override bool Zobrazit_hranici
         {

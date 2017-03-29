@@ -31,9 +31,7 @@ namespace Zahrada
 
             InitializeComponent();
             PruvodceListBox.SelectedIndex = 0;
-           // panelVpruvodci.HorizontalScroll.Enabled = false;
-            //pruvodce.HorizontalScroll.Enabled = false;
-            //NajdiUndoReodBtnsVmainForm();
+          
         }
 
 
@@ -133,7 +131,7 @@ namespace Zahrada
 
             if (e.ele.Length == 0)
             {
-                mujPropertyGrid.SelectedObject = sender; // zobrazuje vlastnosti platna                     
+                //mujPropertyGrid.SelectedObject = sender; // zobrazuje vlastnosti platna                     
                 mujFilteredPropertyGrid.SelectedObject = sender;
                 try
                 {   // na platno  si potlacuju nektere vlastnosti ....
@@ -153,7 +151,7 @@ namespace Zahrada
             }
             else
             {
-                mujPropertyGrid.SelectedObject = e.ele.First(); // kdyz - (SelectedObjectS umi zobrazit vybrane objekty vsechny) - jinak zobrazi vlastnosti vybraneho objektu 
+                //mujPropertyGrid.SelectedObject = e.ele.First(); // kdyz - (SelectedObjectS umi zobrazit vybrane objekty vsechny) - jinak zobrazi vlastnosti vybraneho objektu 
                 mujFilteredPropertyGrid.SelectedObject = e.ele.First();
                 try
                 {
@@ -468,7 +466,7 @@ namespace Zahrada
                     Environment.NewLine + 
                     "a) UDRŽOVATELNÁ" + 
                     Environment.NewLine + 
-                    "- na zahradě budou převažovat volné tvary a v mezích možností všechny objekty budou udržovatelné" +
+                    "- na zahradě budou převažovat volné tvary, v mezích možností všechny živé prvky budou udržovatelné" +
                     Environment.NewLine + Environment.NewLine +
                     "b) BEZÚDRŽBOVÁ" +
                     Environment.NewLine +
@@ -481,11 +479,11 @@ namespace Zahrada
             {
                 PruvodceLabel1.Text = "D) Návrh funkce zahrady";
                 PruvodceTextBox.Text =
-                    "a) OKRASNÁ" +
+                    "a) OKRASNÁ - důraz na estetiku" +
                     Environment.NewLine + Environment.NewLine +
-                    "b) ZELENINOVÁ" +
+                    "b) ZELENINOVÁ - důraz na užitkovost" +
                     Environment.NewLine + Environment.NewLine +
-                    "c) RELAXAČNÍ" +
+                    "c) RELAXAČNÍ - důraz na doplňkové prvky" +
                     Environment.NewLine + Environment.NewLine +
                     "d) KOMBINACE v různém poměru";
 
@@ -497,7 +495,7 @@ namespace Zahrada
                 PruvodceTextBox.Text =
                     "a) Orientace pozemku ke světovým stranám" +
                     Environment.NewLine + Environment.NewLine +
-                    "b) Pozemek svažitý a nutné terénní zlomy" +
+                    "b) Pozemek svažitý, jsou nutné terénní zlomy" +
                     Environment.NewLine + Environment.NewLine +
                     "c) Odtékání srážkových a podzemních vod" +
                     Environment.NewLine + Environment.NewLine +
