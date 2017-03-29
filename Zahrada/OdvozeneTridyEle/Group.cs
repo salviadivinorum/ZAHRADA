@@ -470,6 +470,7 @@ namespace Zahrada.OdvozeneTridyEle
                         e.Šířka_pera = value;
                     }
             }
+
         }
 
         //[Category("Vzhled"), Description("Zobrazit hraniční čáru elementu")]
