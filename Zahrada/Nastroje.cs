@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Zahrada.PomocneTridy;
-using Zahrada.OdvozenyPropertyGrid;
 
 // poznamka 2
 
@@ -144,7 +137,7 @@ namespace Zahrada
                 mujFilteredPropertyGrid.SelectedObject = sender;
                 try
                 {   // na platno  si potlacuju nektere vlastnosti ....
-                    mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("1,  Plátno - popis,  Seznam elementů"));
+                    mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("Element,  Plán - popis"));
                     //mujFilteredPropertyGrid.HiddenAttributes = ParseAttributes(ParseText("Chování, Rozložení, Vzhled, Fokus, Graphics, Usnadnění, Data, Debug "));
                     mujFilteredPropertyGrid.Refresh();
                     mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("")); // pozor - navracebi zpet musi byt
@@ -165,7 +158,7 @@ namespace Zahrada
                 try
                 {
                     // vyber urcitych vlastnosti elementu - pro zobrazeni v PG:
-                    mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("1,  Rozměry,  Vzhled"));
+                    mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("Element,  Vzhled"));
                     mujFilteredPropertyGrid.Refresh();
                     mujFilteredPropertyGrid.BrowsableAttributes = ParseAttributes(ParseText("")); // pozor - navracebi zpet musi byt
 
@@ -401,8 +394,8 @@ namespace Zahrada
         // stisk ESC behem kresleni ....
         private void tabControlProNastroje_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {               
+            if (e.KeyCode == Keys.Escape & tabControlProNastroje.SelectedIndex == 0)
+            {            
                 DeselectAllButtons();
                 foreach (Ele el in mojeplatno.shapes.List)
                 {
@@ -410,18 +403,16 @@ namespace Zahrada
                 }
                 mojeplatno.Redraw(true);
                 mojeplatno.ChangeStatus("selrect");
-                mojeplatno.ChangeOption("select");               
+                mojeplatno.ChangeOption("select");
+                mojeplatno.Redraw(true);
 
             }
-            /*
-            if (e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Escape & tabControlProNastroje.SelectedIndex == 1)
             {
-                mojeplatno.RmSelected();
-               
-                
+                mojeplatno.Focus();
             }
-            */
-            mojeplatno.Redraw(true);
+            
+
         }
 
         // na obsluhu Pruvodce noveho
@@ -504,7 +495,7 @@ namespace Zahrada
             {
                 PruvodceLabel1.Text = "E) Zohlednit důležité podmínky";
                 PruvodceTextBox.Text =
-                    "a) orientace pozemku ke světovým stranám" +
+                    "a) Orientace pozemku ke světovým stranám" +
                     Environment.NewLine + Environment.NewLine +
                     "b) Pozemek svažitý a nutné terénní zlomy" +
                     Environment.NewLine + Environment.NewLine +
@@ -535,6 +526,25 @@ namespace Zahrada
 
         private void label35_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void tabControlProNastroje_MouseUp(object sender, MouseEventArgs e)
+        {
+            //mojeplatno.MouseUp(null,null)
+           // Ele odesilatel = (Ele)(mojeplatno.shapes.List[0]);
+
+            // mojeplatno.Platno_MouseDown(odesilatel, e);
+            //mojeplatno.Focus();
+            //mojeplatno.Platno_MouseDown(odesilatel, e);
+            //mojeplatno.Platno_MouseUp(odesilatel, e);
+            //mojeplatno.Redraw(true);
+
+            //PropertyEventArgs e1 = new PropertyEventArgs(mojeplatno.shapes.GetSelectedArray(),mojeplatno.shapes.RedoEnabled(), mojeplatno.shapes.UndoEnabled());
+            //mojeplatno.ObjectSelected(this, e1);// raise event
+
+            //mojeplatno.shapes.GetSelectedList()
+            mojeplatno.PushSelectionToShowInCustomGrid();
 
         }
     }

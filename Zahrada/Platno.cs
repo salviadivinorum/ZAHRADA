@@ -1,30 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows;
-using System.Linq;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using System.IO; 						//streamer io  -- pokus Undo Redo prace
-using System.Runtime.Serialization;     // io
-using System.Runtime.Serialization.Formatters.Binary; // io
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Drawing.Text;
-using System.Drawing.Imaging;
+using System.IO; 						//streamer io  -- pokus Undo Redo prace
+using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary; // io
+using System.Windows.Forms;
+using System.Windows.Input;
 using Zahrada.OdvozeneTridyEle;
 using Zahrada.PomocneTridy;
-using Zahrada.UndoRedoBufferTridy;
-using System.Windows.Input;
 //using System.Windows.Controls;
 
 
 
 
-namespace Zahrada{
+namespace Zahrada
+{
 
     [Serializable]
     public partial class Platno : UserControl
@@ -137,6 +133,8 @@ namespace Zahrada{
         private int plusY;
         private int pocX;
         private int pocY;
+        private int delkaElementu;
+        private int celkovaDelkaPenElementu;
 
 
 
@@ -297,21 +295,21 @@ namespace Zahrada{
         #region Vlastnosti pro Graphics, kterym navic nastavuji Category a Description v mem Property Gridu
 
         // Nastavuji si viditelnost promenne showDebug pro pomocne vypisky pri kresleni
-        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Šířka zahrady (cm)")]
-        public int Ax
+        [CategoryAttribute("Plán - popis"), DescriptionAttribute("Šířka plánu zahrady (cm)")]
+        public int Šířka
         {
             get { return _Ax; }
             set { _Ax = value; }
         }
 
-        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Vška zahrady (cm)")]
-        public int Ay
+        [CategoryAttribute("Plán - popis"), DescriptionAttribute("Vška plánu zahrady (cm)")]
+        public int Výška
         {
             get { return _Ay; }
             set { _Ay = value; }
         }
 
-        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Zobraz rámeček")]
+        [CategoryAttribute("Plán - popis"), DescriptionAttribute("Zobrazit rámeček plánu")]
         public bool Rámeček
         {
             get
@@ -397,17 +395,32 @@ namespace Zahrada{
 
 
 
-        [Category("1"), Description("Plátno")]
-        public string ObjectType
+        [Category("Element"), Description("Plán")]
+        public string Typ
         {
             get
             {
-                return "Plátno";
+                return "Plán";
             }
         }
 
-        [Category("Plátno - popis"), Description("Velikost mřížky")]
-        public int gridSize
+        [CategoryAttribute("Plán - popis"), DescriptionAttribute("Nastavit barvu pozadí plánu")]
+        public Color Pozadí
+        {
+            get
+            {
+                return this.BackColor;
+            }
+            set
+            {
+                this.BackColor = value;
+                this.Redraw(true);
+            }
+        }
+
+
+        [Category("Plán - popis"), Description("Velikost mřížky plánu")]
+        public int Mřížka
         {
             get
             {
@@ -429,7 +442,7 @@ namespace Zahrada{
         }
 
 
-        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Plátno Zoom")]
+        // [CategoryAttribute("Plán - popis"), DescriptionAttribute("Plán Zoom")]
         public float Zoom
         {
             get
@@ -454,7 +467,7 @@ namespace Zahrada{
 
         
 
-        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Plátno OriginX")]
+        //[CategoryAttribute("Plátno - popis"), DescriptionAttribute("Plátno OriginX")]
         public int dx
         {
             get
@@ -467,7 +480,7 @@ namespace Zahrada{
             }
         }
 
-        [CategoryAttribute("Plátno - popis"), DescriptionAttribute("Plátno OriginY")]
+        //[CategoryAttribute("Plátno - popis"), DescriptionAttribute("Plátno OriginY")]
         public int dy
         {
             get
@@ -574,7 +587,7 @@ namespace Zahrada{
             creationPenColor = c;
             if (shapes.selEle != null)
             {
-                shapes.selEle.PenColor = c;
+                shapes.selEle.Barva_pera = c;
             }
         }
 
@@ -620,7 +633,7 @@ namespace Zahrada{
             creationPenWidth = f;
             if (shapes.selEle != null)
             {
-                shapes.selEle.PenWidth = f;
+                shapes.selEle.Šířka_pera = f;
             }
         }
 
@@ -745,14 +758,14 @@ namespace Zahrada{
            
 
             //int kolikjeGrid = gridSize;
-            if (Fit2grid & gridSize > 0)
+            if (Fit2grid & Mřížka > 0)
             {
                 //kolikjeGrid = gridSize;
                 //dx = gridSize * ((dx) / gridSize);
                // dy = gridSize * ((dy) / gridSize);
 
-                startX = gridSize * (startX / gridSize);
-                startY = gridSize * (startY / gridSize);
+                startX = Mřížka * (startX / Mřížka);
+                startY = Mřížka * (startY / Mřížka);
             }
             
             GraphicSetUp(g);
@@ -770,7 +783,7 @@ namespace Zahrada{
                     backG.DrawImage(BackgroundImage, 0, 0);
 
                 // Vykresleni Mrizky Grid 
-                if (gridSize > 0)
+                if (Mřížka > 0)
                 {
                     //backG.TransformPoints(CoordinateSpace.Page, CoordinateSpace.World);
                     //GraphicsUnit u = backG.PageUnit;
@@ -778,15 +791,15 @@ namespace Zahrada{
 
                     Pen myPen = new Pen(Color.LightGray, 0.1f);
                    
-                    int nX = (int)(Width / (gridSize * Zoom));
+                    int nX = (int)(Width / (Mřížka * Zoom));
                     for (int i = 0; i <= nX; i++)
                     {
-                        backG.DrawLine(myPen, i * gridSize * Zoom, 0, i * gridSize * Zoom, Height);
+                        backG.DrawLine(myPen, i * Mřížka * Zoom, 0, i * Mřížka * Zoom, Height);
                     }
-                    int nY = (int)(Height / (gridSize * Zoom));
+                    int nY = (int)(Height / (Mřížka * Zoom));
                     for (int i = 0; i <= nY; i++)
                     {
-                        backG.DrawLine(myPen, 0, i * gridSize * Zoom, Width, i * gridSize * Zoom);
+                        backG.DrawLine(myPen, 0, i * Mřížka * Zoom, Width, i * Mřížka * Zoom);
                     }
 
                     //backG.PageUnit = u;
@@ -894,11 +907,11 @@ namespace Zahrada{
                 // nechavam to na 1pixel = 1mm
                 // + 20 znaci primarni odstup pri vzkreslovani ramecku
                 // nakresli samotny ramecek
-                offScreenDC.DrawRectangle(myPen, (dx) * Zoom, (dy) * Zoom, (Ax) * Zoom, (Ay) * Zoom);
+                offScreenDC.DrawRectangle(myPen, (dx) * Zoom, (dy) * Zoom, (Šířka) * Zoom, (Výška) * Zoom);
 
                
                 // nakresli cisla nad ramecek
-                for (int i =0; i <= Ax; i=i+10)
+                for (int i =0; i <= Šířka; i=i+10)
                 {
                     offScreenDC.DrawLine(myPen, (dx+i)*Zoom, (dy+3)*Zoom, (dx+i)*Zoom, ((dy)*Zoom));
 
@@ -913,7 +926,7 @@ namespace Zahrada{
 
 
                 }   
-                for (int a = 0; a <= Ay; a = a + 10)
+                for (int a = 0; a <= Výška; a = a + 10)
                 {
                     offScreenDC.DrawLine(myPen, (dx) * Zoom, (dy + a) * Zoom, (dx + 3) * Zoom, ((dy+ a) * Zoom));
                     
@@ -1015,11 +1028,12 @@ namespace Zahrada{
 
         #region Metody pro obsluhu udalosti pro MYS
 
-        private void Platno_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        public void Platno_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
 
             pocX = (int)(e.X);
             pocY = (int)(e.Y);
+            celkovaDelkaPenElementu = 0;
             //Redraw(true);
 
 
@@ -1167,16 +1181,48 @@ namespace Zahrada{
         private void Platno_MouseMove(object sender,System.Windows.Forms.MouseEventArgs e)
         {
 
-
+            string hlaseni;
             if (e.Button == MouseButtons.Left)
             #region left mouse button pressed
             {
                 //ShowDebug = true;
+                
+                if (option == "POLY" & Keyboard.IsKeyDown(Key.A))
+                {
+                    pocX = e.X;
+                    pocY = e.Y;
+                }
+                
+
                 plusX = (int)((e.X - pocX) / Zoom);
                 plusY = (int)((e.Y - pocY) / Zoom);
+                delkaElementu = (int)(Math.Sqrt(plusX * plusX + plusY * plusY));
+
                 tip.Active = true;
+
+
+
+                if (option == "POLY" || option =="LINE" || option=="PEN")
+                {
+                    hlaseni = "delka=" + delkaElementu.ToString() + "cm" + Environment.NewLine +
+                    "dx=" + plusX.ToString() + " dy=" + plusY.ToString();
+                    if(option == "POLY")
+                        hlaseni += Environment.NewLine + "A=další bod";
+                    if(option == "PEN")
+                    {
+                        hlaseni ="delka=" + celkovaDelkaPenElementu.ToString()+"cm" + Environment.NewLine +
+                    "dx=" + plusX.ToString() + " dy=" + plusY.ToString();
+                    }
+                    tip.Show(hlaseni, this, e.X + 15, e.Y + 15);
+                }                    
+                else
+                    tip.Show("dx=" + plusX.ToString() + " dy=" + plusY.ToString(), this, e.X + 15, e.Y + 15);
                 
-                tip.Show("dx="+plusX.ToString()+" dy="+plusY.ToString(), this, e.X + 15, e.Y + 15);
+
+
+
+
+
                 //tip.Show(plusX.ToString())
 
                 if (mouseSx)
@@ -1188,10 +1234,10 @@ namespace Zahrada{
                    
 
 
-                    if (Fit2grid & gridSize > 0)
+                    if (Fit2grid & Mřížka > 0)
                     {                       
-                        tempX = gridSize * (int)((e.X / Zoom) / gridSize);
-                        tempY = gridSize * (int)((e.Y / Zoom) / gridSize);
+                        tempX = Mřížka * (int)((e.X / Zoom) / Mřížka);
+                        tempY = Mřížka * (int)((e.Y / Zoom) / Mřížka);
 
                         //plusX = gridSize * (int)(((e.X - pocX) / Zoom)/gridSize);
                         //plusY = gridSize * (int)(((e.Y - pocY) / Zoom)/gridSize);
@@ -1221,15 +1267,15 @@ namespace Zahrada{
 
 
 
-                    if (Fit2grid & gridSize > 0)
+                    if (Fit2grid & Mřížka > 0)
                     {
-                        tmpX = gridSize * (int)((e.X / Zoom - dx) / gridSize);
-                        tmpY = gridSize * (int)((e.Y / Zoom - dy) / gridSize);
-                        tmpstartX = gridSize * (startX / gridSize);
-                        tmpstartY = gridSize * (startY / gridSize);     
+                        tmpX = Mřížka * (int)((e.X / Zoom - dx) / Mřížka);
+                        tmpY = Mřížka * (int)((e.Y / Zoom - dy) / Mřížka);
+                        tmpstartX = Mřížka * (startX / Mřížka);
+                        tmpstartY = Mřížka * (startY / Mřížka);     
 
-                        shapes.Fit2Grid(gridSize);
-                        shapes.sRec.Fit2grid(gridSize);
+                        shapes.Fit2Grid(Mřížka);
+                        shapes.sRec.Fit2grid(Mřížka);
                         
                     }
 
@@ -1248,10 +1294,10 @@ namespace Zahrada{
                                 shapes.MovePoint(tmpstartX - tmpX, tmpstartY - tmpY);
                                
                             }
-                            if (Fit2grid & gridSize > 0)
+                            if (Fit2grid & Mřížka > 0)
                             {
-                                shapes.Fit2Grid(gridSize);
-                                shapes.sRec.Fit2grid(gridSize);
+                                shapes.Fit2Grid(Mřížka);
+                                shapes.sRec.Fit2grid(Mřížka);
                             }
                             break;
                            
@@ -1301,14 +1347,23 @@ namespace Zahrada{
                 {
                     if (this.option == "PEN")
                     {
-
                        
+
+
 
                         //this.s.addEllipse(tempX,tempY,tempX+1,tempY+1,Color.Blue,Color.Blue,1f,false);
                         visPenPointList.Add(new PointWrapper(tempX - startX, tempY - startY));
                         if (Math.Sqrt(Math.Pow(penPrecX - tempX, 2) + Math.Pow(penPrecY - tempY, 2)) > 15)
                         {
                             penPointList.Add(new PointWrapper(tempX - startX, tempY - startY));
+
+                            plusX = (int)((e.X - pocX) / Zoom);
+                            plusY = (int)((e.Y - pocY) / Zoom);
+                            delkaElementu = (int)(Math.Sqrt(plusX * plusX + plusY * plusY));
+                            pocX = e.X;
+                            pocY = e.Y;
+                            celkovaDelkaPenElementu += delkaElementu;
+
                             penPrecX = this.tempX;
                             penPrecY = this.tempY;
                         }
@@ -1320,13 +1375,7 @@ namespace Zahrada{
                     // posouva se mi spravne cervene voditko kudy kreslit polyline ... podle posledniho bodu mysi
                     if(option == "POLY")
                     {
-                        //tip.Show("My tooltip", this, Cursor.Position.X, Cursor.Position.Y);
-                        //tip.Show("My tooltip", this, (int)((e.X) / Zoom - dx), (int)((e.Y) / Zoom - dy));
-                        tip.Active = true;
-                        tip.Show("dx=" + plusX.ToString() + " dy=" + plusY.ToString()+Environment.NewLine+
-                            "A=další bod", this, e.X + 15, e.Y + 15);
-                       //tip.Show("A=další bod", this, e.X+15, e.Y+15);
-                        //tip.Show("Shift=další bod", this, Control.MousePosition.X, MousePosition.Y);
+                       
 
                         if (visPenPointList.Count % 2 == 0)
                         {
@@ -1364,10 +1413,10 @@ namespace Zahrada{
 
                    //this.dx = (this.startDX + this.truestartX - e.X);
                    // this.dy = (this.startDY + this.truestartY - e.Y);
-                if (Fit2grid & gridSize > 0)
+                if (Fit2grid & Mřížka > 0)
                     {                    
-                        dx = gridSize * ((dx) / gridSize); // toto moc nechapu, ale funguje to dobre - prichytava to A4 papir na mrizku
-                        dy = gridSize * ((dy) / gridSize);
+                        dx = Mřížka * ((dx) / Mřížka); // toto moc nechapu, ale funguje to dobre - prichytava to A4 papir na mrizku
+                        dy = Mřížka * ((dy) / Mřížka);
                     
                     }
                     Redraw(true);
@@ -1458,8 +1507,14 @@ namespace Zahrada{
         }
 
 
-
-
+        // pomocna metoda pri stisku Vlastnosti v m0m Custom PropertyGridu
+        public void PushSelectionToShowInCustomGrid()
+        {
+            
+            PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
+            ObjectSelected(this, e1);// raise event    
+            Redraw(true); //redraw all=true   
+        }
 
 
 
@@ -1497,6 +1552,9 @@ namespace Zahrada{
                 //bb.Add(new PointWrapper(tempX - startX, tempY - startY));
                 penPointList.Add(new PointWrapper(tempX - startX, tempY - startY));
                 visPenPointList.Add(new PointWrapper(tempX - startX, tempY - startY));
+
+                
+
                 Redraw(false);
 
             }
@@ -1536,10 +1594,10 @@ namespace Zahrada{
             {
                 int tmpX = (int)((e.X) / Zoom - dx);
                 int tmpY = (int)((e.Y) / Zoom - dy);
-                if (Fit2grid & this.gridSize > 0)
+                if (Fit2grid & this.Mřížka > 0)
                 {
-                    tmpX = gridSize * (int)((e.X / Zoom - dx) / gridSize);
-                    tmpY = gridSize * (int)((e.Y / Zoom - dy) / gridSize);
+                    tmpX = Mřížka * (int)((e.X / Zoom - dx) / Mřížka);
+                    tmpY = Mřížka * (int)((e.Y / Zoom - dy) / Mřížka);
                 }
 
                 switch (this.option)
@@ -1558,9 +1616,9 @@ namespace Zahrada{
                                 
 
                                 //((PointSet)this.shapes.selEle).RePos();
-                                if (Fit2grid & this.gridSize > 0)
+                                if (Fit2grid & this.Mřížka > 0)
                                 {
-                                    this.shapes.Fit2Grid(this.gridSize);
+                                    this.shapes.Fit2Grid(this.Mřížka);
                                     
                                     //this.shapes.sRec = new SelPoly(this.shapes.selEle);//create handling rect
                                 }
@@ -1820,10 +1878,10 @@ namespace Zahrada{
         {
             if (e.Button == MouseButtons.Middle)
             {
-                if (Fit2grid & gridSize > 0)
+                if (Fit2grid & Mřížka > 0)
                 {
-                    dx = gridSize * ((100) / gridSize);
-                    dy = gridSize * ((100) / gridSize);
+                    dx = Mřížka * ((100) / Mřížka);
+                    dy = Mřížka * ((100) / Mřížka);
 
                 }
                 else
@@ -1966,14 +2024,14 @@ namespace Zahrada{
             // toto je Zoom Out
             if (e.Delta < 0 && (Zoom > 0.01f && Zoom <= 21f) )
             {
-                if (Fit2grid & gridSize > 0)
+                if (Fit2grid & Mřížka > 0)
                 {
                     //int gr = gridSize;
                     dx = (int)(dx + (e.X / (Zoom)));
                     dy = (int)(dy + (e.Y / (Zoom)));
 
-                    dx = gridSize * ((dx) / gridSize);
-                    dy = gridSize * ((dy) / gridSize);
+                    dx = Mřížka * ((dx) / Mřížka);
+                    dy = Mřížka * ((dy) / Mřížka);
 
                     ZoomOut();
                     //gridSize = gr;
@@ -1998,14 +2056,14 @@ namespace Zahrada{
             {
 
 
-                if (Fit2grid & gridSize > 0)
+                if (Fit2grid & Mřížka > 0)
                 {
                     //int grid = gridSize;
                     dx = (int)(dx - (e.X / (Zoom *2)));
                     dy = (int)(dy - (e.Y / (Zoom *2)));
 
-                    dx = gridSize * ((dx) / gridSize); 
-                    dy = gridSize * ((dy) / gridSize);
+                    dx = Mřížka * ((dx) / Mřížka); 
+                    dy = Mřížka * ((dy) / Mřížka);
 
                     ZoomIn();
                     //gridSize = grid;

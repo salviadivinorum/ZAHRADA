@@ -268,14 +268,14 @@ namespace Zahrada
 
             if (vlozenePlatno.Zoom <= 15f)                
             {
-                if (vlozenePlatno.Fit2grid & vlozenePlatno.gridSize > 0)
+                if (vlozenePlatno.Fit2grid & vlozenePlatno.Mřížka > 0)
                 {
                     //int grid = gridSize;
                     vlozenePlatno.dx = (int)(vlozenePlatno.dx - (ix / (vlozenePlatno.Zoom * 2)));
                     vlozenePlatno.dy = (int)(vlozenePlatno.dy - (iy / (vlozenePlatno.Zoom * 2)));
 
-                    vlozenePlatno.dx = vlozenePlatno.gridSize * ((vlozenePlatno.dx) / vlozenePlatno.gridSize);
-                    vlozenePlatno.dy = vlozenePlatno.gridSize * ((vlozenePlatno.dy) / vlozenePlatno.gridSize);
+                    vlozenePlatno.dx = vlozenePlatno.Mřížka * ((vlozenePlatno.dx) / vlozenePlatno.Mřížka);
+                    vlozenePlatno.dy = vlozenePlatno.Mřížka * ((vlozenePlatno.dy) / vlozenePlatno.Mřížka);
 
                     vlozenePlatno.ZoomIn();
                     //gridSize = grid;
@@ -303,14 +303,14 @@ namespace Zahrada
 
             if (vlozenePlatno.Zoom > 0.01f & vlozenePlatno.Zoom <= 21f)
             {
-                if (vlozenePlatno.Fit2grid & vlozenePlatno.gridSize > 0)
+                if (vlozenePlatno.Fit2grid & vlozenePlatno.Mřížka > 0)
                 {
                     //int gr = gridSize;
                     vlozenePlatno.dx = (int)(vlozenePlatno.dx + (ix / (vlozenePlatno.Zoom)));
                     vlozenePlatno.dy = (int)(vlozenePlatno.dy + (iy / (vlozenePlatno.Zoom)));
 
-                    vlozenePlatno.dx = vlozenePlatno.gridSize * ((vlozenePlatno.dx) / vlozenePlatno.gridSize);
-                    vlozenePlatno.dy = vlozenePlatno.gridSize * ((vlozenePlatno.dy) / vlozenePlatno.gridSize);
+                    vlozenePlatno.dx = vlozenePlatno.Mřížka * ((vlozenePlatno.dx) / vlozenePlatno.Mřížka);
+                    vlozenePlatno.dy = vlozenePlatno.Mřížka * ((vlozenePlatno.dy) / vlozenePlatno.Mřížka);
 
                     vlozenePlatno.ZoomOut();
                     //gridSize = gr;
@@ -461,8 +461,8 @@ namespace Zahrada
         private void A3PortraitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             vlozenePlatno.Rámeček = true;
-            vlozenePlatno.Ax = 2970;
-            vlozenePlatno.Ay = 4200;
+            vlozenePlatno.Šířka = 2970;
+            vlozenePlatno.Výška = 4200;
             //Unmark();
             UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A3PortraitToolStripMenuItem.Checked = true;
@@ -474,8 +474,8 @@ namespace Zahrada
         private void A3LandcapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             vlozenePlatno.Rámeček = true;
-            vlozenePlatno.Ax = 4200;
-            vlozenePlatno.Ay = 2970;
+            vlozenePlatno.Šířka = 4200;
+            vlozenePlatno.Výška = 2970;
             //Unmark();
             UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A3LandcapeToolStripMenuItem.Checked = true;
@@ -487,8 +487,8 @@ namespace Zahrada
         private void A4PortraitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             vlozenePlatno.Rámeček = true;
-            vlozenePlatno.Ax = 2100;
-            vlozenePlatno.Ay = 2970;
+            vlozenePlatno.Šířka = 2100;
+            vlozenePlatno.Výška = 2970;
             // Unmark();
             UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A4PortraitToolStripMenuItem.Checked = true;
@@ -501,8 +501,8 @@ namespace Zahrada
         private void A4LandcapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             vlozenePlatno.Rámeček = true;
-            vlozenePlatno.Ax = 2970;
-            vlozenePlatno.Ay = 2100;
+            vlozenePlatno.Šířka = 2970;
+            vlozenePlatno.Výška = 2100;
             // Unmark();
             UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A4LandcapeToolStripMenuItem.Checked = true;
@@ -526,8 +526,8 @@ namespace Zahrada
                 if (dr == DialogResult.OK)
                 {
                     vlozenePlatno.Rámeček = true;
-                    vlozenePlatno.Ax = (int)(customSizeWindow.x * 100);
-                    vlozenePlatno.Ay = (int)(customSizeWindow.y * 100);
+                    vlozenePlatno.Šířka = (int)(customSizeWindow.x * 100);
+                    vlozenePlatno.Výška = (int)(customSizeWindow.y * 100);
                     CustomX = customSizeWindow.x;
                     CustomY = customSizeWindow.y;
                     CustomPlanSizeString = "Vlastní plán " + customSizeWindow.x.ToString() + "m x " + customSizeWindow.y.ToString() + "m";
@@ -685,7 +685,7 @@ namespace Zahrada
             UnmarkToolStripDropDownItems(GridToolStripDropDownButton);
             item.Checked = true;
             GridToolStripDropDownButton.Text = item.Text;
-            vlozenePlatno.gridSize = grs;
+            vlozenePlatno.Mřížka = grs;
             vlozenePlatno.Focus();
 
         }

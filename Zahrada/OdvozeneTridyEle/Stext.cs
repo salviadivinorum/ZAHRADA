@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Text;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-using System.ComponentModel;
-using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
@@ -32,7 +28,7 @@ namespace Zahrada.OdvozeneTridyEle
 			selected = true;
 			EndMoveRedim();
 
-			Rotation = 0;
+			Rotace = 0;
 			// CharFont = new Font(FontFamily.GenericMonospace, 8); ;
 			rot = true;
 		}
@@ -62,19 +58,31 @@ namespace Zahrada.OdvozeneTridyEle
 
 		#region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid
 
-		[Category("1"), Description("Jednoduchý text")]
+		[Category("Element"), Description("Jednoduchý text")]
 		public string ObjectType
 		{
-			get { return "Textové pole v obdélníku"; }
+			get { return "Text"; }
 		}
 
-		[Description("Úhel rotace ")]
-		public int Rotation
+		[Category("Vzhled"), Description("Rotace pod ůhlem")]
+		public int Rotace
 		{
 			get { return _rotation; }
 			set { _rotation = value; }
 		}
 
+		[Category("Vzhled"), Description("Vybrat cestu k nové Textuře")]
+		public override string Nová_Textura
+		{
+			get
+			{
+				return base.Nová_Textura;
+			}
+			set
+			{
+				base.Nová_Textura = value;
+			}
+		}
 
 
 		#endregion
@@ -98,18 +106,18 @@ namespace Zahrada.OdvozeneTridyEle
 		public override Ele Copy()
 		{
 			Stext newE = new Stext(X, Y, X1, Y1);
-			newE.PenColor = PenColor;
-			newE.PenWidth = PenWidth;
+			newE.Barva_pera = Barva_pera;
+			newE.Šířka_pera = Šířka_pera;
 			newE.FillColor = FillColor;
 			newE.ColorFilled = ColorFilled;
-            newE.TextureFilled = TextureFilled;
-            newE.ImageOfTexture = ImageOfTexture;
+			newE.TextureFilled = TextureFilled;
+			newE.ImageOfTexture = ImageOfTexture;
 
 
-            newE.iAmAline = iAmAline;
+			newE.iAmAline = iAmAline;
 			newE.Alpha = Alpha;
 			newE.DashStyleMy = DashStyleMy;
-			newE.ShowBorder = ShowBorder;
+			newE.Zobrazit_hranici = Zobrazit_hranici;
 
 			newE.OnGrpXRes = OnGrpXRes;
 			newE.OnGrpX1Res = OnGrpX1Res;
@@ -144,34 +152,34 @@ namespace Zahrada.OdvozeneTridyEle
 			Matrix mx = g.Transform; // vrati predchozi transformaci
 
 			PointF p = new PointF(zoom * (X + dx + (X1 - X) / 2), zoom * (Y + dy + (Y1 - Y) / 2));
-			if (Rotation > 0)
-				mx.RotateAt(Rotation, p, MatrixOrder.Append); //prida transformaci
+			if (Rotace > 0)
+				mx.RotateAt(Rotace, p, MatrixOrder.Append); //prida transformaci
 
 			g.Transform = mx;
 
-            // pozadi textove bloku
-            Brush myBrush = GetBrush(dx, dy, zoom);
+			// pozadi textove bloku
+			Brush myBrush = GetBrush(dx, dy, zoom);
 
-            // prace s texturou a osetreni pri Load / Save protoze C# neumi serializaci TextureBrush tridy
-            // musim zde zbytecne tvorit 2 tridy Texturebrush ....
-            TextureBrush texture = GetTextureBrush();
-            TextureBrush texture2;
+			// prace s texturou a osetreni pri Load / Save protoze C# neumi serializaci TextureBrush tridy
+			// musim zde zbytecne tvorit 2 tridy Texturebrush ....
+			TextureBrush texture = GetTextureBrush();
+			TextureBrush texture2;
 
-            if (texture == null)
-            {
-                ObrBitmap = ImageOfTexture;
-                texture2 = new TextureBrush(ObrBitmap);
-            }
-            else
-            {
-                ObrImage = texture.Image;
-                texture2 = new TextureBrush(ObrImage);
-                PrevodImageNaBitmap = new Bitmap(ObrImage);
-                ImageOfTexture = PrevodImageNaBitmap;
+			if (texture == null)
+			{
+				ObrBitmap = ImageOfTexture;
+				texture2 = new TextureBrush(ObrBitmap);
+			}
+			else
+			{
+				ObrImage = texture.Image;
+				texture2 = new TextureBrush(ObrImage);
+				PrevodImageNaBitmap = new Bitmap(ObrImage);
+				ImageOfTexture = PrevodImageNaBitmap;
 
-            }
+			}
 
-            float scalX = zoom;
+			float scalX = zoom;
 			float scalY = zoom;            
 			texture2.Transform = new Matrix(
 				scalX,
@@ -183,7 +191,7 @@ namespace Zahrada.OdvozeneTridyEle
 
 
 
-			Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
+			Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
 			myPen.DashStyle = DashStyleMy;
 			if (selected)
 			{
@@ -204,7 +212,7 @@ namespace Zahrada.OdvozeneTridyEle
 					g.FillRectangle(myBrush, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
 				//g.FillPath(myBrush, myPath);
 
-				if (ShowBorder || selected)
+				if (Zobrazit_hranici || selected)
 					g.DrawRectangle(myPen, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
 				//g.DrawPath(myPen, myPath);
 			}
@@ -239,7 +247,7 @@ namespace Zahrada.OdvozeneTridyEle
 			stringFormat.LineAlignment = StringAlignment.Near;
 
 			Font tmpf = new Font(CharFont.FontFamily, CharFont.Size * zoom, CharFont.Style);
-			g.DrawString(Text, tmpf, new SolidBrush(this.PenColor), new RectangleF((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom), stringFormat);
+			g.DrawString(Text, tmpf, new SolidBrush(this.Barva_pera), new RectangleF((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom), stringFormat);
 
 
 

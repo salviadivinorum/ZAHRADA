@@ -69,8 +69,8 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        [Category("1"), Description("Čára")]
-        public string ObjectType
+        [Category("Element"), Description("Čára")]
+        public string Typ
         {
             get
             {
@@ -78,6 +78,7 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
+        
 
         #endregion
 
@@ -92,8 +93,8 @@ namespace Zahrada.OdvozeneTridyEle
             Line newE = new Line(X, Y, X1, Y1);
 
             // Zapouzdreno
-            newE.PenColor = PenColor;
-            newE.PenWidth = PenWidth;
+            newE.Barva_pera = Barva_pera;
+            newE.Šířka_pera = Šířka_pera;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
@@ -153,13 +154,13 @@ namespace Zahrada.OdvozeneTridyEle
         /// </summary>
         public override void Draw(Graphics g, int dx, int dy, float zoom)
         {
-            Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
+            Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
             myPen.StartCap = StartCap;
             myPen.EndCap = EndCap;
 
 
-            myPen.Color = Transparency(PenColor, Alpha);
+            myPen.Color = Transparency(Barva_pera, Alpha);
 
             if (selected)
             {

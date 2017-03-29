@@ -58,51 +58,7 @@
             this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
             this.TabPageRozsireneVlastnosti = new System.Windows.Forms.TabPage();
             this.mujPropertyGrid = new System.Windows.Forms.PropertyGrid();
-            this.TabPagePruvodce = new System.Windows.Forms.TabPage();
-            this.TableLayoutPanelPruvodce = new System.Windows.Forms.TableLayoutPanel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.PanelPredzahradka = new System.Windows.Forms.Panel();
-            this.radioButton23 = new System.Windows.Forms.RadioButton();
-            this.radioButton24 = new System.Windows.Forms.RadioButton();
-            this.radioButton26 = new System.Windows.Forms.RadioButton();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkBox15 = new System.Windows.Forms.CheckBox();
-            this.checkBox18 = new System.Windows.Forms.CheckBox();
-            this.PanelFunkceZahrady = new System.Windows.Forms.Panel();
-            this.radioButton19 = new System.Windows.Forms.RadioButton();
-            this.radioButton20 = new System.Windows.Forms.RadioButton();
-            this.radioButton21 = new System.Windows.Forms.RadioButton();
-            this.radioButton22 = new System.Windows.Forms.RadioButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.PanelNeformalniTypZahrady = new System.Windows.Forms.Panel();
-            this.radioButton17 = new System.Windows.Forms.RadioButton();
-            this.radioButton18 = new System.Windows.Forms.RadioButton();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.PanelFormalniTypZahrady = new System.Windows.Forms.Panel();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
-            this.radioButton16 = new System.Windows.Forms.RadioButton();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.checkBox22 = new System.Windows.Forms.CheckBox();
-            this.checkBox21 = new System.Windows.Forms.CheckBox();
-            this.checkBox20 = new System.Windows.Forms.CheckBox();
-            this.checkBox23 = new System.Windows.Forms.CheckBox();
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.splitter3 = new System.Windows.Forms.Splitter();
-            this.splitter4 = new System.Windows.Forms.Splitter();
-            this.splitter5 = new System.Windows.Forms.Splitter();
-            this.splitter6 = new System.Windows.Forms.Splitter();
-            this.label10 = new System.Windows.Forms.Label();
-            this.TabPagSeznamPrani = new System.Windows.Forms.TabPage();
+            this.TabPageSeznamPrani = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelSeznamPrani = new System.Windows.Forms.TableLayoutPanel();
             this.panel24 = new System.Windows.Forms.Panel();
             this.radioButton82 = new System.Windows.Forms.RadioButton();
@@ -226,7 +182,7 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPagePruvodceNavrhem = new System.Windows.Forms.TabPage();
             this.imageListProTabControl = new System.Windows.Forms.ImageList(this.components);
             this.ToolTipProTalcitka = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -256,13 +212,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.TabPageStrucneVlastnosti.SuspendLayout();
             this.TabPageRozsireneVlastnosti.SuspendLayout();
-            this.TabPagePruvodce.SuspendLayout();
-            this.TableLayoutPanelPruvodce.SuspendLayout();
-            this.PanelPredzahradka.SuspendLayout();
-            this.PanelFunkceZahrady.SuspendLayout();
-            this.PanelNeformalniTypZahrady.SuspendLayout();
-            this.PanelFormalniTypZahrady.SuspendLayout();
-            this.TabPagSeznamPrani.SuspendLayout();
+            this.TabPageSeznamPrani.SuspendLayout();
             this.TableLayoutPanelSeznamPrani.SuspendLayout();
             this.panel24.SuspendLayout();
             this.panel23.SuspendLayout();
@@ -287,7 +237,7 @@
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel19.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPagePruvodceNavrhem.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -298,9 +248,8 @@
             this.tabControlProNastroje.Controls.Add(this.TabPageFunkce);
             this.tabControlProNastroje.Controls.Add(this.TabPageStrucneVlastnosti);
             this.tabControlProNastroje.Controls.Add(this.TabPageRozsireneVlastnosti);
-            this.tabControlProNastroje.Controls.Add(this.TabPagePruvodce);
-            this.tabControlProNastroje.Controls.Add(this.TabPagSeznamPrani);
-            this.tabControlProNastroje.Controls.Add(this.tabPage1);
+            this.tabControlProNastroje.Controls.Add(this.tabPagePruvodceNavrhem);
+            this.tabControlProNastroje.Controls.Add(this.TabPageSeznamPrani);
             this.tabControlProNastroje.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlProNastroje.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabControlProNastroje.ImageList = this.imageListProTabControl;
@@ -314,6 +263,7 @@
             this.tabControlProNastroje.TabIndex = 0;
             this.tabControlProNastroje.Click += new System.EventHandler(this.tabControl_Click);
             this.tabControlProNastroje.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControlProNastroje_KeyDown);
+            this.tabControlProNastroje.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControlProNastroje_MouseUp);
             // 
             // TabPageFunkce
             // 
@@ -755,593 +705,17 @@
             this.mujPropertyGrid.TabIndex = 0;
             this.mujPropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.mujPropertyGrid_PropertyValueChanged);
             // 
-            // TabPagePruvodce
-            // 
-            this.TabPagePruvodce.AutoScroll = true;
-            this.TabPagePruvodce.Controls.Add(this.TableLayoutPanelPruvodce);
-            this.TabPagePruvodce.ImageIndex = 2;
-            this.TabPagePruvodce.Location = new System.Drawing.Point(4, 4);
-            this.TabPagePruvodce.Name = "TabPagePruvodce";
-            this.TabPagePruvodce.Size = new System.Drawing.Size(301, 1142);
-            this.TabPagePruvodce.TabIndex = 4;
-            this.TabPagePruvodce.Text = "Průvodce návrhem";
-            this.TabPagePruvodce.ToolTipText = "Průvodce návrhem zahrady";
-            this.TabPagePruvodce.UseVisualStyleBackColor = true;
-            // 
-            // TableLayoutPanelPruvodce
-            // 
-            this.TableLayoutPanelPruvodce.ColumnCount = 1;
-            this.TableLayoutPanelPruvodce.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelPruvodce.Controls.Add(this.label11, 0, 34);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.PanelPredzahradka, 0, 41);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox13, 0, 5);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox12, 0, 4);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox11, 0, 3);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.label5, 0, 0);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox10, 0, 2);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.label6, 0, 1);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox14, 0, 6);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.label7, 0, 8);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox15, 0, 9);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox18, 0, 10);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.PanelFunkceZahrady, 0, 28);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.label9, 0, 27);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.PanelNeformalniTypZahrady, 0, 22);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox17, 0, 21);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.PanelFormalniTypZahrady, 0, 15);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox16, 0, 14);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.label8, 0, 13);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox19, 0, 11);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox22, 0, 35);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox21, 0, 37);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox20, 0, 36);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.checkBox23, 0, 38);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.splitter2, 0, 7);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.splitter3, 0, 12);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.splitter4, 0, 26);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.splitter5, 0, 33);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.splitter6, 0, 39);
-            this.TableLayoutPanelPruvodce.Controls.Add(this.label10, 0, 40);
-            this.TableLayoutPanelPruvodce.Location = new System.Drawing.Point(4, 4);
-            this.TableLayoutPanelPruvodce.Name = "TableLayoutPanelPruvodce";
-            this.TableLayoutPanelPruvodce.RowCount = 48;
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 7F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelPruvodce.Size = new System.Drawing.Size(294, 1093);
-            this.TableLayoutPanelPruvodce.TabIndex = 0;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label11.Location = new System.Drawing.Point(0, 773);
-            this.label11.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(259, 17);
-            this.label11.TabIndex = 67;
-            this.label11.Text = "E) Při návrhu je potřeba zohlednit:";
-            // 
-            // PanelPredzahradka
-            // 
-            this.PanelPredzahradka.Controls.Add(this.radioButton23);
-            this.PanelPredzahradka.Controls.Add(this.radioButton24);
-            this.PanelPredzahradka.Controls.Add(this.radioButton26);
-            this.PanelPredzahradka.Location = new System.Drawing.Point(3, 933);
-            this.PanelPredzahradka.Name = "PanelPredzahradka";
-            this.TableLayoutPanelPruvodce.SetRowSpan(this.PanelPredzahradka, 7);
-            this.PanelPredzahradka.Size = new System.Drawing.Size(288, 141);
-            this.PanelPredzahradka.TabIndex = 64;
-            // 
-            // radioButton23
-            // 
-            this.radioButton23.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton23.AutoSize = true;
-            this.radioButton23.Location = new System.Drawing.Point(0, 91);
-            this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(253, 38);
-            this.radioButton23.TabIndex = 3;
-            this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "Funkce převážně ke stínění domu a\r\nodhlučnění přilehlých staveb\r\n";
-            this.radioButton23.UseVisualStyleBackColor = true;
-            // 
-            // radioButton24
-            // 
-            this.radioButton24.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton24.AutoSize = true;
-            this.radioButton24.Location = new System.Drawing.Point(0, 47);
-            this.radioButton24.Name = "radioButton24";
-            this.radioButton24.Size = new System.Drawing.Size(245, 38);
-            this.radioButton24.TabIndex = 2;
-            this.radioButton24.TabStop = true;
-            this.radioButton24.Text = "Vyšší nároky na údržbu, květinové\r\nzáhony, nižší keře a stromy";
-            this.radioButton24.UseVisualStyleBackColor = true;
-            // 
-            // radioButton26
-            // 
-            this.radioButton26.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton26.AutoSize = true;
-            this.radioButton26.Location = new System.Drawing.Point(0, 3);
-            this.radioButton26.Name = "radioButton26";
-            this.radioButton26.Size = new System.Drawing.Size(245, 38);
-            this.radioButton26.TabIndex = 0;
-            this.radioButton26.TabStop = true;
-            this.radioButton26.Text = "Minimální údržba, např. jen trávník\r\nnebo zpevněné plochy\r\n";
-            this.radioButton26.UseVisualStyleBackColor = true;
-            // 
-            // checkBox13
-            // 
-            this.checkBox13.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(3, 128);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(220, 19);
-            this.checkBox13.TabIndex = 48;
-            this.checkBox13.Text = "Zpevněné plochy na pozemku";
-            this.checkBox13.UseVisualStyleBackColor = true;
-            // 
-            // checkBox12
-            // 
-            this.checkBox12.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(3, 103);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(287, 19);
-            this.checkBox12.TabIndex = 47;
-            this.checkBox12.Text = "Stavby na pozemku nebo na jeho hranici";
-            this.checkBox12.UseVisualStyleBackColor = true;
-            // 
-            // checkBox11
-            // 
-            this.checkBox11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(3, 78);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(147, 19);
-            this.checkBox11.TabIndex = 46;
-            this.checkBox11.Text = "Oplocení pozemku";
-            this.checkBox11.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.ForeColor = System.Drawing.Color.Green;
-            this.label5.Location = new System.Drawing.Point(3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(212, 18);
-            this.label5.TabIndex = 43;
-            this.label5.Text = "Průvodce návrhem zahrady";
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(3, 53);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(228, 19);
-            this.checkBox10.TabIndex = 45;
-            this.checkBox10.Text = "Tvar pozemku a světové strany";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(0, 29);
-            this.label6.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(236, 17);
-            this.label6.TabIndex = 44;
-            this.label6.Text = "A) Zakreslení stávajícího stavu:";
-            // 
-            // checkBox14
-            // 
-            this.checkBox14.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(3, 153);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(212, 19);
-            this.checkBox14.TabIndex = 49;
-            this.checkBox14.Text = "Stávající rostliny na pozemku";
-            this.checkBox14.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(0, 183);
-            this.label7.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(212, 17);
-            this.label7.TabIndex = 50;
-            this.label7.Text = "B) Zakreslení nového stavu:";
-            // 
-            // checkBox15
-            // 
-            this.checkBox15.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(3, 207);
-            this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(264, 19);
-            this.checkBox15.TabIndex = 51;
-            this.checkBox15.Text = "Nové oplocení, stavby a zpev. plochy";
-            this.checkBox15.UseVisualStyleBackColor = true;
-            // 
-            // checkBox18
-            // 
-            this.checkBox18.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(3, 232);
-            this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(230, 19);
-            this.checkBox18.TabIndex = 65;
-            this.checkBox18.Text = "Vybrat klíčové a vedlejší rostliny";
-            this.checkBox18.UseVisualStyleBackColor = true;
-            // 
-            // PanelFunkceZahrady
-            // 
-            this.PanelFunkceZahrady.Controls.Add(this.radioButton19);
-            this.PanelFunkceZahrady.Controls.Add(this.radioButton20);
-            this.PanelFunkceZahrady.Controls.Add(this.radioButton21);
-            this.PanelFunkceZahrady.Controls.Add(this.radioButton22);
-            this.PanelFunkceZahrady.Location = new System.Drawing.Point(3, 640);
-            this.PanelFunkceZahrady.Name = "PanelFunkceZahrady";
-            this.TableLayoutPanelPruvodce.SetRowSpan(this.PanelFunkceZahrady, 5);
-            this.PanelFunkceZahrady.Size = new System.Drawing.Size(288, 119);
-            this.PanelFunkceZahrady.TabIndex = 61;
-            // 
-            // radioButton19
-            // 
-            this.radioButton19.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton19.AutoSize = true;
-            this.radioButton19.Location = new System.Drawing.Point(0, 95);
-            this.radioButton19.Name = "radioButton19";
-            this.radioButton19.Size = new System.Drawing.Size(213, 21);
-            this.radioButton19.TabIndex = 3;
-            this.radioButton19.TabStop = true;
-            this.radioButton19.Text = "Kombinace v různém poměru";
-            this.radioButton19.UseVisualStyleBackColor = true;
-            // 
-            // radioButton20
-            // 
-            this.radioButton20.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton20.AutoSize = true;
-            this.radioButton20.Location = new System.Drawing.Point(0, 57);
-            this.radioButton20.Name = "radioButton20";
-            this.radioButton20.Size = new System.Drawing.Size(289, 38);
-            this.radioButton20.TabIndex = 2;
-            this.radioButton20.TabStop = true;
-            this.radioButton20.Text = "Relaxační, tj. venkovní zahradní a dětský \r\nnábytek, trávník a zpevněné plochy";
-            this.radioButton20.UseVisualStyleBackColor = true;
-            // 
-            // radioButton21
-            // 
-            this.radioButton21.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton21.AutoSize = true;
-            this.radioButton21.Location = new System.Drawing.Point(0, 30);
-            this.radioButton21.Name = "radioButton21";
-            this.radioButton21.Size = new System.Drawing.Size(99, 21);
-            this.radioButton21.TabIndex = 1;
-            this.radioButton21.TabStop = true;
-            this.radioButton21.Text = "Zeleninová";
-            this.radioButton21.UseVisualStyleBackColor = true;
-            // 
-            // radioButton22
-            // 
-            this.radioButton22.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton22.AutoSize = true;
-            this.radioButton22.Location = new System.Drawing.Point(0, 3);
-            this.radioButton22.Name = "radioButton22";
-            this.radioButton22.Size = new System.Drawing.Size(83, 21);
-            this.radioButton22.TabIndex = 0;
-            this.radioButton22.TabStop = true;
-            this.radioButton22.Text = "Okrasná";
-            this.radioButton22.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(0, 616);
-            this.label9.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(263, 17);
-            this.label9.TabIndex = 62;
-            this.label9.Text = "D) Funkce zahrady bude převážně:";
-            // 
-            // PanelNeformalniTypZahrady
-            // 
-            this.PanelNeformalniTypZahrady.Controls.Add(this.radioButton17);
-            this.PanelNeformalniTypZahrady.Controls.Add(this.radioButton18);
-            this.PanelNeformalniTypZahrady.Location = new System.Drawing.Point(3, 511);
-            this.PanelNeformalniTypZahrady.Name = "PanelNeformalniTypZahrady";
-            this.TableLayoutPanelPruvodce.SetRowSpan(this.PanelNeformalniTypZahrady, 4);
-            this.PanelNeformalniTypZahrady.Size = new System.Drawing.Size(288, 94);
-            this.PanelNeformalniTypZahrady.TabIndex = 59;
-            // 
-            // radioButton17
-            // 
-            this.radioButton17.AutoSize = true;
-            this.radioButton17.Location = new System.Drawing.Point(4, 48);
-            this.radioButton17.Name = "radioButton17";
-            this.radioButton17.Size = new System.Drawing.Size(239, 38);
-            this.radioButton17.TabIndex = 1;
-            this.radioButton17.TabStop = true;
-            this.radioButton17.Text = "Zahrada bude pokud možno, tak \r\nmaximálně bezúdržbovíá";
-            this.radioButton17.UseVisualStyleBackColor = true;
-            // 
-            // radioButton18
-            // 
-            this.radioButton18.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton18.AutoSize = true;
-            this.radioButton18.Location = new System.Drawing.Point(4, 4);
-            this.radioButton18.Name = "radioButton18";
-            this.radioButton18.Size = new System.Drawing.Size(256, 38);
-            this.radioButton18.TabIndex = 0;
-            this.radioButton18.TabStop = true;
-            this.radioButton18.Text = "Na zahradě převažují volné tvary, \r\nv mezích možností vše udržovatelné";
-            this.radioButton18.UseVisualStyleBackColor = true;
-            // 
-            // checkBox17
-            // 
-            this.checkBox17.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox17.Location = new System.Drawing.Point(3, 486);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(232, 19);
-            this.checkBox17.TabIndex = 57;
-            this.checkBox17.Text = "Chci neformální typ zahrady";
-            this.checkBox17.UseVisualStyleBackColor = true;
-            // 
-            // PanelFormalniTypZahrady
-            // 
-            this.PanelFormalniTypZahrady.Controls.Add(this.radioButton14);
-            this.PanelFormalniTypZahrady.Controls.Add(this.radioButton15);
-            this.PanelFormalniTypZahrady.Controls.Add(this.radioButton16);
-            this.PanelFormalniTypZahrady.Location = new System.Drawing.Point(3, 336);
-            this.PanelFormalniTypZahrady.Name = "PanelFormalniTypZahrady";
-            this.TableLayoutPanelPruvodce.SetRowSpan(this.PanelFormalniTypZahrady, 6);
-            this.PanelFormalniTypZahrady.Size = new System.Drawing.Size(288, 144);
-            this.PanelFormalniTypZahrady.TabIndex = 58;
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(3, 91);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(265, 38);
-            this.radioButton14.TabIndex = 14;
-            this.radioButton14.Text = "Kruhové tvary - na zahradě převažují\r\nobjekty kruh. nebo elipsovitého tvaru \r\n";
-            this.radioButton14.UseVisualStyleBackColor = true;
-            // 
-            // radioButton15
-            // 
-            this.radioButton15.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(3, 47);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(285, 38);
-            this.radioButton15.TabIndex = 13;
-            this.radioButton15.Text = "Diagonální tvary, objekty budou osazeny\r\npod úhlem k některé ze stran zahrady";
-            this.radioButton15.UseVisualStyleBackColor = true;
-            // 
-            // radioButton16
-            // 
-            this.radioButton16.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.Checked = true;
-            this.radioButton16.Location = new System.Drawing.Point(3, 3);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(282, 38);
-            this.radioButton16.TabIndex = 12;
-            this.radioButton16.TabStop = true;
-            this.radioButton16.Text = "Pravoúhlé tvary, objekty budou osazeny\r\nkolmo na převažující směr zahrady";
-            this.radioButton16.UseVisualStyleBackColor = true;
-            // 
-            // checkBox16
-            // 
-            this.checkBox16.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox16.Location = new System.Drawing.Point(3, 311);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(214, 19);
-            this.checkBox16.TabIndex = 53;
-            this.checkBox16.Text = "Chci formální typ zahrady";
-            this.checkBox16.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(0, 287);
-            this.label8.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(212, 17);
-            this.label8.TabIndex = 52;
-            this.label8.Text = "C) Návrh základního motivu:";
-            // 
-            // checkBox19
-            // 
-            this.checkBox19.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(3, 257);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(287, 19);
-            this.checkBox19.TabIndex = 66;
-            this.checkBox19.Text = "Rozmístit plánované rostliny na pozemku";
-            this.checkBox19.UseVisualStyleBackColor = true;
-            // 
-            // checkBox22
-            // 
-            this.checkBox22.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox22.AutoSize = true;
-            this.checkBox22.Location = new System.Drawing.Point(3, 801);
-            this.checkBox22.Name = "checkBox22";
-            this.checkBox22.Size = new System.Drawing.Size(261, 19);
-            this.checkBox22.TabIndex = 70;
-            this.checkBox22.Text = "Orientace pozemku ke svět. stranám";
-            this.checkBox22.UseVisualStyleBackColor = true;
-            // 
-            // checkBox21
-            // 
-            this.checkBox21.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox21.AutoSize = true;
-            this.checkBox21.Location = new System.Drawing.Point(3, 851);
-            this.checkBox21.Name = "checkBox21";
-            this.checkBox21.Size = new System.Drawing.Size(281, 19);
-            this.checkBox21.TabIndex = 69;
-            this.checkBox21.Text = "Odtékání srážkových a podzemních vod";
-            this.checkBox21.UseVisualStyleBackColor = true;
-            // 
-            // checkBox20
-            // 
-            this.checkBox20.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox20.AutoSize = true;
-            this.checkBox20.Location = new System.Drawing.Point(3, 826);
-            this.checkBox20.Name = "checkBox20";
-            this.checkBox20.Size = new System.Drawing.Size(275, 19);
-            this.checkBox20.TabIndex = 68;
-            this.checkBox20.Text = "Pozemek svažitý a nutné terénní zlomy\r\n";
-            this.checkBox20.UseVisualStyleBackColor = true;
-            // 
-            // checkBox23
-            // 
-            this.checkBox23.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox23.AutoSize = true;
-            this.checkBox23.Location = new System.Drawing.Point(3, 876);
-            this.checkBox23.Name = "checkBox23";
-            this.checkBox23.Size = new System.Drawing.Size(189, 19);
-            this.checkBox23.TabIndex = 71;
-            this.checkBox23.Text = "Pohyb zvířat na pozemku";
-            this.checkBox23.UseVisualStyleBackColor = true;
-            // 
-            // splitter2
-            // 
-            this.splitter2.BackColor = System.Drawing.Color.Black;
-            this.splitter2.Location = new System.Drawing.Point(3, 178);
-            this.splitter2.MinExtra = 2;
-            this.splitter2.MinSize = 2;
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(287, 1);
-            this.splitter2.TabIndex = 73;
-            this.splitter2.TabStop = false;
-            // 
-            // splitter3
-            // 
-            this.splitter3.BackColor = System.Drawing.Color.Black;
-            this.splitter3.Location = new System.Drawing.Point(3, 282);
-            this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(287, 1);
-            this.splitter3.TabIndex = 74;
-            this.splitter3.TabStop = false;
-            // 
-            // splitter4
-            // 
-            this.splitter4.BackColor = System.Drawing.Color.Black;
-            this.splitter4.Location = new System.Drawing.Point(3, 611);
-            this.splitter4.Name = "splitter4";
-            this.splitter4.Size = new System.Drawing.Size(285, 1);
-            this.splitter4.TabIndex = 75;
-            this.splitter4.TabStop = false;
-            // 
-            // splitter5
-            // 
-            this.splitter5.BackColor = System.Drawing.Color.Black;
-            this.splitter5.Location = new System.Drawing.Point(3, 765);
-            this.splitter5.Name = "splitter5";
-            this.splitter5.Size = new System.Drawing.Size(287, 1);
-            this.splitter5.TabIndex = 76;
-            this.splitter5.TabStop = false;
-            // 
-            // splitter6
-            // 
-            this.splitter6.BackColor = System.Drawing.Color.Black;
-            this.splitter6.Location = new System.Drawing.Point(3, 901);
-            this.splitter6.Name = "splitter6";
-            this.splitter6.Size = new System.Drawing.Size(285, 1);
-            this.splitter6.TabIndex = 77;
-            this.splitter6.TabStop = false;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(0, 909);
-            this.label10.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(276, 17);
-            this.label10.TabIndex = 63;
-            this.label10.Text = "F) Plánuji předzahrádku před domem";
-            // 
-            // TabPagSeznamPrani
-            // 
-            this.TabPagSeznamPrani.AutoScroll = true;
-            this.TabPagSeznamPrani.Controls.Add(this.TableLayoutPanelSeznamPrani);
-            this.TabPagSeznamPrani.ImageIndex = 7;
-            this.TabPagSeznamPrani.Location = new System.Drawing.Point(4, 4);
-            this.TabPagSeznamPrani.Name = "TabPagSeznamPrani";
-            this.TabPagSeznamPrani.Size = new System.Drawing.Size(301, 1142);
-            this.TabPagSeznamPrani.TabIndex = 3;
-            this.TabPagSeznamPrani.Text = "Seznam přání";
-            this.TabPagSeznamPrani.UseVisualStyleBackColor = true;
+            // TabPageSeznamPrani
+            // 
+            this.TabPageSeznamPrani.AutoScroll = true;
+            this.TabPageSeznamPrani.Controls.Add(this.TableLayoutPanelSeznamPrani);
+            this.TabPageSeznamPrani.ImageIndex = 7;
+            this.TabPageSeznamPrani.Location = new System.Drawing.Point(4, 4);
+            this.TabPageSeznamPrani.Name = "TabPageSeznamPrani";
+            this.TabPageSeznamPrani.Size = new System.Drawing.Size(301, 1142);
+            this.TabPageSeznamPrani.TabIndex = 3;
+            this.TabPageSeznamPrani.Text = "Seznam přání";
+            this.TabPageSeznamPrani.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelSeznamPrani
             // 
@@ -2806,16 +2180,17 @@
             this.label37.TabIndex = 85;
             this.label37.Text = "dětský nábytek";
             // 
-            // tabPage1
+            // tabPagePruvodceNavrhem
             // 
-            this.tabPage1.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(301, 1142);
-            this.tabPage1.TabIndex = 5;
-            this.tabPage1.Text = "Průvodce2";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPagePruvodceNavrhem.Controls.Add(this.tableLayoutPanel3);
+            this.tabPagePruvodceNavrhem.ImageKey = "pruvodce.ico";
+            this.tabPagePruvodceNavrhem.Location = new System.Drawing.Point(4, 4);
+            this.tabPagePruvodceNavrhem.Name = "tabPagePruvodceNavrhem";
+            this.tabPagePruvodceNavrhem.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePruvodceNavrhem.Size = new System.Drawing.Size(301, 1142);
+            this.tabPagePruvodceNavrhem.TabIndex = 5;
+            this.tabPagePruvodceNavrhem.Text = "Průvodce návrhem";
+            this.tabPagePruvodceNavrhem.UseVisualStyleBackColor = true;
             // 
             // imageListProTabControl
             // 
@@ -3045,18 +2420,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.TabPageStrucneVlastnosti.ResumeLayout(false);
             this.TabPageRozsireneVlastnosti.ResumeLayout(false);
-            this.TabPagePruvodce.ResumeLayout(false);
-            this.TableLayoutPanelPruvodce.ResumeLayout(false);
-            this.TableLayoutPanelPruvodce.PerformLayout();
-            this.PanelPredzahradka.ResumeLayout(false);
-            this.PanelPredzahradka.PerformLayout();
-            this.PanelFunkceZahrady.ResumeLayout(false);
-            this.PanelFunkceZahrady.PerformLayout();
-            this.PanelNeformalniTypZahrady.ResumeLayout(false);
-            this.PanelNeformalniTypZahrady.PerformLayout();
-            this.PanelFormalniTypZahrady.ResumeLayout(false);
-            this.PanelFormalniTypZahrady.PerformLayout();
-            this.TabPagSeznamPrani.ResumeLayout(false);
+            this.TabPageSeznamPrani.ResumeLayout(false);
             this.TableLayoutPanelSeznamPrani.ResumeLayout(false);
             this.TableLayoutPanelSeznamPrani.PerformLayout();
             this.panel24.ResumeLayout(false);
@@ -3105,7 +2469,7 @@
             this.panel8.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
+            this.tabPagePruvodceNavrhem.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -3132,52 +2496,8 @@
         private System.Windows.Forms.GroupBox zmenitGroupBox;
         public System.Windows.Forms.PropertyGrid mujPropertyGrid;
         public OdvozenyPropertyGrid.FilteredPropertyGrid mujFilteredPropertyGrid;
-        private System.Windows.Forms.TabPage TabPagSeznamPrani;
-        private System.Windows.Forms.TabPage TabPagePruvodce;
-        private System.Windows.Forms.TableLayoutPanel TableLayoutPanelPruvodce;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.CheckBox checkBox13;
-        private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox14;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBox15;
-        private System.Windows.Forms.CheckBox checkBox18;
-        private System.Windows.Forms.Panel PanelFunkceZahrady;
-        private System.Windows.Forms.RadioButton radioButton19;
-        private System.Windows.Forms.RadioButton radioButton20;
-        private System.Windows.Forms.RadioButton radioButton21;
-        private System.Windows.Forms.RadioButton radioButton22;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel PanelNeformalniTypZahrady;
-        private System.Windows.Forms.RadioButton radioButton17;
-        private System.Windows.Forms.RadioButton radioButton18;
-        private System.Windows.Forms.CheckBox checkBox17;
-        private System.Windows.Forms.Panel PanelFormalniTypZahrady;
-        private System.Windows.Forms.RadioButton radioButton14;
-        private System.Windows.Forms.RadioButton radioButton15;
-        private System.Windows.Forms.RadioButton radioButton16;
-        private System.Windows.Forms.CheckBox checkBox16;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkBox19;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel PanelPredzahradka;
-        private System.Windows.Forms.RadioButton radioButton23;
-        private System.Windows.Forms.RadioButton radioButton24;
-        private System.Windows.Forms.RadioButton radioButton26;
-        private System.Windows.Forms.CheckBox checkBox22;
-        private System.Windows.Forms.CheckBox checkBox21;
-        private System.Windows.Forms.CheckBox checkBox20;
-        private System.Windows.Forms.CheckBox checkBox23;
+        private System.Windows.Forms.TabPage TabPageSeznamPrani;
         private System.Windows.Forms.ImageList imageListProTabControl;
-        private System.Windows.Forms.Splitter splitter2;
-        private System.Windows.Forms.Splitter splitter3;
-        private System.Windows.Forms.Splitter splitter4;
-        private System.Windows.Forms.Splitter splitter5;
-        private System.Windows.Forms.Splitter splitter6;
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelSeznamPrani;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -3313,7 +2633,7 @@
         private System.Windows.Forms.Button copyBtn;
         private System.Windows.Forms.Button btnVybratVse;
         private System.Windows.Forms.Button btnEscape;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPagePruvodceNavrhem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ListBox PruvodceListBox;
         private System.Windows.Forms.TextBox PruvodceTextBox;

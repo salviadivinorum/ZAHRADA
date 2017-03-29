@@ -22,7 +22,7 @@ namespace Zahrada.OdvozeneTridyEle
             Y1 = y1;
             selected = true;
             EndMoveRedim();
-            Rotation = 0;
+            Rotace = 0;
             rot = true;
         }
 
@@ -30,20 +30,44 @@ namespace Zahrada.OdvozeneTridyEle
 
 
         #region Vlastnosti, kterym jsem navic pridal Category a Description v mem Property Gridu
-
-        [Description("Úhel rotace")]
-        public int Rotation
+        [Category("Vzhled"), Description("Úhel rotace")]     
+        public int Rotace
         {
             get { return _rotation; }
             set { _rotation = value; }
         }
 
-        [Category("1"), Description("Elipsa")]
-        public string ObjectType
+        [Category("Element"), Description("Elipsa")]
+        public string Typ
         {
             get { return "Elipsa"; }
         }
 
+        [Category("Vzhled"), Description("Vybrat cestu k nové Textuře")]        
+        public override string Nová_Textura
+        {
+            get
+            {
+                return base.Nová_Textura;
+            }
+            set
+            {
+                base.Nová_Textura = value;                
+            }
+        }
+
+        [Category("Vzhled"), Description("Zobrazit hraniční čáru elementu")]
+        public override bool Zobrazit_hranici
+        {
+            get
+            {
+                return base.Zobrazit_hranici;
+            }
+            set
+            {
+                base.Zobrazit_hranici = value;
+            }
+        }
         #endregion
 
 
@@ -58,8 +82,8 @@ namespace Zahrada.OdvozeneTridyEle
         public override Ele Copy()
         {
             Ellipse newE = new Ellipse(X, Y, X1, Y1);
-            newE.PenColor = PenColor;
-            newE.PenWidth = PenWidth;
+            newE.Barva_pera = Barva_pera;
+            newE.Šířka_pera = Šířka_pera;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
@@ -69,8 +93,8 @@ namespace Zahrada.OdvozeneTridyEle
             newE.iAmAline = iAmAline;
             newE.Alpha = Alpha;
             newE.DashStyleMy = DashStyleMy;
-            newE.ShowBorder = ShowBorder;
-            newE.Rotation = Rotation;
+            newE.Zobrazit_hranici = Zobrazit_hranici;
+            newE.Rotace = Rotace;
 
             newE.OnGrpXRes = OnGrpXRes;
             newE.OnGrpX1Res = OnGrpX1Res;
@@ -131,7 +155,7 @@ namespace Zahrada.OdvozeneTridyEle
             //texture2.ScaleTransform(scalX, scalY);
 
 
-            Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
+            Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
             if (selected)
             {
@@ -147,7 +171,7 @@ namespace Zahrada.OdvozeneTridyEle
             myPath.AddEllipse((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
 
             Matrix translateMatrix = new Matrix();
-            translateMatrix.RotateAt(Rotation, new PointF((X + dx + (X1 - X) / 2) * zoom, (Y + dy + (Y1 - Y) / 2) * zoom));
+            translateMatrix.RotateAt(Rotace, new PointF((X + dx + (X1 - X) / 2) * zoom, (Y + dy + (Y1 - Y) / 2) * zoom));
             
             myPath.Transform(translateMatrix);
 
@@ -169,7 +193,7 @@ namespace Zahrada.OdvozeneTridyEle
                 else
                     g.FillPath(myBrush, myPath);
 
-                if (ShowBorder)
+                if (Zobrazit_hranici)
                     g.DrawPath(myPen, myPath);
             }
             else

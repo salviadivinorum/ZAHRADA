@@ -30,31 +30,32 @@ namespace Zahrada.OdvozeneTridyEle
             selected = true;
             EndMoveRedim();
             rot = true;
-            ShowBorder = false;
+            Zobrazit_hranici = false;
         }
 
         #endregion
 
         #region Vlastnosti, kterym jsem navic nastavil Category a Description pro muj Property Grid
 
-        [Category("1"), Description("Image Box")]
-        public string ObjectType
+        [Category("Element"), Description("Zahradní prvek")]
+        public string Typ
         {
             get
             {
-                return "Image Box";
+                return "Zahradní prvek";
             }
         }        
 
-        [Category("Obrázek"), Description("Obrázek ze souboru")]
-        public Bitmap Img
+        [Category("Vzhled"), Description("Načíst prvek .... ")]
+        public Bitmap Prvek
         {
             get {return _img; }
             set {_img = value;}
         }
+        // průhlednost - vůbec nepožívat - nikde není potřeba a nemám metody navíc
 
-        [Category("Obrázek"), Description("Trasparentní")]
-        public bool Transparent
+        //[Category("Vzhled"), Description("Průhlednost zadaného prvku")]
+        public bool Průhlednost
         {
             get
             {
@@ -66,8 +67,8 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        [Description("Úhel rotace")]
-        public int Rotation
+        [Category("Vzhled"), Description("Rotace pod úhlem")]
+        public int Rotace
         {
             get
             {
@@ -86,8 +87,8 @@ namespace Zahrada.OdvozeneTridyEle
         public override Ele Copy()
         {
             ImageBox newE = new ImageBox(X, Y, X1, Y1);
-            newE.PenColor = PenColor;
-            newE.PenWidth = PenWidth;
+            newE.Barva_pera = Barva_pera;
+            newE.Šířka_pera = Šířka_pera;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
@@ -97,9 +98,9 @@ namespace Zahrada.OdvozeneTridyEle
             newE.iAmAline = iAmAline;
             newE.Alpha = Alpha;
             newE.DashStyleMy = DashStyleMy;
-            newE.ShowBorder = ShowBorder;
-            newE.Transparent = Transparent;
-            newE.Rotation = Rotation;
+            newE.Zobrazit_hranici = Zobrazit_hranici;
+            newE.Průhlednost = Průhlednost;
+            newE.Rotace = Rotace;
 
             newE.OnGrpXRes = OnGrpXRes;
             newE.OnGrpX1Res = OnGrpX1Res;
@@ -107,7 +108,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.OnGrpY1Res = OnGrpY1Res;
 
 
-            newE.Img = Img;
+            newE.Prvek = Prvek;
 
             newE.CopyGradProp(this);
 
@@ -117,7 +118,7 @@ namespace Zahrada.OdvozeneTridyEle
         public override void CopyFrom(Ele ele)
         {
             CopyStdProp(ele, this);
-            Img = ((ImageBox)ele).Img;
+            Prvek = ((ImageBox)ele).Prvek;
         }
 
         public override void Select()
@@ -137,7 +138,7 @@ namespace Zahrada.OdvozeneTridyEle
                 try
                 {
                     Bitmap loadTexture = new Bitmap(f_name);
-                    Img = loadTexture;
+                    Prvek = loadTexture;
                 }
                 catch { }
             }
@@ -166,7 +167,7 @@ namespace Zahrada.OdvozeneTridyEle
             //dx = Img.Width;
             //dy = Img.Height;
 
-            Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
+            Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
 
             if (selected)
@@ -176,25 +177,25 @@ namespace Zahrada.OdvozeneTridyEle
                 myPen.Width = myPen.Width + 1;
             }
 
-            if (Img != null)
+            if (Prvek != null)
             {
-                Color backColor = Img.GetPixel(0, 0); //Vezme barvu pozadi z prvniho pixelu obrazku (horni-levy roh)  
+                Color backColor = Prvek.GetPixel(0, 0); //Vezme barvu pozadi z prvniho pixelu obrazku (horni-levy roh)  
                 //Vytvori tmp Bitmapu a tim i Graphics object
                 //Rozmer tmp Bitmapy musi dovoli rotaci obrazku
-                int dim = (int)Math.Sqrt(Img.Width * Img.Width + Img.Height * Img.Height);
+                int dim = (int)Math.Sqrt(Prvek.Width * Prvek.Width + Prvek.Height * Prvek.Height);
 
                 Bitmap curBitmap = new Bitmap(dim, dim);
                 //Bitmap curBitmap = new Bitmap(Img.Width, Img.Height);
 
                 Graphics curG = Graphics.FromImage(curBitmap);
 
-                if (Rotation > 0)
+                if (Rotace > 0)
                 {
                     
                     // aktivuje rotaci na grafickem objektu
                     Matrix mX = new Matrix();
 
-                    mX.RotateAt(Rotation, new PointF(curBitmap.Width / 2, curBitmap.Height / 2));
+                    mX.RotateAt(Rotace, new PointF(curBitmap.Width / 2, curBitmap.Height / 2));
 
                     //mX.RotateAt(Rotation, new PointF(((X1-X)*zoom)/2, ((Y1-Y)*zoom/2)));
                     curG.Transform = mX;
@@ -223,10 +224,10 @@ namespace Zahrada.OdvozeneTridyEle
                 
                     // Kreslim img pres tmp Bitmapu 
 
-                    curG.DrawImage(Img, (dim - Img.Width) / 2, (dim - Img.Height) / 2, Img.Width, Img.Height);
+                    curG.DrawImage(Prvek, (dim - Prvek.Width) / 2, (dim - Prvek.Height) / 2, Prvek.Width, Prvek.Height);
                     //curG.DrawImage(Img, 0, 0, Img.Width, Img.Height);
 
-                    if (Transparent)
+                    if (Průhlednost)
                         curBitmap.MakeTransparent(backColor); // zde provadim pruhlednost
 
                     curG.Save();
@@ -241,7 +242,7 @@ namespace Zahrada.OdvozeneTridyEle
 
             }
 
-            if (ShowBorder)
+            if (Zobrazit_hranici)
                 g.DrawRectangle(myPen, (this.X + dx) * zoom, (Y + dy) * zoom, (X1 - this.X) * zoom, (Y1 - Y) * zoom);
                 //g.DrawRectangle(myPen, (this.X + dx) * zoom, (Y + dy) * zoom, (X1) * zoom, (Y1) * zoom);
 

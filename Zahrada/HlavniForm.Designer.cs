@@ -972,15 +972,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vlozenePlatno.AutoScroll = true;
-            this.vlozenePlatno.Ax = 2100;
-            this.vlozenePlatno.Ay = 2970;
+            this.vlozenePlatno.Šířka = 2100;
+            this.vlozenePlatno.Výška = 2970;
             this.vlozenePlatno.BackColor = System.Drawing.Color.Moccasin;
             this.vlozenePlatno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.vlozenePlatno.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.Default;
             this.vlozenePlatno.dx = -1604;
             this.vlozenePlatno.dy = 53;
             this.vlozenePlatno.Fit2grid = true;
-            this.vlozenePlatno.gridSize = 0;
+            this.vlozenePlatno.Mřížka = 0;
             this.vlozenePlatno.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
             this.vlozenePlatno.Location = new System.Drawing.Point(356, 62);
             this.vlozenePlatno.Margin = new System.Windows.Forms.Padding(0);

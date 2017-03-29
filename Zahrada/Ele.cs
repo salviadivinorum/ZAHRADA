@@ -140,12 +140,12 @@ namespace Zahrada
 			FillColor = Color.Black;
 
 			// zakladni barva pera - Cerna
-			PenColor = Color.Black;
+			Barva_pera = Color.Black;
 
 			// ostattni predvyplnene vlastnosti elementu
-			PenWidth = 1f;			
+			Šířka_pera = 1f;			
 			ColorFilled = false;
-			ShowBorder = true;
+			Zobrazit_hranici = true;
 			DashStyleMy = DashStyle.Solid;
 			Alpha = 255;    
 		}
@@ -394,7 +394,7 @@ namespace Zahrada
 		#endregion
 
 		#region Vlastnosti do Property Gridu typu "virtual", ktere navic budu pozdeji prepisovat ve zdeddenych tridach Ele
-		[Category("Vzhled"), Description("Nastaví styl hraniční čáry")]
+		//[Category("Vzhled"), Description("Nastaví styl hraniční čáry")]
 		public virtual DashStyle DashStyleMy
 		{
 			get
@@ -407,7 +407,7 @@ namespace Zahrada
 			}
 		}
 
-		[Category("Vzhled"), Description("Uzavřený Vypnout / Zapnout")]
+		//[Category("Vzhled"), Description("Uzavřený Vypnout / Zapnout")]
 		public virtual bool EleClosed
 		{
 			get
@@ -420,8 +420,8 @@ namespace Zahrada
 			}
 		}
 
-		[Category("Vzhled"), Description("Ukaž hraniční čáru když je objekt vyplněný nebo obsahuje Text")]
-		public virtual bool ShowBorder
+		//[Category("Vzhled"), Description("zobrazit hraniční čáru")]
+		public virtual bool Zobrazit_hranici
 		{
 			get
 			{
@@ -433,8 +433,8 @@ namespace Zahrada
 			}
 		}
 
-		[Category("Vzhled"), Description("Nastav barvu Pera")]
-		public virtual Color PenColor
+		[Category("Vzhled"), Description("Nastavit barvu Pera")]
+		public virtual Color Barva_pera
 		{
 			get
 			{
@@ -447,7 +447,7 @@ namespace Zahrada
 		}
 
 		// jakou barvoy vyplneny:
-		[Category("Vzhled"), Description("Nastav barvu výplně")]
+		//[Category("Vzhled"), Description("Nastav barvu výplně")]
 		public virtual Color FillColor
 		{
 			get
@@ -464,9 +464,9 @@ namespace Zahrada
 
 		
 		// nastavuju cestu k nove texture ... pouzivam zde svou pomocnou tridu FileLocationEditor
-		[Category("Vyber Texturu"), Description("Textura vyberem souboru ")]
+		//[Category("Vzhled"), Description("Vybrat cestu k nové Textuře")]
 		[Editor(typeof(FileLocationEditor), typeof(UITypeEditor))]
-		public string FilePath
+		public virtual string Nová_Textura
 		{
 			get
 			{
@@ -500,7 +500,7 @@ namespace Zahrada
 
 
 		// vyplneny texturou ANO/ NE
-		[Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
+		//[Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
 		public virtual bool TextureFilled
 		{
 			get
@@ -516,7 +516,7 @@ namespace Zahrada
 
 
 		// vyplneny barvou ANO/NE
-		[Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
+		//[Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
 		public virtual bool ColorFilled
 		{
 			get
@@ -530,8 +530,8 @@ namespace Zahrada
 		}
 
 
-		[Category("Vzhled"), Description("Nastav šířku pera")]
-		public virtual float PenWidth
+		[Category("Vzhled"), Description("Nastavit šířku Pera")]
+		public virtual float Šířka_pera
 		{
 			get
 			{
@@ -544,7 +544,7 @@ namespace Zahrada
 		}
 
 
-		[Category("Vzhled"), Description("Průhlednost")]
+		//[Category("Vzhled"), Description("Průhlednost")]
 		public virtual int Alpha
 		{
 			get
@@ -961,7 +961,7 @@ namespace Zahrada
 		{
 			if (zoom < 0.1f) // pozor tady si menim zobrazovanou tlousku vsech elementu pri Zoomovani 
 				zoom = 0.1f; // sandardni tloustka 1 pixel - vpohode
-			return PenWidth * zoom;
+			return Šířka_pera * zoom;
 		}
 
 
@@ -1123,9 +1123,9 @@ namespace Zahrada
 			to.Alpha = from.Alpha;			
 			to.FillColor = from.FillColor;
 			to.ColorFilled = from.ColorFilled;
-			to.PenColor = from.PenColor;
-			to.PenWidth = from.PenWidth;
-			to.ShowBorder = from.ShowBorder;	
+			to.Barva_pera = from.Barva_pera;
+			to.Šířka_pera = from.Šířka_pera;
+			to.Zobrazit_hranici = from.Zobrazit_hranici;	
 			
 		}
 

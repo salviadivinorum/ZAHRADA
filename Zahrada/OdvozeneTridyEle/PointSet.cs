@@ -31,7 +31,7 @@ namespace Zahrada.OdvozeneTridyEle
             SetupSize();
             //
             EndMoveRedim();
-            Rotation = 0;
+            Rotace = 0;
             rot = true; //muze rotovat?
         }
 
@@ -58,8 +58,8 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        [Category("Polygon"), Description("Zakřivení polygonu podél bodů")]
-        public bool Curved
+        [Category("Vzhled"), Description("Zakřivení polygonu podél bodů")]
+        public bool Zakřivení
         {
             get
             {
@@ -84,8 +84,8 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        [Category("1"), Description("Polygon")]
-        public string ObjectType
+        [Category("Element"), Description("Polygon")]
+        public string Typ
         {
             get
             {
@@ -93,8 +93,8 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        [Category("Rotace pod úhlem"),Description("Úhel rotování")]
-        public int Rotation
+        [Category("Vzhled"),Description("Rotace pod úhlem")]
+        public int Rotace
         {
             get
             {
@@ -106,7 +106,31 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
+        [Category("Vzhled"), Description("Vybrat cestu k nové Textuře")]
+        public override string Nová_Textura
+        {
+            get
+            {
+                return base.Nová_Textura;
+            }
+            set
+            {
+                base.Nová_Textura = value;
+            }
+        }
 
+        [Category("Vzhled"), Description("Zobrazit hraniční čáru elementu")]
+        public override bool Zobrazit_hranici
+        {
+            get
+            {
+                return base.Zobrazit_hranici;
+            }
+            set
+            {
+                base.Zobrazit_hranici = value;
+            }
+        }
         #endregion
 
         #region Verejne pristupne metody - Public - pro tridu PointSet
@@ -280,7 +304,7 @@ namespace Zahrada.OdvozeneTridyEle
         public override void CommitRotate(float x, float y)
         {
             //base.CommitRotate(x, y);
-            if(Rotation > 0)
+            if(Rotace > 0)
             {
                 // nastaveni stredu otaceni
                 float midX, midY = 0;
@@ -289,9 +313,9 @@ namespace Zahrada.OdvozeneTridyEle
 
                 foreach (PointWrapper p in points)
                 {
-                    p.RotateAt(midX, midY, Rotation);
+                    p.RotateAt(midX, midY, Rotace);
                 }
-                Rotation = 0;
+                Rotace = 0;
             }
         }
 
@@ -361,8 +385,8 @@ namespace Zahrada.OdvozeneTridyEle
             }
 
             PointSet newE = new PointSet(X, Y, X1, Y1, aa);
-            newE.PenColor = PenColor;
-            newE.PenWidth = PenWidth;
+            newE.Barva_pera = Barva_pera;
+            newE.Šířka_pera = Šířka_pera;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
@@ -372,8 +396,8 @@ namespace Zahrada.OdvozeneTridyEle
             newE.DashStyleMy = DashStyleMy;
             newE.Alpha = Alpha;
             newE.iAmAline = iAmAline;
-            newE.Rotation = Rotation;
-            newE.ShowBorder = ShowBorder;
+            newE.Rotace = Rotace;
+            newE.Zobrazit_hranici = Zobrazit_hranici;
 
             newE.OnGrpXRes = OnGrpXRes;
             newE.OnGrpX1Res = OnGrpX1Res;
@@ -383,7 +407,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.CopyGradProp(this);
 
             newE.Closed = Closed;
-            newE.Curved = Curved;
+            newE.Zakřivení = Zakřivení;
 
             return newE;
 
@@ -395,8 +419,8 @@ namespace Zahrada.OdvozeneTridyEle
         public override void CopyFrom(Ele ele)
         {
             CopyStdProp(ele, this);
-            Rotation = ((PointSet)ele).Rotation;
-            Curved = ((PointSet)ele).Curved;
+            Rotace = ((PointSet)ele).Rotace;
+            Zakřivení = ((PointSet)ele).Zakřivení;
             Closed = ((PointSet)ele).Closed;
         }
 
@@ -416,7 +440,7 @@ namespace Zahrada.OdvozeneTridyEle
             if (i < 2)
                 gp.AddLines(myArr);
             else
-                if (this.Curved)
+                if (this.Zakřivení)
                 gp.AddCurve(myArr);
             else
                 gp.AddPolygon(myArr);
@@ -456,7 +480,7 @@ namespace Zahrada.OdvozeneTridyEle
                 0.0f,
                 0.0f);
 
-            Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
+            Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
 
             if (selected)
@@ -476,7 +500,7 @@ namespace Zahrada.OdvozeneTridyEle
                 myArr[i++] = new PointF((p.X + X + dx) * zoom, (p.Y + Y + dy) * zoom);
             }
 
-            if (myArr.Length < 3 | !Curved)
+            if (myArr.Length < 3 | !Zakřivení)
             {
                 if (Closed & myArr.Length >= 3)
                     myPath.AddPolygon(myArr);
@@ -494,7 +518,7 @@ namespace Zahrada.OdvozeneTridyEle
 
             // pouzije vlstnost GDI+ ...trida  Matrix predstavuje geometricke transformace. Zde konkretne delam retaci kolem PointF bodu
             Matrix translateMatrix = new Matrix();
-            translateMatrix.RotateAt(Rotation, new PointF((X + dx + (X1 - X) / 2) * zoom, (Y + dy + (Y1 - Y) / 2) * zoom));
+            translateMatrix.RotateAt(Rotace, new PointF((X + dx + (X1 - X) / 2) * zoom, (Y + dy + (Y1 - Y) / 2) * zoom));
 
             // Na muj Graphics Path pouziji transformacni Matrix
             myPath.Transform(translateMatrix);
@@ -507,7 +531,7 @@ namespace Zahrada.OdvozeneTridyEle
                 else
                     g.FillPath(myBrush, myPath);
 
-                if (ShowBorder)
+                if (Zobrazit_hranici)
                     g.DrawPath(myPen, myPath);
             }
             else

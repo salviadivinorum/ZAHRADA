@@ -64,7 +64,7 @@ namespace Zahrada.OdvozeneTridyEle
             Y1 = maxY;
             selected = true;
             EndMoveRedim();
-            GetSetRotation = 0;
+            Rotace = 0;
             rot = true; 
             GetSetName = "Itm" + ngrp.ToString();
             ngrp++;
@@ -74,12 +74,12 @@ namespace Zahrada.OdvozeneTridyEle
 
         #region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid
 
-        [Category("1"), Description("Seskupeny objekt - Group")]
-        public string ObjectType
+        [Category("Element"), Description("Seskupení elementů")]
+        public string Typ
         {
             get
             {
-                return "Objekt typu Group";
+                return "Seskupení elementů";
             }
         }
 
@@ -296,9 +296,8 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-
-        [Description("Úhel rotace ")]
-        public int GetSetRotation
+        [Category("Vzhled"), Description("Úhel rotace")]        
+        public int Rotace
         {
             get
             {
@@ -310,7 +309,22 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        
+
+        [Category("Vzhled"), Description("Vybrat cestu k nové Textuře")]
+        public override string Nová_Textura
+        {
+            get
+            {
+                return base.Nová_Textura;
+            }
+            set
+            {
+                base.Nová_Textura = value;
+            }
+        }
+
+       
+
 
 
         #endregion
@@ -422,55 +436,56 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        public override Color PenColor
+        public override Color Barva_pera
         {
             get
             {
-                return base.PenColor;
+                return base.Barva_pera;
             }
 
             set
             {
-                base.PenColor = value;
+                base.Barva_pera = value;
                 if (objs != null)
                     foreach (Ele e in objs)
                     {
-                        e.PenColor = value;
+                        e.Barva_pera = value;
                     }
             }
         }
 
-        public override float PenWidth
+        public override float Šířka_pera
         {
             get
             {
-                return base.PenWidth;
+                return base.Šířka_pera;
             }
 
             set
             {
-                base.PenWidth = value;
+                base.Šířka_pera = value;
                 if (objs != null)
                     foreach (Ele e in objs)
                     {
-                        e.PenWidth = value;
+                        e.Šířka_pera = value;
                     }
             }
         }
 
-        public override bool ShowBorder
+        //[Category("Vzhled"), Description("Zobrazit hraniční čáru elementu")]
+        public override bool Zobrazit_hranici
         {
             get
             {
-                return base.ShowBorder;
+                return base.Zobrazit_hranici;
             }
             set
             {
-                base.ShowBorder = value;
+                base.Zobrazit_hranici = value;
                 if (objs != null)
                     foreach (Ele e in objs)
                     {
-                        e.ShowBorder = value;
+                        e.Zobrazit_hranici = value;
                     }
             }
         }
@@ -546,7 +561,7 @@ namespace Zahrada.OdvozeneTridyEle
 
             Group newE = new Group(l1);
             
-            newE.GetSetRotation = GetSetRotation;
+            newE.Rotace = Rotace;
             newE._grapPath = _grapPath;
             newE.gprZoomX = gprZoomX;
             newE.gprZoomY = gprZoomY;
@@ -562,8 +577,8 @@ namespace Zahrada.OdvozeneTridyEle
 
             if (newE._grapPath)
             {
-                newE.PenColor = PenColor;
-                newE.PenWidth = PenWidth;
+                newE.Barva_pera = Barva_pera;
+                newE.Šířka_pera = Šířka_pera;
                 newE.FillColor = FillColor;
                 newE.ColorFilled = ColorFilled;
                 newE.TextureFilled = TextureFilled;
@@ -574,8 +589,8 @@ namespace Zahrada.OdvozeneTridyEle
                 newE.DashStyleMy = DashStyleMy;
                 newE.Alpha = Alpha;
                 newE.iAmAline = iAmAline;
-                newE.GetSetRotation = GetSetRotation;
-                newE.ShowBorder = ShowBorder;
+                newE.Rotace = Rotace;
+                newE.Zobrazit_hranici = Zobrazit_hranici;
 
                 newE.UseGradientLineColor = UseGradientLineColor;
                 newE.GradientAngle = GradientAngle;
@@ -684,8 +699,8 @@ namespace Zahrada.OdvozeneTridyEle
             Matrix mx = g.Transform; // predchozi transformace
 
             PointF p = new PointF(zoom * (X + dx + (X1 - X) / 2), zoom * (Y + dy + (Y1 - Y) / 2));
-            if (GetSetRotation > 0)
-                mx.RotateAt(GetSetRotation, p, MatrixOrder.Append); //pridej transformaci
+            if (Rotace > 0)
+                mx.RotateAt(Rotace, p, MatrixOrder.Append); //pridej transformaci
 
             //X MIRROR  //Y MIRROR
             if (_xMirror || _yMirror)
@@ -711,7 +726,7 @@ namespace Zahrada.OdvozeneTridyEle
           
             {
                 Brush myBrush = GetBrush(dx, dy, zoom);   
-                Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
+                Pen myPen = new Pen(Barva_pera, ScaledPenWidth(zoom));
                 myPen.DashStyle = DashStyleMy;
 
                 if (selected)
@@ -840,7 +855,7 @@ namespace Zahrada.OdvozeneTridyEle
                 
 
 
-                Pen myPen = new Pen(this.PenColor, ScaledPenWidth(zoom));
+                Pen myPen = new Pen(this.Barva_pera, ScaledPenWidth(zoom));
                 myPen.DashStyle = this.DashStyleMy;
                 myPen.Color = Color.Red;
                 myPen.Color = this.Transparency(myPen.Color, 120);
