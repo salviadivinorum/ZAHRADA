@@ -54,6 +54,7 @@ namespace Zahrada
 
             vlozenyToolBox.NajdiUndoReodBtnsVmainForm();
             toolStrip1.BackColor = Color.FromArgb(17, Color.CadetBlue);
+            
 
             //this.vlozenePlatno.ParentForm = this;
             //OnButtonZoomPusClick += new EventHandler(KlikNaPlus); // priradim udalost na tlacitko + Zoom
@@ -387,105 +388,7 @@ namespace Zahrada
             Close();
         }
 
-          // osetreni klavesy SPACE jako ovladani mrize - zapnout/vypnout       
-             /* 
-        private void vlozenePlatno_KeyDown(object sender, KeyEventArgs e)
-        {
-           
-
-            if (e.KeyCode == Keys.Space)
-            {
-                if(mrizZapnuta == true)
-                {
-                    int kolik = gridToolStripComboBox.SelectedIndex;
-                    int gr = 0;
-                    switch (kolik)
-                    {
-                        #region index -> grid
-                        case 0:
-                            gr = 0;
-                            break;
-                        case 1:
-                            gr = 1;
-                            break;
-                        case 2:
-                            gr = 5;
-                            break;
-                        case 3:
-                            gr = 10;
-                            break;
-                        case 4:
-                            gr = 25;
-                            break;
-                        case 5:
-                            gr = 50;
-                            break;
-                        case 6:
-                            gr = 100;
-                            break;
-                        case 7:
-                            gr = 250;
-                            break;
-                        case 8:
-                            gr = 500;
-                            break;
-                        default:
-                            gr = 0;
-                            break; 
-                            #endregion
-                    }
-                    ulozGrid = gr;
-                    vlozenePlatno.gridSize = 0;
-                    gridToolStripComboBox.SelectedIndex = 0;
-                    mrizZapnuta = false;
-                }
-                else
-                {
-
-                    vlozenePlatno.gridSize = ulozGrid;
-                    mrizZapnuta = true;
-                    int index = 0;
-                    switch (ulozGrid)                        
-                    {
-                        #region grid -> index
-                        case 0:
-                            index = 0;
-                            break;
-                        case 1:
-                            index = 1;
-                            break;
-                        case 5:
-                            index = 2;
-                            break;
-                        case 10:
-                            index = 3;
-                            break;
-                        case 25:
-                            index = 4;
-                            break;
-                        case 50:
-                            index = 5;
-                            break;
-                        case 100:
-                            index = 6;
-                            break;
-                        case 250:
-                            index = 7;
-                            break;
-                        case 500:
-                            index = 8;
-                            break; 
-                            #endregion
-                    }
-                    gridToolStripComboBox.SelectedIndex = index;
-
-                }  
-
-            }
-
-        }
-
-        */
+          
         // osetreni undo/redo sipek
         #region Undo/Redo sipky
         private void undoToolStripButton_Click(object sender, EventArgs e)

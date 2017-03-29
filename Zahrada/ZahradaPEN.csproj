@@ -81,7 +81,6 @@
     <Compile Include="NahledTisku.Designer.cs">
       <DependentUpon>NahledTisku.cs</DependentUpon>
     </Compile>
-    <Compile Include="OdvozeneTridyEle\Arc.cs" />
     <Compile Include="OdvozeneTridyEle\Ellipse.cs" />
     <Compile Include="OdvozeneTridyEle\Group.cs" />
     <Compile Include="OdvozeneTridyEle\ImageBox.cs" />

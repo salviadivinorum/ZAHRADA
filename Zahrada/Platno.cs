@@ -499,7 +499,7 @@ namespace Zahrada{
         private void OnBasicObjectSelected(object sender, PropertyEventArgs e)
         { }
 
-        private void ChangeStatus(string s)
+        public void ChangeStatus(string s)
         {
             status = s;
         }
@@ -1135,6 +1135,7 @@ namespace Zahrada{
         }
 
 
+        #region CONTEXT MENU na PRAVEM TLACITKU - oblusha zde
         // Co delat kdyz dam na context menu - vymazat
         private void DeleteContextToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1148,7 +1149,7 @@ namespace Zahrada{
 
         // kopiruje po stisku context menu - copy selected
         private void CopyContextToolStripMenuItem_Click(object sender, EventArgs e)
-        {           
+        {
             CpSelected();
         }
 
@@ -1157,10 +1158,11 @@ namespace Zahrada{
             foreach (Ele el in shapes.List)
             {
                 el.selected = true;
-            }           
+            }
             Redraw(true);
         }
 
+        #endregion
 
         private void Platno_MouseMove(object sender,System.Windows.Forms.MouseEventArgs e)
         {
@@ -1466,9 +1468,18 @@ namespace Zahrada{
         // simuluje stisk Esc klavesy;
         public void ForceEsc()
         {
+            /*
+            foreach (Ele obj in shapes.List)
+            {
+                obj.selected = false;
+            }
+            */
             shapes.DeSelect();
             PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
             ObjectSelected(this, e1);// raise event
+            //option = "1";
+          
+           
 
             Redraw(true); //redraw all=true   
         }
@@ -1491,7 +1502,9 @@ namespace Zahrada{
             }
             if (e.KeyCode == Keys.Escape)
             {
+                //option = "";
                 ForceEsc();
+                
                 /*
                 shapes.DeSelect();
                 PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
@@ -1599,6 +1612,7 @@ namespace Zahrada{
                         break;
                     #endregion
                     #region Arc
+                        /*
                     case "ARC": //Arc
                         if (this.status == "drawrect")
                         {
@@ -1606,6 +1620,7 @@ namespace Zahrada{
                             ChangeOption("select");
                         }
                         break;
+                        */
                     #endregion
                     #region Poly & Pen & Graph
                     case "PEN":

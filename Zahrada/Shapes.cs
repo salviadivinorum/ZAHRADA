@@ -726,7 +726,8 @@ namespace Zahrada
 			selEle.Select();
 		}
 
-
+        // Arc uz neni
+        /*
 		/// <summary>
 		/// Do Listu prida Oblouk
 		/// </summary>
@@ -753,6 +754,7 @@ namespace Zahrada
 			selEle = r;
 			selEle.Select();
 		}
+        */
 			
 		/// <summary>
 		/// Do Listu prida Caru

@@ -40,10 +40,10 @@
             this.imageListProVytvoritZmenit = new System.Windows.Forms.ImageList(this.components);
             this.freeHandBtn = new System.Windows.Forms.Button();
             this.rectBtn = new System.Windows.Forms.Button();
-            this.circBtn = new System.Windows.Forms.Button();
             this.polygonBtn = new System.Windows.Forms.Button();
-            this.imageBtn = new System.Windows.Forms.Button();
+            this.circBtn = new System.Windows.Forms.Button();
             this.simpleTextBtn = new System.Windows.Forms.Button();
+            this.imageBtn = new System.Windows.Forms.Button();
             this.zmenitGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBtn = new System.Windows.Forms.Button();
@@ -52,12 +52,8 @@
             this.toBackBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.copyBtn = new System.Windows.Forms.Button();
-            this.mirrorXbtn = new System.Windows.Forms.Button();
-            this.mirrorYbtn = new System.Windows.Forms.Button();
-            this.btnZoomAll = new System.Windows.Forms.Button();
-            this.btnVybratVse = new System.Windows.Forms.Button();
             this.btnEscape = new System.Windows.Forms.Button();
-            this.splitter9 = new System.Windows.Forms.Splitter();
+            this.btnVybratVse = new System.Windows.Forms.Button();
             this.TabPageStrucneVlastnosti = new System.Windows.Forms.TabPage();
             this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
             this.TabPageRozsireneVlastnosti = new System.Windows.Forms.TabPage();
@@ -180,15 +176,10 @@
             this.radioButton32 = new System.Windows.Forms.RadioButton();
             this.radioButton33 = new System.Windows.Forms.RadioButton();
             this.radioButton34 = new System.Windows.Forms.RadioButton();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.radioButton29 = new System.Windows.Forms.RadioButton();
-            this.radioButton30 = new System.Windows.Forms.RadioButton();
-            this.radioButton31 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -225,7 +216,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.splitter7 = new System.Windows.Forms.Splitter();
             this.panel19 = new System.Windows.Forms.Panel();
             this.radioButton68 = new System.Windows.Forms.RadioButton();
             this.radioButton69 = new System.Windows.Forms.RadioButton();
@@ -235,11 +225,25 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.splitter8 = new System.Windows.Forms.Splitter();
             this.label37 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.imageListProTabControl = new System.Windows.Forms.ImageList(this.components);
             this.ToolTipProTalcitka = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.PruvodceListBox = new System.Windows.Forms.ListBox();
+            this.PruvodceTextBox = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.PruvodceLabel1 = new System.Windows.Forms.Label();
+            this.splitter8 = new System.Windows.Forms.Splitter();
+            this.label39 = new System.Windows.Forms.Label();
+            this.splitter7 = new System.Windows.Forms.Splitter();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.radioButton29 = new System.Windows.Forms.RadioButton();
+            this.radioButton30 = new System.Windows.Forms.RadioButton();
+            this.radioButton31 = new System.Windows.Forms.RadioButton();
             this.tabControlProNastroje.SuspendLayout();
             this.TabPageFunkce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -278,12 +282,14 @@
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel19.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProNastroje
@@ -307,6 +313,7 @@
             this.tabControlProNastroje.Size = new System.Drawing.Size(330, 1150);
             this.tabControlProNastroje.TabIndex = 0;
             this.tabControlProNastroje.Click += new System.EventHandler(this.tabControl_Click);
+            this.tabControlProNastroje.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControlProNastroje_KeyDown);
             // 
             // TabPageFunkce
             // 
@@ -365,10 +372,10 @@
             this.tableLayoutPanel1.Controls.Add(this.lineBtn, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.freeHandBtn, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.rectBtn, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.circBtn, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.polygonBtn, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.imageBtn, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.simpleTextBtn, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.circBtn, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.simpleTextBtn, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.imageBtn, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -395,7 +402,7 @@
             this.lineBtn.Size = new System.Drawing.Size(65, 65);
             this.lineBtn.TabIndex = 1;
             this.lineBtn.Text = "\r\n";
-            this.ToolTipProTalcitka.SetToolTip(this.lineBtn, "čára");
+            this.ToolTipProTalcitka.SetToolTip(this.lineBtn, "Čára");
             this.lineBtn.UseVisualStyleBackColor = false;
             this.lineBtn.Click += new System.EventHandler(this.lineBtn_Click);
             // 
@@ -454,7 +461,7 @@
             this.freeHandBtn.Name = "freeHandBtn";
             this.freeHandBtn.Size = new System.Drawing.Size(65, 65);
             this.freeHandBtn.TabIndex = 10;
-            this.ToolTipProTalcitka.SetToolTip(this.freeHandBtn, "volná čára");
+            this.ToolTipProTalcitka.SetToolTip(this.freeHandBtn, "Volná čára");
             this.freeHandBtn.UseVisualStyleBackColor = true;
             this.freeHandBtn.Click += new System.EventHandler(this.freeHandBtn_Click);
             // 
@@ -470,25 +477,9 @@
             this.rectBtn.Name = "rectBtn";
             this.rectBtn.Size = new System.Drawing.Size(65, 65);
             this.rectBtn.TabIndex = 0;
-            this.ToolTipProTalcitka.SetToolTip(this.rectBtn, "obdélník");
+            this.ToolTipProTalcitka.SetToolTip(this.rectBtn, "Obdélník");
             this.rectBtn.UseVisualStyleBackColor = false;
             this.rectBtn.Click += new System.EventHandler(this.rectBtn_Click);
-            // 
-            // circBtn
-            // 
-            this.circBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.circBtn.FlatAppearance.BorderSize = 0;
-            this.circBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.circBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.circBtn.ImageKey = "circ.ico";
-            this.circBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.circBtn.Location = new System.Drawing.Point(75, 87);
-            this.circBtn.Name = "circBtn";
-            this.circBtn.Size = new System.Drawing.Size(65, 65);
-            this.circBtn.TabIndex = 2;
-            this.ToolTipProTalcitka.SetToolTip(this.circBtn, "elipsa");
-            this.circBtn.UseVisualStyleBackColor = true;
-            this.circBtn.Click += new System.EventHandler(this.circBtn_Click);
             // 
             // polygonBtn
             // 
@@ -502,25 +493,25 @@
             this.polygonBtn.Name = "polygonBtn";
             this.polygonBtn.Size = new System.Drawing.Size(65, 65);
             this.polygonBtn.TabIndex = 9;
-            this.ToolTipProTalcitka.SetToolTip(this.polygonBtn, "polygon");
+            this.ToolTipProTalcitka.SetToolTip(this.polygonBtn, "Polygon");
             this.polygonBtn.UseVisualStyleBackColor = true;
             this.polygonBtn.Click += new System.EventHandler(this.polygonBtn_Click);
             // 
-            // imageBtn
+            // circBtn
             // 
-            this.imageBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.imageBtn.FlatAppearance.BorderSize = 0;
-            this.imageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.imageBtn.ImageKey = "leaf.ico";
-            this.imageBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.imageBtn.Location = new System.Drawing.Point(220, 87);
-            this.imageBtn.Name = "imageBtn";
-            this.imageBtn.Size = new System.Drawing.Size(65, 65);
-            this.imageBtn.TabIndex = 7;
-            this.ToolTipProTalcitka.SetToolTip(this.imageBtn, "zahradní prvek ...");
-            this.imageBtn.UseVisualStyleBackColor = true;
-            this.imageBtn.Click += new System.EventHandler(this.imageBtn_Click);
+            this.circBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.circBtn.FlatAppearance.BorderSize = 0;
+            this.circBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.circBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.circBtn.ImageKey = "circ.ico";
+            this.circBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.circBtn.Location = new System.Drawing.Point(3, 87);
+            this.circBtn.Name = "circBtn";
+            this.circBtn.Size = new System.Drawing.Size(65, 65);
+            this.circBtn.TabIndex = 2;
+            this.ToolTipProTalcitka.SetToolTip(this.circBtn, "Elipsa");
+            this.circBtn.UseVisualStyleBackColor = true;
+            this.circBtn.Click += new System.EventHandler(this.circBtn_Click);
             // 
             // simpleTextBtn
             // 
@@ -530,13 +521,29 @@
             this.simpleTextBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.simpleTextBtn.ImageKey = "text.ico";
             this.simpleTextBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.simpleTextBtn.Location = new System.Drawing.Point(147, 87);
+            this.simpleTextBtn.Location = new System.Drawing.Point(75, 87);
             this.simpleTextBtn.Name = "simpleTextBtn";
             this.simpleTextBtn.Size = new System.Drawing.Size(65, 65);
             this.simpleTextBtn.TabIndex = 5;
-            this.ToolTipProTalcitka.SetToolTip(this.simpleTextBtn, "text");
+            this.ToolTipProTalcitka.SetToolTip(this.simpleTextBtn, "Text");
             this.simpleTextBtn.UseVisualStyleBackColor = true;
             this.simpleTextBtn.Click += new System.EventHandler(this.simpleTextBtn_Click);
+            // 
+            // imageBtn
+            // 
+            this.imageBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imageBtn.FlatAppearance.BorderSize = 0;
+            this.imageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.imageBtn.ImageKey = "leaf.ico";
+            this.imageBtn.ImageList = this.imageListProVytvoritZmenit;
+            this.imageBtn.Location = new System.Drawing.Point(147, 87);
+            this.imageBtn.Name = "imageBtn";
+            this.imageBtn.Size = new System.Drawing.Size(65, 65);
+            this.imageBtn.TabIndex = 7;
+            this.ToolTipProTalcitka.SetToolTip(this.imageBtn, "Vložit zahradní prvek ...");
+            this.imageBtn.UseVisualStyleBackColor = true;
+            this.imageBtn.Click += new System.EventHandler(this.imageBtn_Click);
             // 
             // zmenitGroupBox
             // 
@@ -562,21 +569,17 @@
             this.tableLayoutPanel2.Controls.Add(this.toBackBtn, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.deleteBtn, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.copyBtn, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.mirrorXbtn, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.mirrorYbtn, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btnZoomAll, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.btnVybratVse, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.btnEscape, 2, 3);
-            this.tableLayoutPanel2.Controls.Add(this.splitter9, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.btnEscape, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnVybratVse, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(289, 250);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(289, 160);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // groupBtn
@@ -591,7 +594,7 @@
             this.groupBtn.Name = "groupBtn";
             this.groupBtn.Size = new System.Drawing.Size(65, 65);
             this.groupBtn.TabIndex = 2;
-            this.ToolTipProTalcitka.SetToolTip(this.groupBtn, "seskupit");
+            this.ToolTipProTalcitka.SetToolTip(this.groupBtn, "Seskupit elementy");
             this.groupBtn.UseVisualStyleBackColor = true;
             this.groupBtn.Click += new System.EventHandler(this.groupBtn_Click);
             // 
@@ -607,7 +610,7 @@
             this.deGroupBtn.Name = "deGroupBtn";
             this.deGroupBtn.Size = new System.Drawing.Size(65, 65);
             this.deGroupBtn.TabIndex = 3;
-            this.ToolTipProTalcitka.SetToolTip(this.deGroupBtn, "zrušit seskupení");
+            this.ToolTipProTalcitka.SetToolTip(this.deGroupBtn, "Zrušit seskupení elementů");
             this.deGroupBtn.UseVisualStyleBackColor = true;
             this.deGroupBtn.Click += new System.EventHandler(this.deGroupBtn_Click);
             // 
@@ -623,7 +626,7 @@
             this.toFrontBtn.Name = "toFrontBtn";
             this.toFrontBtn.Size = new System.Drawing.Size(65, 65);
             this.toFrontBtn.TabIndex = 6;
-            this.ToolTipProTalcitka.SetToolTip(this.toFrontBtn, "posunout objekt do popředí");
+            this.ToolTipProTalcitka.SetToolTip(this.toFrontBtn, "Posunout elementy do popředí");
             this.toFrontBtn.UseVisualStyleBackColor = true;
             this.toFrontBtn.Click += new System.EventHandler(this.toFrontBtn_Click);
             // 
@@ -639,7 +642,7 @@
             this.toBackBtn.Name = "toBackBtn";
             this.toBackBtn.Size = new System.Drawing.Size(65, 65);
             this.toBackBtn.TabIndex = 7;
-            this.ToolTipProTalcitka.SetToolTip(this.toBackBtn, "posunout objekt do pozadí");
+            this.ToolTipProTalcitka.SetToolTip(this.toBackBtn, "Posunout elementy do pozadí");
             this.toBackBtn.UseVisualStyleBackColor = true;
             this.toBackBtn.Click += new System.EventHandler(this.toBackBtn_Click);
             // 
@@ -655,7 +658,7 @@
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(65, 65);
             this.deleteBtn.TabIndex = 8;
-            this.ToolTipProTalcitka.SetToolTip(this.deleteBtn, "smazat");
+            this.ToolTipProTalcitka.SetToolTip(this.deleteBtn, "Smazat vybrané");
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
@@ -671,70 +674,9 @@
             this.copyBtn.Name = "copyBtn";
             this.copyBtn.Size = new System.Drawing.Size(65, 65);
             this.copyBtn.TabIndex = 9;
-            this.ToolTipProTalcitka.SetToolTip(this.copyBtn, "kopírovat");
+            this.ToolTipProTalcitka.SetToolTip(this.copyBtn, "Kopírovat vybrané");
             this.copyBtn.UseVisualStyleBackColor = true;
             this.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
-            // 
-            // mirrorXbtn
-            // 
-            this.mirrorXbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mirrorXbtn.FlatAppearance.BorderSize = 0;
-            this.mirrorXbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mirrorXbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mirrorXbtn.ImageKey = "mirrorX.ico";
-            this.mirrorXbtn.ImageList = this.imageListProVytvoritZmenit;
-            this.mirrorXbtn.Location = new System.Drawing.Point(3, 87);
-            this.mirrorXbtn.Name = "mirrorXbtn";
-            this.mirrorXbtn.Size = new System.Drawing.Size(65, 65);
-            this.mirrorXbtn.TabIndex = 4;
-            this.ToolTipProTalcitka.SetToolTip(this.mirrorXbtn, "zrcadlit podle osy X");
-            this.mirrorXbtn.UseVisualStyleBackColor = true;
-            this.mirrorXbtn.Click += new System.EventHandler(this.mirrorXbtn_Click);
-            // 
-            // mirrorYbtn
-            // 
-            this.mirrorYbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mirrorYbtn.FlatAppearance.BorderSize = 0;
-            this.mirrorYbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mirrorYbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mirrorYbtn.ImageKey = "mirrorY.ico";
-            this.mirrorYbtn.ImageList = this.imageListProVytvoritZmenit;
-            this.mirrorYbtn.Location = new System.Drawing.Point(75, 87);
-            this.mirrorYbtn.Name = "mirrorYbtn";
-            this.mirrorYbtn.Size = new System.Drawing.Size(65, 65);
-            this.mirrorYbtn.TabIndex = 5;
-            this.ToolTipProTalcitka.SetToolTip(this.mirrorYbtn, "zrcadlit podle osy Y");
-            this.mirrorYbtn.UseVisualStyleBackColor = true;
-            // 
-            // btnZoomAll
-            // 
-            this.btnZoomAll.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnZoomAll.FlatAppearance.BorderSize = 0;
-            this.btnZoomAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnZoomAll.ImageKey = "selectall.ico";
-            this.btnZoomAll.ImageList = this.imageListProVytvoritZmenit;
-            this.btnZoomAll.Location = new System.Drawing.Point(3, 174);
-            this.btnZoomAll.Name = "btnZoomAll";
-            this.btnZoomAll.Size = new System.Drawing.Size(65, 65);
-            this.btnZoomAll.TabIndex = 6;
-            this.ToolTipProTalcitka.SetToolTip(this.btnZoomAll, "zobrazit vše");
-            this.btnZoomAll.UseVisualStyleBackColor = true;
-            // 
-            // btnVybratVse
-            // 
-            this.btnVybratVse.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVybratVse.FlatAppearance.BorderSize = 0;
-            this.btnVybratVse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVybratVse.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnVybratVse.ImageKey = "select.ico";
-            this.btnVybratVse.ImageList = this.imageListProVytvoritZmenit;
-            this.btnVybratVse.Location = new System.Drawing.Point(75, 174);
-            this.btnVybratVse.Name = "btnVybratVse";
-            this.btnVybratVse.Size = new System.Drawing.Size(65, 65);
-            this.btnVybratVse.TabIndex = 10;
-            this.ToolTipProTalcitka.SetToolTip(this.btnVybratVse, "vybrat vše");
-            this.btnVybratVse.UseVisualStyleBackColor = true;
             // 
             // btnEscape
             // 
@@ -744,23 +686,29 @@
             this.btnEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnEscape.ImageKey = "escape.ico";
             this.btnEscape.ImageList = this.imageListProVytvoritZmenit;
-            this.btnEscape.Location = new System.Drawing.Point(147, 174);
+            this.btnEscape.Location = new System.Drawing.Point(3, 87);
             this.btnEscape.Name = "btnEscape";
             this.btnEscape.Size = new System.Drawing.Size(65, 65);
             this.btnEscape.TabIndex = 6;
-            this.ToolTipProTalcitka.SetToolTip(this.btnEscape, "zrušit akci");
+            this.ToolTipProTalcitka.SetToolTip(this.btnEscape, "Zrušit výběr/akci");
             this.btnEscape.UseVisualStyleBackColor = true;
+            this.btnEscape.Click += new System.EventHandler(this.btnEscape_Click);
             // 
-            // splitter9
+            // btnVybratVse
             // 
-            this.splitter9.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.tableLayoutPanel2.SetColumnSpan(this.splitter9, 4);
-            this.splitter9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter9.Location = new System.Drawing.Point(3, 163);
-            this.splitter9.Name = "splitter9";
-            this.splitter9.Size = new System.Drawing.Size(283, 1);
-            this.splitter9.TabIndex = 11;
-            this.splitter9.TabStop = false;
+            this.btnVybratVse.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVybratVse.FlatAppearance.BorderSize = 0;
+            this.btnVybratVse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVybratVse.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnVybratVse.ImageKey = "select.ico";
+            this.btnVybratVse.ImageList = this.imageListProVytvoritZmenit;
+            this.btnVybratVse.Location = new System.Drawing.Point(75, 87);
+            this.btnVybratVse.Name = "btnVybratVse";
+            this.btnVybratVse.Size = new System.Drawing.Size(65, 65);
+            this.btnVybratVse.TabIndex = 10;
+            this.ToolTipProTalcitka.SetToolTip(this.btnVybratVse, "Vybrat vše");
+            this.btnVybratVse.UseVisualStyleBackColor = true;
+            this.btnVybratVse.Click += new System.EventHandler(this.btnVybratVse_Click);
             // 
             // TabPageStrucneVlastnosti
             // 
@@ -910,7 +858,6 @@
             this.TableLayoutPanelPruvodce.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelPruvodce.Size = new System.Drawing.Size(294, 1093);
             this.TableLayoutPanelPruvodce.TabIndex = 0;
-            this.TableLayoutPanelPruvodce.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // label11
             // 
@@ -1154,7 +1101,6 @@
             this.label9.Size = new System.Drawing.Size(263, 17);
             this.label9.TabIndex = 62;
             this.label9.Text = "D) Funkce zahrady bude převážně:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // PanelNeformalniTypZahrady
             // 
@@ -1336,7 +1282,6 @@
             this.splitter2.Size = new System.Drawing.Size(287, 1);
             this.splitter2.TabIndex = 73;
             this.splitter2.TabStop = false;
-            this.splitter2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitter2_SplitterMoved);
             // 
             // splitter3
             // 
@@ -1385,7 +1330,6 @@
             this.label10.Size = new System.Drawing.Size(276, 17);
             this.label10.TabIndex = 63;
             this.label10.Text = "F) Plánuji předzahrádku před domem";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // TabPagSeznamPrani
             // 
@@ -1406,12 +1350,7 @@
             this.TableLayoutPanelSeznamPrani.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.TableLayoutPanelSeznamPrani.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.TableLayoutPanelSeznamPrani.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel24, 1, 30);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel23, 1, 29);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel22, 1, 28);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel21, 1, 26);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel20, 1, 25);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel1, 1, 24);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel6, 1, 24);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel18, 1, 14);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel17, 1, 13);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel16, 1, 12);
@@ -1419,67 +1358,65 @@
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel14, 1, 10);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel13, 1, 9);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel12, 1, 8);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel5, 1, 17);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel11, 1, 23);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel10, 1, 22);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel9, 1, 21);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel7, 1, 19);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel6, 1, 18);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel4, 1, 7);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.splitter1, 0, 4);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.label13, 0, 1);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.label1, 0, 0);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.label2, 0, 3);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.label3, 1, 3);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.label12, 3, 3);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.label4, 2, 3);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel3, 1, 5);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel2, 1, 6);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label14, 0, 5);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label15, 0, 6);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label16, 0, 7);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label17, 0, 17);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label18, 0, 18);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label19, 0, 19);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label20, 0, 20);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label21, 0, 21);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label22, 0, 22);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label23, 0, 23);
             this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel8, 1, 20);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label24, 0, 8);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label25, 0, 9);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label26, 0, 10);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label27, 0, 11);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label28, 0, 12);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label29, 0, 13);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label30, 0, 14);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label32, 0, 16);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.splitter7, 0, 15);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel19, 1, 16);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label31, 0, 24);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label34, 0, 29);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label35, 0, 28);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label36, 0, 25);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label33, 0, 26);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.splitter8, 0, 27);
-            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label37, 0, 30);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel24, 1, 33);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label37, 0, 33);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label34, 0, 32);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel23, 1, 32);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label35, 0, 31);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel22, 1, 31);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.splitter8, 0, 30);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel20, 1, 27);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label33, 0, 27);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label36, 0, 28);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel21, 1, 28);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label39, 0, 29);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label31, 0, 26);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label23, 0, 25);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label22, 0, 24);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label21, 0, 23);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label20, 0, 22);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label19, 0, 21);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label18, 0, 20);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label17, 0, 19);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label32, 0, 18);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel19, 1, 25);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel5, 1, 26);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.splitter7, 0, 17);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label40, 0, 16);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label30, 0, 15);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label29, 0, 14);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label28, 0, 13);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label27, 0, 12);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label26, 0, 11);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label25, 0, 10);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label24, 0, 9);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label16, 0, 8);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label15, 0, 7);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label14, 0, 6);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel3, 1, 15);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.splitter1, 0, 5);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.label41, 0, 4);
+            this.TableLayoutPanelSeznamPrani.Controls.Add(this.panel1, 1, 18);
             this.TableLayoutPanelSeznamPrani.Location = new System.Drawing.Point(4, 4);
             this.TableLayoutPanelSeznamPrani.Name = "TableLayoutPanelSeznamPrani";
-            this.TableLayoutPanelSeznamPrani.RowCount = 32;
+            this.TableLayoutPanelSeznamPrani.RowCount = 35;
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -1498,9 +1435,21 @@
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.TableLayoutPanelSeznamPrani.Size = new System.Drawing.Size(294, 727);
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TableLayoutPanelSeznamPrani.Size = new System.Drawing.Size(294, 800);
             this.TableLayoutPanelSeznamPrani.TabIndex = 49;
-            this.TableLayoutPanelSeznamPrani.Paint += new System.Windows.Forms.PaintEventHandler(this.TableLayoutPanelSeznamPrani_Paint);
             // 
             // panel24
             // 
@@ -1508,7 +1457,7 @@
             this.panel24.Controls.Add(this.radioButton82);
             this.panel24.Controls.Add(this.radioButton83);
             this.panel24.Controls.Add(this.radioButton84);
-            this.panel24.Location = new System.Drawing.Point(171, 670);
+            this.panel24.Location = new System.Drawing.Point(171, 749);
             this.panel24.Margin = new System.Windows.Forms.Padding(0);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(120, 25);
@@ -1553,7 +1502,7 @@
             this.panel23.Controls.Add(this.radioButton79);
             this.panel23.Controls.Add(this.radioButton80);
             this.panel23.Controls.Add(this.radioButton81);
-            this.panel23.Location = new System.Drawing.Point(171, 645);
+            this.panel23.Location = new System.Drawing.Point(171, 724);
             this.panel23.Margin = new System.Windows.Forms.Padding(0);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(120, 25);
@@ -1598,7 +1547,7 @@
             this.panel22.Controls.Add(this.radioButton76);
             this.panel22.Controls.Add(this.radioButton77);
             this.panel22.Controls.Add(this.radioButton78);
-            this.panel22.Location = new System.Drawing.Point(171, 620);
+            this.panel22.Location = new System.Drawing.Point(171, 699);
             this.panel22.Margin = new System.Windows.Forms.Padding(0);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(120, 25);
@@ -1643,7 +1592,7 @@
             this.panel21.Controls.Add(this.radioButton73);
             this.panel21.Controls.Add(this.radioButton74);
             this.panel21.Controls.Add(this.radioButton75);
-            this.panel21.Location = new System.Drawing.Point(171, 591);
+            this.panel21.Location = new System.Drawing.Point(171, 641);
             this.panel21.Margin = new System.Windows.Forms.Padding(0);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(120, 25);
@@ -1688,7 +1637,7 @@
             this.panel20.Controls.Add(this.radioButton13);
             this.panel20.Controls.Add(this.radioButton71);
             this.panel20.Controls.Add(this.radioButton72);
-            this.panel20.Location = new System.Drawing.Point(171, 566);
+            this.panel20.Location = new System.Drawing.Point(171, 616);
             this.panel20.Margin = new System.Windows.Forms.Padding(0);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(120, 25);
@@ -1733,7 +1682,7 @@
             this.panel1.Controls.Add(this.radioButton10);
             this.panel1.Controls.Add(this.radioButton11);
             this.panel1.Controls.Add(this.radioButton12);
-            this.panel1.Location = new System.Drawing.Point(171, 541);
+            this.panel1.Location = new System.Drawing.Point(171, 391);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(120, 25);
@@ -2093,7 +2042,7 @@
             this.panel5.Controls.Add(this.radioButton25);
             this.panel5.Controls.Add(this.radioButton27);
             this.panel5.Controls.Add(this.radioButton28);
-            this.panel5.Location = new System.Drawing.Point(171, 366);
+            this.panel5.Location = new System.Drawing.Point(171, 591);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(120, 25);
@@ -2312,51 +2261,6 @@
             this.radioButton34.TabStop = true;
             this.radioButton34.UseVisualStyleBackColor = true;
             // 
-            // panel6
-            // 
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel6, 3);
-            this.panel6.Controls.Add(this.radioButton29);
-            this.panel6.Controls.Add(this.radioButton30);
-            this.panel6.Controls.Add(this.radioButton31);
-            this.panel6.Location = new System.Drawing.Point(171, 391);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(120, 25);
-            this.panel6.TabIndex = 55;
-            // 
-            // radioButton29
-            // 
-            this.radioButton29.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton29.AutoSize = true;
-            this.radioButton29.Location = new System.Drawing.Point(90, 2);
-            this.radioButton29.Name = "radioButton29";
-            this.radioButton29.Size = new System.Drawing.Size(17, 16);
-            this.radioButton29.TabIndex = 2;
-            this.radioButton29.TabStop = true;
-            this.radioButton29.UseVisualStyleBackColor = true;
-            // 
-            // radioButton30
-            // 
-            this.radioButton30.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton30.AutoSize = true;
-            this.radioButton30.Location = new System.Drawing.Point(50, 2);
-            this.radioButton30.Name = "radioButton30";
-            this.radioButton30.Size = new System.Drawing.Size(17, 16);
-            this.radioButton30.TabIndex = 1;
-            this.radioButton30.TabStop = true;
-            this.radioButton30.UseVisualStyleBackColor = true;
-            // 
-            // radioButton31
-            // 
-            this.radioButton31.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton31.AutoSize = true;
-            this.radioButton31.Location = new System.Drawing.Point(10, 2);
-            this.radioButton31.Name = "radioButton31";
-            this.radioButton31.Size = new System.Drawing.Size(17, 16);
-            this.radioButton31.TabIndex = 0;
-            this.radioButton31.TabStop = true;
-            this.radioButton31.UseVisualStyleBackColor = true;
-            // 
             // panel4
             // 
             this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel4, 3);
@@ -2402,16 +2306,6 @@
             this.radioButton9.TabStop = true;
             this.radioButton9.UseVisualStyleBackColor = true;
             // 
-            // splitter1
-            // 
-            this.splitter1.BackColor = System.Drawing.Color.Black;
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.splitter1, 4);
-            this.splitter1.Location = new System.Drawing.Point(3, 86);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(288, 1);
-            this.splitter1.TabIndex = 55;
-            this.splitter1.TabStop = false;
-            // 
             // label13
             // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -2442,18 +2336,20 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.Color.Green;
             this.label2.Location = new System.Drawing.Point(0, 62);
             this.label2.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 17);
+            this.label2.Size = new System.Drawing.Size(156, 17);
             this.label2.TabIndex = 45;
-            this.label2.Text = "Zahradní prvek";
+            this.label2.Text = "Prvek / Jeho priorita";
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.Color.Green;
             this.label3.Location = new System.Drawing.Point(180, 62);
             this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.label3.Name = "label3";
@@ -2467,6 +2363,7 @@
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.ForeColor = System.Drawing.Color.Green;
             this.label12.Location = new System.Drawing.Point(262, 62);
             this.label12.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.label12.Name = "label12";
@@ -2480,6 +2377,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.Color.Green;
             this.label4.Location = new System.Drawing.Point(220, 62);
             this.label4.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.label4.Name = "label4";
@@ -2494,7 +2392,7 @@
             this.panel3.Controls.Add(this.radioButton4);
             this.panel3.Controls.Add(this.radioButton5);
             this.panel3.Controls.Add(this.radioButton6);
-            this.panel3.Location = new System.Drawing.Point(171, 87);
+            this.panel3.Location = new System.Drawing.Point(171, 337);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(120, 25);
@@ -2581,7 +2479,7 @@
             // label14
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label14.Location = new System.Drawing.Point(3, 91);
+            this.label14.Location = new System.Drawing.Point(3, 116);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(94, 16);
             this.label14.TabIndex = 0;
@@ -2591,7 +2489,7 @@
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 116);
+            this.label15.Location = new System.Drawing.Point(3, 141);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(105, 17);
             this.label15.TabIndex = 56;
@@ -2601,7 +2499,7 @@
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 141);
+            this.label16.Location = new System.Drawing.Point(3, 166);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(80, 17);
             this.label16.TabIndex = 57;
@@ -2611,7 +2509,7 @@
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 370);
+            this.label17.Location = new System.Drawing.Point(3, 420);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(115, 17);
             this.label17.TabIndex = 58;
@@ -2621,7 +2519,7 @@
             // 
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(3, 395);
+            this.label18.Location = new System.Drawing.Point(3, 445);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(56, 17);
             this.label18.TabIndex = 59;
@@ -2631,7 +2529,7 @@
             // 
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 420);
+            this.label19.Location = new System.Drawing.Point(3, 470);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(109, 17);
             this.label19.TabIndex = 60;
@@ -2641,7 +2539,7 @@
             // 
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(3, 445);
+            this.label20.Location = new System.Drawing.Point(3, 495);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(117, 17);
             this.label20.TabIndex = 61;
@@ -2651,7 +2549,7 @@
             // 
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(3, 470);
+            this.label21.Location = new System.Drawing.Point(3, 520);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(140, 17);
             this.label21.TabIndex = 62;
@@ -2661,7 +2559,7 @@
             // 
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(3, 495);
+            this.label22.Location = new System.Drawing.Point(3, 545);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(150, 17);
             this.label22.TabIndex = 63;
@@ -2671,7 +2569,7 @@
             // 
             this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(3, 520);
+            this.label23.Location = new System.Drawing.Point(3, 570);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(47, 17);
             this.label23.TabIndex = 64;
@@ -2726,7 +2624,7 @@
             // 
             this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(3, 166);
+            this.label24.Location = new System.Drawing.Point(3, 191);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(91, 17);
             this.label24.TabIndex = 66;
@@ -2736,7 +2634,7 @@
             // 
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(3, 191);
+            this.label25.Location = new System.Drawing.Point(3, 216);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(140, 17);
             this.label25.TabIndex = 67;
@@ -2746,7 +2644,7 @@
             // 
             this.label26.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(3, 216);
+            this.label26.Location = new System.Drawing.Point(3, 241);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(115, 17);
             this.label26.TabIndex = 68;
@@ -2756,7 +2654,7 @@
             // 
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(3, 241);
+            this.label27.Location = new System.Drawing.Point(3, 266);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(107, 17);
             this.label27.TabIndex = 69;
@@ -2766,7 +2664,7 @@
             // 
             this.label28.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(3, 266);
+            this.label28.Location = new System.Drawing.Point(3, 291);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(135, 17);
             this.label28.TabIndex = 70;
@@ -2776,7 +2674,7 @@
             // 
             this.label29.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(3, 291);
+            this.label29.Location = new System.Drawing.Point(3, 316);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(151, 17);
             this.label29.TabIndex = 71;
@@ -2786,7 +2684,7 @@
             // 
             this.label30.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(3, 316);
+            this.label30.Location = new System.Drawing.Point(3, 341);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(145, 17);
             this.label30.TabIndex = 72;
@@ -2796,21 +2694,11 @@
             // 
             this.label32.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(3, 345);
+            this.label32.Location = new System.Drawing.Point(3, 395);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(122, 17);
             this.label32.TabIndex = 74;
             this.label32.Text = "oplocení pozemku";
-            // 
-            // splitter7
-            // 
-            this.splitter7.BackColor = System.Drawing.Color.Black;
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.splitter7, 4);
-            this.splitter7.Location = new System.Drawing.Point(3, 340);
-            this.splitter7.Name = "splitter7";
-            this.splitter7.Size = new System.Drawing.Size(287, 1);
-            this.splitter7.TabIndex = 75;
-            this.splitter7.TabStop = false;
             // 
             // panel19
             // 
@@ -2818,7 +2706,7 @@
             this.panel19.Controls.Add(this.radioButton68);
             this.panel19.Controls.Add(this.radioButton69);
             this.panel19.Controls.Add(this.radioButton70);
-            this.panel19.Location = new System.Drawing.Point(171, 341);
+            this.panel19.Location = new System.Drawing.Point(171, 566);
             this.panel19.Margin = new System.Windows.Forms.Padding(0);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(120, 25);
@@ -2861,7 +2749,7 @@
             // 
             this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(3, 545);
+            this.label31.Location = new System.Drawing.Point(3, 595);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(49, 17);
             this.label31.TabIndex = 77;
@@ -2871,7 +2759,7 @@
             // 
             this.label34.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(3, 649);
+            this.label34.Location = new System.Drawing.Point(3, 728);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(144, 17);
             this.label34.TabIndex = 79;
@@ -2881,17 +2769,18 @@
             // 
             this.label35.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(3, 624);
+            this.label35.Location = new System.Drawing.Point(3, 703);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(70, 17);
             this.label35.TabIndex = 80;
             this.label35.Text = "pískoviště";
+            this.label35.Click += new System.EventHandler(this.label35_Click);
             // 
             // label36
             // 
             this.label36.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(3, 570);
+            this.label36.Location = new System.Drawing.Point(3, 647);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(48, 17);
             this.label36.TabIndex = 81;
@@ -2901,27 +2790,17 @@
             // 
             this.label33.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(3, 595);
+            this.label33.Location = new System.Drawing.Point(3, 620);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(119, 17);
             this.label33.TabIndex = 83;
             this.label33.Text = "osvětlení zahrady";
             // 
-            // splitter8
-            // 
-            this.splitter8.BackColor = System.Drawing.Color.Black;
-            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.splitter8, 4);
-            this.splitter8.Location = new System.Drawing.Point(3, 619);
-            this.splitter8.Name = "splitter8";
-            this.splitter8.Size = new System.Drawing.Size(287, 1);
-            this.splitter8.TabIndex = 84;
-            this.splitter8.TabStop = false;
-            // 
             // label37
             // 
             this.label37.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(3, 674);
+            this.label37.Location = new System.Drawing.Point(3, 753);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(103, 17);
             this.label37.TabIndex = 85;
@@ -2929,6 +2808,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tableLayoutPanel3);
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -2949,6 +2829,201 @@
             this.imageListProTabControl.Images.SetKeyName(5, "prani2.ico");
             this.imageListProTabControl.Images.SetKeyName(6, "prani3.ico");
             this.imageListProTabControl.Images.SetKeyName(7, "prani4.ico");
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.label38, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.PruvodceListBox, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.PruvodceTextBox, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.PruvodceLabel1, 0, 2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(294, 750);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // PruvodceListBox
+            // 
+            this.PruvodceListBox.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.PruvodceListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PruvodceListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PruvodceListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PruvodceListBox.FormattingEnabled = true;
+            this.PruvodceListBox.ItemHeight = 18;
+            this.PruvodceListBox.Items.AddRange(new object[] {
+            "A) Zakreslení stávajícího stavu",
+            "B) Zakreslení nového stavu",
+            "C) Návrh základního motivu",
+            "D) Návrh funkce zahrady",
+            "E) Zohlednit důležité podmínky",
+            "F) Předzahrádka před domem"});
+            this.PruvodceListBox.Location = new System.Drawing.Point(5, 38);
+            this.PruvodceListBox.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.PruvodceListBox.Name = "PruvodceListBox";
+            this.PruvodceListBox.Size = new System.Drawing.Size(284, 124);
+            this.PruvodceListBox.TabIndex = 0;
+            this.PruvodceListBox.SelectedIndexChanged += new System.EventHandler(this.PruvodceListBox_SelectedIndexChanged);
+            // 
+            // PruvodceTextBox
+            // 
+            this.PruvodceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PruvodceTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PruvodceTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PruvodceTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PruvodceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PruvodceTextBox.Location = new System.Drawing.Point(6, 203);
+            this.PruvodceTextBox.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
+            this.PruvodceTextBox.Multiline = true;
+            this.PruvodceTextBox.Name = "PruvodceTextBox";
+            this.PruvodceTextBox.ReadOnly = true;
+            this.PruvodceTextBox.Size = new System.Drawing.Size(285, 484);
+            this.PruvodceTextBox.TabIndex = 8;
+            this.PruvodceTextBox.Text = "Průvodce návrhem zahrady";
+            this.ToolTipProTalcitka.SetToolTip(this.PruvodceTextBox, "Průvodce návrhem");
+            // 
+            // label38
+            // 
+            this.label38.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label38.ForeColor = System.Drawing.Color.Green;
+            this.label38.Location = new System.Drawing.Point(3, 7);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(236, 20);
+            this.label38.TabIndex = 44;
+            this.label38.Text = "Průvodce návrhem zahrady";
+            // 
+            // PruvodceLabel1
+            // 
+            this.PruvodceLabel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PruvodceLabel1.AutoSize = true;
+            this.PruvodceLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PruvodceLabel1.ForeColor = System.Drawing.Color.Green;
+            this.PruvodceLabel1.Location = new System.Drawing.Point(3, 173);
+            this.PruvodceLabel1.Name = "PruvodceLabel1";
+            this.PruvodceLabel1.Size = new System.Drawing.Size(237, 18);
+            this.PruvodceLabel1.TabIndex = 45;
+            this.PruvodceLabel1.Text = "A) Zakreslení stávajícího stavu";
+            // 
+            // splitter8
+            // 
+            this.splitter8.BackColor = System.Drawing.Color.Black;
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.splitter8, 4);
+            this.splitter8.Location = new System.Drawing.Point(3, 698);
+            this.splitter8.Name = "splitter8";
+            this.splitter8.Size = new System.Drawing.Size(287, 1);
+            this.splitter8.TabIndex = 86;
+            this.splitter8.TabStop = false;
+            // 
+            // label39
+            // 
+            this.label39.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label39.Location = new System.Drawing.Point(3, 674);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(102, 17);
+            this.label39.TabIndex = 87;
+            this.label39.Text = "Dětské prvky";
+            // 
+            // splitter7
+            // 
+            this.splitter7.BackColor = System.Drawing.Color.Black;
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.splitter7, 4);
+            this.splitter7.Location = new System.Drawing.Point(3, 390);
+            this.splitter7.Name = "splitter7";
+            this.splitter7.Size = new System.Drawing.Size(287, 1);
+            this.splitter7.TabIndex = 88;
+            this.splitter7.TabStop = false;
+            // 
+            // label40
+            // 
+            this.label40.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label40.Location = new System.Drawing.Point(3, 366);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(115, 17);
+            this.label40.TabIndex = 89;
+            this.label40.Text = "Stavební prvky";
+            // 
+            // label41
+            // 
+            this.label41.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label41.AutoSize = true;
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.label41, 4);
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label41.Location = new System.Drawing.Point(0, 87);
+            this.label41.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(91, 17);
+            this.label41.TabIndex = 90;
+            this.label41.Text = "Živé prvvky";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // splitter1
+            // 
+            this.splitter1.BackColor = System.Drawing.Color.Black;
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.splitter1, 4);
+            this.splitter1.Location = new System.Drawing.Point(3, 111);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(288, 1);
+            this.splitter1.TabIndex = 91;
+            this.splitter1.TabStop = false;
+            // 
+            // panel6
+            // 
+            this.TableLayoutPanelSeznamPrani.SetColumnSpan(this.panel6, 3);
+            this.panel6.Controls.Add(this.radioButton29);
+            this.panel6.Controls.Add(this.radioButton30);
+            this.panel6.Controls.Add(this.radioButton31);
+            this.panel6.Location = new System.Drawing.Point(171, 541);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(120, 25);
+            this.panel6.TabIndex = 57;
+            // 
+            // radioButton29
+            // 
+            this.radioButton29.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton29.AutoSize = true;
+            this.radioButton29.Location = new System.Drawing.Point(90, 4);
+            this.radioButton29.Name = "radioButton29";
+            this.radioButton29.Size = new System.Drawing.Size(17, 16);
+            this.radioButton29.TabIndex = 2;
+            this.radioButton29.TabStop = true;
+            this.radioButton29.UseVisualStyleBackColor = true;
+            // 
+            // radioButton30
+            // 
+            this.radioButton30.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton30.AutoSize = true;
+            this.radioButton30.Location = new System.Drawing.Point(50, 4);
+            this.radioButton30.Name = "radioButton30";
+            this.radioButton30.Size = new System.Drawing.Size(17, 16);
+            this.radioButton30.TabIndex = 1;
+            this.radioButton30.TabStop = true;
+            this.radioButton30.UseVisualStyleBackColor = true;
+            // 
+            // radioButton31
+            // 
+            this.radioButton31.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButton31.AutoSize = true;
+            this.radioButton31.Location = new System.Drawing.Point(10, 4);
+            this.radioButton31.Name = "radioButton31";
+            this.radioButton31.Size = new System.Drawing.Size(17, 16);
+            this.radioButton31.TabIndex = 0;
+            this.radioButton31.TabStop = true;
+            this.radioButton31.UseVisualStyleBackColor = true;
             // 
             // UserControlNastroje
             // 
@@ -3020,8 +3095,6 @@
             this.panel9.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -3032,6 +3105,11 @@
             this.panel8.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3107,7 +3185,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton5;
@@ -3130,10 +3207,6 @@
         private System.Windows.Forms.RadioButton radioButton32;
         private System.Windows.Forms.RadioButton radioButton33;
         private System.Windows.Forms.RadioButton radioButton34;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.RadioButton radioButton29;
-        private System.Windows.Forms.RadioButton radioButton30;
-        private System.Windows.Forms.RadioButton radioButton31;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton radioButton8;
@@ -3162,7 +3235,6 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Splitter splitter7;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.RadioButton radioButton65;
         private System.Windows.Forms.RadioButton radioButton66;
@@ -3228,7 +3300,6 @@
         private System.Windows.Forms.RadioButton radioButton10;
         private System.Windows.Forms.RadioButton radioButton11;
         private System.Windows.Forms.RadioButton radioButton12;
-        private System.Windows.Forms.Splitter splitter8;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ImageList imageListProVytvoritZmenit;
@@ -3240,12 +3311,23 @@
         private System.Windows.Forms.Button toBackBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button copyBtn;
-        private System.Windows.Forms.Button mirrorXbtn;
-        private System.Windows.Forms.Button mirrorYbtn;
-        private System.Windows.Forms.Button btnZoomAll;
         private System.Windows.Forms.Button btnVybratVse;
         private System.Windows.Forms.Button btnEscape;
-        private System.Windows.Forms.Splitter splitter9;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.ListBox PruvodceListBox;
+        private System.Windows.Forms.TextBox PruvodceTextBox;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label PruvodceLabel1;
+        private System.Windows.Forms.Splitter splitter8;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Splitter splitter7;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.RadioButton radioButton29;
+        private System.Windows.Forms.RadioButton radioButton30;
+        private System.Windows.Forms.RadioButton radioButton31;
     }
 }

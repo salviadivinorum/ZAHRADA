@@ -95,8 +95,10 @@
             this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
             this.CustumSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OffFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.GridToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.GridOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.Grid1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Grid5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Grid10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,6 +107,7 @@
             this.Grid100ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Grid250ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Grid500ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.SnapToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.YsnapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NsnapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,7 +115,9 @@
             this.textureFillingOnOffToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.colorFillingOnOffToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.PenColorToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.TexturaToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.FillColorToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.zoomInToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -124,13 +129,8 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.vlozenyToolBox = new Zahrada.UserControlNastroje();
             this.vlozenePlatno = new Zahrada.Platno();
-            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -674,6 +674,11 @@
             this.OffFrameToolStripMenuItem.Text = "Vypnout rozměry plánu";
             this.OffFrameToolStripMenuItem.Click += new System.EventHandler(this.OffFrameToolStripMenuItem_Click);
             // 
+            // toolStripSeparator18
+            // 
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            this.toolStripSeparator18.Size = new System.Drawing.Size(6, 30);
+            // 
             // GridToolStripDropDownButton
             // 
             this.GridToolStripDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -703,6 +708,11 @@
             this.GridOffToolStripMenuItem.Name = "GridOffToolStripMenuItem";
             this.GridOffToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.GridOffToolStripMenuItem.Text = "Mříž Vypnuta";
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            this.toolStripSeparator17.Size = new System.Drawing.Size(168, 6);
             // 
             // Grid1ToolStripMenuItem
             // 
@@ -751,6 +761,11 @@
             this.Grid500ToolStripMenuItem.Name = "Grid500ToolStripMenuItem";
             this.Grid500ToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.Grid500ToolStripMenuItem.Text = "Mříž 500cm";
+            // 
+            // toolStripSeparator19
+            // 
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 30);
             // 
             // SnapToolStripDropDownButton
             // 
@@ -840,6 +855,11 @@
             this.PenColorToolStripLabel.MouseEnter += new System.EventHandler(this.PenColorToolStripLabel_MouseEnter);
             this.PenColorToolStripLabel.MouseLeave += new System.EventHandler(this.PenColorToolStripLabel_MouseLeave);
             // 
+            // toolStripSeparator20
+            // 
+            this.toolStripSeparator20.Name = "toolStripSeparator20";
+            this.toolStripSeparator20.Size = new System.Drawing.Size(6, 30);
+            // 
             // TexturaToolStripLabel
             // 
             this.TexturaToolStripLabel.Margin = new System.Windows.Forms.Padding(1);
@@ -850,6 +870,11 @@
             this.TexturaToolStripLabel.Click += new System.EventHandler(this.texturaToolStripLabel_Click);
             this.TexturaToolStripLabel.MouseEnter += new System.EventHandler(this.texturaToolStripLabel_MouseEnter);
             this.TexturaToolStripLabel.MouseLeave += new System.EventHandler(this.texturaToolStripLabel_MouseLeave);
+            // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            this.toolStripSeparator21.Size = new System.Drawing.Size(6, 30);
             // 
             // FillColorToolStripLabel
             // 
@@ -908,7 +933,7 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 728);
+            this.statusStrip.Location = new System.Drawing.Point(0, 778);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1504, 25);
             this.statusStrip.TabIndex = 10;
@@ -929,11 +954,6 @@
             this.imageList1.Images.SetKeyName(2, "pruvodce.ico");
             this.imageList1.Images.SetKeyName(3, "prani.ico");
             // 
-            // toolStripSeparator17
-            // 
-            this.toolStripSeparator17.Name = "toolStripSeparator17";
-            this.toolStripSeparator17.Size = new System.Drawing.Size(168, 6);
-            // 
             // vlozenyToolBox
             // 
             this.vlozenyToolBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -942,7 +962,7 @@
             this.vlozenyToolBox.Location = new System.Drawing.Point(0, 62);
             this.vlozenyToolBox.Margin = new System.Windows.Forms.Padding(4);
             this.vlozenyToolBox.Name = "vlozenyToolBox";
-            this.vlozenyToolBox.Size = new System.Drawing.Size(350, 654);
+            this.vlozenyToolBox.Size = new System.Drawing.Size(350, 704);
             this.vlozenyToolBox.TabIndex = 8;
             // 
             // vlozenePlatno
@@ -957,8 +977,8 @@
             this.vlozenePlatno.BackColor = System.Drawing.Color.Moccasin;
             this.vlozenePlatno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.vlozenePlatno.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.Default;
-            this.vlozenePlatno.dx = 1333;
-            this.vlozenePlatno.dy = 1327;
+            this.vlozenePlatno.dx = -1604;
+            this.vlozenePlatno.dy = 53;
             this.vlozenePlatno.Fit2grid = true;
             this.vlozenePlatno.gridSize = 0;
             this.vlozenePlatno.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
@@ -967,37 +987,17 @@
             this.vlozenePlatno.Name = "vlozenePlatno";
             this.vlozenePlatno.Rámeček = true;
             this.vlozenePlatno.ShowDebug = false;
-            this.vlozenePlatno.Size = new System.Drawing.Size(1139, 654);
+            this.vlozenePlatno.Size = new System.Drawing.Size(1139, 704);
             this.vlozenePlatno.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.vlozenePlatno.TabIndex = 9;
             this.vlozenePlatno.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.vlozenePlatno.Zoom = 0.25F;
-            // 
-            // toolStripSeparator18
-            // 
-            this.toolStripSeparator18.Name = "toolStripSeparator18";
-            this.toolStripSeparator18.Size = new System.Drawing.Size(6, 30);
-            // 
-            // toolStripSeparator19
-            // 
-            this.toolStripSeparator19.Name = "toolStripSeparator19";
-            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 30);
-            // 
-            // toolStripSeparator20
-            // 
-            this.toolStripSeparator20.Name = "toolStripSeparator20";
-            this.toolStripSeparator20.Size = new System.Drawing.Size(6, 30);
-            // 
-            // toolStripSeparator21
-            // 
-            this.toolStripSeparator21.Name = "toolStripSeparator21";
-            this.toolStripSeparator21.Size = new System.Drawing.Size(6, 30);
+            this.vlozenePlatno.Zoom = 1F;
             // 
             // HlavniForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1504, 753);
+            this.ClientSize = new System.Drawing.Size(1504, 803);
             this.Controls.Add(this.vlozenyToolBox);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.vlozenePlatno);
@@ -1005,7 +1005,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1450, 800);
+            this.MinimumSize = new System.Drawing.Size(1500, 850);
             this.Name = "HlavniForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Navrhování zahrad";
