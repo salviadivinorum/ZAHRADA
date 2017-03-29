@@ -203,7 +203,8 @@ namespace Zahrada
         {
             
             DeselectAll();
-            lineBtn.BackColor = Color.FromArgb(20, Color.Gray);
+            //lineBtn.BackColor = Color.FromArgb(Color.Gray);
+            lineBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "LINE";
             mojeplatno.krivka = true;
         }
@@ -222,7 +223,10 @@ namespace Zahrada
         private void polygonBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            polygonBtn.BackColor = Color.FromArgb(20, Color.Gray);
+            //polygonBtn.BackColor = Color.FromArgb(20, Color.Gray);
+            polygonBtn.BackColor = SystemColors.GradientActiveCaption;
+            //polygonBtn.BackColor = SystemColors.ActiveCaption;
+            
             mojeplatno.option = "POLY";
             mojeplatno.krivka = true;
         }
@@ -231,7 +235,7 @@ namespace Zahrada
         private void freeHandBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            freeHandBtn.BackColor = Color.FromArgb(20, Color.Gray);
+            freeHandBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "PEN";
             mojeplatno.krivka = true;
 
@@ -241,7 +245,7 @@ namespace Zahrada
         private void rectBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            rectBtn.BackColor = Color.FromArgb(20, Color.Gray);
+            rectBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "DR";
             mojeplatno.krivka = false;
 
@@ -262,27 +266,29 @@ namespace Zahrada
         private void circBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            circBtn.BackColor = Color.FromArgb(20, Color.Gray);
+            circBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "ELL";
             mojeplatno.krivka = false;
         }
 
 
         // Oblouk
+        /*
         private void arcBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            arcBtn.BackColor = Color.FromArgb(20, Color.Gray);
+            arcBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "ARC";
             mojeplatno.krivka = false;
         }
+        */
 
 
         // Jednoduchy text
         private void simpleTextBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            simpleTextBtn.BackColor = Color.FromArgb(20, Color.Gray);
+            simpleTextBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "STB";
             mojeplatno.krivka = false;
         }
@@ -292,7 +298,7 @@ namespace Zahrada
         private void imageBtn_Click(object sender, EventArgs e)
         {
             DeselectAll();
-            imageBtn.BackColor = Color.FromArgb(20, Color.Gray);
+            imageBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "IB";
             mojeplatno.krivka = false;
 
@@ -309,8 +315,7 @@ namespace Zahrada
         {
             // obsluha viditelnosti tlacitek
             List<Button> seznamTlacitek = new List<Button>()
-            { lineBtn, rectBtn, circBtn, simpleTextBtn, arcBtn,
-                polygonBtn, freeHandBtn, imageBtn, groupBtn, deGroupBtn,
+            { lineBtn, rectBtn, circBtn, simpleTextBtn, polygonBtn, freeHandBtn, imageBtn, groupBtn, deGroupBtn,
                mirrorXbtn, toFrontBtn, toBackBtn, deleteBtn, copyBtn };
 
             foreach (Button b in seznamTlacitek)

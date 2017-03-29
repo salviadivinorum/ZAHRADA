@@ -249,10 +249,12 @@ namespace Zahrada{
         }
 
        // metodu volam pri Zoomovani koleckem
+       /*
         public void UpravZoomVComboBoxu(int index)
         {
             nalezenyZoomCBvToolStrip.SelectedIndex = index;
         }
+        */
 
         // pomocna metoda k nalezeni formularoveho prvku
         public void NajdiZoomComboBoxvMainForm()
@@ -260,7 +262,7 @@ namespace Zahrada{
             var najdiToolStripVMainForm = Parent.Controls.Find("toolStrip1", true);
             nalezenyToolStripvMainForm = (ToolStrip)najdiToolStripVMainForm.First();
             var najdiZoomCB = nalezenyToolStripvMainForm.Items.Find("zoomToolStripComboBox", true);
-            nalezenyZoomCBvToolStrip = (ToolStripComboBox)najdiZoomCB.First();
+            //nalezenyZoomCBvToolStrip = (ToolStripComboBox)najdiZoomCB.First();
             //var najdiClosedCB = nalezenyToolStripvMainForm.Items.Find("closedToolStripComboBox", true);
             //nalezenyClosedCBvToolStrip = (ToolStripComboBox)najdiClosedCB.First();
 
@@ -268,11 +270,11 @@ namespace Zahrada{
 
         public void NajdiClosedCBvMainForm()
         {
-            var najdiToolStripVMainForm = Parent.Controls.Find("toolStrip1", true);
-            nalezenyToolStripvMainForm = (ToolStrip)najdiToolStripVMainForm.First();
-            var najdiClosedCB = nalezenyToolStripvMainForm.Items.Find("closedToolStripComboBox", true);
-            nalezenyClosedCBvToolStrip = (ToolStripComboBox)najdiClosedCB.First();
-            indexClosed = nalezenyClosedCBvToolStrip.SelectedIndex;
+            //var najdiToolStripVMainForm = Parent.Controls.Find("toolStrip1", true);
+            //nalezenyToolStripvMainForm = (ToolStrip)najdiToolStripVMainForm.First();
+            // var najdiClosedCB = nalezenyToolStripvMainForm.Items.Find("closedToolStripComboBox", true);
+            // nalezenyClosedCBvToolStrip = (ToolStripComboBox)najdiClosedCB.First();
+            //indexClosed = nalezenyClosedCBvToolStrip.SelectedIndex;
 
         }
 
@@ -1511,7 +1513,7 @@ namespace Zahrada{
             //showDebug = false;
             tip.Active = false;
             // podle comboboxu v Main Form ridim uzavreni POLY/PEN
-            NajdiClosedCBvMainForm();
+            //NajdiClosedCBvMainForm();
             if (indexClosed == 0)
                 uzavrenaKrivka = false;
             else uzavrenaKrivka = true;
@@ -1903,7 +1905,7 @@ namespace Zahrada{
         {
             
 
-            if (Zoom > 0.21f && Zoom <= 21f)
+            if (Zoom > 0.01f && Zoom <= 21f)
             {
                 Zoom = (float)(Zoom / 2);
                 
@@ -1946,8 +1948,8 @@ namespace Zahrada{
 
             int index = 1;
             
-
-            if (e.Delta < 0 && (Zoom > 0.21f && Zoom <= 21f) )
+            // toto je Zoom Out
+            if (e.Delta < 0 && (Zoom > 0.01f && Zoom <= 21f) )
             {
                 if (Fit2grid & gridSize > 0)
                 {
@@ -1970,41 +1972,13 @@ namespace Zahrada{
 
 
 
-                /*
-                if (gridSize > 0)
-                {
-                    int gr = gridSize;
-                    dx = (int)(dx + (e.X / (Zoom)));
-                    dy = (int)(dy + (e.Y / (Zoom)));
-                    ZoomOut();
-                    gridSize = gr;
-                }
-                else
-                {
-                    dx = (int)(dx + (e.X / (Zoom)));
-                    dy = (int)(dy + (e.Y / (Zoom)));
-                    ZoomOut();
-                }
-                */
+                
 
-
-
-
-                /*
-                if (fit2grid & gridSize > 0)
-                {
-
-                    shapes.Fit2Grid(gridSize);
-                    shapes.sRec.Fit2grid(gridSize);
-                }
-
-                */
-
-                // ZoomOut();
 
 
 
             }
+            //toto je Zoom In
             else if (e.Delta > 0 && (Zoom <= 15f))
             {
 
@@ -2012,8 +1986,8 @@ namespace Zahrada{
                 if (Fit2grid & gridSize > 0)
                 {
                     //int grid = gridSize;
-                    dx = (int)(dx - (e.X / (Zoom * 2)));
-                    dy = (int)(dy - (e.Y / (Zoom * 2)));
+                    dx = (int)(dx - (e.X / (Zoom *2)));
+                    dy = (int)(dy - (e.Y / (Zoom *2)));
 
                     dx = gridSize * ((dx) / gridSize); 
                     dy = gridSize * ((dy) / gridSize);
@@ -2022,40 +1996,14 @@ namespace Zahrada{
                     //gridSize = grid;
                 }else
                 {
-                    dx = (int)(dx - (e.X / (Zoom * 2)));
-                    dy = (int)(dy - (e.Y / (Zoom * 2)));
+                    dx = (int)(dx - (e.X / (Zoom *2)));
+                    dy = (int)(dy - (e.Y / (Zoom *2)));
                     ZoomIn();
                 }
 
                
                 
-                /*
                 
-                if (gridSize > 0)
-                {
-
-                    dx = gridSize * (int)(dx - (e.X / (Zoom * 2)))/gridSize;
-                    dy = gridSize * (int)(dy - (e.Y / (Zoom * 2)))/gridSize;
-                }
-                else
-                {
-                    dx = (int)(dx - (e.X / (Zoom * 2)));
-                    dy = (int)(dy - (e.Y / (Zoom * 2)));
-                }
-                
-                */
-
-
-                //ZoomIn();
-
-                /*
-                if (fit2grid & gridSize > 0)
-                {
-
-                    shapes.Fit2Grid(gridSize);
-                    shapes.sRec.Fit2grid(gridSize);
-                }
-                */
 
 
             }
@@ -2077,7 +2025,7 @@ namespace Zahrada{
             else if (Zoom == 16f)
                 index = 7;
 
-            UpravZoomVComboBoxu(index);
+            //UpravZoomVComboBoxu(index);
 
 
             //UpravZoomVComboBoxu(index);

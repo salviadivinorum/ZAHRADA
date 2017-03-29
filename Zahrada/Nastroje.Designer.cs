@@ -43,7 +43,6 @@
             this.circBtn = new System.Windows.Forms.Button();
             this.polygonBtn = new System.Windows.Forms.Button();
             this.imageBtn = new System.Windows.Forms.Button();
-            this.arcBtn = new System.Windows.Forms.Button();
             this.simpleTextBtn = new System.Windows.Forms.Button();
             this.zmenitGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -238,9 +237,9 @@
             this.label33 = new System.Windows.Forms.Label();
             this.splitter8 = new System.Windows.Forms.Splitter();
             this.label37 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.imageListProTabControl = new System.Windows.Forms.ImageList(this.components);
             this.ToolTipProTalcitka = new System.Windows.Forms.ToolTip(this.components);
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControlProNastroje.SuspendLayout();
             this.TabPageFunkce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -369,7 +368,6 @@
             this.tableLayoutPanel1.Controls.Add(this.circBtn, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.polygonBtn, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.imageBtn, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.arcBtn, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.simpleTextBtn, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 19);
@@ -523,22 +521,6 @@
             this.ToolTipProTalcitka.SetToolTip(this.imageBtn, "zahradní prvek ...");
             this.imageBtn.UseVisualStyleBackColor = true;
             this.imageBtn.Click += new System.EventHandler(this.imageBtn_Click);
-            // 
-            // arcBtn
-            // 
-            this.arcBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.arcBtn.FlatAppearance.BorderSize = 0;
-            this.arcBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.arcBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.arcBtn.ImageKey = "oblouk.ico";
-            this.arcBtn.ImageList = this.imageListProVytvoritZmenit;
-            this.arcBtn.Location = new System.Drawing.Point(3, 87);
-            this.arcBtn.Name = "arcBtn";
-            this.arcBtn.Size = new System.Drawing.Size(65, 65);
-            this.arcBtn.TabIndex = 8;
-            this.ToolTipProTalcitka.SetToolTip(this.arcBtn, "oblouk");
-            this.arcBtn.UseVisualStyleBackColor = true;
-            this.arcBtn.Click += new System.EventHandler(this.arcBtn_Click);
             // 
             // simpleTextBtn
             // 
@@ -2945,6 +2927,16 @@
             this.label37.TabIndex = 85;
             this.label37.Text = "dětský nábytek";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(301, 1142);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "Průvodce2";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // imageListProTabControl
             // 
             this.imageListProTabControl.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListProTabControl.ImageStream")));
@@ -2957,16 +2949,6 @@
             this.imageListProTabControl.Images.SetKeyName(5, "prani2.ico");
             this.imageListProTabControl.Images.SetKeyName(6, "prani3.ico");
             this.imageListProTabControl.Images.SetKeyName(7, "prani4.ico");
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(301, 1142);
-            this.tabPage1.TabIndex = 5;
-            this.tabPage1.Text = "Průvodce2";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // UserControlNastroje
             // 
@@ -3067,7 +3049,6 @@
         private System.Windows.Forms.Button rectBtn;
         private System.Windows.Forms.Button polygonBtn;
         private System.Windows.Forms.Button circBtn;
-        private System.Windows.Forms.Button arcBtn;
         private System.Windows.Forms.Button imageBtn;
         private System.Windows.Forms.Button simpleTextBtn;
         private System.Windows.Forms.GroupBox zmenitGroupBox;

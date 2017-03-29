@@ -50,15 +50,16 @@ namespace Zahrada
             vlozenePlatno.dy = 100;
             vlozenePlatno.Zoom = 0.25f;
             vlozenePlatno.NajdiZoomComboBoxvMainForm();
-            vlozenePlatno.UpravZoomVComboBoxu(1);
+            //vlozenePlatno.UpravZoomVComboBoxu(1);
 
             vlozenyToolBox.NajdiUndoReodBtnsVmainForm();
+            toolStrip1.BackColor = Color.FromArgb(17, Color.CadetBlue);
 
             //this.vlozenePlatno.ParentForm = this;
-            OnButtonZoomPusClick += new EventHandler(KlikNaPlus); // priradim udalost na tlacitko + Zoom
-            OnButtonZoomMinusClick += new EventHandler(KlikNaMinus); // priradim udal na tlac - Zoom
+            //OnButtonZoomPusClick += new EventHandler(KlikNaPlus); // priradim udalost na tlacitko + Zoom
+            //OnButtonZoomMinusClick += new EventHandler(KlikNaMinus); // priradim udal na tlac - Zoom
 
-           // ObjectSelected += new ObjectSelectedEventHandler(OnBasicObjectSelected);
+            // ObjectSelected += new ObjectSelectedEventHandler(OnBasicObjectSelected);
             //vlozenePlatno.SetMainForm(this);
         }
         #endregion
@@ -70,9 +71,9 @@ namespace Zahrada
             penWidthtoolStripComboBox.SelectedIndex = 0; // comboboxy nahe v toolstripu
             colorFillingOnOffToolStripComboBox.SelectedIndex = 0;
             textureFillingOnOffToolStripComboBox.SelectedIndex = 0;
-            gridToolStripComboBox.SelectedIndex = 0;
-            zoomToolStripComboBox.SelectedIndex = 1;
-            closedToolStripComboBox.SelectedIndex = 0;
+            //gridToolStripComboBox.SelectedIndex = 0;
+            //zoomToolStripComboBox.SelectedIndex = 1;
+           // closedToolStripComboBox.SelectedIndex = 0;
             vlozenePlatno.Zoom = 0.25f;
             
             
@@ -248,148 +249,85 @@ namespace Zahrada
         
 
 
-        // Zmena Grid
-        private void gridToolStripComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            int index = gridToolStripComboBox.SelectedIndex;
-            int grs;
-            switch (index)
-            {
-                case 0:
-                    grs = 0;
-                    break;
-                case 1:
-                    grs = 1;
-                    break;
-                case 2:
-                    grs = 5;
-                    break;
-                case 3:
-                    grs = 10;
-                    break;
-                case 4:
-                    grs = 25;
-                    break;
-                case 5:
-                    grs = 50;
-                    break;
-                case 6:
-                    grs = 100;
-                    break;
-                case 7:
-                    grs = 250;
-                    break;
-                case 8:
-                    grs = 500;
-                    break;
-                default:
-                    grs = 0;
-                    break;
-
-            }
-
-            vlozenePlatno.gridSize = grs;
-            vlozenePlatno.Focus();
-
-            /*
-            string hodnota = gridToolStripComboBox.Text;
-            int startI = 5;
-            int endI = hodnota.Length;
-            int delkaSub = endI - startI;
-            string kolik = hodnota.Substring(startI, delkaSub);
-            if (kolik != "Vyp")
-            {
-                int grsize = int.Parse(kolik);
-                vlozenePlatno.gridSize = grsize;
-                mrizZapnuta = true;
-            }
-            else vlozenePlatno.gridSize = 0;
-            vlozenePlatno.Focus();
-            //vlozenyToolBox.Select();
-            */
-           
-        }
-
+       
         // zakladni Zoom In + 
         public void zoomINtoolStripButton_Click(object sender, EventArgs e)
         {
-            //vlozenePlatno.dx = 1;
-            //vlozenePlatno.dy = 1;
-            OnButtonZoomPusClick(this, null);
 
-            //vlozenePlatno.dx = (int)(vlozenePlatno.dx / vlozenePlatno.Zoom);
-            //vlozenePlatno.dy = (int)(vlozenePlatno.dy / vlozenePlatno.Zoom);
-
-            //vlozenePlatno.dx = (int)(vlozenePlatno.dx - 200);
-            //vlozenePlatno.dy = (int)(vlozenePlatno.dy - 200);
-            //vlozenePlatno.Redraw(false);
-            int sirkaPlatna = vlozenePlatno.Size.Width;
-            int vyskaPlatna = vlozenePlatno.Height;
-            
-            vlozenePlatno.ZoomIn(sirkaPlatna, vyskaPlatna);
-            vlozenePlatno.ZoomIn();
-            //vlozenePlatno.Focus();
+            // int sirkaPlatna = vlozenePlatno.Size.Width;
+            // int vyskaPlatna = vlozenePlatno.Size.Height;
 
 
-            //vlozenePlatno.Redraw(true);
-            // zoomToolStripComboBox_SelectedIndexChanged(sender, null);
+            //vlozenePlatno.ZoomIn();
 
+
+            int ix = (int)vlozenePlatno.Size.Width / 2;
+            int iy = (int)vlozenePlatno.Size.Height / 2;
+
+
+            if (vlozenePlatno.Zoom <= 15f)                
+            {
+                if (vlozenePlatno.Fit2grid & vlozenePlatno.gridSize > 0)
+                {
+                    //int grid = gridSize;
+                    vlozenePlatno.dx = (int)(vlozenePlatno.dx - (ix / (vlozenePlatno.Zoom * 2)));
+                    vlozenePlatno.dy = (int)(vlozenePlatno.dy - (iy / (vlozenePlatno.Zoom * 2)));
+
+                    vlozenePlatno.dx = vlozenePlatno.gridSize * ((vlozenePlatno.dx) / vlozenePlatno.gridSize);
+                    vlozenePlatno.dy = vlozenePlatno.gridSize * ((vlozenePlatno.dy) / vlozenePlatno.gridSize);
+
+                    vlozenePlatno.ZoomIn();
+                    //gridSize = grid;
+                }
+                else
+                {
+                    vlozenePlatno.dx = (int)(vlozenePlatno.dx - (ix / (vlozenePlatno.Zoom * 2)));
+                    vlozenePlatno.dy = (int)(vlozenePlatno.dy - (iy / (vlozenePlatno.Zoom * 2)));
+                    vlozenePlatno.ZoomIn();
+                }
+            }   
 
         }
 
         // zkaldni Zoom Out -
         public void zoomOUTtoolStripButton_Click(object sender, EventArgs e)
         {
-            OnButtonZoomMinusClick(this, null);
-            vlozenePlatno.ZoomOut();
-            //vlozenePlatno.Focus();
-            //zoomToolStripComboBox_SelectedIndexChanged(sender, null);
-        }
-
-
-              
-        // metoda pro ovladac udalosti Zoom + -
-        public void KlikNaPlus(object sender, EventArgs e)
-        {
             
-            int index = zoomToolStripComboBox.SelectedIndex;
-            if (index <= 6)
-            {
-                zoomToolStripComboBox.SelectedIndex = index + 1;
-                //zoomToolStripComboBox_SelectedIndexChanged(sender, null);
-            }
-            //vlozenePlatno.Focus();
+            //vlozenePlatno.ZoomOut();
 
-        }
-
-        public void KlikNaMinus(object sender, EventArgs e)
-        {
-            int index = zoomToolStripComboBox.SelectedIndex;
-            if (index >= 1)
-                zoomToolStripComboBox.SelectedIndex = index - 1;
-            //zoomToolStripComboBox_SelectedIndexChanged(sender, null);
-            //vlozenePlatno.Focus();
-        }
             
-        // objekt Closed ano/ne
-        private void closedToolStripComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            int index = closedToolStripComboBox.SelectedIndex;
-            if (index == 0)
-            {
-                vlozenePlatno.SetClosed(false);
+            int ix = (int)vlozenePlatno.Size.Width / 2;
+            int iy = (int)vlozenePlatno.Size.Height / 2;
 
 
-            }
-            else
+            if (vlozenePlatno.Zoom > 0.01f & vlozenePlatno.Zoom <= 21f)
             {
-                vlozenePlatno.SetClosed(true);
+                if (vlozenePlatno.Fit2grid & vlozenePlatno.gridSize > 0)
+                {
+                    //int gr = gridSize;
+                    vlozenePlatno.dx = (int)(vlozenePlatno.dx + (ix / (vlozenePlatno.Zoom)));
+                    vlozenePlatno.dy = (int)(vlozenePlatno.dy + (iy / (vlozenePlatno.Zoom)));
+
+                    vlozenePlatno.dx = vlozenePlatno.gridSize * ((vlozenePlatno.dx) / vlozenePlatno.gridSize);
+                    vlozenePlatno.dy = vlozenePlatno.gridSize * ((vlozenePlatno.dy) / vlozenePlatno.gridSize);
+
+                    vlozenePlatno.ZoomOut();
+                    //gridSize = gr;
+                }
+                else
+                {
+                    vlozenePlatno.dx = (int)(vlozenePlatno.dx + (ix / (vlozenePlatno.Zoom)));
+                    vlozenePlatno.dy = (int)(vlozenePlatno.dy + (iy / (vlozenePlatno.Zoom)));
+                    vlozenePlatno.ZoomOut();
+                }
 
             }
            
-            vlozenePlatno.Focus();
-            vlozenePlatno.Redraw(true);
+            
         }
+
+
+        
 
         // FILLING barvou On/Off
         private void fillingOnOffToolStripComboBox_DropDownClosed(object sender, EventArgs e)
@@ -449,35 +387,11 @@ namespace Zahrada
             Close();
         }
 
-                
-        // osetreni klavesy SPACE jako ovladani mrize - zapnout/vypnout
+          // osetreni klavesy SPACE jako ovladani mrize - zapnout/vypnout       
+             /* 
         private void vlozenePlatno_KeyDown(object sender, KeyEventArgs e)
         {
-            /*
-            // doladit esc klavesu at odznaci vse
-            if(e.KeyCode == Keys.Escape)
-            {
-                
-                ArrayList seznam = vlozenePlatno.GetElements;
-                foreach (Ele obj in seznam)
-                {
-                    obj.selected = false;
-                    obj.DeSelect();
-                    
-                }
-                vlozenePlatno.Redraw(true);
-                
-                //PropertyEventArgs e1 = new PropertyEventArgs(this.vlozenePlatno.shapes.GetSelectedArray(), false, false);
-               // ObjectSelected(null, null);// raise event
-                vlozenePlatno.Redraw(true);
-
-                //PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
-                //ObjectSelected(this, e1);
-
-                //vlozenePlatno.Platno_MouseUp(null, null);
-
-            }
-            */
+           
 
             if (e.KeyCode == Keys.Space)
             {
@@ -571,6 +485,7 @@ namespace Zahrada
 
         }
 
+        */
         // osetreni undo/redo sipek
         #region Undo/Redo sipky
         private void undoToolStripButton_Click(object sender, EventArgs e)
@@ -596,11 +511,13 @@ namespace Zahrada
 
         
         // dodelat ZOOM ComboBox ....
+        /*
         private void zoomToolStripComboBox_DropDownClosed(object sender, EventArgs e)
         {
             vlozenePlatno.Focus();
 
         }
+        */
 
         // Save As tlacitko ...
         private void saveAsToolStripButton_Click(object sender, EventArgs e)
@@ -643,7 +560,8 @@ namespace Zahrada
             vlozenePlatno.Rámeček = true;
             vlozenePlatno.Ax = 2970;
             vlozenePlatno.Ay = 4200;
-            Unmark();
+            //Unmark();
+            UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A3PortraitToolStripMenuItem.Checked = true;
             FrameToolStripDropDownButton.Text = A3PortraitToolStripMenuItem.Text; //"Plán 29,7m x 42m";
             vlozenePlatno.Focus();
@@ -655,7 +573,8 @@ namespace Zahrada
             vlozenePlatno.Rámeček = true;
             vlozenePlatno.Ax = 4200;
             vlozenePlatno.Ay = 2970;
-            Unmark();
+            //Unmark();
+            UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A3LandcapeToolStripMenuItem.Checked = true;
             FrameToolStripDropDownButton.Text = A3LandcapeToolStripMenuItem.Text; //"Plán 42m x 29,7m";
             vlozenePlatno.Focus();
@@ -667,7 +586,8 @@ namespace Zahrada
             vlozenePlatno.Rámeček = true;
             vlozenePlatno.Ax = 2100;
             vlozenePlatno.Ay = 2970;
-            Unmark();
+            // Unmark();
+            UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A4PortraitToolStripMenuItem.Checked = true;
             FrameToolStripDropDownButton.Text = A4PortraitToolStripMenuItem.Text;   //"Plán 21m x 29,7m";
             vlozenePlatno.Focus();
@@ -680,7 +600,8 @@ namespace Zahrada
             vlozenePlatno.Rámeček = true;
             vlozenePlatno.Ax = 2970;
             vlozenePlatno.Ay = 2100;
-            Unmark();
+            // Unmark();
+            UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A4LandcapeToolStripMenuItem.Checked = true;
             FrameToolStripDropDownButton.Text = A4LandcapeToolStripMenuItem.Text; //"Plán 29,7m x 21m";
             vlozenePlatno.Focus();
@@ -709,13 +630,14 @@ namespace Zahrada
                     CustomPlanSizeString = "Vlastní plán " + customSizeWindow.x.ToString() + "m x " + customSizeWindow.y.ToString() + "m";
                     FrameToolStripDropDownButton.Text = CustomPlanSizeString;
                     CustumSizeToolStripMenuItem.Text = CustomPlanSizeString;
-                    Unmark();
+                    //Unmark();
+                    UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
                     CustumSizeToolStripMenuItem.Checked = true;
 
                 }
                 else
                 {
-                    Unmark2();
+                    Unmark2Special();
 
                 }
 
@@ -726,6 +648,7 @@ namespace Zahrada
         }
 
         // pomocna metoda k un-check v tool strip DropDownButton - vsem polozkam Item
+        /*
         private void Unmark()
         {
             object ob1;
@@ -743,8 +666,10 @@ namespace Zahrada
                 }
             }
         }
+
+        */
         // odznaci ve Vlastni rozmeru to co je potreba ... a oznaci co je treba
-        private void Unmark2()
+        private void Unmark2Special()
         {
             object ob1;
             object ob2;
@@ -773,7 +698,8 @@ namespace Zahrada
 
         private void OffFrameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Unmark();
+           // Unmark();
+            UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             OffFrameToolStripMenuItem.Checked = true;
             vlozenePlatno.Rámeček = false;
             FrameToolStripDropDownButton.Text = "Rozměry plánu vypnuty";
@@ -801,77 +727,171 @@ namespace Zahrada
             YsnapToolStripMenuItem.Checked = false;
         }
 
-        #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // dodelat ...
-        /*
-        private void zoomToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void GridToolStripDropDownButton_DropDownClosed(object sender, EventArgs e)
         {
-            int index = zoomToolStripComboBox.SelectedIndex;
-            float zoo = 1f;
+            // ToolStripDropDownButton 
+            //ToolStripButton bt = (ToolStripButton)(sender);
+           // string text = bt.Text;
+           // MessageBox.Show(text);
+            //GridToolStripDropDownButton.Drop
+        }
 
-            if (index == 0)
-                zoo = 0.125f;
-            else if (index == 1)
-                zoo = 0.25f;
-            else if (index == 2)
-                zoo = 0.5f;
-            else if (index == 3)
-                zoo = 1;
-            else if (index == 4)
-                zoo = 2;
-            else if (index == 5)
-                zoo = 4;
-            else if (index == 6)
-                zoo = 8;
-            else if (index == 7)
-                zoo = 16;
-            vlozenePlatno.Zoom = zoo;
+        private void GridToolStripDropDownButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string text = e.ClickedItem.Text;
+            ToolStripMenuItem item = (ToolStripMenuItem)e.ClickedItem;
+
+            int grs;
+            //MessageBox.Show(text);
+            switch (text)
+            {
+                case "Mříž Vypnuta":
+                    grs = 0;
+                    //UnmarkToolStripDropDownItems(GridToolStripDropDownButton);
+                    //item.Checked = true;
+                    //item.
+                    break;
+                case "Mříž 1cm":
+                    grs = 1;
+                    break;
+                case "Mříž 5cm":
+                    grs = 5;
+                    break;
+                case "Mříž 10cm":
+                    grs = 10;
+                    break;
+                case "Mříž 25cm":
+                    grs = 25;
+                    break;
+                case "Mříž 50cm":
+                    grs = 50;
+                    break;
+                case "Mříž 100cm":
+                    grs = 100;
+                    break;
+                case "Mříž 250cm":
+                    grs = 250;
+                    break;
+                case "Mříž 500cm":
+                    grs = 500;
+                    break;
+                default:
+                    grs = 0;
+                    break;
+            }
+            UnmarkToolStripDropDownItems(GridToolStripDropDownButton);
+            item.Checked = true;
+            GridToolStripDropDownButton.Text = item.Text;
+            vlozenePlatno.gridSize = grs;
+            vlozenePlatno.Focus();
 
         }
+
+        #endregion
+
+        // pomocna metoda k un-check v tool strip DropDownButton - vsem polozkam Item
+        private void UnmarkToolStripDropDownItems(ToolStripDropDownButton button)
+        {
+            object ob1;
+            object ob2;
+            ToolStripMenuItem b;
+            foreach (object a in button.DropDownItems)
+            {
+                ob1 = a.GetType();
+                ob2 = typeof(ToolStripSeparator);
+
+                if (ob1 != ob2)
+                {
+                    b = (ToolStripMenuItem)a;
+                    b.Checked = false;
+                }
+            }
+
+        }
+
+
+
+
+
+        /*
+        // Zmena Grid
+        private void gridToolStripComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            int index = gridToolStripComboBox.SelectedIndex;
+            int grs;
+            switch (index)
+            {
+                case 0:
+                    grs = 0;
+                    break;
+                case 1:
+                    grs = 1;
+                    break;
+                case 2:
+                    grs = 5;
+                    break;
+                case 3:
+                    grs = 10;
+                    break;
+                case 4:
+                    grs = 25;
+                    break;
+                case 5:
+                    grs = 50;
+                    break;
+                case 6:
+                    grs = 100;
+                    break;
+                case 7:
+                    grs = 250;
+                    break;
+                case 8:
+                    grs = 500;
+                    break;
+                default:
+                    grs = 0;
+                    break;
+
+            }
+
+            vlozenePlatno.gridSize = grs;
+            vlozenePlatno.Focus();
+
+        }
+
+
         */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-    
+
 }
