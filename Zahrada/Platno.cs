@@ -1342,6 +1342,8 @@ namespace Zahrada
                 RmSelected();
                 Redraw(true);
             }
+
+           
         }
 
         public void Platno_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -1925,6 +1927,8 @@ namespace Zahrada
             shapes.AxSave = Šířka;
             shapes.AySave = Výška;
             shapes.ZoomSave = Zoom;
+
+
             // maze undo Buffer !!!
             shapes.AfterLoad();
             

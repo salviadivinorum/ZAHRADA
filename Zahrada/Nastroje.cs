@@ -92,19 +92,7 @@ namespace Zahrada
             nalezenyRedoBtn.Enabled = e.redoable;
         }
 
-        // pri inicializaci si hledam 2 tlacitka v MainForm ... volano z MainForm
-        public void NajdiUndoReodBtnsVmainForm()
-        {
-            var najdiToolStripVMainForm = Parent.Controls.Find("toolStrip1", true);
-            nalezenyToolStripvMainForm = (ToolStrip)najdiToolStripVMainForm.First();    
-
-            var najdiUndoBtnvToolstrip = nalezenyToolStripvMainForm.Items.Find("undoToolStripButton", true);
-            nalezenyUndoBtn = (ToolStripButton)najdiUndoBtnvToolstrip.First();           
-
-            var najdiRedoBtnvToolStrip = nalezenyToolStripvMainForm.Items.Find("redoToolStripButton", true);
-            nalezenyRedoBtn = (ToolStripButton)najdiRedoBtnvToolStrip.First();
-          
-        }
+        
 
         // po klikani na objekt - obsluha Property Gridu a nastavuji viditelnost tlacitek
         private void OnObjectSelected(object sender, PropertyEventArgs e)
@@ -256,11 +244,7 @@ namespace Zahrada
 
         }
 
-        // Musim aktualizovat muj PropertyGrid po stisku na Tab Vlastnosti
-        private void tabControlProNastroje_MouseUp(object sender, MouseEventArgs e)
-        {
-            mojeplatno.PushSelectionToShowInCustomGrid();
-        }
+        
         #endregion
 
         #region Klikani na tlacitka v Nastroje
@@ -333,6 +317,8 @@ namespace Zahrada
             {
                 mojeplatno.Focus();
             }
+
+            
 
 
         }
@@ -450,8 +436,292 @@ namespace Zahrada
 
         #endregion
 
+        List<string> rbuttons = new List<string>();
+        string b;
+        RadioButton rb = new RadioButton();
+        
+
+        // ulozit checked RButtony
+        public void CheckedRBSave()
+        {
+
+            
+            
+            
+            for(int r =6; r<=34; r++)
+            {
+                Control ct = TableLayoutPanelSeznamPrani.GetControlFromPosition(1, r);
+                    
+                if(ct != null)
+                {
+                    if (ct.GetType() == typeof(Panel))
+                    {
+                        Panel pa = (Panel)ct;
+                        foreach(Control co in pa.Controls)
+                        {
+                            RadioButton f = (RadioButton)(co);
+                            if (f.Checked)
+                            {
+                                    
+                                rbuttons.Add(f.Name);
+
+                            }
+                               
+                        }   
+
+                    }
+                }
+                    
+                    
+            }
+
+               
+            
+
+            mojeplatno.shapes.listradiobuttonu = rbuttons;         
+            
+
+        }
+
+        // nacist checke Rbuttony
+        public void CheckRBLoad2()
+        {
+            
+           
+                
+                foreach (string b in mojeplatno.shapes.listradiobuttonu)
+                {
+                //jmenorb = "radioButton" + i.ToString();
+
+
+                    if (radioButton1.Name == b) radioButton1.Checked = true;
+                    if (radioButton2.Name == b) radioButton2.Checked = true;
+                    if(radioButton3.Name == b) radioButton3.Checked = true;
+                    if (radioButton4.Name == b) radioButton4.Checked = true;
+                    if (radioButton5.Name == b) radioButton5.Checked = true;
+                    if (radioButton6.Name == b) radioButton6.Checked = true;
+                    if (radioButton7.Name == b) radioButton7.Checked = true;
+                    if (radioButton8.Name == b) radioButton8.Checked = true;
+                    if (radioButton9.Name == b) radioButton9.Checked = true;
+                    if (radioButton10.Name == b) radioButton10.Checked = true;
+                    if (radioButton11.Name == b) radioButton11.Checked = true;
+                    if (radioButton12.Name == b) radioButton12.Checked = true;
+                    if (radioButton13.Name == b) radioButton13.Checked = true;
+                    if (radioButton25.Name == b) radioButton25.Checked = true;
+                    if (radioButton27.Name == b) radioButton27.Checked = true;
+                    if (radioButton28.Name == b) radioButton28.Checked = true;
+                    if (radioButton29.Name == b) radioButton29.Checked = true;
+                    if (radioButton30.Name == b) radioButton30.Checked = true;
+                    if (radioButton31.Name == b) radioButton31.Checked = true;
+                    if (radioButton32.Name == b) radioButton32.Checked = true;
+                    if (radioButton33.Name == b) radioButton33.Checked = true;
+                    if (radioButton34.Name == b) radioButton34.Checked = true;
+                    if (radioButton35.Name == b) radioButton35.Checked = true;
+                    if (radioButton36.Name == b) radioButton36.Checked = true;
+                    if (radioButton37.Name == b) radioButton37.Checked = true;
+                    if (radioButton38.Name == b) radioButton38.Checked = true;
+                    if (radioButton39.Name == b) radioButton39.Checked = true;
+                    if (radioButton40.Name == b) radioButton40.Checked = true;
+                    if (radioButton41.Name == b) radioButton41.Checked = true;
+                    if (radioButton43.Name == b) radioButton42.Checked = true;
+                    if (radioButton43.Name == b) radioButton43.Checked = true;
+                    if (radioButton44.Name == b) radioButton44.Checked = true;
+                    if (radioButton45.Name == b) radioButton45.Checked = true;
+                    if (radioButton46.Name == b) radioButton46.Checked = true;
+                    if (radioButton47.Name == b) radioButton47.Checked = true;
+                    if (radioButton48.Name == b) radioButton48.Checked = true;
+                    if (radioButton49.Name == b) radioButton49.Checked = true;
+                    if (radioButton50.Name == b) radioButton50.Checked = true;
+                    if (radioButton51.Name == b) radioButton51.Checked = true;
+                    if (radioButton52.Name == b) radioButton52.Checked = true;
+                    if (radioButton53.Name == b) radioButton53.Checked = true;
+                    if (radioButton54.Name == b) radioButton54.Checked = true;
+                    if (radioButton55.Name == b) radioButton55.Checked = true;
+                    if (radioButton56.Name == b) radioButton56.Checked = true;
+                    if (radioButton57.Name == b) radioButton57.Checked = true;
+                    if (radioButton58.Name == b) radioButton58.Checked = true;
+                    if (radioButton59.Name == b) radioButton59.Checked = true;
+                    if (radioButton60.Name == b) radioButton60.Checked = true;
+                    if (radioButton61.Name == b) radioButton61.Checked = true;
+                    if (radioButton62.Name == b) radioButton62.Checked = true;
+                    if (radioButton63.Name == b) radioButton63.Checked = true;
+                    if (radioButton64.Name == b) radioButton64.Checked = true;
+                    if (radioButton65.Name == b) radioButton65.Checked = true;
+                    if (radioButton66.Name == b) radioButton66.Checked = true;
+                    if (radioButton67.Name == b) radioButton67.Checked = true;
+                    if (radioButton68.Name == b) radioButton68.Checked = true;
+                    if (radioButton69.Name == b) radioButton69.Checked = true;
+                    if (radioButton70.Name == b) radioButton70.Checked = true;
+                    if (radioButton71.Name == b) radioButton71.Checked = true;
+                    if (radioButton72.Name == b) radioButton72.Checked = true;
+                    if (radioButton73.Name == b) radioButton73.Checked = true;
+                    if (radioButton74.Name == b) radioButton74.Checked = true;
+                    if (radioButton75.Name == b) radioButton75.Checked = true;
+                    if (radioButton76.Name == b) radioButton76.Checked = true;
+                    if (radioButton77.Name == b) radioButton77.Checked = true;
+                    if (radioButton78.Name == b) radioButton78.Checked = true;
+                    if (radioButton79.Name == b) radioButton79.Checked = true;
+                    if (radioButton80.Name == b) radioButton80.Checked = true;
+                    if (radioButton81.Name == b) radioButton81.Checked = true;
+                    if (radioButton82.Name == b) radioButton82.Checked = true;
+                    if (radioButton83.Name == b) radioButton83.Checked = true;
+                    if (radioButton84.Name == b) radioButton84.Checked = true;
+                    
+                }
+
+            
+
+            
+        }
+
+
+
+        public void CheckedRBLoad()
+        {
+
+            for (int s = 0; s <= 3; s++)
+            {
+                for (int r = 0; r <= 34; r++)
+                {
+                    Control ct = TableLayoutPanelSeznamPrani.GetControlFromPosition(s, r);
+
+                    if (ct != null)
+                    {
+                        if (ct.GetType() == typeof(Panel))
+                        {
+                            Panel pa = (Panel)ct;
+                            foreach (Control co in pa.Controls)
+                            {
+                                RadioButton f = (RadioButton)(co);
+                                for (int i = 1; i <= 84; i++)
+                                {
+
+                                    b = "radioButton" + i.ToString();
+                                    foreach (string button in mojeplatno.shapes.listradiobuttonu)
+                                    {
+                                        //MessageBox.Show(f.Name.ToString());
+                                        if (button == b)
+                                        {
+                                            
+                                            f.Checked = true;
+                                           // tabControlProNastroje.Refresh();
+                                            
+                                        }
+
+                                    }
+
+                                }
+
+
+
+
+                                
+
+                            }
+
+                        }
+                    }
+
+
+                }
+
+
+            }
+
+
+
+                      
+           
+        }
+
+        Control GetControlByName(string Name)
+        {
+            foreach (Control c in this.Controls)
+                if (c.Name == Name)
+                    return c;
+
+            return null;
+        }
+
+
+
+        public Control GetControlByName(Control ParentCntl, string NameToSearch)
+        {
+            if (ParentCntl.Name == NameToSearch)
+                return ParentCntl;
+
+            foreach (Control ChildCntl in ParentCntl.Controls)
+            {
+                Control ResultCntl = GetControlByName(ChildCntl, NameToSearch);
+                if (ResultCntl != null)
+                    return ResultCntl;
+            }
+            return null;
+        }
+        
+
+
+
 
        
+        // Musim aktualizovat muj PropertyGrid po stisku na Tab Vlastnosti
+        private void tabControlProNastroje_MouseUp(object sender, MouseEventArgs e)
+        {
+            mojeplatno.PushSelectionToShowInCustomGrid();
+            //CheckedRBSave();
+            //MessageBox.Show(mojeplatno.shapes.listradiobuttonu.Count().ToString());
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // pri inicializaci si hledam 2 tlacitka v MainForm ... volano z MainForm
+        public void NajdiUndoReodBtnsVmainForm()
+        {
+            var najdiToolStripVMainForm = Parent.Controls.Find("toolStrip1", true);
+            nalezenyToolStripvMainForm = (ToolStrip)najdiToolStripVMainForm.First();
+
+            var najdiUndoBtnvToolstrip = nalezenyToolStripvMainForm.Items.Find("undoToolStripButton", true);
+            nalezenyUndoBtn = (ToolStripButton)najdiUndoBtnvToolstrip.First();
+
+            var najdiRedoBtnvToolStrip = nalezenyToolStripvMainForm.Items.Find("redoToolStripButton", true);
+            nalezenyRedoBtn = (ToolStripButton)najdiRedoBtnvToolStrip.First();
+
+        }
+
+      
     }
 }
 

@@ -397,7 +397,10 @@ namespace Zahrada
         // Save As tlacitko ...
         private void saveAsToolStripButton_Click(object sender, EventArgs e)
         {
+            vlozenyToolBox.CheckedRBSave();
             vlozenePlatno.Saver();
+            
+            
             //vlozenePlatno.shapes.indeOfSavedPlan = FrameToolStripDropDownButton.Se
         }
 
@@ -405,6 +408,8 @@ namespace Zahrada
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
             vlozenePlatno.Loader();
+            vlozenyToolBox.CheckRBLoad2(); // CheckedRBLoad2(); // radiobuttony chcecke obnovi
+            vlozenyToolBox.Refresh();
             MarkFrameToolStripMenuItem();
         }
 

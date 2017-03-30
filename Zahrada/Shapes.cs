@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -66,6 +67,7 @@ namespace Zahrada
         public int AySave;
         public int indeOfSavedPlan;
         public float ZoomSave;
+        public List<string> listradiobuttonu; 
 
 		#endregion
 
@@ -76,6 +78,7 @@ namespace Zahrada
 			InitUndoBuff();
 			Ele.dpix = dpix; // staticky clen tridy Ele
 			Ele.dpiy = dpiy; // staticky clen tridy Ele
+            listradiobuttonu = new List<string>();
 		}
 
 		#endregion		
