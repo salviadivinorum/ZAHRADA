@@ -874,7 +874,7 @@ namespace Zahrada
             // Vykresluju buffer se statickymi objekty do Graphics gl            
             g.DrawImageUnscaled(offScreenBmp, 0, 0);
             // uvolnim zdroje
-            DCscreen = offScreenDC;
+            //DCscreen = offScreenDC;
             offScreenDC.Dispose();
             
         }        
@@ -1941,127 +1941,94 @@ namespace Zahrada
             shapes.AfterLoad();
             PushPlease();
         }
-        
-        #endregion        
-        
+
+        #endregion
+
 
         #region Print & Preview
 
+        public PrintDocument docToPrint2 = new PrintDocument();
+
         public void PreviewBeforePrinting(float zoom)
         {
-            InitializePrintPreviewControl(zoom);
+            Color c = Pozadí;
+            Pozadí = Color.White;
 
-            inicializujDocToPrint();
+            InitializePrintPreviewControl(zoom); // volano po stiski tlacitka preview
+            Pozadí = c;
+           // InicializujDocToPrint();
 
         }
 
-        public void PrintMe()
+        public void PrintMe() // volano po stisku Tisk tlacitka ...
         {
-            inicializujDocToPrint(); // priradil jsem spravne docToPrint2
+            Color c = Pozadí;
+            Pozadí = Color.White;
 
-
-            this.shapes.DeSelect();
-
-            nahledForm = new NahledTisku();
+            InicializujDocToPrint2(); // priradil jsem spravne docToPrin2
+            shapes.DeSelect();           
 
             printDialog1.AllowSomePages = true;
             printDialog1.ShowHelp = true;
-            printDialog1.Document = docToPrint2;
-
-
-            
-
-
-
-
-
-            // to se tzka nahled formu ...
-            nahledForm.PrintPreviewControl.Name = "Náhled tiskové úlohy";
-            nahledForm.PrintPreviewControl.Document = nahledForm.docToPrint;
-            //nahledForm.PrintPreviewControl.Zoom = 0.25;
-            nahledForm.PrintPreviewControl.Document.DocumentName = "Náhled tisku";
-            nahledForm.PrintPreviewControl.UseAntiAlias = true;
-            nahledForm.docToPrint.PrintPage +=
-                new System.Drawing.Printing.PrintPageEventHandler(
-                docToPrint_PrintPage);
-
-
-
-         
-            //nahledForm.docToPrint.Print();
-
-           // printPreviewDialog1.Document = docToPrint2;
-           //  printPreviewDialog1.ShowDialog();
-
+            printDialog1.Document = docToPrint2;   
             
             DialogResult result = printDialog1.ShowDialog();
             if (result == DialogResult.OK)
-            {
-                // docToPrint2.PrinterSettings.PrinterName = printDialog1.PrinterSettings.PrinterName;
+            {                
                 PrinterSettings mysettings = printDialog1.PrinterSettings;
-                docToPrint2.PrinterSettings = mysettings;
-                printPreviewDialog1.Document = docToPrint2;
+                docToPrint2.PrinterSettings = mysettings;                
+                printPreviewDialog1.Document = docToPrint2;                
                 printPreviewDialog1.ShowDialog();
-                // docToPrint2.Print();
+             
             }
-
-
-
-            
-          
-
-            //nahledForm.Dispose();
+            Pozadí = c;
 
         }
 
-        public System.Drawing.Printing.PrintDocument docToPrint2 = new System.Drawing.Printing.PrintDocument();
+      
 
-        private void inicializujDocToPrint()
-        {
-            this.shapes.DeSelect();
-
-            docToPrint2.PrintPage +=
-                new System.Drawing.Printing.PrintPageEventHandler(
-                docToPrint_PrintPage);
-
-        }
+        
 
         private void InitializePrintPreviewControl(float zoom)
         {
-            this.shapes.DeSelect();
+            shapes.DeSelect();
 
             nahledForm = new NahledTisku();
-            nahledForm.PrintPreviewControl.Name = "Preview";           
+            //nahledForm.PrintPreviewControl.Name = "Preview";           
             nahledForm.PrintPreviewControl.Document = nahledForm.docToPrint;
-
-            // Set the zoom to 25 percent.
-            nahledForm.PrintPreviewControl.Zoom = zoom;            
-            nahledForm.PrintPreviewControl.Document.DocumentName = "Preview";
+            nahledForm.PrintPreviewControl.Document.DocumentName = "Výkres zahrady";
+     
+            nahledForm.PrintPreviewControl.Zoom = zoom;   
             nahledForm.PrintPreviewControl.UseAntiAlias = true;
          
-            nahledForm.docToPrint.PrintPage +=
-                new System.Drawing.Printing.PrintPageEventHandler(
-                docToPrint_PrintPage);
+            nahledForm.docToPrint.PrintPage += new PrintPageEventHandler(docToPrint_PrintPage);
 
            
-            nahledForm.Show(); // modeless okno (nemodalni)
-            //nahledForm.ShowDialog(); // modalni okno
-           
+            
+             nahledForm.ShowDialog(); // modalni okno
+            // nahledForm.Show(); // modeless okno (nemodalni)
+
         }
 
-        // The PrintPreviewControl will display the document
-        // by handling the documents PrintPage event
-        private void docToPrint_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+       // udalost co vlastne tisknout - Graphics muj ...
+        private void docToPrint_PrintPage(object sender, PrintPageEventArgs e)
         {
 
-            Graphics g = e.Graphics;    
+            Graphics g = e.Graphics;
             //shapes.Draw(g, 0, 0, 1f); // tady je Zoom pro tisk !!
+           
             g.DrawImageUnscaled(offScreenBmp, 0, 0);
-            g.Dispose();
+            
+           
+            //g.Dispose();
         }
 
-
-
+        // udalost pro docToPrint2
+        private void InicializujDocToPrint2()
+        {
+            shapes.DeSelect();
+            docToPrint2.PrintPage += new PrintPageEventHandler(docToPrint_PrintPage);
+        }
 
 
 
@@ -2072,7 +2039,7 @@ namespace Zahrada
 
 
         #endregion
-        
+
 
         #region Export nakresleneho do PNG/JPG/GIF
         public void ExportTo()
