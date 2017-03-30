@@ -57,6 +57,9 @@ namespace Zahrada
         private Bitmap offScreenBmp;
         // pouziti pro vykreslovani statickych objektu
         private Bitmap offScreenBackBmp;
+
+        // pouziti pro Export to
+        private Graphics DCscreen;
         
         
         // Grid mrizka
@@ -100,7 +103,7 @@ namespace Zahrada
         System.Windows.Forms.Cursor addPointCursor = GetCursor("newPoint3.cur", System.Windows.Forms.Cursors.Cross);
         System.Windows.Forms.Cursor delPointCursor = GetCursor("delPoint3.cur", System.Windows.Forms.Cursors.Default);  // v projektu neni nikdy pouzity
 
-        public int kolikNasobneZoom = 1;
+        
         public int rozdilSirek;
         public int rozdilVysek;
 
@@ -127,6 +130,10 @@ namespace Zahrada
         private int pocY;
         private int delkaElementu;
         private int celkovaDelkaPenElementu;
+
+        // pro Load/save
+        public float kolikNasobneZoom = 1;
+        
         #endregion       
 
         #region Konstruktor tridy Platno
@@ -354,7 +361,7 @@ namespace Zahrada
         }
 
 
-        // [CategoryAttribute("Plán - popis"), DescriptionAttribute("Plán Zoom")]
+        //[CategoryAttribute("Plán - popis"), DescriptionAttribute("Plán Zoom")]
         public float Zoom
         {
             get
@@ -377,7 +384,15 @@ namespace Zahrada
         }
 
 
+        [Category("Plán - popis"), Description("Plán - zvětšení nebo zmenšení")]
+        public string Zvětšení
+        {
+            get { return ((_zoom * 4*100).ToString()+" %"); }
+            //set { }
+        }
         
+
+
 
         //[CategoryAttribute("Plátno - popis"), DescriptionAttribute("Plátno OriginX")]
         public int dx
@@ -857,8 +872,9 @@ namespace Zahrada
 
 
             // Vykresluju buffer se statickymi objekty do Graphics gl            
-            g.DrawImageUnscaled(offScreenBmp, 0, 0);            
+            g.DrawImageUnscaled(offScreenBmp, 0, 0);
             // uvolnim zdroje
+            DCscreen = offScreenDC;
             offScreenDC.Dispose();
             
         }        
@@ -899,11 +915,6 @@ namespace Zahrada
             {
                 #region START LEFT MOUSE BUTTON PRESSED
                 mouseSx = true; // I start pressing SX
-                
-
-
-
-
 
                 switch (option)
                 {
@@ -1142,7 +1153,7 @@ namespace Zahrada
                 }
                 else
                 {
-                    if (this.option == "PEN")
+                    if (option == "PEN")
                     {                       
                         //Volná čára - přidávání bodů
                         visPenPointList.Add(new PointWrapper(tempX - startX, tempY - startY));
@@ -1157,8 +1168,8 @@ namespace Zahrada
                             pocY = e.Y;
                             celkovaDelkaPenElementu += delkaElementu;
 
-                            penPrecX = this.tempX;
-                            penPrecY = this.tempY;
+                            penPrecX = tempX;
+                            penPrecY = tempY;
                         }                        
                         Redraw(false);                        
                     }
@@ -1288,6 +1299,13 @@ namespace Zahrada
             Redraw(true); //redraw all=true   
         }
 
+        // posila proveden zmeny do CsutomPropertyGridu ... zjednodusena verye bez prekreslovani obrazovky
+        public void PushPlease()
+        {
+            PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
+            ObjectSelected(this, e1);// raise event    
+        }
+
         // simuluje stisk Esc klavesy;
         public void ForceEsc()
         {
@@ -1330,6 +1348,7 @@ namespace Zahrada
         {
             //showDebug = false;
             tip.Active = false;
+           
             if (e.Button == MouseButtons.Left)
             #region Mouse Left up
             {
@@ -1405,10 +1424,14 @@ namespace Zahrada
                     case "POLY":                        
                         {
                             // toto je tehdy kdyz jsem nestiskl "A" pri zadavani polygonu ...
-                            if(penPointList.Count == 1)
+                            if(penPointList != null)
                             {
-                                penPointList.Add(new PointWrapper(tmpX - startX, tmpY - startY));
+                                if (penPointList.Count == 1)
+                                {
+                                    penPointList.Add(new PointWrapper(tmpX - startX, tmpY - startY));
+                                }
                             }
+                            
                             shapes.AddPoly(startX, startY, tmpX, tmpY, creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, penPointList, false, uzavrenaKrivka, creationTextureFilled, creationTexturePattern);                           
                             penPointList = null;
                             visPenPointList = null;
@@ -1453,10 +1476,26 @@ namespace Zahrada
                         if (status == "drawrect")
                         {
                             Cursor = System.Windows.Forms.Cursors.WaitCursor;
-                            editorForm.ShowDialog();
-                            Cursor = System.Windows.Forms.Cursors.Arrow;
-                            shapes.AddSimpleTextBox(startX, startY, tmpX, tmpY, r, creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, creationTextureFilled, creationTexturePattern);
-                            ChangeOption("select");
+                            DialogResult dr = editorForm.ShowDialog();
+                            if(dr == DialogResult.OK)
+                            {
+                                Cursor = System.Windows.Forms.Cursors.Arrow;
+                                shapes.AddSimpleTextBox(startX, startY, tmpX, tmpY, r, creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, creationTextureFilled, creationTexturePattern);
+                                ChangeOption("select");
+
+                            }
+                            else
+                            {
+                                //shapes.DeSelect();
+                                //Cursor = System.Windows.Forms.Cursors.Arrow;
+                                //Redraw(true);
+                                status = "";
+                                ChangeOption("select");
+
+                            }
+                            //editorForm.ShowDialog();
+                            
+                           
                         }
                         break;
                     #endregion
@@ -1550,6 +1589,41 @@ namespace Zahrada
 
                 Zoom = 0.25f;
             }
+
+            if(e.Button == MouseButtons.Left)
+            {
+                object ob = shapes.selEle;
+
+                if (ob != null)
+                {
+
+                    if (ob.GetType() == typeof(Line))
+                    {
+                        
+                        shapes.DeSelect();
+                        ChangeOption("LINE");
+
+                    }
+
+                    /*
+                    if (ob.GetType() == typeof(Stext))
+                        ChangeOption("STB");                    
+                    else if (ob.GetType() == typeof(Line))                        
+                        ChangeOption("LINE");
+                    else if (ob.GetType() == typeof(Rectangle)) // nejde
+                        ChangeOption("DR");                    
+                    else if (ob.GetType() == typeof(Ellipse))
+                        ChangeOption("ELL");                   
+                    else if (ob.GetType() == typeof(PointSet)) // nejde
+                        ChangeOption("POLY");                    
+                    else if (ob.GetType() == typeof(ImageBox))
+                        ChangeOption("IB");   
+                        */
+
+                }
+                
+                
+            }
         }
 
         #endregion
@@ -1597,17 +1671,21 @@ namespace Zahrada
         {
             if (Zoom <= 15f)
             { 
-                Zoom = (float)(Zoom * 2);
-                kolikNasobneZoom = (int)Zoom;
+                Zoom = (float)(Zoom * 2);                
+                kolikNasobneZoom = Zoom;                
+                PushPlease();
             }
         }
+
+        
 
         public void ZoomOut()
         {
             if (Zoom > 0.01f && Zoom <= 21f)
             {
                 Zoom = (float)(Zoom / 2);                
-                kolikNasobneZoom = (int)Zoom;
+                kolikNasobneZoom = Zoom;                
+                PushPlease();
             }
         }
 
@@ -1712,7 +1790,8 @@ namespace Zahrada
             }
             catch (Exception e)
             {
-                MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
+                MessageBox.Show("Zahradní prvek nebyl načten !", "Otevření selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
             }
             return null;
         }
@@ -1749,7 +1828,8 @@ namespace Zahrada
             }
             catch (Exception e)
             {
-                MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
+                MessageBox.Show("Textura nebyla načtena !", "Otevření selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
             }
 
         }
@@ -1762,7 +1842,8 @@ namespace Zahrada
         public bool Saver()
         {
             try
-            {                
+            {
+
                 Stream StreamWrite;
                 SaveFileDialog dlg = new SaveFileDialog();
                 // nastavuje aktualni cestu k exe souboru zahrada.exe
@@ -1776,8 +1857,7 @@ namespace Zahrada
                 {
                     if ((StreamWrite = dlg.OpenFile()) != null)
                     {
-                        // maze undo Buffer !!!
-                        shapes.AfterLoad();
+                        BeforeSave(); // ukladam si zakladni promenne o vykresu dx,dy, Ax, Ay, Zoom, atd ...   
                         BinaryFormatter BinaryWrite = new BinaryFormatter();
                         BinaryWrite.Serialize(StreamWrite, shapes); // ukladam si instanci tridy Shapes - to je vse !
                         StreamWrite.Close();
@@ -1787,10 +1867,11 @@ namespace Zahrada
             }
             catch (Exception e)
             {
-                MessageBox.Show("Výjimka:" + e.ToString(), "Save error:");
+                MessageBox.Show("Projekt nebyl uložen !", "Uložení selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // MessageBox.Show("Výjimka:" + e.ToString(), "Save error:");
             }
             return false;
-        }
+        }     
 
 
 
@@ -1798,7 +1879,8 @@ namespace Zahrada
         public bool Loader()
         {
             try
-            {
+            {   
+
                 Stream StreamRead;
                 OpenFileDialog dlg = new OpenFileDialog();
                 // nastavuje aktualni cestu k exe souboru zahrada.exe
@@ -1817,7 +1899,9 @@ namespace Zahrada
                         shapes = (Shapes)BinaryRead.Deserialize(StreamRead);
                         StreamRead.Close();
 
-                        shapes.AfterLoad();
+                        AfterLoad(); // po uspesne deserializaci - nastavuju zakladni promenne planu dx,dz,rozmery vykresu Ax,Ay, Zoom
+
+                        //shapes.AfterLoad();
 
                         Redraw(true);
                         return true;
@@ -1826,10 +1910,38 @@ namespace Zahrada
             }
             catch (Exception e)
             {
-                MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
+                //MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
+                MessageBox.Show("Projekt nebyl načten !", "Otevření selhalo",  MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return false;
-        } 
+        }
+
+        // dve pomocne metody pred ulozenim / po nahrani
+        private void BeforeSave()
+        {
+            //saving udaju pro rozmery platna
+            shapes.dxSave = dx;
+            shapes.dySave = dy;
+            shapes.AxSave = Šířka;
+            shapes.AySave = Výška;
+            shapes.ZoomSave = Zoom;
+            // maze undo Buffer !!!
+            shapes.AfterLoad();
+            
+
+        }
+
+        private void AfterLoad()
+        {
+            dx = shapes.dxSave;
+            dy = shapes.dySave;
+            Šířka = shapes.AxSave;
+            Výška = shapes.AySave;
+            Zoom = shapes.ZoomSave;
+            shapes.AfterLoad();
+            PushPlease();
+        }
+        
         #endregion        
         
 
@@ -1838,32 +1950,78 @@ namespace Zahrada
         public void PreviewBeforePrinting(float zoom)
         {
             InitializePrintPreviewControl(zoom);
+
+            inicializujDocToPrint();
+
         }
 
         public void PrintMe()
         {
+            inicializujDocToPrint(); // priradil jsem spravne docToPrint2
+
+
             this.shapes.DeSelect();
 
             nahledForm = new NahledTisku();
-           
+
+            printDialog1.AllowSomePages = true;
+            printDialog1.ShowHelp = true;
+            printDialog1.Document = docToPrint2;
+
             
+
+
+
+
+
+            // to se tzka nahled formu ...
             nahledForm.PrintPreviewControl.Name = "Náhled tiskové úlohy";
             nahledForm.PrintPreviewControl.Document = nahledForm.docToPrint;
-
             //nahledForm.PrintPreviewControl.Zoom = 0.25;
-
             nahledForm.PrintPreviewControl.Document.DocumentName = "Náhled tisku";
-
             nahledForm.PrintPreviewControl.UseAntiAlias = true;
-
             nahledForm.docToPrint.PrintPage +=
                 new System.Drawing.Printing.PrintPageEventHandler(
                 docToPrint_PrintPage);
 
-            // Per stampare
-            nahledForm.docToPrint.Print();
 
-            nahledForm.Dispose();
+
+         
+            //nahledForm.docToPrint.Print();
+
+           // printPreviewDialog1.Document = docToPrint2;
+           //  printPreviewDialog1.ShowDialog();
+
+            
+            DialogResult result = printDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                // docToPrint2.PrinterSettings.PrinterName = printDialog1.PrinterSettings.PrinterName;
+                PrinterSettings mysettings = printDialog1.PrinterSettings;
+                docToPrint2.PrinterSettings = mysettings;
+                printPreviewDialog1.Document = docToPrint2;
+                printPreviewDialog1.ShowDialog();
+                // docToPrint2.Print();
+            }
+
+
+
+            
+          
+
+            //nahledForm.Dispose();
+
+        }
+
+        public System.Drawing.Printing.PrintDocument docToPrint2 = new System.Drawing.Printing.PrintDocument();
+
+        private void inicializujDocToPrint()
+        {
+            this.shapes.DeSelect();
+
+            docToPrint2.PrintPage +=
+                new System.Drawing.Printing.PrintPageEventHandler(
+                docToPrint_PrintPage);
 
         }
 
@@ -1872,111 +2030,32 @@ namespace Zahrada
             this.shapes.DeSelect();
 
             nahledForm = new NahledTisku();
-            // Construct the PrintPreviewControl.
-            //AnteprimaFrm.PrintPreviewControl1 = new PrintPreviewControl();
-
-            // Set location, name, and dock style for PrintPreviewControl1.
-            //AnteprimaFrm.PrintPreviewControl1.Location = new Point(88, 80);
-            nahledForm.PrintPreviewControl.Name = "Preview";
-            //AnteprimaFrm.PrintPreviewControl1.Dock = DockStyle.Fill;
-
-            // da testare??
-            //AnteprimaFrm.PrintPreviewControl1.BackColor = this.BackColor;
-            //AnteprimaFrm.PrintPreviewControl1.BackgroundImage = this.BackgroundImage;
-
-
-            // Set the Document property to the PrintDocument 
-            // for which the PrintPage event has been handled.
+            nahledForm.PrintPreviewControl.Name = "Preview";           
             nahledForm.PrintPreviewControl.Document = nahledForm.docToPrint;
 
             // Set the zoom to 25 percent.
-            nahledForm.PrintPreviewControl.Zoom = zoom;
-
-            // Set the document name. This will show be displayed when 
-            // the document is loading into the control.
+            nahledForm.PrintPreviewControl.Zoom = zoom;            
             nahledForm.PrintPreviewControl.Document.DocumentName = "Preview";
-
-            // Set the UseAntiAlias property to true so fonts are smoothed
-            // by the operating system.
             nahledForm.PrintPreviewControl.UseAntiAlias = true;
-
-            // Add the control to the form.
-            //AnteprimaFrm.Controls.Add(AnteprimaFrm.PrintPreviewControl1);
-
-            // Associate the event-handling method with the
-            // document's PrintPage event.
+         
             nahledForm.docToPrint.PrintPage +=
                 new System.Drawing.Printing.PrintPageEventHandler(
                 docToPrint_PrintPage);
 
-            // Per stampare
-            //AnteprimaFrm.docToPrint.Print();
+           
             nahledForm.Show(); // modeless okno (nemodalni)
             //nahledForm.ShowDialog(); // modalni okno
-            //nahledForm.PrintPreviewControl.Focus();
+           
         }
 
         // The PrintPreviewControl will display the document
         // by handling the documents PrintPage event
-        private void docToPrint_PrintPage(
-            object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void docToPrint_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
 
-            // Insert code to render the page here.
-            // This code will be called when the control is drawn.
-
-            // The following code will render a simple
-            // message on the document in the control.
-            //string text = "In docToPrint_PrintPage method.";
-            //System.Drawing.Font printFont =
-            //    new Font("Arial", 35, FontStyle.Regular);
-            //  e.Graphics.DrawString(text, printFont,
-            //      Brushes.Black, 10, 10);
-
-
-
-            Graphics g = e.Graphics;
-
-
-
-
-            //Do Double Buffering
-            //Bitmap offScreenBmp;
-            // Graphics offScreenDC;
-            //offScreenBmp = new Bitmap(this.Width, this.Height);
-            //
-            //offScreenDC = Graphics.FromImage(offScreenBmp);
-
-            //offScreenDC.Clear(this.BackColor);
-
-            //background image
-            //if ((this.loadImage) & (this.visibleImage))
-            //    offScreenDC.DrawImage(this.loadImg, 0, 0);
-            //
-
-            //offScreenDC.SmoothingMode=SmoothingMode.AntiAlias;
-
-            // test
-            //MessageBox.Show("dipx : " + g.DpiX + " ; dipy : " + g.DpiY);
-
-            //s.Draw(offScreenDC);
-            if (this.BackgroundImage != null)
-                g.DrawImage(this.BackgroundImage, 0, 0);
-
-            //TEST !!!!!!!!!!!!!!!!!!!!!!!!!!!1
-            //this.DrawMesure(g);
-
-            shapes.Draw(g, 0, 0, 1);
-
-            //if (this.MouseSx)
-            //{
-            //    System.Drawing.Pen myPen = new System.Drawing.Pen(System.Drawing.Color.Red);
-            //    offScreenDC.DrawRectangle(myPen, new Rectangle(this.startX, this.startY, tmpX - this.startX, tmpY - this.startY));
-            //    myPen.Dispose();
-            //}
-
-            //g.DrawImageUnscaled(offScreenBmp, 0, 0);
-
+            Graphics g = e.Graphics;    
+            //shapes.Draw(g, 0, 0, 1f); // tady je Zoom pro tisk !!
+            g.DrawImageUnscaled(offScreenBmp, 0, 0);
             g.Dispose();
         }
 
@@ -1997,6 +2076,7 @@ namespace Zahrada
         #region Export nakresleneho do PNG/JPG/GIF
         public void ExportTo()
         {
+
             ForceEsc();
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();           
             saveFileDialog1.Filter = "Png files (*.png)|*.png|JPG files (*.jpg)|*.jpg|GIF files (*.gif)|*.gif";
@@ -2007,21 +2087,13 @@ namespace Zahrada
             DialogResult res = saveFileDialog1.ShowDialog(this);
             if (res != DialogResult.OK)
                 return;
-            flnm = saveFileDialog1.FileName;
-
-
-            //Graphics g = this.drawArea.CreateGraphics();
-            //this.drawArea.Draw(g);
-            //System.Drawing.Bitmap bp = new Bitmap(this.drawArea.Width, this.drawArea.Height, g);
-            //Bitmap bp2 = new Bitmap(Width, this.Height, offScreenBackBmp);
-
-            Bitmap bp2 = offScreenBackBmp;
-
-            //Graphics g2 = Graphics.FromImage(bp);
-            //drawArea.Draw(g2);
-            //bp2.Save(flnm);
-
-            SaveImage(bp2, flnm);
+            flnm = saveFileDialog1.FileName;           
+            
+            Bitmap bp3 = offScreenBmp;          
+            Color tohle = Pozadí;
+            Pozadí = Color.White;            
+            SaveImage(bp3, flnm);
+            Pozadí = tohle;
         }
 
         void SaveImage(Image img, string flnm)

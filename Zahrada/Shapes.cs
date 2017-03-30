@@ -60,6 +60,13 @@ namespace Zahrada
 		[NonSerialized]
 		private UndoBuffer undoB;
 
+        public int dxSave;
+        public int dySave;
+        public int AxSave;
+        public int AySave;
+        public int indeOfSavedPlan;
+        public float ZoomSave;
+
 		#endregion
 
 		#region Konstruktor tridy Shapes

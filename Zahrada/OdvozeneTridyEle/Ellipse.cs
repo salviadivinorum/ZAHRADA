@@ -68,6 +68,8 @@ namespace Zahrada.OdvozeneTridyEle
                 base.Zobrazit_hranici = value;
             }
         }
+
+       
         #endregion
 
 

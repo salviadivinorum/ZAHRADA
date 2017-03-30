@@ -461,11 +461,20 @@ namespace Zahrada
 			}
 			set
 			{
-				filePath = value;                
-				Bitmap bitm = new Bitmap(filePath);   
-				TextureBrush tBrush = new TextureBrush(bitm);
-				tBrush.WrapMode = WrapMode.Tile;
-				FillTexture = tBrush;
+                try
+                {
+                    filePath = value;
+                    Bitmap bitm = new Bitmap(filePath);
+                    TextureBrush tBrush = new TextureBrush(bitm);
+                    tBrush.WrapMode = WrapMode.Tile;
+                    FillTexture = tBrush;
+                }
+                catch
+                {
+                    MessageBox.Show("Textura nebyla načtena !", "Otevření selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    filePath = "";
+                }
+				
 			}
 		}
 
@@ -1099,15 +1108,15 @@ namespace Zahrada
 			
 		}
 
-        /// <summary>
-        /// Vraci vzdalenost 2 bodu
-        /// </summary>
-        // dulezite !
-        protected int Dist(int x, int y, int x1, int y1)
+		/// <summary>
+		/// Vraci vzdalenost 2 bodu
+		/// </summary>
+		// dulezite !
+		protected int Dist(int x, int y, int x1, int y1)
 		{
 			return (int)Math.Sqrt(Math.Pow((x - x1), 2) + Math.Pow((y - y1), 2));
 		}
-        		
+				
 		#endregion
 
 		#region Soukrome metody - Private - pro tridu Ele

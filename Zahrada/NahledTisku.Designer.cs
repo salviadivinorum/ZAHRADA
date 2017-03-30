@@ -32,8 +32,6 @@
             this.PrintPreviewToolStrip = new System.Windows.Forms.ToolStrip();
             this.CloseToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.PrintToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.PrintPreviewControl = new System.Windows.Forms.PrintPreviewControl();
-            this.docToPrint = new System.Drawing.Printing.PrintDocument();
             this.ZoomToolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +40,8 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.PrintPreviewControl = new System.Windows.Forms.PrintPreviewControl();
+            this.docToPrint = new System.Drawing.Printing.PrintDocument();
             this.PrintPreviewToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,14 +78,6 @@
             this.PrintToolStripButton.Text = "Tisk";
             this.PrintToolStripButton.Click += new System.EventHandler(this.PrintToolStripButton_Click);
             // 
-            // PrintPreviewControl
-            // 
-            this.PrintPreviewControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PrintPreviewControl.Location = new System.Drawing.Point(0, 27);
-            this.PrintPreviewControl.Name = "PrintPreviewControl";
-            this.PrintPreviewControl.Size = new System.Drawing.Size(982, 626);
-            this.PrintPreviewControl.TabIndex = 1;
-            // 
             // ZoomToolStripSplitButton
             // 
             this.ZoomToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -106,51 +98,59 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(108, 26);
             this.toolStripMenuItem1.Text = "25";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(108, 26);
             this.toolStripMenuItem2.Text = "50";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(108, 26);
             this.toolStripMenuItem3.Text = "75";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(108, 26);
             this.toolStripMenuItem4.Text = "100";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(108, 26);
             this.toolStripMenuItem5.Text = "150";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(108, 26);
             this.toolStripMenuItem6.Text = "200";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(108, 26);
             this.toolStripMenuItem7.Text = "500";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+            // 
+            // PrintPreviewControl
+            // 
+            this.PrintPreviewControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PrintPreviewControl.Location = new System.Drawing.Point(0, 27);
+            this.PrintPreviewControl.Name = "PrintPreviewControl";
+            this.PrintPreviewControl.Size = new System.Drawing.Size(982, 626);
+            this.PrintPreviewControl.TabIndex = 1;
             // 
             // NahledTisku
             // 

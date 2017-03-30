@@ -84,12 +84,26 @@ namespace Zahrada.OdvozeneTridyEle
 			}
 		}
 
+		[Category("Vzhled"), Description("Zadaný text")]
+		public string Text_
+		{
+			get { return text; }
+			set { text = value; }
+		}
 
-		#endregion
+        [Category("Vzhled"), Description("Zadaný text")]
+        public Font Font
+        {
+            get { return f; }
+            set { f = value; }
+        }
 
-		#region Prepsane zdedene metody tridy Stext
 
-		public override void AddGp(GraphicsPath gp, int dx, int dy, float zoom)
+        #endregion
+
+        #region Prepsane zdedene metody tridy Stext
+
+        public override void AddGp(GraphicsPath gp, int dx, int dy, float zoom)
 		{
 			gp.AddRectangle(new RectangleF((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom));
 

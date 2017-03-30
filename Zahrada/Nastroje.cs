@@ -150,11 +150,13 @@ namespace Zahrada
         }
 
         // reakce na zmeny, ktere provadim v PropertyGridu
+        /*
         private void mujPropertyGrid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             this.mojeplatno.PropertyChanged();
             this.mojeplatno.Refresh();
         }
+        */
 
         private void mujFilteredPropertyGrid_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
