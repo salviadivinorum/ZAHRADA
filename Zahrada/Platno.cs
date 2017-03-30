@@ -1968,6 +1968,7 @@ namespace Zahrada
             printDialog1.ShowHelp = true;
             printDialog1.Document = docToPrint2;
 
+
             
 
 
