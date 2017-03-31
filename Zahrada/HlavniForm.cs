@@ -25,6 +25,7 @@ namespace Zahrada
         private string CustomPlanSizeString { get; set; } // automaticka vlastnost pro vlastni velikost planu ...
         private float CustomX { get; set; } // custom sirka planu
         private float CustomY { get; set; }// custom vyska planu
+        private bool savedPlanAfteQuerry = false;
 
         //public event ObjectSelectedEventHandler ObjectSelected;
 
@@ -35,6 +36,9 @@ namespace Zahrada
         {
             InitializeComponent();
             myInit();
+
+            // this.FormClosing += new FormClosingEventHandler(HlavniForm_FormClosing); // kvuli spravenme ukonceni aplikace !!!!
+           // exitToolStripMenuItem.Click += new EventHandler(exitToolStripMenuItem_Click);
         }
 
         /// <summary>
@@ -85,18 +89,10 @@ namespace Zahrada
         }
 
         #endregion
-
-       
         
 
-        // pomocnametoda - zneguje mi barvu ....
-        private Color InvertMeAColour(Color ColourToInvert)
-        {
-            return Color.FromArgb(RGBMAX - ColourToInvert.R,
-              RGBMAX - ColourToInvert.G, RGBMAX - ColourToInvert.B);
-        }
-
-
+        #region Tlacitka na Barvu Pera, Barvu Fillingu, Vzor Textury
+       
         // Label namisto tlacitka PenColor        
         #region PenColorLabel
         private void PokusToolStripLabel_Click(object sender, EventArgs e)
@@ -142,7 +138,7 @@ namespace Zahrada
 
         #endregion
 
-        
+
         // Label namisto tlacitka FillColor
         #region FillColor Label
         private void fillColorToolStripLabel_Click(object sender, EventArgs e)
@@ -172,7 +168,7 @@ namespace Zahrada
             {
                 for (int x = 0; x < tsi.Width; x++)
                     //bm.SetPixel(x, y, Color.FromArgb(150, barva));
-                bm.SetPixel(x, y, barva);
+                    bm.SetPixel(x, y, barva);
             }
 
             // Set background.
@@ -193,7 +189,7 @@ namespace Zahrada
         #region Vzor Textury Label
         private void texturaToolStripLabel_Click(object sender, EventArgs e)
         {
-            
+
             vlozenePlatno.TextureLoader();
             vlozenePlatno.ChangeOption("select");
 
@@ -202,18 +198,18 @@ namespace Zahrada
             vlozenePlatno.Redraw(true);
         }
 
-        
+
 
         private void texturaToolStripLabel_MouseEnter(object sender, EventArgs e)
         {
-            
+
             Image bitm = vlozenePlatno.creationTexturePattern.Image;
-            
+
 
             // Cast to allow reuse of method.
             ToolStripItem tsi = (ToolStripItem)sender;
 
-            
+
             // Set background.
             tsi.BackgroundImage = bitm;
             tsi.ForeColor = Color.White;
@@ -232,9 +228,22 @@ namespace Zahrada
 
 
         #endregion
-        
 
-       
+        // pomocnametoda - zneguje mi barvu ....
+        #region Pomocna metoda pro inverzi pisma na Labelech
+        private Color InvertMeAColour(Color ColourToInvert)
+        {
+            return Color.FromArgb(RGBMAX - ColourToInvert.R,
+              RGBMAX - ColourToInvert.G, RGBMAX - ColourToInvert.B);
+        } 
+        #endregion
+
+
+
+        #endregion
+
+
+        #region Tlacitka na Zoom
         // zakladni Zoom In + 
         public void zoomINtoolStripButton_Click(object sender, EventArgs e)
         {
@@ -250,7 +259,7 @@ namespace Zahrada
             int iy = (int)vlozenePlatno.Size.Height / 2;
 
 
-            if (vlozenePlatno.Zoom <= 15f)                
+            if (vlozenePlatno.Zoom <= 15f)
             {
                 if (vlozenePlatno.Fit2grid & vlozenePlatno.Mřížka > 0)
                 {
@@ -270,17 +279,17 @@ namespace Zahrada
                     vlozenePlatno.dy = (int)(vlozenePlatno.dy - (iy / (vlozenePlatno.Zoom * 2)));
                     vlozenePlatno.ZoomIn();
                 }
-            }   
+            }
 
         }
 
         // zkaldni Zoom Out -
         public void zoomOUTtoolStripButton_Click(object sender, EventArgs e)
         {
-            
+
             //vlozenePlatno.ZoomOut();
 
-            
+
             int ix = (int)vlozenePlatno.Size.Width / 2;
             int iy = (int)vlozenePlatno.Size.Height / 2;
 
@@ -309,13 +318,14 @@ namespace Zahrada
             }
 
 
-           
-            
+
+
         }
 
+        #endregion
 
-        
 
+        #region Tlacitka na Vypnout/Zapnout Filling a Texturu
         // FILLING barvou On/Off
         private void fillingOnOffToolStripComboBox_DropDownClosed(object sender, EventArgs e)
         {
@@ -323,18 +333,18 @@ namespace Zahrada
             if (colorFillingOnOffToolStripComboBox.SelectedIndex == 0)
             {
                 // fillColorToolStripButton.BackColor = Color.Transparent;
-                vlozenePlatno.SetColorFilled(false);                
+                vlozenePlatno.SetColorFilled(false);
                 //vlozenePlatno.Redraw(true);             
             }
             else if (colorFillingOnOffToolStripComboBox.SelectedIndex == 1)
             {
                 textureFillingOnOffToolStripComboBox.SelectedIndex = 0;
-                vlozenePlatno.SetTextureFilled(false);               
+                vlozenePlatno.SetTextureFilled(false);
 
-                    
+
                 vlozenePlatno.SetColorFilled(true);
-                
-               // vlozenePlatno.Redraw(true);
+
+                // vlozenePlatno.Redraw(true);
                 vlozenePlatno.ChangeOption("select");
             }
 
@@ -346,19 +356,19 @@ namespace Zahrada
 
         // FILLING texturou Ano/Ne
         private void textureFillingOnOffToolStripComboBox_DropDownClosed(object sender, EventArgs e)
-        {  
+        {
 
             if (textureFillingOnOffToolStripComboBox.SelectedIndex == 0)
             {
                 vlozenePlatno.SetTextureFilled(false);
-              
+
             }
             else
             {
                 vlozenePlatno.SetTextureFilled(true);
                 colorFillingOnOffToolStripComboBox.SelectedIndex = 0;
                 vlozenePlatno.SetColorFilled(false);
-               
+
             }
 
             vlozenePlatno.PushPlease();
@@ -367,14 +377,11 @@ namespace Zahrada
         }
 
 
-        // Exit a Closed()
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-          
-        // osetreni undo/redo sipek
+        #endregion
+
+
         #region Undo/Redo sipky
+        // osetreni undo/redo sipek
         private void undoToolStripButton_Click(object sender, EventArgs e)
         {
             vlozenePlatno.Undo();
@@ -387,10 +394,11 @@ namespace Zahrada
             vlozenePlatno.Redo();
             redoToolStripButton.Enabled = vlozenePlatno.RedoEnabled();
             undoToolStripButton.Enabled = vlozenePlatno.UndoEnabled();
-        } 
+        }
         #endregion
 
-        // Dodelat Pen Width - sirku pera ....
+        #region Tlacitko na PenWidth
+        // Obbsluhuje Pen Width - sirku pera ....
         private void penWidthtoolStripComboBox_DropDownClosed(object sender, EventArgs e)
         {
             int index = penWidthtoolStripComboBox.SelectedIndex;
@@ -424,28 +432,76 @@ namespace Zahrada
             vlozenePlatno.PushPlease();
             vlozenePlatno.Focus();
             vlozenePlatno.Redraw(true);
-        } 
-        
+        }
 
-       
+        #endregion
+
+        #region Tlacitka New, Load, Save, Save as
+
+        // New - Vytvoreni uplne noveho souboru
+        private void newToolStripButton_Click(object sender, EventArgs e)
+        {
+            UlozitSouborAnoNe();
+        }
+
+        // Save - obycejny Save tlacitko
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.CheckedRBSave();
+            if (vlozenePlatno.jmenoNoveOtevreneho != "")
+            {
+                vlozenePlatno.SimpleSaver();
+                if (vlozenePlatno.SaveSuccess)
+                {
+                    this.Text = "Navrhování zahrad - " + vlozenePlatno.jmenoNoveOtevreneho;
+                    vlozenyToolBox.CheckedRBSave();
+                    vlozenyToolBox.Refresh();
+
+                }
+            }
+            else
+            {
+                saveAsToolStripButton_Click(null, null);
+            }
+        }
+
 
         // Save As tlacitko ...
         private void saveAsToolStripButton_Click(object sender, EventArgs e)
         {
-            vlozenyToolBox.CheckedRBSave();
+
             vlozenePlatno.Saver();
-            
-            
+            if (vlozenePlatno.SaveSuccess)
+            {
+                this.Text = "Navrhování zahrad - " + vlozenePlatno.jmenoNoveOtevreneho;
+                vlozenyToolBox.CheckedRBSave();
+                vlozenyToolBox.Refresh();
+
+            }
+
+
             //vlozenePlatno.shapes.indeOfSavedPlan = FrameToolStripDropDownButton.Se
         }
 
         // Open tlacitko ...
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
-            vlozenePlatno.Loader();
-            vlozenyToolBox.CheckRBLoad2(); // CheckedRBLoad2(); // radiobuttony chcecke obnovi
-            vlozenyToolBox.Refresh();
-            MarkFrameToolStripMenuItem();
+            UlozitSouborAnoNe();
+            if (savedPlanAfteQuerry)
+            {
+                vlozenePlatno.Loader();
+
+
+                if (vlozenePlatno.LoadSucces)
+                {
+                    this.Text = "Navrhování zahrad - " + vlozenePlatno.jmenoNoveOtevreneho;
+                    vlozenyToolBox.CheckRBLoad2(); // CheckedRBLoad2(); // radiobuttony chcecke obnovi
+                    vlozenyToolBox.Refresh();
+                    MarkFrameToolStripMenuItem();
+                }
+            }
+
+
         }
 
         // pomocna metoda po upsesnem Loadu ...
@@ -492,14 +548,70 @@ namespace Zahrada
             }
         }
 
+        // Zakladni metoda - dotaz pri Otevirani/Ukladani souboru
+        private void UlozitSouborAnoNe()
+        {
+            string messge = "Přejete si uložit stávající plán zahrady ?";
+            string caption = "Uložení plánu";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+            DialogResult result;
+
+            result = MessageBox.Show(this, messge, caption, buttons, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
+
+            if (result == DialogResult.Yes)
+            {
+                //vlozenyToolBox.CheckedRBSave();
+                vlozenePlatno.Saver();
+                if (vlozenePlatno.SaveSuccess)
+                {
+                    vlozenePlatno.shapes.List.Clear();
+                    vlozenePlatno.Redraw(true);
+                    this.Text = "Navrhování zahrad - nový projekt";
+                    vlozenePlatno.jmenoNoveOtevreneho = "";
+                    savedPlanAfteQuerry = true;
+
+
+                }
+                else
+                {
+                    savedPlanAfteQuerry = false;
+                    return;
+                }
+
+            }
+            else if (result == DialogResult.No)
+            {
+
+                savedPlanAfteQuerry = true;
+                vlozenePlatno.shapes.List.Clear();
+                vlozenePlatno.Redraw(true);
+                this.Text = "Navrhování zahrad - nový projekt";
+                vlozenePlatno.jmenoNoveOtevreneho = "";
+                // return;
+
+
+
+            }
+            else
+            {
+                savedPlanAfteQuerry = false;
+                return;
+            }
+        }
+
+        #endregion
+
+
+        #region Tlacitka Print, Preview
         // Print Preview tlacitko ...
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // float z = vlozenePlatno.Zoom;
+            // float z = vlozenePlatno.Zoom;
             vlozenePlatno.PreviewBeforePrinting(0.25f);
         }
 
-       
+
         // Print tlacitko ...
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -516,17 +628,20 @@ namespace Zahrada
             */
 
         }
+        #endregion
 
+        #region Tlacitko Export do
         // Export To tlacitko ...
         private void exportToJpgpngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             vlozenePlatno.ExportTo();
-        }
+        } 
+        #endregion
 
 
-        #region Zadavani rozmeru planu
+        #region Tlacitka na Zadavani rozmeru planu / Velikost Mrize
         // Rozmery platna na DropDownButton ... pro jednotlive polozky tohoto DropDown tlacitka
-       
+
         private void A3LandcapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             vlozenePlatno.Rámeček = true;
@@ -782,8 +897,6 @@ namespace Zahrada
 
         }
 
-        #endregion
-
         // pomocna metoda k un-check v tool strip DropDownButton - vsem polozkam Item
         private void UnmarkToolStripDropDownItems(ToolStripDropDownButton button)
         {
@@ -803,8 +916,158 @@ namespace Zahrada
             }
 
         }
+        #endregion
 
+
+        #region Tlacitka Help, About me
+        // Maly WinForm o me
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OaplikaciForm form = new OaplikaciForm();
+            form.ShowDialog();
+        }
         
+        #endregion
+                
+
+        #region Ukonceni aplikace
+        // Ukonceni programu - tlacitkem
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+
+        // Ukonceni programu tlacitkem ---- a nebo velkym krizkem, vzdy to jde pres tuto udalost
+        private void HlavniForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            PoseldniDotazAkonec();
+
+        }
+
+
+        // Posledni dotaz na ulozeni ulohy pred zavrenim aplikace
+        private void PoseldniDotazAkonec()
+        {
+            string messge = "Přejete si uložit stávající plán zahrady ?";
+            string caption = "Uložení plánu";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = MessageBox.Show(this, messge, caption, buttons, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                vlozenePlatno.Saver();
+
+            }
+
+        }
+
+
+
+
+        #endregion
+
+
+        // funkcnost tlacitek  v Menu bar:
+        private void newDocumentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newToolStripButton_Click(null, null);
+        }
+
+        private void openDocumentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openToolStripButton_Click(null, null);
+        }
+
+        private void saveDocumentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveToolStripButton_Click(null, null);
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveAsToolStripButton_Click(null, null);
+        }
+
+        private void VybratVseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.btnVybratVse_Click(null, null);
+        }
+
+        private void EscapeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.btnEscape_Click(null, null);
+        }
+
+        private void LineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.lineBtn_Click(null, null);
+        }
+
+        private void PolylineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.polygonBtn_Click(null, null);
+        }
+
+        private void FreeLineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.freeHandBtn_Click(null, null);
+        }
+
+        private void RectangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.rectBtn_Click(null, null);
+        }
+
+        private void ElipseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.circBtn_Click(null, null);
+        }
+
+        private void TextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.simpleTextBtn_Click(null, null);
+        }
+
+        private void ImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.imageBtn_Click(null, null);
+        }
+
+        private void GroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.groupBtn_Click(null, null);
+        }
+
+        private void DeGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.deGroupBtn_Click(null, null);
+        }
+
+        private void MoveUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.toFrontBtn_Click(null, null);
+        }
+
+        private void MoveDownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.toBackBtn_Click(null, null);
+        }
+
+        private void CopyItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.copyBtn_Click(null, null);
+        }
+
+        private void DeleteItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenyToolBox.deleteBtn_Click(null, null);
+        }
+
+
     }
 
 }

@@ -323,7 +323,35 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-       
+        [Category("Vzhled"), Description("Nastavit barvu Pera")]
+        public override Color Pero_barva
+        {
+            get
+            {
+                return base.Pero_barva;
+            }
+            set
+            {
+                base.Pero_barva = value;
+
+            }
+        }
+
+        [Category("Vzhled"), Description("Nastavit šířku Pera")]
+        public override float Pero_šířka
+        {
+            get
+            {
+                return base.Pero_šířka;
+
+            }
+            set
+            {
+                base.Pero_šířka = value;
+
+            }
+        }
+
 
 
 
@@ -436,42 +464,9 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        public override Color Pero_barva
-        {
-            get
-            {
-                return base.Pero_barva;
-            }
+        
 
-            set
-            {
-                base.Pero_barva = value;
-                if (objs != null)
-                    foreach (Ele e in objs)
-                    {
-                        e.Pero_barva = value;
-                    }
-            }
-        }
-
-        public override float Pero_šířka
-        {
-            get
-            {
-                return base.Pero_šířka;
-            }
-
-            set
-            {
-                base.Pero_šířka = value;
-                if (objs != null)
-                    foreach (Ele e in objs)
-                    {
-                        e.Pero_šířka = value;
-                    }
-            }
-
-        }
+       
 
 
 

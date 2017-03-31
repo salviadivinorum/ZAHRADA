@@ -51,6 +51,8 @@ namespace Zahrada.OdvozeneTridyEle
         {
             get {return _img; }
             set {_img = value;}
+
+                         
         }
         // průhlednost - vůbec nepožívat - nikde není potřeba a nemám metody navíc
 

@@ -19,6 +19,7 @@ namespace Zahrada
         private ToolStrip nalezenyToolStripvMainForm;
         private ToolStripButton nalezenyUndoBtn;
         private ToolStripButton nalezenyRedoBtn;
+        private List<string> rbuttons = new List<string>();
 
 
 
@@ -156,71 +157,80 @@ namespace Zahrada
 
         #region Obsluha udalosti Click na tlacitka v casti VYTVORIT
         // Cara
-        private void lineBtn_Click(object sender, EventArgs e)
+        public void lineBtn_Click(object sender, EventArgs e)
         {            
             DeselectAllButtons();
             //lineBtn.BackColor = Color.FromArgb(Color.Gray);
             lineBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "LINE";
             mojeplatno.krivka = true;
+            mojeplatno.infoStatLabel.Text = "Přímá čára - pro opakování akce možno použít DVOJKLIK levým tlačítkem myši na již nakreslenou čáru";
         }        
 
         // Polygon
-        private void polygonBtn_Click(object sender, EventArgs e)
+        public void polygonBtn_Click(object sender, EventArgs e)
         {
             DeselectAllButtons();            
             polygonBtn.BackColor = SystemColors.GradientActiveCaption; 
             mojeplatno.option = "POLY";
             mojeplatno.krivka = true;
+            mojeplatno.infoStatLabel.Text = "Polygon - kreslený z rovných čar. NOVVÝ BOD = při stisku levého tlačítka myši stisknout klávesu A";
+
         }
 
         // Volna ruka
-        private void freeHandBtn_Click(object sender, EventArgs e)
+        public void freeHandBtn_Click(object sender, EventArgs e)
         {
             DeselectAllButtons();
             freeHandBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "PEN";
             mojeplatno.krivka = true;
+            mojeplatno.infoStatLabel.Text = "Polygon - kreslený volným tahem myši";
 
         }
 
         // Obdelnik
-        private void rectBtn_Click(object sender, EventArgs e)
+        public void rectBtn_Click(object sender, EventArgs e)
         {
             DeselectAllButtons();
             rectBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "DR";
             mojeplatno.krivka = false;
+            mojeplatno.infoStatLabel.Text = "Obdélník - myší vybrat umístění v plánu - z horního levého rohu - do spodního pravého rohu";
 
         }       
 
         // Elipsa - kruznice
-        private void circBtn_Click(object sender, EventArgs e)
+        public void circBtn_Click(object sender, EventArgs e)
         {
             DeselectAllButtons();
             circBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "ELL";
             mojeplatno.krivka = false;
+            mojeplatno.infoStatLabel.Text = "Elipsa - myší vybrat umístění v plánu - z horního levého rohu - do spodního pravého rohu";
+            //infoStatLabel.Text = "Elipsa";
         }       
 
 
         // Jednoduchy text
-        private void simpleTextBtn_Click(object sender, EventArgs e)
+        public void simpleTextBtn_Click(object sender, EventArgs e)
         {
             DeselectAllButtons();
             simpleTextBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "STB";
             mojeplatno.krivka = false;
+            mojeplatno.infoStatLabel.Text = "Vložit jednoduchý text - myší vybrat oblast kam umístit text - poté se zobrazí dialogové okno";
         }
                  
 
         // vkladani obrazku
-        private void imageBtn_Click(object sender, EventArgs e)
+        public void imageBtn_Click(object sender, EventArgs e)
         {
             DeselectAllButtons();
             imageBtn.BackColor = SystemColors.GradientActiveCaption;
             mojeplatno.option = "IB";
             mojeplatno.krivka = false;
+            mojeplatno.infoStatLabel.Text = "Vložit zahradní prvek z knihovny - myší vybrat obdélníkovou oblast na plánu - poté se zobrazí knihovna prvků";
 
         }
 
@@ -248,49 +258,50 @@ namespace Zahrada
         #endregion
 
         #region Klikani na tlacitka v Nastroje
-        private void groupBtn_Click(object sender, EventArgs e)
+        public void groupBtn_Click(object sender, EventArgs e)
         {
             mojeplatno.GroupSelected();
         }
 
-        private void deGroupBtn_Click(object sender, EventArgs e)
+        public void deGroupBtn_Click(object sender, EventArgs e)
         {
             mojeplatno.DeGroupSelected();
         }
 
-        private void toFrontBtn_Click(object sender, EventArgs e)
+        public void toFrontBtn_Click(object sender, EventArgs e)
         {
             mojeplatno.MoveFront();
         }
 
-        private void toBackBtn_Click(object sender, EventArgs e)
+        public void toBackBtn_Click(object sender, EventArgs e)
         {
             mojeplatno.MoveBack();
         }
 
-        private void deleteBtn_Click(object sender, EventArgs e)
+        public void deleteBtn_Click(object sender, EventArgs e)
         {
             mojeplatno.RmSelected();
         }
 
-        private void copyBtn_Click(object sender, EventArgs e)
+        public void copyBtn_Click(object sender, EventArgs e)
         {
             mojeplatno.CpSelected();
         }
 
 
-        private void btnEscape_Click(object sender, EventArgs e)
+        public void btnEscape_Click(object sender, EventArgs e)
         {
             DeselectAllButtons();
             mojeplatno.ForceEsc();
         }
 
-        private void btnVybratVse_Click(object sender, EventArgs e)
+        public void btnVybratVse_Click(object sender, EventArgs e)
         {
             foreach (Ele el in mojeplatno.shapes.List)
             {
                 el.selected = true;
             }
+            
             mojeplatno.Redraw(true);
         }
 
@@ -300,6 +311,7 @@ namespace Zahrada
         // stisk ESC behem kresleni ....
         private void tabControlProNastroje_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Escape & tabControlProNastroje.SelectedIndex == 0)
             {
                 DeselectAllButtons();
@@ -310,6 +322,7 @@ namespace Zahrada
                 mojeplatno.Redraw(true);
                 mojeplatno.ChangeStatus("selrect");
                 mojeplatno.ChangeOption("select");
+                mojeplatno.infoStatLabel.Text = "";
                 mojeplatno.Redraw(true);
 
             }
@@ -436,16 +449,14 @@ namespace Zahrada
 
         #endregion
 
-        List<string> rbuttons = new List<string>();
-        string b;
-        RadioButton rb = new RadioButton();
+        
+        //string b;
+       // RadioButton rb = new RadioButton();
         
 
         // ulozit checked RButtony
         public void CheckedRBSave()
-        {
-
-            
+        {           
             
             
             for(int r =6; r<=34; r++)
@@ -596,7 +607,7 @@ namespace Zahrada
                                 for (int i = 1; i <= 84; i++)
                                 {
 
-                                    b = "radioButton" + i.ToString();
+                                    string b = "radioButton" + i.ToString();
                                     foreach (string button in mojeplatno.shapes.listradiobuttonu)
                                     {
                                         //MessageBox.Show(f.Name.ToString());
@@ -633,7 +644,7 @@ namespace Zahrada
                       
            
         }
-
+        /*
         Control GetControlByName(string Name)
         {
             foreach (Control c in this.Controls)
@@ -642,9 +653,9 @@ namespace Zahrada
 
             return null;
         }
+        */
 
-
-
+        /*
         public Control GetControlByName(Control ParentCntl, string NameToSearch)
         {
             if (ParentCntl.Name == NameToSearch)
@@ -659,7 +670,7 @@ namespace Zahrada
             return null;
         }
         
-
+        */
 
 
 
@@ -668,8 +679,7 @@ namespace Zahrada
         private void tabControlProNastroje_MouseUp(object sender, MouseEventArgs e)
         {
             mojeplatno.PushSelectionToShowInCustomGrid();
-            //CheckedRBSave();
-            //MessageBox.Show(mojeplatno.shapes.listradiobuttonu.Count().ToString());
+            
 
         }
 
@@ -721,7 +731,14 @@ namespace Zahrada
 
         }
 
+        
+
+       
       
+
+       
+
+        
     }
 }
 

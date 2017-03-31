@@ -69,6 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ele.cs" />
+    <Compile Include="OaplikaciForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OaplikaciForm.Designer.cs">
+      <DependentUpon>OaplikaciForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HlavniForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     <Compile Include="UndoRedoBufferTridy\BufferedElement.cs" />
     <Compile Include="UndoRedoBufferTridy\BufferedObject.cs" />
     <Compile Include="UndoRedoBufferTridy\UndoBuffer.cs" />
+    <EmbeddedResource Include="OaplikaciForm.resx">
+      <DependentUpon>OaplikaciForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HlavniForm.resx">
       <DependentUpon>HlavniForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +207,8 @@
     <None Include="bin\Debug\trava-velmi-husta.jpg" />
     <Content Include="Ikony\dolu.ico" />
     <Content Include="Ikony\elipsa.ico" />
+    <Content Include="Ikony\help.ico" />
+    <Content Include="Ikony\info.ico" />
     <Content Include="Ikony\jablko.ico" />
     <Content Include="Ikony\kopiruj.ico" />
     <Content Include="Ikony\line.ico" />

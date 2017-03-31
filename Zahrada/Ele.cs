@@ -419,18 +419,7 @@ namespace Zahrada
 			}
 		}
 
-		[Category("Vzhled"), Description("Nastavit barvu Pera")]
-		public virtual Color Pero_barva
-		{
-			get
-			{
-				return _penColor;
-			}
-			set
-			{
-				_penColor = value;
-			}
-		}
+		
 
 		// jakou barvoy vyplneny:
 		//[Category("Vzhled"), Description("Nastav barvu výplně")]
@@ -524,9 +513,21 @@ namespace Zahrada
 			}
 		}
 
+        //[Category("Vzhled"), Description("Nastavit barvu Pera")]
+        public virtual Color Pero_barva
+        {
+            get
+            {
+                return _penColor;
+            }
+            set
+            {
+                _penColor = value;
+            }
+        }
 
-		[Category("Vzhled"), Description("Nastavit šířku Pera")]
-		public virtual float Pero_šířka
+        //[Category("Vzhled"), Description("Nastavit šířku Pera")]
+        public virtual float Pero_šířka
 		{
 			get
 			{

@@ -132,6 +132,12 @@ namespace Zahrada
         private int delkaElementu;
         private int celkovaDelkaPenElementu;
 
+        //save/load pomucka
+        public bool SaveSuccess = false;
+        public bool LoadSucces = false;
+        public string jmenoNoveOtevreneho = "";
+        private string plneJmenoNoveOtevreneho = "";
+
         // pro Load/save
         public float kolikNasobneZoom = 1;
         
@@ -443,6 +449,8 @@ namespace Zahrada
         public void ChangeStatus(string s)
         {
             status = s;
+
+           
         }
 
         public void ChangeOption(string s)
@@ -451,6 +459,9 @@ namespace Zahrada
             // oznam "option" zmenu smerem k poslouchajicim objektum - napr. toolBoxu Nastroje
             OptionEventArgs e = new OptionEventArgs(option);
             OptionChanged(this, e); // vyvola timto udalost event
+
+            
+
         }
 
         #endregion
@@ -1294,26 +1305,31 @@ namespace Zahrada
         // pomocna metoda pri stisku Vlastnosti v mem Custom PropertyGridu
         public void PushSelectionToShowInCustomGrid()
         {
-            
+            infoStatLabel.Text = "";
             PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
-            ObjectSelected(this, e1);// raise event    
-            Redraw(true); //redraw all=true   
+            ObjectSelected(this, e1);// raise event  
+            
+            Redraw(true); //redraw all=true 
+            
         }
 
         // posila proveden zmeny do CsutomPropertyGridu ... zjednodusena verye bez prekreslovani obrazovky
         public void PushPlease()
         {
+            infoStatLabel.Text = "";
             PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
-            ObjectSelected(this, e1);// raise event    
+            ObjectSelected(this, e1);// raise event  
+           
         }
 
         // simuluje stisk Esc klavesy;
         public void ForceEsc()
         {
-          
+
+            infoStatLabel.Text = "";
             shapes.DeSelect();
             PropertyEventArgs e1 = new PropertyEventArgs(this.shapes.GetSelectedArray(), this.shapes.RedoEnabled(), this.shapes.UndoEnabled());
-            ObjectSelected(this, e1);  // vyvolavam udalost....
+            ObjectSelected(this, e1);  // vyvolavam udalost....            
 
             Redraw(true); //redraw all=true   
         }
@@ -1351,6 +1367,7 @@ namespace Zahrada
         {
             //showDebug = false;
             tip.Active = false;
+            infoStatLabel.Text = "";
            
             if (e.Button == MouseButtons.Left)
             #region Mouse Left up
@@ -1635,7 +1652,9 @@ namespace Zahrada
 
         public void PropertyChanged()
         {
-            shapes.PropertyChanged();  
+            shapes.PropertyChanged(); 
+            
+
 
         }
        
@@ -1854,7 +1873,7 @@ namespace Zahrada
                 dlg.InitialDirectory = currentDirectory;
                 dlg.RestoreDirectory = true;
                 dlg.DefaultExt = "bin";
-                dlg.Title = "Uložit soubor";
+                dlg.Title = "Uložit soubor jako";
                 dlg.Filter = "Zahrada soubor (*.bin)|*.bin|Všechny soubory (*.*)|*.*";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -1864,6 +1883,11 @@ namespace Zahrada
                         BinaryFormatter BinaryWrite = new BinaryFormatter();
                         BinaryWrite.Serialize(StreamWrite, shapes); // ukladam si instanci tridy Shapes - to je vse !
                         StreamWrite.Close();
+
+                        string fn = Path.GetFileNameWithoutExtension(dlg.FileName);
+                        plneJmenoNoveOtevreneho = dlg.FileName;
+                        jmenoNoveOtevreneho = fn;
+                        SaveSuccess = true;
                         return true;
                     }
                 }
@@ -1873,9 +1897,48 @@ namespace Zahrada
                 MessageBox.Show("Projekt nebyl uložen !", "Uložení selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // MessageBox.Show("Výjimka:" + e.ToString(), "Save error:");
             }
+            SaveSuccess = false;
             return false;
-        }     
+        }
 
+
+        public bool SimpleSaver()
+        {
+            try
+            {
+                Stream StreamWrite;
+                SaveFileDialog dlg = new SaveFileDialog();
+                // nastavuje aktualni cestu k exe souboru zahrada.exe
+                string currentDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                dlg.InitialDirectory = currentDirectory;
+                dlg.RestoreDirectory = true;
+                //dlg.DefaultExt = "bin";
+                //dlg.Title = "Uložit soubor";
+                //dlg.Filter = "Zahrada soubor (*.bin)|*.bin|Všechny soubory (*.*)|*.*";
+                dlg.FileName = plneJmenoNoveOtevreneho;
+
+                if ((StreamWrite = dlg.OpenFile()) != null)
+                    {
+                        BeforeSave(); // ukladam si zakladni promenne o vykresu dx,dy, Ax, Ay, Zoom, atd ...   
+                        BinaryFormatter BinaryWrite = new BinaryFormatter();
+                        BinaryWrite.Serialize(StreamWrite, shapes); // ukladam si instanci tridy Shapes - to je vse !
+                        StreamWrite.Close();
+
+                        string fn = Path.GetFileNameWithoutExtension(dlg.FileName);
+                        jmenoNoveOtevreneho = fn;
+                        SaveSuccess = true;
+                        return true;
+                    }
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Projekt nebyl uložen !", "Uložení selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // MessageBox.Show("Výjimka:" + e.ToString(), "Save error:");
+            }
+            SaveSuccess = false;
+            return false;
+        }
 
 
 
@@ -1907,6 +1970,10 @@ namespace Zahrada
                         //shapes.AfterLoad();
 
                         Redraw(true);
+                        LoadSucces = true;
+                        string fn = Path.GetFileNameWithoutExtension(dlg.FileName);
+                        plneJmenoNoveOtevreneho = dlg.FileName;
+                        jmenoNoveOtevreneho = fn;
                         return true;
                     }
                 }
@@ -1916,6 +1983,7 @@ namespace Zahrada
                 //MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
                 MessageBox.Show("Projekt nebyl načten !", "Otevření selhalo",  MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            LoadSucces = false;
             return false;
         }
 
@@ -2121,17 +2189,24 @@ namespace Zahrada
         #endregion
 
 
-        // pri inicializaci si hledam StatusStrip v MainForm ... volano z MainForm
+        // pri inicializaci si hledam StatusStrip/InfoStatLabel v MainForm ... volano z MainForm
 
         StatusStrip mujStatusStrip;
+        public ToolStripStatusLabel infoStatLabel;
         public void NajdiStatusStripVmainForm()
         {
             var najdiStrip = Parent.Controls.Find("statusStrip", true);
             mujStatusStrip = (StatusStrip)najdiStrip.First();
 
-            mujStatusStrip.Text = "Ahoj";           
-            
+            var najdiInfoLabelVeStStripu = mujStatusStrip.Items.Find("InfoToolStripStatusLabel", true);
+            infoStatLabel = (ToolStripStatusLabel)najdiInfoLabelVeStStripu.First();
+
+            infoStatLabel.Text = "Ahoj";
+
         }
+
+
+
 
 
 

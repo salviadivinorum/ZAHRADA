@@ -568,6 +568,7 @@
             this.TabPageSeznamPrani.Size = new System.Drawing.Size(301, 1142);
             this.TabPageSeznamPrani.TabIndex = 3;
             this.TabPageSeznamPrani.Text = "Seznam přání";
+            this.TabPageSeznamPrani.ToolTipText = "Seznam důležitých prvků zahrady";
             this.TabPageSeznamPrani.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelSeznamPrani
@@ -2153,6 +2154,7 @@
             this.tabPagePruvodceNavrhem.Size = new System.Drawing.Size(301, 1142);
             this.tabPagePruvodceNavrhem.TabIndex = 5;
             this.tabPagePruvodceNavrhem.Text = "Průvodce návrhem";
+            this.tabPagePruvodceNavrhem.ToolTipText = "Průvodce návrhem zahrady";
             this.tabPagePruvodceNavrhem.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
@@ -2231,6 +2233,7 @@
             this.TabPageStrucneVlastnosti.Size = new System.Drawing.Size(301, 1142);
             this.TabPageStrucneVlastnosti.TabIndex = 2;
             this.TabPageStrucneVlastnosti.Text = "Vlastnosti";
+            this.TabPageStrucneVlastnosti.ToolTipText = "Zobrazit/změnit základní vlastnosti elementů";
             this.TabPageStrucneVlastnosti.UseVisualStyleBackColor = true;
             // 
             // mujFilteredPropertyGrid

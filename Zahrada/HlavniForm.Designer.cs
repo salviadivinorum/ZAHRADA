@@ -44,9 +44,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ZobrazitVseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VybratVseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.EscapeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +52,6 @@
             this.FreeLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.RectangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ArcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ElipseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.TextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,9 +63,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MoveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MoveDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.XmirrorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.YmirrorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.CopyItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,6 +121,7 @@
             this.mujColorDialog = new System.Windows.Forms.ColorDialog();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.InfoToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.vlozenyToolBox = new Zahrada.UserControlNastroje();
@@ -174,29 +169,37 @@
             // 
             this.newDocumentToolStripMenuItem.Image = global::Zahrada.Properties.Resources.newdoc;
             this.newDocumentToolStripMenuItem.Name = "newDocumentToolStripMenuItem";
-            this.newDocumentToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
-            this.newDocumentToolStripMenuItem.Text = "Nový dokument";
+            this.newDocumentToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.newDocumentToolStripMenuItem.Text = "Nový";
+            this.newDocumentToolStripMenuItem.ToolTipText = "Založit nový projekt zahrady";
+            this.newDocumentToolStripMenuItem.Click += new System.EventHandler(this.newDocumentToolStripMenuItem_Click);
             // 
             // openDocumentToolStripMenuItem
             // 
             this.openDocumentToolStripMenuItem.Image = global::Zahrada.Properties.Resources.open;
             this.openDocumentToolStripMenuItem.Name = "openDocumentToolStripMenuItem";
-            this.openDocumentToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
-            this.openDocumentToolStripMenuItem.Text = "Otevřít dokument";
+            this.openDocumentToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.openDocumentToolStripMenuItem.Text = "Otevřít ...";
+            this.openDocumentToolStripMenuItem.ToolTipText = "Otevřít stávající projekt zahrady";
+            this.openDocumentToolStripMenuItem.Click += new System.EventHandler(this.openDocumentToolStripMenuItem_Click);
             // 
             // saveDocumentToolStripMenuItem
             // 
             this.saveDocumentToolStripMenuItem.Image = global::Zahrada.Properties.Resources.save;
             this.saveDocumentToolStripMenuItem.Name = "saveDocumentToolStripMenuItem";
-            this.saveDocumentToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
-            this.saveDocumentToolStripMenuItem.Text = "Uložit dokument";
+            this.saveDocumentToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.saveDocumentToolStripMenuItem.Text = "Uložit";
+            this.saveDocumentToolStripMenuItem.ToolTipText = "Uložit projekt zahrady";
+            this.saveDocumentToolStripMenuItem.Click += new System.EventHandler(this.saveDocumentToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Image = global::Zahrada.Properties.Resources.saveas;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.saveAsToolStripMenuItem.Text = "Uložit jako ...";
+            this.saveAsToolStripMenuItem.ToolTipText = "Uložit projekt pod jiným názvem";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
@@ -207,8 +210,9 @@
             // 
             this.exportToJpgPngToolStripMenuItem.Image = global::Zahrada.Properties.Resources.export;
             this.exportToJpgPngToolStripMenuItem.Name = "exportToJpgPngToolStripMenuItem";
-            this.exportToJpgPngToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.exportToJpgPngToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.exportToJpgPngToolStripMenuItem.Text = "Export do ...";
+            this.exportToJpgPngToolStripMenuItem.ToolTipText = "Export projektu do obrázku PNG/JPG/GIF";
             this.exportToJpgPngToolStripMenuItem.Click += new System.EventHandler(this.exportToJpgpngToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
@@ -220,16 +224,18 @@
             // 
             this.printToolStripMenuItem.Image = global::Zahrada.Properties.Resources.print2;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
-            this.printToolStripMenuItem.Text = "Tisk ...";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.printToolStripMenuItem.Text = "Tisk";
+            this.printToolStripMenuItem.ToolTipText = "Tisk projektu přímo na tiskárnu";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // printPreviewToolStripMenuItem
             // 
             this.printPreviewToolStripMenuItem.Image = global::Zahrada.Properties.Resources.printpreview;
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.printPreviewToolStripMenuItem.Text = "Náhled tisku ...";
+            this.printPreviewToolStripMenuItem.ToolTipText = "Náhled před tiskem projektu";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -241,27 +247,19 @@
             // 
             this.exitToolStripMenuItem.Image = global::Zahrada.Properties.Resources.close;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.exitToolStripMenuItem.Text = "Ukončit program";
+            this.exitToolStripMenuItem.ToolTipText = "Ukončit aplikaci";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // viewStripMenuItem1
             // 
             this.viewStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ZobrazitVseToolStripMenuItem,
             this.VybratVseToolStripMenuItem,
-            this.toolStripSeparator8,
             this.EscapeToolStripMenuItem});
             this.viewStripMenuItem1.Name = "viewStripMenuItem1";
             this.viewStripMenuItem1.Size = new System.Drawing.Size(77, 24);
             this.viewStripMenuItem1.Text = "Zobrazit";
-            // 
-            // ZobrazitVseToolStripMenuItem
-            // 
-            this.ZobrazitVseToolStripMenuItem.Image = global::Zahrada.Properties.Resources.selectall;
-            this.ZobrazitVseToolStripMenuItem.Name = "ZobrazitVseToolStripMenuItem";
-            this.ZobrazitVseToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
-            this.ZobrazitVseToolStripMenuItem.Text = "Zobrazit vše";
             // 
             // VybratVseToolStripMenuItem
             // 
@@ -269,11 +267,7 @@
             this.VybratVseToolStripMenuItem.Name = "VybratVseToolStripMenuItem";
             this.VybratVseToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.VybratVseToolStripMenuItem.Text = "Vybrat vše";
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(198, 6);
+            this.VybratVseToolStripMenuItem.Click += new System.EventHandler(this.VybratVseToolStripMenuItem_Click);
             // 
             // EscapeToolStripMenuItem
             // 
@@ -281,6 +275,7 @@
             this.EscapeToolStripMenuItem.Name = "EscapeToolStripMenuItem";
             this.EscapeToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.EscapeToolStripMenuItem.Text = "Zrušit výběr / akci";
+            this.EscapeToolStripMenuItem.Click += new System.EventHandler(this.EscapeToolStripMenuItem_Click);
             // 
             // drawToolStripMenuItem
             // 
@@ -290,7 +285,6 @@
             this.FreeLineToolStripMenuItem,
             this.toolStripSeparator10,
             this.RectangleToolStripMenuItem,
-            this.ArcToolStripMenuItem,
             this.ElipseToolStripMenuItem,
             this.toolStripSeparator11,
             this.TextToolStripMenuItem,
@@ -306,6 +300,7 @@
             this.LineToolStripMenuItem.Name = "LineToolStripMenuItem";
             this.LineToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.LineToolStripMenuItem.Text = "Čára";
+            this.LineToolStripMenuItem.Click += new System.EventHandler(this.LineToolStripMenuItem_Click);
             // 
             // PolylineToolStripMenuItem
             // 
@@ -313,6 +308,7 @@
             this.PolylineToolStripMenuItem.Name = "PolylineToolStripMenuItem";
             this.PolylineToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.PolylineToolStripMenuItem.Text = "Multičára";
+            this.PolylineToolStripMenuItem.Click += new System.EventHandler(this.PolylineToolStripMenuItem_Click);
             // 
             // FreeLineToolStripMenuItem
             // 
@@ -320,6 +316,7 @@
             this.FreeLineToolStripMenuItem.Name = "FreeLineToolStripMenuItem";
             this.FreeLineToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.FreeLineToolStripMenuItem.Text = "Volná čára";
+            this.FreeLineToolStripMenuItem.Click += new System.EventHandler(this.FreeLineToolStripMenuItem_Click);
             // 
             // toolStripSeparator10
             // 
@@ -332,13 +329,7 @@
             this.RectangleToolStripMenuItem.Name = "RectangleToolStripMenuItem";
             this.RectangleToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.RectangleToolStripMenuItem.Text = "Obdélník";
-            // 
-            // ArcToolStripMenuItem
-            // 
-            this.ArcToolStripMenuItem.Image = global::Zahrada.Properties.Resources.oblouk;
-            this.ArcToolStripMenuItem.Name = "ArcToolStripMenuItem";
-            this.ArcToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
-            this.ArcToolStripMenuItem.Text = "Oblouk";
+            this.RectangleToolStripMenuItem.Click += new System.EventHandler(this.RectangleToolStripMenuItem_Click);
             // 
             // ElipseToolStripMenuItem
             // 
@@ -346,6 +337,7 @@
             this.ElipseToolStripMenuItem.Name = "ElipseToolStripMenuItem";
             this.ElipseToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.ElipseToolStripMenuItem.Text = "Elipsa";
+            this.ElipseToolStripMenuItem.Click += new System.EventHandler(this.ElipseToolStripMenuItem_Click);
             // 
             // toolStripSeparator11
             // 
@@ -358,6 +350,7 @@
             this.TextToolStripMenuItem.Name = "TextToolStripMenuItem";
             this.TextToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.TextToolStripMenuItem.Text = "Text";
+            this.TextToolStripMenuItem.Click += new System.EventHandler(this.TextToolStripMenuItem_Click);
             // 
             // toolStripSeparator12
             // 
@@ -370,6 +363,7 @@
             this.ImageToolStripMenuItem.Name = "ImageToolStripMenuItem";
             this.ImageToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.ImageToolStripMenuItem.Text = "Zahradní prvek ...";
+            this.ImageToolStripMenuItem.Click += new System.EventHandler(this.ImageToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -379,9 +373,6 @@
             this.toolStripSeparator2,
             this.MoveUpToolStripMenuItem,
             this.MoveDownToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.XmirrorToolStripMenuItem,
-            this.YmirrorToolStripMenuItem,
             this.toolStripSeparator7,
             this.CopyItemToolStripMenuItem,
             this.DeleteItemToolStripMenuItem});
@@ -395,6 +386,7 @@
             this.GroupToolStripMenuItem.Name = "GroupToolStripMenuItem";
             this.GroupToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.GroupToolStripMenuItem.Text = "Seskupit objekty";
+            this.GroupToolStripMenuItem.Click += new System.EventHandler(this.GroupToolStripMenuItem_Click);
             // 
             // DeGroupToolStripMenuItem
             // 
@@ -402,6 +394,7 @@
             this.DeGroupToolStripMenuItem.Name = "DeGroupToolStripMenuItem";
             this.DeGroupToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.DeGroupToolStripMenuItem.Text = "Zrušit seskupení";
+            this.DeGroupToolStripMenuItem.Click += new System.EventHandler(this.DeGroupToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -414,6 +407,7 @@
             this.MoveUpToolStripMenuItem.Name = "MoveUpToolStripMenuItem";
             this.MoveUpToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.MoveUpToolStripMenuItem.Text = "Posunout do popředí";
+            this.MoveUpToolStripMenuItem.Click += new System.EventHandler(this.MoveUpToolStripMenuItem_Click);
             // 
             // MoveDownToolStripMenuItem
             // 
@@ -421,25 +415,7 @@
             this.MoveDownToolStripMenuItem.Name = "MoveDownToolStripMenuItem";
             this.MoveDownToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.MoveDownToolStripMenuItem.Text = "Posunout do pozadí";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(220, 6);
-            // 
-            // XmirrorToolStripMenuItem
-            // 
-            this.XmirrorToolStripMenuItem.Image = global::Zahrada.Properties.Resources.mirrorX;
-            this.XmirrorToolStripMenuItem.Name = "XmirrorToolStripMenuItem";
-            this.XmirrorToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
-            this.XmirrorToolStripMenuItem.Text = "Zrcadlit podle osy X";
-            // 
-            // YmirrorToolStripMenuItem
-            // 
-            this.YmirrorToolStripMenuItem.Image = global::Zahrada.Properties.Resources.mirrorY;
-            this.YmirrorToolStripMenuItem.Name = "YmirrorToolStripMenuItem";
-            this.YmirrorToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
-            this.YmirrorToolStripMenuItem.Text = "Zrcadlit podle osy Y";
+            this.MoveDownToolStripMenuItem.Click += new System.EventHandler(this.MoveDownToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -452,6 +428,7 @@
             this.CopyItemToolStripMenuItem.Name = "CopyItemToolStripMenuItem";
             this.CopyItemToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.CopyItemToolStripMenuItem.Text = "Kopírovat";
+            this.CopyItemToolStripMenuItem.Click += new System.EventHandler(this.CopyItemToolStripMenuItem_Click);
             // 
             // DeleteItemToolStripMenuItem
             // 
@@ -459,6 +436,7 @@
             this.DeleteItemToolStripMenuItem.Name = "DeleteItemToolStripMenuItem";
             this.DeleteItemToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.DeleteItemToolStripMenuItem.Text = "Smazat";
+            this.DeleteItemToolStripMenuItem.Click += new System.EventHandler(this.DeleteItemToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -474,20 +452,21 @@
             // 
             this.nápovedaCelkovatoolStripMenuItem.Image = global::Zahrada.Properties.Resources._1489699641_help;
             this.nápovedaCelkovatoolStripMenuItem.Name = "nápovedaCelkovatoolStripMenuItem";
-            this.nápovedaCelkovatoolStripMenuItem.Size = new System.Drawing.Size(153, 26);
+            this.nápovedaCelkovatoolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.nápovedaCelkovatoolStripMenuItem.Text = "Nápověda";
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(150, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(178, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Image = global::Zahrada.Properties.Resources.jablko;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.aboutToolStripMenuItem.Text = "O aplikaci";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -534,6 +513,7 @@
             this.newToolStripButton.Name = "newToolStripButton";
             this.newToolStripButton.Size = new System.Drawing.Size(24, 27);
             this.newToolStripButton.Text = "Nový soubor";
+            this.newToolStripButton.Click += new System.EventHandler(this.newToolStripButton_Click);
             // 
             // openToolStripButton
             // 
@@ -553,6 +533,7 @@
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Size = new System.Drawing.Size(24, 27);
             this.saveToolStripButton.Text = "Uložit soubor";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
             // 
             // saveAsToolStripButton
             // 
@@ -932,16 +913,23 @@
             this.statusStrip.BackColor = System.Drawing.SystemColors.MenuBar;
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 779);
+            this.toolStripStatusLabel,
+            this.InfoToolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 778);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1504, 24);
+            this.statusStrip.Size = new System.Drawing.Size(1504, 25);
             this.statusStrip.TabIndex = 10;
             // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 19);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 20);
+            // 
+            // InfoToolStripStatusLabel
+            // 
+            this.InfoToolStripStatusLabel.Name = "InfoToolStripStatusLabel";
+            this.InfoToolStripStatusLabel.Size = new System.Drawing.Size(71, 20);
+            this.InfoToolStripStatusLabel.Text = "Kreslím ...";
             // 
             // imageList1
             // 
@@ -973,8 +961,8 @@
             this.vlozenePlatno.BackColor = System.Drawing.Color.Moccasin;
             this.vlozenePlatno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.vlozenePlatno.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.Default;
-            this.vlozenePlatno.dx = -1604;
-            this.vlozenePlatno.dy = 53;
+            this.vlozenePlatno.dx = 4536;
+            this.vlozenePlatno.dy = 4267;
             this.vlozenePlatno.Fit2grid = true;
             this.vlozenePlatno.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
             this.vlozenePlatno.Location = new System.Drawing.Point(356, 62);
@@ -990,7 +978,7 @@
             this.vlozenePlatno.TabIndex = 9;
             this.vlozenePlatno.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             this.vlozenePlatno.Výška = 2970;
-            this.vlozenePlatno.Zoom = 1F;
+            this.vlozenePlatno.Zoom = 0.125F;
             // 
             // HlavniForm
             // 
@@ -1007,7 +995,8 @@
             this.MinimumSize = new System.Drawing.Size(1500, 850);
             this.Name = "HlavniForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Navrhování zahrad";
+            this.Text = "Navrhování zahrad - nový projekt";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HlavniForm_FormClosing);
             this.Load += new System.EventHandler(this.hlavniFormularoveOkno_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -1039,9 +1028,6 @@
         private System.Windows.Forms.ToolStripMenuItem MoveUpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MoveDownToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem XmirrorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem YmirrorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem CopyItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem drawToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PolylineToolStripMenuItem;
@@ -1075,14 +1061,11 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem viewStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem ZobrazitVseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VybratVseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ArcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem EscapeToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
@@ -1123,6 +1106,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripStatusLabel InfoToolStripStatusLabel;
     }
 }
 

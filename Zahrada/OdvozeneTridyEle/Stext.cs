@@ -64,7 +64,7 @@ namespace Zahrada.OdvozeneTridyEle
 			get { return "Text"; }
 		}
 
-		[Category("Vzhled"), Description("Rotace pod ůhlem")]
+		[Category("Vzhled"), Description("Rotace pod úhlem")]
 		public int Rotace
 		{
 			get { return _rotation; }
@@ -91,7 +91,7 @@ namespace Zahrada.OdvozeneTridyEle
 			set { text = value; }
 		}
 
-        [Category("Vzhled"), Description("Zadaný text")]
+        [Category("Vzhled"), Description("Zvolený font textu")]
         public Font Font
         {
             get { return f; }
