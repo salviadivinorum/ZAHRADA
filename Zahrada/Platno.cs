@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using Zahrada.OdvozeneTridyEle;
 using Zahrada.PomocneTridy;
+using System.Linq;
 
 namespace Zahrada
 {
@@ -2119,6 +2120,21 @@ namespace Zahrada
 
         #endregion
 
-       
+
+        // pri inicializaci si hledam StatusStrip v MainForm ... volano z MainForm
+
+        StatusStrip mujStatusStrip;
+        public void NajdiStatusStripVmainForm()
+        {
+            var najdiStrip = Parent.Controls.Find("statusStrip", true);
+            mujStatusStrip = (StatusStrip)najdiStrip.First();
+
+            mujStatusStrip.Text = "Ahoj";           
+            
+        }
+
+
+
+
     }
 }

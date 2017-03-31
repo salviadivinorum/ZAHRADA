@@ -800,16 +800,16 @@
             this.penWidthtoolStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.penWidthtoolStripComboBox.DropDownWidth = 125;
             this.penWidthtoolStripComboBox.Items.AddRange(new object[] {
-            "Pero tl. 0.5",
-            "Pero tl. 1",
-            "Pero tl. 1.5",
-            "Pero tl. 2",
-            "Pero tl. 3",
-            "Pero tl. 4",
-            "Pero tl. 5"});
+            "Pero tl. 0.5cm",
+            "Pero tl. 1cm",
+            "Pero tl. 2cm",
+            "Pero tl. 5cm",
+            "Pero tl. 10cm",
+            "Pero tl. 20cm",
+            "Pero tl. 50cm"});
             this.penWidthtoolStripComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.penWidthtoolStripComboBox.Name = "penWidthtoolStripComboBox";
-            this.penWidthtoolStripComboBox.Size = new System.Drawing.Size(110, 28);
+            this.penWidthtoolStripComboBox.Size = new System.Drawing.Size(120, 28);
             this.penWidthtoolStripComboBox.ToolTipText = "Šířka pera";
             this.penWidthtoolStripComboBox.DropDownClosed += new System.EventHandler(this.penWidthtoolStripComboBox_DropDownClosed);
             // 
@@ -929,21 +929,19 @@
             // 
             // statusStrip
             // 
-            this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.statusStrip.BackColor = System.Drawing.SystemColors.MenuBar;
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 778);
+            this.statusStrip.Location = new System.Drawing.Point(0, 779);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1504, 25);
+            this.statusStrip.Size = new System.Drawing.Size(1504, 24);
             this.statusStrip.TabIndex = 10;
-            this.statusStrip.Text = "statusStrip1";
             // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(264, 20);
-            this.toolStripStatusLabel.Text = "Začni kreslit zahradu nebo něco jiného";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 19);
             // 
             // imageList1
             // 

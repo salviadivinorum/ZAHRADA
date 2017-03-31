@@ -53,8 +53,10 @@ namespace Zahrada
             //vlozenePlatno.UpravZoomVComboBoxu(1);
 
             vlozenyToolBox.NajdiUndoReodBtnsVmainForm();
+            vlozenePlatno.NajdiStatusStripVmainForm(); // potrebuju pro text ve statusstripu
             toolStrip1.BackColor = Color.FromArgb(17, Color.CadetBlue);
-            
+            statusStrip.BackColor = Color.FromArgb(17, Color.CadetBlue);
+
 
             //this.vlozenePlatno.ParentForm = this;
             //OnButtonZoomPusClick += new EventHandler(KlikNaPlus); // priradim udalost na tlacitko + Zoom
@@ -69,9 +71,10 @@ namespace Zahrada
         private void hlavniFormularoveOkno_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized; // maximalizace formul. okna
-            penWidthtoolStripComboBox.SelectedIndex = 0; // comboboxy nahe v toolstripu
+            penWidthtoolStripComboBox.SelectedIndex = 1; // comboboxy nahe v toolstripu
             colorFillingOnOffToolStripComboBox.SelectedIndex = 0;
             textureFillingOnOffToolStripComboBox.SelectedIndex = 0;
+
             //gridToolStripComboBox.SelectedIndex = 0;
             //zoomToolStripComboBox.SelectedIndex = 1;
            // closedToolStripComboBox.SelectedIndex = 0;
@@ -390,8 +393,40 @@ namespace Zahrada
         // Dodelat Pen Width - sirku pera ....
         private void penWidthtoolStripComboBox_DropDownClosed(object sender, EventArgs e)
         {
+            int index = penWidthtoolStripComboBox.SelectedIndex;
+            switch (index)
+            {
+                case 0:
+                    vlozenePlatno.SetPenWidth(0.5f);
+                    break;
+                case 1:
+                    vlozenePlatno.SetPenWidth(1f);
+                    break;
+                case 2:
+                    vlozenePlatno.SetPenWidth(2f);
+                    break;
+                case 3:
+                    vlozenePlatno.SetPenWidth(5f);
+                    break;
+                case 4:
+                    vlozenePlatno.SetPenWidth(10f);
+                    break;
+                case 5:
+                    vlozenePlatno.SetPenWidth(20f);
+                    break;
+                case 6:
+                    vlozenePlatno.SetPenWidth(50f);
+                    break;
+            }
+
+
+
+            vlozenePlatno.PushPlease();
             vlozenePlatno.Focus();
-        }               
+            vlozenePlatno.Redraw(true);
+        } 
+        
+
        
 
         // Save As tlacitko ...
