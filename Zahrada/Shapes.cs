@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -60,6 +61,14 @@ namespace Zahrada
 		[NonSerialized]
 		private UndoBuffer undoB;
 
+        public int dxSave;
+        public int dySave;
+        public int AxSave;
+        public int AySave;
+        public int indeOfSavedPlan;
+        public float ZoomSave;
+        public List<string> listradiobuttonu; 
+
 		#endregion
 
 		#region Konstruktor tridy Shapes
@@ -69,6 +78,7 @@ namespace Zahrada
 			InitUndoBuff();
 			Ele.dpix = dpix; // staticky clen tridy Ele
 			Ele.dpiy = dpiy; // staticky clen tridy Ele
+            listradiobuttonu = new List<string>();
 		}
 
 		#endregion		
@@ -145,9 +155,7 @@ namespace Zahrada
 			}
 		}
 
-
-		// zde pokracovat na tride Shapes
-
+		
 
 		/// <summary>
 		/// Vraci kopii vybraneho elementu
@@ -300,15 +308,7 @@ namespace Zahrada
 			((SelPoly)sRec).ReCreateCreationHandles((PointSet)selEle);
 		}
 
-		// Metoda na posun bodu grafu - nebudu implenetovat
-		/*
-		public void movePointG(int dx, int dy)
-		{
-			((SelGraph)this.sRec).movePoints(dx, dy);
-			((SelGraph)this.sRec).reCreateCreationHandles((Graph)this.selEle);
-		}
-
-		*/
+		
 
 		public void AddPoint()
 		{
@@ -321,111 +321,10 @@ namespace Zahrada
 					((PointSet)this.selEle).points.Insert(i - 1, p);
 					sRec = new SelPoly(selEle);// vytvori uchopovy obdelnik
 				}
-			}
-			else
-			{
-				// nebudu pouzivat tridu Graph ani SelGraph
-				/*
-				if (this.sRec is SelGraph)
-				{
+			}			
 
-					NewPointHandle hnd = ((SelGraph)this.sRec).getNewPointHandle();
-					if (hnd != null)
-					{
-						PointWr p = hnd.getPoint();
-						GrArc a = hnd.getArc();
-
-						if (p != null)
-						{
-							if (a != null)
-							{
-								//Destroy arc (s-e) a and build 3 new arcs (s-p,p-e,p-p1)
-								// s----e
-								//
-								//  s--p--e
-								//     |
-								//     p1
-
-								PointWr s = a.start;
-								PointWr e = a.end;
-
-
-								((Graph)this.selEle).arcs.Remove(a);
-
-								PointWr p1 = new PointWr(p.X, p.Y + 10);
-								int i = ((SelGraph)this.sRec).getIndex();
-								if (i > 0)
-								{
-									((Graph)this.selEle).points.Insert(i - 1, p1);
-									((Graph)this.selEle).points.Insert(i - 1, p);
-
-
-									((Graph)this.selEle).arcs.Add(new GrArc(p, p1));
-									((Graph)this.selEle).arcs.Add(new GrArc(s, p));
-									((Graph)this.selEle).arcs.Add(new GrArc(p, e));
-
-									sRec = new SelGraph(selEle);//create handling rect
-								}
-							}
-							else
-							{
-								PointWr realp = hnd.getRealPoint();
-								if (realp != null)
-								{
-									((Graph)this.selEle).arcs.Add(new GrArc(realp, p));
-									((Graph)this.selEle).points.Insert(0, p);
-
-								}
-							}
-						}
-					}
-				}
-				*/
-
-
-			}
-
-		}
-
-
-
-		public void DelPoints()
-		{
-			if (sRec is SelPoly)
-			{
-				ArrayList tmp = ((SelPoly)sRec).GetSelPoints();
-				if (tmp.Count < ((PointSet)selEle).points.Count - 1)
-				{
-					foreach (PointWrapper p in tmp)
-					{
-						((PointSet)selEle).points.Remove(p);
-					}
-				}
-				sRec = new SelPoly(selEle);// vytvori uchopovy obdelnik
-			}
-		}
-
-		/// <summary>
-		/// Vytvori novy polygon z vybranych bodu
-		/// </summary>
-		public void ExtPoints()
-		{
-			if (sRec is SelPoly)
-			{
-				ArrayList tmp = ((SelPoly)sRec).GetSelPoints();
-				if (tmp.Count > 1)
-				{
-					ArrayList newL = new ArrayList();
-					foreach (PointWrapper p in tmp)
-					{
-						newL.Add(new PointWrapper(p.Point));
-					}
-					this.AddPoly(sRec.GetX, sRec.GetY, sRec.GetX1, sRec.GetY1, sRec.PenColor, sRec.FillColor, sRec.PenWidth, sRec.ColorFilled, newL, false, false);
-				}
-
-			}
-
-		}
+		}      
+	  
 
 		public void Move(int dx, int dy)
 		{
@@ -644,35 +543,6 @@ namespace Zahrada
 
 		#endregion
 
-		#region Verejne metody pro zrcadleni vybraneho selEle - polygonu
-
-		public void XMirror()
-		{
-			if (selEle is PointSet)
-			{
-				((PointSet)selEle).CommitMirror(true, false);
-				sRec = new SelPoly(selEle); // vytvori uchopovy obdelnik
-			}
-		}
-		public void YMirror()
-		{
-			if (selEle is PointSet)
-			{
-				((PointSet)selEle).CommitMirror(false, true);
-				sRec = new SelPoly(selEle); // vytvori uchopovy obdelnik
-			}
-		}
-		public void Mirror()
-		{
-			if (selEle is PointSet)
-			{
-				((PointSet)selEle).CommitMirror(true, true);                
-				sRec = new SelPoly(selEle); // vytvori uchopovy obdelnik
-			}
-		}
-
-		#endregion
-
 		#region Verejne metody tridy Shapes pro Undo/Redo operace
 		public bool UndoEnabled()
 		{
@@ -808,9 +678,9 @@ namespace Zahrada
 
 
 		/// <summary>
-		/// Do Listu prida Polygon
+		/// Do Listu prida Polygon - vseobecny
 		/// </summary>
-		public void AddPoly(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, ArrayList aa, bool curv, bool closed)
+		public void AddPoly(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, ArrayList aa, bool curv, bool closed, bool textureFilled, TextureBrush textura)
 		{    
 			/*if (x1 - minDim <= x)
 				x1 = x + minDim;
@@ -821,11 +691,13 @@ namespace Zahrada
 			PointSet r = new PointSet(x, y, x1, y1, aa);
 
 			r.Closed = closed;
-			r.PenColor = penC;
-			r.PenWidth = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
-			r.Curved = curv;
+			r.Zakřivení = curv;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
 			List.Add(r);            
 			StoreDo("I", r); // uloz do undo/redo bufferu
@@ -839,7 +711,7 @@ namespace Zahrada
 		/// <summary>
 		/// Do Listu prida Obdelnik
 		/// </summary>
-		public void AddRect(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled)
+		public void AddRect(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
 		{
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
@@ -848,10 +720,12 @@ namespace Zahrada
 
 			DeSelect();
 			Rect r = new Rect(x, y, x1, y1);
-			r.PenColor = penC;
-			r.PenWidth = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
 			List.Add(r);
 			
@@ -862,11 +736,12 @@ namespace Zahrada
 			selEle.Select();
 		}
 
-
+        // Arc uz neni
+        /*
 		/// <summary>
 		/// Do Listu prida Oblouk
 		/// </summary>
-		public void AddArc(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled)
+		public void AddArc(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
 		{
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
@@ -879,18 +754,18 @@ namespace Zahrada
 			r.PenWidth = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
-			List.Add(r);
-			
+			List.Add(r);			
 			StoreDo("I", r);
 
 			sRec = new SelRect(r); // nad obloukem je uchopovy obdelnik do tvaru obdelnika nad hranici tavru
 			selEle = r;
 			selEle.Select();
 		}
-
-
-		// ve volnem case pridam moznost kresli VerticalLine a HorizontalLine - pridat take jako tridu do Ele
+        */
+			
 		/// <summary>
 		/// Do Listu prida Caru
 		/// </summary>
@@ -898,12 +773,9 @@ namespace Zahrada
 		{
 
 			DeSelect();
-			Line r = new Line(x, y, x1, y1);
-			//VLine r = new VLine(x, y, x1, y1);
-			//OLine r = new OLine(x, y, x1, y1);
-
-			r.PenColor = penC;
-			r.PenWidth = penW;
+			Line r = new Line(x, y, x1, y1);	
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 
 			List.Add(r);
 			StoreDo("I", r);
@@ -912,31 +784,30 @@ namespace Zahrada
 			selEle = r;
 			selEle.Select();
 		}
-
 		
-
-
 		/// <summary>
 		/// Do Listu prida Jednoduchy text
 		/// </summary>
-		public void AddSimpleTextBox(int x, int y, int x1, int y1, RichTextBox t, Color penC, Color fillC, float penW, bool filled)
+		public void AddSimpleTextBox(int x, int y, int x1, int y1, RichTextBox t, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
 		{
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
 			if (y1 - minDim <= y)
 				y1 = y + minDim;
 
-			this.DeSelect();
+			DeSelect();
 			Stext r = new Stext(x, y, x1, y1);
 
 			r.Text = t.Text;
 			r.CharFont = t.SelectionFont;  //t.Font;
 
 
-			r.PenColor = penC;
-			r.PenWidth = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = filled;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
 			List.Add(r);
 			
@@ -949,7 +820,7 @@ namespace Zahrada
 
 
 		/// <summary>
-		/// Do Listu prida ImageBox
+		/// Do Listu prida ImageBox - obrazek
 		/// </summary>
 		public void AddImageBox(int x, int y, int x1, int y1, string st, Color penC, float penW)
 		{
@@ -960,8 +831,8 @@ namespace Zahrada
 
 			DeSelect();
 			ImageBox r = new ImageBox(x, y, x1, y1);
-			r.PenColor = penC;
-			r.PenWidth = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 
 			List.Add(r);
 			
@@ -972,7 +843,7 @@ namespace Zahrada
 				try
 				{
 					Bitmap loadTexture = new Bitmap(st);
-					r.Img = loadTexture;
+					r.Prvek = loadTexture;
 				}
 				catch { }
 			}
@@ -984,9 +855,9 @@ namespace Zahrada
 		}
 
 		/// <summary>
-		/// Adds Ellipse
+		/// Do Listu prida Elipsu
 		/// </summary>
-		public void AddEllipse(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool colorFilled, bool textureFilled, TextureBrush textura)
+		public void AddElipse(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool colorFilled, bool textureFilled, TextureBrush textura)
 		{
 			if (x1 - minDim <= x)
 				x1 = x + minDim;
@@ -995,12 +866,12 @@ namespace Zahrada
 
 			DeSelect();
 			Ellipse r = new Ellipse(x, y, x1, y1);
-			r.PenColor = penC;
-			r.PenWidth = penW;
+			r.Pero_barva = penC;
+			r.Pero_šířka = penW;
 			r.FillColor = fillC;
 			r.ColorFilled = colorFilled;
-            r.TextureFilled = textureFilled;
-            r.FillTexture = textura;
+			r.TextureFilled = textureFilled;
+			r.FillTexture = textura;
 
 			this.List.Add(r);
 			
@@ -1010,10 +881,7 @@ namespace Zahrada
 			selEle = r;
 			selEle.Select();
 		}
-
-
-
-
+		
 		#endregion
 
 

@@ -30,10 +30,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Platno));
             this.contextMenuStripProPlatno = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteContextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CopyContextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllContextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.contextMenuStripProPlatno.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,13 +48,13 @@
             this.CopyContextToolStripMenuItem,
             this.AllContextToolStripMenuItem});
             this.contextMenuStripProPlatno.Name = "contextMenuStripProPlatno";
-            this.contextMenuStripProPlatno.Size = new System.Drawing.Size(182, 110);
+            this.contextMenuStripProPlatno.Size = new System.Drawing.Size(153, 82);
             // 
             // DeleteContextToolStripMenuItem
             // 
             this.DeleteContextToolStripMenuItem.Image = global::Zahrada.Properties.Resources.smaz;
             this.DeleteContextToolStripMenuItem.Name = "DeleteContextToolStripMenuItem";
-            this.DeleteContextToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.DeleteContextToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.DeleteContextToolStripMenuItem.Text = "Vymazat";
             this.DeleteContextToolStripMenuItem.Click += new System.EventHandler(this.DeleteContextToolStripMenuItem_Click);
             // 
@@ -59,7 +62,7 @@
             // 
             this.CopyContextToolStripMenuItem.Image = global::Zahrada.Properties.Resources.kopiruj;
             this.CopyContextToolStripMenuItem.Name = "CopyContextToolStripMenuItem";
-            this.CopyContextToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.CopyContextToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.CopyContextToolStripMenuItem.Text = "Kopírovat";
             this.CopyContextToolStripMenuItem.Click += new System.EventHandler(this.CopyContextToolStripMenuItem_Click);
             // 
@@ -67,9 +70,23 @@
             // 
             this.AllContextToolStripMenuItem.Image = global::Zahrada.Properties.Resources.select;
             this.AllContextToolStripMenuItem.Name = "AllContextToolStripMenuItem";
-            this.AllContextToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.AllContextToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.AllContextToolStripMenuItem.Text = "Vybrat vše";
             this.AllContextToolStripMenuItem.Click += new System.EventHandler(this.AllContextToolStripMenuItem_Click);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
             // 
             // Platno
             // 
@@ -95,5 +112,7 @@
         private System.Windows.Forms.ToolStripMenuItem CopyContextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AllContextToolStripMenuItem;
         public System.Windows.Forms.ContextMenuStrip contextMenuStripProPlatno;
+        public System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        public System.Windows.Forms.PrintDialog printDialog1;
     }
 }

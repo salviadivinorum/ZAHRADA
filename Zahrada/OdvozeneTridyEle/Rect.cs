@@ -23,7 +23,7 @@ namespace Zahrada.OdvozeneTridyEle
             Y1 = y1;
             selected = true;
             EndMoveRedim();
-            Rotation = 0;
+            Rotace = 0;
             rot = true;
         }
 
@@ -35,8 +35,8 @@ namespace Zahrada.OdvozeneTridyEle
 
         #region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid
 
-        [CategoryAttribute("1"), DescriptionAttribute("Obdélník")]
-        public string ObjectType
+        [CategoryAttribute("Element"), DescriptionAttribute("Obdélník")]
+        public string Typ
         {
             get
             {
@@ -45,8 +45,8 @@ namespace Zahrada.OdvozeneTridyEle
         }
 
 
-        [Category("Rotace pod úhlem"), Description("Úhel rotování")]
-        public int Rotation
+        [Category("Vzhled"), Description("Rotace pod úhlem")]
+        public int Rotace
         {
             get
             {
@@ -58,10 +58,61 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
+        [Category("Vzhled"), Description("Vybrat cestu k nové Textuře")]
+        public override string Nová_Textura
+        {
+            get
+            {
+                return base.Nová_Textura;
+            }
+            set
+            {
+                base.Nová_Textura = value;
+            }
+        }
 
 
+        [Category("Vzhled"), Description("Zobrazit hraniční čáru elementu")]
+        public override bool Ohraničení
+        {
+            get
+            {
+                return base.Ohraničení;
+            }
+            set
+            {
+                base.Ohraničení = value;
+            }
+        }
 
+        [Category("Vzhled"), Description("Nastavit barvu Pera")]
+        public override Color Pero_barva
+        {
+            get
+            {
+                return base.Pero_barva;
+            }
+            set
+            {
+                base.Pero_barva = value;
 
+            }
+        }
+
+        [Category("Vzhled"), Description("Nastavit šířku Pera")]
+        public override float Pero_šířka
+        {
+            get
+            {
+                return base.Pero_šířka;
+
+            }
+            set
+            {
+                base.Pero_šířka = value;
+
+            }
+        }
 
         #endregion
 
@@ -72,8 +123,8 @@ namespace Zahrada.OdvozeneTridyEle
         {
             Rect newE = new Rect(X, Y, X1, Y1);
 
-            newE.PenColor = PenColor;
-            newE.PenWidth = PenWidth;
+            newE.Pero_barva = Pero_barva;
+            newE.Pero_šířka = Pero_šířka;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
@@ -83,8 +134,8 @@ namespace Zahrada.OdvozeneTridyEle
             newE.DashStyleMy = DashStyleMy;
             newE.Alpha = Alpha;
             newE.iAmAline = iAmAline;
-            newE.Rotation = Rotation;
-            newE.ShowBorder = ShowBorder;
+            newE.Rotace = Rotace;
+            newE.Ohraničení = Ohraničení;
 
             newE.OnGrpXRes = this.OnGrpXRes;
             newE.OnGrpX1Res = this.OnGrpX1Res;
@@ -101,7 +152,7 @@ namespace Zahrada.OdvozeneTridyEle
         public override void CopyFrom(Ele ele)
         {
             CopyStdProp(ele, this);
-            Rotation = ((Rect)ele).Rotation;
+            Rotace = ((Rect)ele).Rotace;
         }
 
         public override void Select()
@@ -151,7 +202,7 @@ namespace Zahrada.OdvozeneTridyEle
                 0.0f);
 
 
-            Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
+            Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
 
             if (selected)
@@ -169,7 +220,7 @@ namespace Zahrada.OdvozeneTridyEle
 
             // tranformace vlozeneho obdelniku v Graphics Path pomoci GDI+ ... respektive pomoci Matrix tridy
             Matrix translateMatrix = new Matrix();
-            translateMatrix.RotateAt(this.Rotation, new PointF((this.X + dx + (int)(this.X1 - this.X) / 2) * zoom, (this.Y + dy + (int)(this.Y1 - this.Y) / 2) * zoom));
+            translateMatrix.RotateAt(this.Rotace, new PointF((this.X + dx + (int)(this.X1 - this.X) / 2) * zoom, (this.Y + dy + (int)(this.Y1 - this.Y) / 2) * zoom));
             myPath.Transform(translateMatrix);
 
             // Konecne nakresli transformovany ctverec na obrazovku
@@ -180,7 +231,7 @@ namespace Zahrada.OdvozeneTridyEle
                 else
                     g.FillPath(myBrush, myPath);
 
-                if (ShowBorder)
+                if (Ohraničení)
                     g.DrawPath(myPen, myPath);
             }
             else

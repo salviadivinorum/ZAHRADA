@@ -75,10 +75,10 @@ namespace Zahrada.PomocneTridy
         public override void Draw(Graphics g, int dx, int dy, float zoom)
         {
             SolidBrush myBrush = new SolidBrush(FillColor);
-            myBrush.Color = this.Transparency(myBrush.Color, 80);
+            myBrush.Color = Transparency(myBrush.Color, 80);
             Pen whitePen = new Pen(Color.White);
 
-            Pen fillPen = new Pen(this.FillColor);
+            Pen fillPen = new Pen(FillColor);
             if (IsSelected())
                 fillPen.Color = Color.Red;
 

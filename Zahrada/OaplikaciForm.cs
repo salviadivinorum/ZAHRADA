@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Zahrada.OdvozeneTridyEle;
-using Zahrada.PomocneTridy;
-using Zahrada.UndoRedoBufferTridy;
 
 namespace Zahrada
 {
-    /// <summary>
-    /// Toto bude formular pro zadavani textu ve formatu RTF Rich text format
-    /// </summary>
-    public partial class RichTextBoxForm : Form
+    public partial class OaplikaciForm : Form
     {
-        public RichTextBoxForm()
+        public OaplikaciForm()
         {
             InitializeComponent();
+            MyInit();
             ReallyCenterToScreen();
         }
 
-        private void RTFOKBtn_Click(object sender, EventArgs e)
+
+        private void MyInit()
         {
-            DialogResult = DialogResult.OK;
-            Close();            
+            CopyrightTextBox.Text = "(c) 2017 David Jaroš"
+                + Environment.NewLine +
+                "Freeware pro akademické" 
+                + Environment.NewLine+
+                "a nekomerční použití";
         }
 
-        private void RTFCancelBtn_Click(object sender, EventArgs e)
+        private void OKbutton_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
 
@@ -46,7 +46,7 @@ namespace Zahrada
                 Y = Math.Max(workingArea.Y, workingArea.Y + (workingArea.Height - this.Height) / 2)
             };
         }
-
-
     }
+
+
 }

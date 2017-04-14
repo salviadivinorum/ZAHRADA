@@ -223,10 +223,10 @@
   <data name="jablko" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\jablko.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="trava_velmi_husta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\trava-velmi-husta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ruler" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ruler.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trava_velmi_husta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\trava-velmi-husta.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

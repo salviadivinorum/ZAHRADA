@@ -69,12 +69,41 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        [Category("1"), Description("Čára")]
-        public string ObjectType
+        [Category("Element"), Description("Čára")]
+        public string Typ
         {
             get
             {
                 return "Čára";
+            }
+        }
+
+        [Category("Vzhled"), Description("Nastavit barvu Pera")]
+        public override Color Pero_barva
+        {
+            get
+            {
+                return base.Pero_barva;
+            }
+            set
+            {
+                base.Pero_barva = value;
+
+            }
+        }
+
+        [Category("Vzhled"), Description("Nastavit šířku Pera")]
+        public override float Pero_šířka
+        {
+            get
+            {
+                return base.Pero_šířka;
+
+            }
+            set
+            {
+                base.Pero_šířka = value;
+
             }
         }
 
@@ -92,8 +121,8 @@ namespace Zahrada.OdvozeneTridyEle
             Line newE = new Line(X, Y, X1, Y1);
 
             // Zapouzdreno
-            newE.PenColor = PenColor;
-            newE.PenWidth = PenWidth;
+            newE.Pero_barva = Pero_barva;
+            newE.Pero_šířka = Pero_šířka;
             newE.FillColor = FillColor;
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
@@ -153,13 +182,13 @@ namespace Zahrada.OdvozeneTridyEle
         /// </summary>
         public override void Draw(Graphics g, int dx, int dy, float zoom)
         {
-            Pen myPen = new Pen(PenColor, ScaledPenWidth(zoom));
+            Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
             myPen.StartCap = StartCap;
             myPen.EndCap = EndCap;
 
 
-            myPen.Color = Transparency(PenColor, Alpha);
+            myPen.Color = Transparency(Pero_barva, Alpha);
 
             if (selected)
             {
