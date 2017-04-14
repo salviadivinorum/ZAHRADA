@@ -24,9 +24,9 @@ namespace Zahrada
         {
             CopyrightTextBox.Text = "(c) 2017 David Jaroš"
                 + Environment.NewLine +
-                "Freeware pro akademické a nekomerční" 
+                "Freeware pro akademické" 
                 + Environment.NewLine+
-                "použití";
+                "a nekomerční použití";
         }
 
         private void OKbutton_Click(object sender, EventArgs e)

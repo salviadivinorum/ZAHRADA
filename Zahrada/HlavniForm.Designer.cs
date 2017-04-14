@@ -204,7 +204,7 @@
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator13.Size = new System.Drawing.Size(193, 6);
             // 
             // exportToJpgPngToolStripMenuItem
             // 
@@ -218,7 +218,7 @@
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(193, 6);
             // 
             // printToolStripMenuItem
             // 
@@ -241,7 +241,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(193, 6);
             // 
             // exitToolStripMenuItem
             // 
@@ -452,19 +452,20 @@
             // 
             this.nápovedaCelkovatoolStripMenuItem.Image = global::Zahrada.Properties.Resources._1489699641_help;
             this.nápovedaCelkovatoolStripMenuItem.Name = "nápovedaCelkovatoolStripMenuItem";
-            this.nápovedaCelkovatoolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.nápovedaCelkovatoolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.nápovedaCelkovatoolStripMenuItem.Text = "Nápověda";
+            this.nápovedaCelkovatoolStripMenuItem.Click += new System.EventHandler(this.nápovedaCelkovatoolStripMenuItem_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(150, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Image = global::Zahrada.Properties.Resources.jablko;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.aboutToolStripMenuItem.Text = "O aplikaci";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 

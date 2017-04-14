@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace Zahrada
 {
     public partial class HlavniForm : Form
@@ -26,6 +28,12 @@ namespace Zahrada
         private float CustomX { get; set; } // custom sirka planu
         private float CustomY { get; set; }// custom vyska planu
         private bool savedPlanAfteQuerry = false;
+
+
+        // procesy externich programu, ktere si hlidam:
+        // Proces help file:
+       // private Process procesUkazCHMsoubor;
+       // private List<Process> procesy = new List<Process>();
 
         //public event ObjectSelectedEventHandler ObjectSelected;
 
@@ -60,6 +68,7 @@ namespace Zahrada
             vlozenePlatno.NajdiStatusStripVmainForm(); // potrebuju pro text ve statusstripu
             toolStrip1.BackColor = Color.FromArgb(17, Color.CadetBlue);
             statusStrip.BackColor = Color.FromArgb(17, Color.CadetBlue);
+            //vlozenePlatno.Focus();
 
 
             //this.vlozenePlatno.ParentForm = this;
@@ -486,7 +495,20 @@ namespace Zahrada
         // Open tlacitko ...
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
-            UlozitSouborAnoNe();
+            if(vlozenePlatno.shapes.List.Count != 0)
+            {
+                UlozitSouborAnoNe();
+            }
+            else
+            {
+                if(vlozenePlatno.jmenoNoveOtevreneho != "")
+                {
+                    UlozitSouborAnoNe();
+                }
+                else
+                    savedPlanAfteQuerry = true;
+            }
+            
             if (savedPlanAfteQuerry)
             {
                 vlozenePlatno.Loader();
@@ -934,6 +956,7 @@ namespace Zahrada
         // Ukonceni programu - tlacitkem
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             Close();
         }
 
@@ -941,6 +964,7 @@ namespace Zahrada
         // Ukonceni programu tlacitkem ---- a nebo velkym krizkem, vzdy to jde pres tuto udalost
         private void HlavniForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            vlozenePlatno.ZavriOknoNapovedy(); // pripadne otevrenou napoveu zavru - je to externi proces co ukoncuju
             PoseldniDotazAkonec();
 
         }
@@ -971,7 +995,9 @@ namespace Zahrada
         #endregion
 
 
-        // funkcnost tlacitek  v Menu bar:
+        #region Obsluha tlačítek v Menu baru
+
+        // funkcnost mych tlacitek  v Menu bar:
         private void newDocumentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             newToolStripButton_Click(null, null);
@@ -1067,6 +1093,13 @@ namespace Zahrada
             vlozenyToolBox.deleteBtn_Click(null, null);
         }
 
+
+        private void nápovedaCelkovatoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vlozenePlatno.OtevriOknoNapovedy();
+        }
+
+        #endregion
 
     }
 

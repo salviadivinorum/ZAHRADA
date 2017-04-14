@@ -190,7 +190,6 @@
             this.PruvodceListBox = new System.Windows.Forms.ListBox();
             this.PruvodceLabel1 = new System.Windows.Forms.Label();
             this.TabPageStrucneVlastnosti = new System.Windows.Forms.TabPage();
-            this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
             this.TabPageFunkce = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.vytvoritGroupBox = new System.Windows.Forms.GroupBox();
@@ -198,6 +197,7 @@
             this.zmenitGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControlProNastroje = new System.Windows.Forms.TabControl();
+            this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
             this.TabPageSeznamPrani.SuspendLayout();
             this.TableLayoutPanelSeznamPrani.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -310,8 +310,6 @@
             this.PruvodceTextBox.ReadOnly = true;
             this.PruvodceTextBox.Size = new System.Drawing.Size(285, 484);
             this.PruvodceTextBox.TabIndex = 8;
-            this.PruvodceTextBox.Text = "Průvodce návrhem zahrady";
-            this.ToolTipProTalcitka.SetToolTip(this.PruvodceTextBox, "Průvodce návrhem");
             // 
             // btnVybratVse
             // 
@@ -2236,18 +2234,6 @@
             this.TabPageStrucneVlastnosti.ToolTipText = "Zobrazit/změnit základní vlastnosti elementů";
             this.TabPageStrucneVlastnosti.UseVisualStyleBackColor = true;
             // 
-            // mujFilteredPropertyGrid
-            // 
-            this.mujFilteredPropertyGrid.BrowsableProperties = null;
-            this.mujFilteredPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mujFilteredPropertyGrid.HiddenAttributes = null;
-            this.mujFilteredPropertyGrid.HiddenProperties = null;
-            this.mujFilteredPropertyGrid.Location = new System.Drawing.Point(3, 3);
-            this.mujFilteredPropertyGrid.Name = "mujFilteredPropertyGrid";
-            this.mujFilteredPropertyGrid.Size = new System.Drawing.Size(295, 1136);
-            this.mujFilteredPropertyGrid.TabIndex = 0;
-            this.mujFilteredPropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.mujFilteredPropertyGrid_PropertyValueChanged);
-            // 
             // TabPageFunkce
             // 
             this.TabPageFunkce.Controls.Add(this.splitContainer);
@@ -2375,6 +2361,18 @@
             this.tabControlProNastroje.TabIndex = 0;
             this.tabControlProNastroje.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControlProNastroje_KeyDown);
             this.tabControlProNastroje.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControlProNastroje_MouseUp);
+            // 
+            // mujFilteredPropertyGrid
+            // 
+            this.mujFilteredPropertyGrid.BrowsableProperties = null;
+            this.mujFilteredPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mujFilteredPropertyGrid.HiddenAttributes = null;
+            this.mujFilteredPropertyGrid.HiddenProperties = null;
+            this.mujFilteredPropertyGrid.Location = new System.Drawing.Point(3, 3);
+            this.mujFilteredPropertyGrid.Name = "mujFilteredPropertyGrid";
+            this.mujFilteredPropertyGrid.Size = new System.Drawing.Size(295, 1136);
+            this.mujFilteredPropertyGrid.TabIndex = 0;
+            this.mujFilteredPropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.mujFilteredPropertyGrid_PropertyValueChanged);
             // 
             // UserControlNastroje
             // 

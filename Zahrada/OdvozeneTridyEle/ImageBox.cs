@@ -30,7 +30,7 @@ namespace Zahrada.OdvozeneTridyEle
             selected = true;
             EndMoveRedim();
             rot = true;
-            Zobrazit_hranici = false;
+            Ohraničení = false;
         }
 
         #endregion
@@ -100,7 +100,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.iAmAline = iAmAline;
             newE.Alpha = Alpha;
             newE.DashStyleMy = DashStyleMy;
-            newE.Zobrazit_hranici = Zobrazit_hranici;
+            newE.Ohraničení = Ohraničení;
             newE.Průhlednost = Průhlednost;
             newE.Rotace = Rotace;
 
@@ -244,7 +244,7 @@ namespace Zahrada.OdvozeneTridyEle
 
             }
 
-            if (Zobrazit_hranici)
+            if (Ohraničení)
                 g.DrawRectangle(myPen, (this.X + dx) * zoom, (Y + dy) * zoom, (X1 - this.X) * zoom, (Y1 - Y) * zoom);
                 //g.DrawRectangle(myPen, (this.X + dx) * zoom, (Y + dy) * zoom, (X1) * zoom, (Y1) * zoom);
 

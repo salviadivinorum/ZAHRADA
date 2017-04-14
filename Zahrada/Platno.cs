@@ -14,6 +14,8 @@ using System.Windows.Input;
 using Zahrada.OdvozeneTridyEle;
 using Zahrada.PomocneTridy;
 using System.Linq;
+using System.Diagnostics;
+
 
 namespace Zahrada
 {
@@ -140,8 +142,15 @@ namespace Zahrada
 
         // pro Load/save
         public float kolikNasobneZoom = 1;
-        
-        #endregion       
+
+
+        // procesy externich programu, ktere si hlidam:
+        // jedna se hlavne o proces mé vlastní Nápovědy - Proces help file:
+        private Process procesUkazCHMsoubor;
+        private List<Process> procesy = new List<Process>();
+
+
+        #endregion
 
         #region Konstruktor tridy Platno
         public Platno()
@@ -1360,6 +1369,11 @@ namespace Zahrada
                 Redraw(true);
             }
 
+            if(e.KeyCode == Keys.F1)
+            {
+                OtevriOknoNapovedy();
+            }
+
            
         }
 
@@ -2120,7 +2134,7 @@ namespace Zahrada
 
             ForceEsc();
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();           
-            saveFileDialog1.Filter = "Png files (*.png)|*.png|JPG files (*.jpg)|*.jpg|GIF files (*.gif)|*.gif";
+            saveFileDialog1.Filter = "PNG files (*.png)|*.png|JPG files (*.jpg)|*.jpg|GIF files (*.gif)|*.gif";
             //saveFileDialog1.InitialDirectory = Config.Instance().GetSetting("FileDir/Path", Application.StartupPath);
             //string flnm = docManager.fileName;
             string flnm = "Export.png";           
@@ -2189,8 +2203,8 @@ namespace Zahrada
         #endregion
 
 
+        #region Pomocná metoda k nalezení StatusBaru a Info-Labelu v něm
         // pri inicializaci si hledam StatusStrip/InfoStatLabel v MainForm ... volano z MainForm
-
         StatusStrip mujStatusStrip;
         public ToolStripStatusLabel infoStatLabel;
         public void NajdiStatusStripVmainForm()
@@ -2201,13 +2215,86 @@ namespace Zahrada
             var najdiInfoLabelVeStStripu = mujStatusStrip.Items.Find("InfoToolStripStatusLabel", true);
             infoStatLabel = (ToolStripStatusLabel)najdiInfoLabelVeStStripu.First();
 
-            infoStatLabel.Text = "Ahoj";
+            infoStatLabel.Text = "Vítejte v aplikaci Navrhování zahrad. Můžete začít vytvářet nový projekt některou volbou z karty Vytvořit nebo oteřít stávající projekt volbou Soubor-Otevřít ...";
 
+        } 
+        #endregion
+
+
+        #region Obsluha okna Nápovědy
+        // otevreni okna napovedy
+        public void OtevriOknoNapovedy()
+        {
+            if (!File.Exists(Path.Combine(Application.StartupPath, "Zahrada-napoveda.chm")))
+            {
+                infoStatLabel.Text = "Soubor nápovědy nebyl nalezen !";
+                //hlaseniTextBlock.Text = "Soubor nápovědy nebyl nalezen !";
+                return;
+            }
+            else
+            {
+                string cesta;
+                cesta = Path.Combine(Application.StartupPath, "Zahrada-napoveda.chm");
+
+                if (procesy.Count() == 0)
+                {
+                    try
+                    {
+                        ProcessStartInfo p = new ProcessStartInfo();
+                        p.FileName = cesta;
+                        p.WindowStyle = ProcessWindowStyle.Normal;
+                        procesUkazCHMsoubor = Process.Start(p);
+                        procesy.Add(procesUkazCHMsoubor);
+                    }
+                    catch (Exception ex)
+                    {
+                        string zprava = "Nepovedlo se otevřít soubor nápovědy" + Environment.NewLine + "Nastala chyba:"
+                            + Environment.NewLine + ex.Message;
+                        string nadpis = "Chyba při otevírání nápovědy";
+
+                        //MessageBox.Show("Nepovedlo se otevřít soubor nápovědy", "Chyba při otevírání nápovědy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBoxButtons tlacitka = MessageBoxButtons.OK;
+                        MessageBoxIcon ikona = MessageBoxIcon.Information;
+                        MessageBox.Show(zprava, nadpis, tlacitka, ikona);
+                    }
+                }
+                else
+                {
+                    if (procesy.ElementAt(0).HasExited)
+                    {
+                        procesy.ElementAt(0).Start();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
         }
 
 
+        // zaviram napovedu na konci programu:
+        public void ZavriOknoNapovedy()
+        {
+            if (procesy == null)
+                return;
 
+            if (procesy.Count() > 0)
+            {
+                foreach (Process proc in procesy)
+                {
+                    if (!proc.HasExited)
+                    {
+                        proc.CloseMainWindow();
+                        proc.Kill();
+                    }
+                }
+            }
+            else
+                return;
 
+        } 
+        #endregion
 
 
 

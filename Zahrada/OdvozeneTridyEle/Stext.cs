@@ -99,6 +99,22 @@ namespace Zahrada.OdvozeneTridyEle
         }
 
 
+        [Category("Vzhled"), Description("Nastavit barvu Pera")]
+        public override Color Pero_barva
+        {
+            get
+            {
+                return base.Pero_barva;
+            }
+            set
+            {
+                base.Pero_barva = value;
+
+            }
+        }
+        
+
+
         #endregion
 
         #region Prepsane zdedene metody tridy Stext
@@ -131,7 +147,7 @@ namespace Zahrada.OdvozeneTridyEle
 			newE.iAmAline = iAmAline;
 			newE.Alpha = Alpha;
 			newE.DashStyleMy = DashStyleMy;
-			newE.Zobrazit_hranici = Zobrazit_hranici;
+			newE.Ohraničení = Ohraničení;
 
 			newE.OnGrpXRes = OnGrpXRes;
 			newE.OnGrpX1Res = OnGrpX1Res;
@@ -226,7 +242,7 @@ namespace Zahrada.OdvozeneTridyEle
 					g.FillRectangle(myBrush, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
 				//g.FillPath(myBrush, myPath);
 
-				if (Zobrazit_hranici || selected)
+				if (Ohraničení || selected)
 					g.DrawRectangle(myPen, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
 				//g.DrawPath(myPen, myPath);
 			}

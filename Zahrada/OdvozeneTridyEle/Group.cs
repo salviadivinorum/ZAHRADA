@@ -471,19 +471,19 @@ namespace Zahrada.OdvozeneTridyEle
 
 
         //[Category("Vzhled"), Description("Zobrazit hraniční čáru elementu")]
-        public override bool Zobrazit_hranici
+        public override bool Ohraničení
         {
             get
             {
-                return base.Zobrazit_hranici;
+                return base.Ohraničení;
             }
             set
             {
-                base.Zobrazit_hranici = value;
+                base.Ohraničení = value;
                 if (objs != null)
                     foreach (Ele e in objs)
                     {
-                        e.Zobrazit_hranici = value;
+                        e.Ohraničení = value;
                     }
             }
         }
@@ -588,7 +588,7 @@ namespace Zahrada.OdvozeneTridyEle
                 newE.Alpha = Alpha;
                 newE.iAmAline = iAmAline;
                 newE.Rotace = Rotace;
-                newE.Zobrazit_hranici = Zobrazit_hranici;
+                newE.Ohraničení = Ohraničení;
 
                 newE.UseGradientLineColor = UseGradientLineColor;
                 newE.GradientAngle = GradientAngle;

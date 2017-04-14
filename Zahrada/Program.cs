@@ -23,10 +23,10 @@ namespace Zahrada
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HlavniForm());
+            Application.Run(new HlavniForm()); // hlavni spousteci bod aplikace
         }
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")] // proti rozmazani ikon - import knihovny user32.dll abz mohla byt volana funkce SetProcessDPIaware
+        [System.Runtime.InteropServices.DllImport("user32.dll")] // proti rozmazani ikon - import knihovny user32.dll aby mohla byt volana funkce SetProcessDPIaware
         private static extern bool SetProcessDPIAware(); // toto je funkce, ktera nastavi cely proces jako DPI aware (dots per inch]
 
     }

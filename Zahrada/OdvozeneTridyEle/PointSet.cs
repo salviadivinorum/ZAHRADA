@@ -120,15 +120,15 @@ namespace Zahrada.OdvozeneTridyEle
         }
 
         [Category("Vzhled"), Description("Zobrazit hraniční čáru elementu")]
-        public override bool Zobrazit_hranici
+        public override bool Ohraničení
         {
             get
             {
-                return base.Zobrazit_hranici;
+                return base.Ohraničení;
             }
             set
             {
-                base.Zobrazit_hranici = value;
+                base.Ohraničení = value;
             }
         }
 
@@ -427,7 +427,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.Alpha = Alpha;
             newE.iAmAline = iAmAline;
             newE.Rotace = Rotace;
-            newE.Zobrazit_hranici = Zobrazit_hranici;
+            newE.Ohraničení = Ohraničení;
 
             newE.OnGrpXRes = OnGrpXRes;
             newE.OnGrpX1Res = OnGrpX1Res;
@@ -561,7 +561,7 @@ namespace Zahrada.OdvozeneTridyEle
                 else
                     g.FillPath(myBrush, myPath);
 
-                if (Zobrazit_hranici)
+                if (Ohraničení)
                     g.DrawPath(myPen, myPath);
             }
             else

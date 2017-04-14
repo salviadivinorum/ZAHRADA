@@ -137,7 +137,7 @@ namespace Zahrada
 			// ostattni predvyplnene vlastnosti elementu
 			Pero_šířka = 1f;			
 			ColorFilled = false;
-			Zobrazit_hranici = true;
+			Ohraničení = true;
 			DashStyleMy = DashStyle.Solid;
 			Alpha = 255;    
 		}
@@ -407,7 +407,7 @@ namespace Zahrada
 		}
 
 		//[Category("Vzhled"), Description("zobrazit hraniční čáru")]
-		public virtual bool Zobrazit_hranici
+		public virtual bool Ohraničení
 		{
 			get
 			{
@@ -1105,7 +1105,7 @@ namespace Zahrada
 			to.ColorFilled = from.ColorFilled;
 			to.Pero_barva = from.Pero_barva;
 			to.Pero_šířka = from.Pero_šířka;
-			to.Zobrazit_hranici = from.Zobrazit_hranici;	
+			to.Ohraničení = from.Ohraničení;	
 			
 		}
 
