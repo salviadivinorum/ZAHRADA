@@ -311,7 +311,7 @@ namespace Zahrada.OdvozeneTridyEle
         }
 
 
-        [Category("Vzhled"), Description("Vybrat cestu k nové Textuře")]
+        //[Category("Vzhled"), Description("Vybrat cestu k nové Textuře")]
         public override string Nová_Textura
         {
             get
@@ -324,7 +324,7 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        [Category("Vzhled"), Description("Nastavit barvu Pera")]
+        // [Category("Vzhled"), Description("Nastavit barvu Pera")]
         public override Color Pero_barva
         {
             get
@@ -338,7 +338,7 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        [Category("Vzhled"), Description("Nastavit šířku Pera")]
+       // [Category("Vzhled"), Description("Nastavit šířku Pera")]
         public override float Pero_šířka
         {
             get
@@ -426,6 +426,7 @@ namespace Zahrada.OdvozeneTridyEle
                     foreach (Ele e in this.objs)
                     {
                         e.Alpha = value;
+                        e.Průhlednost = Průhlednost;
                     }
             }
         }
@@ -574,6 +575,9 @@ namespace Zahrada.OdvozeneTridyEle
 
             newE.DisplayOfGroup = DisplayOfGroup;
 
+           // newE.Alpha = Alpha;
+           // newE.Průhlednost = Průhlednost;
+
             if (newE._grapPath)
             {
                 newE.Pero_barva = Pero_barva;
@@ -597,6 +601,8 @@ namespace Zahrada.OdvozeneTridyEle
                 newE.EndAlpha = EndAlpha;
                 newE.EndColor = EndColor;
                 newE.EndColorPosition = EndColorPosition;
+
+                
 
             }
 

@@ -83,6 +83,8 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
+      
+
         [Category("Vzhled"), Description("Nastavit šířku Pera")]
         public override float Pero_šířka
         {

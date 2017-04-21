@@ -198,12 +198,14 @@ namespace Zahrada.OdvozeneTridyEle
 			if (texture == null)
 			{
 				ObrBitmap = ImageOfTexture;
-				texture2 = new TextureBrush(ObrBitmap);
+                ObrBitmap = ChangeOpacity(ObrBitmap, (Průhlednost / 100));
+                texture2 = new TextureBrush(ObrBitmap);
 			}
 			else
 			{
 				ObrImage = texture.Image;
-				texture2 = new TextureBrush(ObrImage);
+                ObrImage = ChangeOpacity(ObrImage, (Průhlednost / 100));
+                texture2 = new TextureBrush(ObrImage);
 				PrevodImageNaBitmap = new Bitmap(ObrImage);
 				ImageOfTexture = PrevodImageNaBitmap;
 
