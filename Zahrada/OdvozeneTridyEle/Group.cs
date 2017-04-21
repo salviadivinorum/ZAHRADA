@@ -15,6 +15,7 @@ namespace Zahrada.OdvozeneTridyEle
     [Serializable]
     public class Group : Ele
     {
+
         #region Clenske promenne tridy Group
 
         // podobjekty obsazene ve skupine Group
