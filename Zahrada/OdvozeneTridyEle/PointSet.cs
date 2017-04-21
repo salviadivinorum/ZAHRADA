@@ -500,6 +500,7 @@ namespace Zahrada.OdvozeneTridyEle
                 PrevodImageNaBitmap = new Bitmap(ObrImage);
                 ImageOfTexture = PrevodImageNaBitmap;
 
+
             }
 
             float scalX = zoom;
