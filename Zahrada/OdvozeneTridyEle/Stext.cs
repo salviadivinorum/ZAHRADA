@@ -223,7 +223,9 @@ namespace Zahrada.OdvozeneTridyEle
 
 			Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
 			myPen.DashStyle = DashStyleMy;
-			if (selected)
+            myPen.Color = Transparency(Pero_barva, Alpha);
+
+            if (selected)
 			{
 				myPen.Color = Color.Red;
 				myPen.Color = this.Transparency(myPen.Color, 120);

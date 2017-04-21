@@ -489,11 +489,13 @@ namespace Zahrada.OdvozeneTridyEle
             if (texture == null)
             {
                 ObrBitmap = ImageOfTexture;
+                ObrBitmap = ChangeOpacity(ObrBitmap, (Průhlednost / 100));
                 texture2 = new TextureBrush(ObrBitmap);
             }
             else
             {
                 ObrImage = texture.Image;
+                ObrImage = ChangeOpacity(ObrImage, (Průhlednost / 100));
                 texture2 = new TextureBrush(ObrImage);
                 PrevodImageNaBitmap = new Bitmap(ObrImage);
                 ImageOfTexture = PrevodImageNaBitmap;
@@ -512,6 +514,7 @@ namespace Zahrada.OdvozeneTridyEle
 
             Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
+            myPen.Color = Transparency(Pero_barva, Alpha);
 
             if (selected)
             {

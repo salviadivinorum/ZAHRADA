@@ -741,52 +741,7 @@ namespace Zahrada.OdvozeneTridyEle
                     e.AddGraphPath(gp, dx, dy, zoom);
                    
                 }
-
-
-
-                /*
-
-                if (TextureFilled || ColorFilled)
-                {
-                    if (TextureFilled)
-                        g.FillPath(texture2, gp);
-                    else
-                        g.FillPath(myBrush, gp);
-
-                    if (ShowBorder)
-                        g.DrawPath(myPen, gp);
-                }
-                else
-                    g.DrawPath(myPen, gp);
-
-
-                */
-
                 
-
-
-
-                /*
-
-                if (ColorFilled)
-                {
-
-                    g.FillPath(myBrush, gp);
-                    if (ShowBorder)
-                        g.DrawPath(myPen, gp);
-                }
-                else
-                {
-                    g.DrawPath(myPen, gp);
-                }   
-                */
-
-
-
-
-
-
-
 
                
                 if (myBrush != null)
@@ -870,25 +825,7 @@ namespace Zahrada.OdvozeneTridyEle
 
         }
 
-
-
-
-
-
-        // Zde musim implementovat vlastni RTF editor - konkretne pro element Group
-        /*
-        public override void ShowEditor(richForm f) // Zde musim doplnit muj vlastni RTF editor
-        {
-            foreach (Ele e in objs)
-            {
-                if (e.OnGrpDClick)
-                {
-                    e.ShowEditor(f);
-                }
-            }
-        }
-
-        */
+        
         #endregion
 
         #region Verejne metody pro tridu Group

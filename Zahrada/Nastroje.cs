@@ -99,6 +99,7 @@ namespace Zahrada
         private void OnObjectSelected(object sender, PropertyEventArgs e)
         {
 
+            //mujFilteredPropertyGrid.PropertySort = PropertySort.Categorized;
             if (e.ele.Length == 0)
             {                     
                 mujFilteredPropertyGrid.SelectedObject = sender;
@@ -673,7 +674,6 @@ namespace Zahrada
         */
 
 
-
        
         // Musim aktualizovat muj PropertyGrid po stisku na Tab Vlastnosti
         private void tabControlProNastroje_MouseUp(object sender, MouseEventArgs e)
@@ -683,39 +683,7 @@ namespace Zahrada
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+     
 
         // pri inicializaci si hledam 2 tlacitka v MainForm ... volano z MainForm
         public void NajdiUndoReodBtnsVmainForm()

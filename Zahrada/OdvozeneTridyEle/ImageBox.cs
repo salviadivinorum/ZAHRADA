@@ -4,6 +4,7 @@ using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+
 using System.ComponentModel;
 using Zahrada.PomocneTridy;
 
@@ -16,6 +17,7 @@ namespace Zahrada.OdvozeneTridyEle
 
         private Bitmap _img;
         private bool _transparent = false;
+        //private float _pruhlednost = 100f;
 
         #endregion
 
@@ -55,8 +57,8 @@ namespace Zahrada.OdvozeneTridyEle
                          
         }
         // průhlednost - vůbec nepožívat - nikde není potřeba a nemám metody navíc
-
-        //[Category("Vzhled"), Description("Průhlednost zadaného prvku")]
+        /*
+       [Category("Vzhled"), Description("Průhlednost zadaného prvku")]
         public bool Průhlednost
         {
             get
@@ -68,6 +70,26 @@ namespace Zahrada.OdvozeneTridyEle
                 _transparent = value;
             }
         }
+
+        */
+        
+        /*
+        [Category("Vzhled"), Description("Průhlednost zadaného prvku")]
+        public float Průhlednost
+        {
+            get
+            {
+                return _pruhlednost;
+            }
+            set
+            {
+                _pruhlednost = value;
+                Alpha = (int)(_pruhlednost * 2.55);
+                
+            }
+        }
+        */
+        
 
         [Category("Vzhled"), Description("Rotace pod úhlem")]
         public int Rotace
@@ -183,7 +205,7 @@ namespace Zahrada.OdvozeneTridyEle
             {
                 Color backColor = Prvek.GetPixel(0, 0); //Vezme barvu pozadi z prvniho pixelu obrazku (horni-levy roh)  
                 //Vytvori tmp Bitmapu a tim i Graphics object
-                //Rozmer tmp Bitmapy musi dovoli rotaci obrazku
+                //Rozmer tmp Bitmapy musi dovolit rotaci obrazku
                 int dim = (int)Math.Sqrt(Prvek.Width * Prvek.Width + Prvek.Height * Prvek.Height);
 
                 Bitmap curBitmap = new Bitmap(dim, dim);
@@ -222,17 +244,24 @@ namespace Zahrada.OdvozeneTridyEle
                     */
 
                 }
-                
-                
-                    // Kreslim img pres tmp Bitmapu 
+
+
+                // Kreslim img pres tmp Bitmapu 
+                //Prvek = ChangeOpacity((Image)(Prvek), Alpha);
 
                     curG.DrawImage(Prvek, (dim - Prvek.Width) / 2, (dim - Prvek.Height) / 2, Prvek.Width, Prvek.Height);
-                    //curG.DrawImage(Img, 0, 0, Img.Width, Img.Height);
+                //curG.DrawImage(Img, 0, 0, Img.Width, Img.Height);
 
+                /*
                     if (Průhlednost)
                         curBitmap.MakeTransparent(backColor); // zde provadim pruhlednost
+                    */
+                //float p = Alpha / 100;
+                curBitmap = ChangeOpacity(curBitmap, (Průhlednost/100));
+                //curBitmap = SetImageOpacity((Image)(curBitmap), 0.1f);
+                //Prvek = SetImageOpacity((Image)(curBitmap), 5f);
 
-                    curG.Save();
+                curG.Save();
                     // zde kreslim tmp Bitmapu na platno - to je to this
                     g.DrawImage(curBitmap, (this.X + dx) * zoom, (Y + dy) * zoom, (X1 - this.X) * zoom, (Y1 - Y) * zoom);
                     //g.DrawImage(curBitmap, (this.X+dx) * zoom, (this.Y+dy ) * zoom, (this.X1) * zoom, (this.Y1) * zoom);
@@ -254,7 +283,46 @@ namespace Zahrada.OdvozeneTridyEle
 
 
         #endregion
+        
 
+
+        /*
+        public Bitmap SetImageOpacity(Image image, float opacity)
+        {
+            try
+            {
+                //create a Bitmap the size of the image provided  
+                Bitmap bmp = new Bitmap(image.Width, image.Height);
+
+                //create a graphics object from the image  
+                using (Graphics gfx = Graphics.FromImage(bmp))
+                {
+
+                    //create a color matrix object  
+                    ColorMatrix matrix = new ColorMatrix();
+
+                    //set the opacity  
+                    matrix.Matrix33 = opacity;
+
+                    //create image attributes  
+                    ImageAttributes attributes = new ImageAttributes();
+
+                    //set the color(opacity) of the image  
+                    attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                    //now draw the image  
+                    gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
+                }
+                return bmp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            
+        }
+        */
 
     }
 }

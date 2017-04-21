@@ -9,6 +9,7 @@ using System.Drawing.Design;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using System.Drawing.Imaging;
 
 using Zahrada.PomocneTridy;
 
@@ -83,14 +84,16 @@ namespace Zahrada
 		private bool _colorFilled;
 		private bool _textureFilled;
 		private bool _showBorder;
-		private DashStyle _dashStyle; // proc je to uvedeno podruhe ?
-		private int _aplha;
+		private DashStyle _dashStyle; // proc je to uvedeno podruhe ?		
 		private bool _closed;
 
-		
+        // nasatveni pruhlednosti prvkum
+        private int _aplha;
+        private float _pruhlednost = 100f;
 
-		// Linear Gradient:
-		private bool _useGradientLine = false;
+
+        // Linear Gradient:
+        private bool _useGradientLine = false;
 		private Color _endColor = Color.White;
 		private int _endalpha = 255;
 		private int _gradientAngle = 0;
@@ -559,8 +562,34 @@ namespace Zahrada
 			}
 		}
 
-		//[Category("GradientBrush"), Description("True: Use gradient fill color")]
-		public virtual bool UseGradientLineColor
+        [Category("Vzhled"), Description("Průhlednost prvku v procentech. 100 procent znamená neprůhledný." )]
+        public float Průhlednost
+        {
+            get
+            {
+                return _pruhlednost;
+            }
+            set
+            {
+                if (value <= 1)
+                {
+                    _pruhlednost = 1;
+                }
+                else if (value >100)
+                {
+                    _pruhlednost = 100;
+                }
+                else
+                {
+                    _pruhlednost = value;
+                }                    
+                Alpha = (int)(_pruhlednost * 2.55);
+
+            }
+        }
+
+        //[Category("GradientBrush"), Description("True: Use gradient fill color")]
+        public virtual bool UseGradientLineColor
 		{
 			get
 			{
@@ -668,19 +697,31 @@ namespace Zahrada
 		{
 			return (Image)(new Bitmap(imgToResize, size));
 		}
-		// jakou TEXTUROU vyplnen
+        // jakou TEXTUROU vyplnen
 
-		
+        public Bitmap ChangeOpacity(Image img, float opacityvalue)
+        {
+            Bitmap bmp = new Bitmap(img.Width, img.Height); // Determining Width and Height of Source Image
+            Graphics graphics = Graphics.FromImage(bmp);
+            ColorMatrix colormatrix = new ColorMatrix();
+            colormatrix.Matrix33 = opacityvalue;
+            ImageAttributes imgAttribute = new ImageAttributes();
+            imgAttribute.SetColorMatrix(colormatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+            graphics.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, imgAttribute);
+            graphics.Dispose();   // Releasing all resource used by graphics 
+            return bmp;
+        }
 
 
-		#endregion
 
-		#region Virtualni + verejne pristupne metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
+        #endregion
 
-		/// <summary>
-		/// Nakresli tento Element do objektu Graphics
-		/// </summary>        
-		public virtual void Draw(Graphics g, int dx, int dy, float zoom)
+        #region Virtualni + verejne pristupne metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
+
+        /// <summary>
+        /// Nakresli tento Element do objektu Graphics
+        /// </summary>        
+        public virtual void Draw(Graphics g, int dx, int dy, float zoom)
 		{ }
 
 

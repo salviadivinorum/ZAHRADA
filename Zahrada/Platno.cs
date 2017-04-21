@@ -457,9 +457,7 @@ namespace Zahrada
 
         public void ChangeStatus(string s)
         {
-            status = s;
-
-           
+            status = s;           
         }
 
         public void ChangeOption(string s)
@@ -2293,10 +2291,14 @@ namespace Zahrada
             else
                 return;
 
-        } 
+        }
+
+
         #endregion
 
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

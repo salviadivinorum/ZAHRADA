@@ -61,13 +61,13 @@ namespace Zahrada
 		[NonSerialized]
 		private UndoBuffer undoB;
 
-        public int dxSave;
-        public int dySave;
-        public int AxSave;
-        public int AySave;
-        public int indeOfSavedPlan;
-        public float ZoomSave;
-        public List<string> listradiobuttonu; 
+		public int dxSave;
+		public int dySave;
+		public int AxSave;
+		public int AySave;
+		public int indeOfSavedPlan;
+		public float ZoomSave;
+		public List<string> listradiobuttonu; 
 
 		#endregion
 
@@ -78,7 +78,7 @@ namespace Zahrada
 			InitUndoBuff();
 			Ele.dpix = dpix; // staticky clen tridy Ele
 			Ele.dpiy = dpiy; // staticky clen tridy Ele
-            listradiobuttonu = new List<string>();
+			listradiobuttonu = new List<string>();
 		}
 
 		#endregion		
@@ -736,8 +736,8 @@ namespace Zahrada
 			selEle.Select();
 		}
 
-        // Arc uz neni
-        /*
+		// Arc uz neni
+		/*
 		/// <summary>
 		/// Do Listu prida Oblouk
 		/// </summary>
@@ -764,7 +764,7 @@ namespace Zahrada
 			selEle = r;
 			selEle.Select();
 		}
-        */
+		*/
 			
 		/// <summary>
 		/// Do Listu prida Caru

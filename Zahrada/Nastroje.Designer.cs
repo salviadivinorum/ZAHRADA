@@ -34,7 +34,6 @@
             this.imageListProVytvoritZmenit = new System.Windows.Forms.ImageList(this.components);
             this.imageListProTabControl = new System.Windows.Forms.ImageList(this.components);
             this.ToolTipProTalcitka = new System.Windows.Forms.ToolTip(this.components);
-            this.PruvodceTextBox = new System.Windows.Forms.TextBox();
             this.btnVybratVse = new System.Windows.Forms.Button();
             this.btnEscape = new System.Windows.Forms.Button();
             this.copyBtn = new System.Windows.Forms.Button();
@@ -50,6 +49,7 @@
             this.rectBtn = new System.Windows.Forms.Button();
             this.freeHandBtn = new System.Windows.Forms.Button();
             this.lineBtn = new System.Windows.Forms.Button();
+            this.PruvodceTextBox = new System.Windows.Forms.TextBox();
             this.TabPageSeznamPrani = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelSeznamPrani = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -190,6 +190,7 @@
             this.PruvodceListBox = new System.Windows.Forms.ListBox();
             this.PruvodceLabel1 = new System.Windows.Forms.Label();
             this.TabPageStrucneVlastnosti = new System.Windows.Forms.TabPage();
+            this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
             this.TabPageFunkce = new System.Windows.Forms.TabPage();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.vytvoritGroupBox = new System.Windows.Forms.GroupBox();
@@ -197,7 +198,6 @@
             this.zmenitGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControlProNastroje = new System.Windows.Forms.TabControl();
-            this.mujFilteredPropertyGrid = new Zahrada.OdvozenyPropertyGrid.FilteredPropertyGrid();
             this.TabPageSeznamPrani.SuspendLayout();
             this.TableLayoutPanelSeznamPrani.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -294,22 +294,6 @@
             this.imageListProTabControl.Images.SetKeyName(5, "prani2.ico");
             this.imageListProTabControl.Images.SetKeyName(6, "prani3.ico");
             this.imageListProTabControl.Images.SetKeyName(7, "prani4.ico");
-            // 
-            // PruvodceTextBox
-            // 
-            this.PruvodceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PruvodceTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.PruvodceTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PruvodceTextBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PruvodceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PruvodceTextBox.Location = new System.Drawing.Point(6, 203);
-            this.PruvodceTextBox.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
-            this.PruvodceTextBox.Multiline = true;
-            this.PruvodceTextBox.Name = "PruvodceTextBox";
-            this.PruvodceTextBox.ReadOnly = true;
-            this.PruvodceTextBox.Size = new System.Drawing.Size(285, 484);
-            this.PruvodceTextBox.TabIndex = 8;
             // 
             // btnVybratVse
             // 
@@ -555,6 +539,22 @@
             this.ToolTipProTalcitka.SetToolTip(this.lineBtn, "Čára");
             this.lineBtn.UseVisualStyleBackColor = false;
             this.lineBtn.Click += new System.EventHandler(this.lineBtn_Click);
+            // 
+            // PruvodceTextBox
+            // 
+            this.PruvodceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PruvodceTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PruvodceTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PruvodceTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PruvodceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PruvodceTextBox.Location = new System.Drawing.Point(6, 203);
+            this.PruvodceTextBox.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
+            this.PruvodceTextBox.Multiline = true;
+            this.PruvodceTextBox.Name = "PruvodceTextBox";
+            this.PruvodceTextBox.ReadOnly = true;
+            this.PruvodceTextBox.Size = new System.Drawing.Size(285, 484);
+            this.PruvodceTextBox.TabIndex = 8;
             // 
             // TabPageSeznamPrani
             // 
@@ -2234,6 +2234,19 @@
             this.TabPageStrucneVlastnosti.ToolTipText = "Zobrazit/změnit základní vlastnosti elementů";
             this.TabPageStrucneVlastnosti.UseVisualStyleBackColor = true;
             // 
+            // mujFilteredPropertyGrid
+            // 
+            this.mujFilteredPropertyGrid.BrowsableProperties = null;
+            this.mujFilteredPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mujFilteredPropertyGrid.HiddenAttributes = null;
+            this.mujFilteredPropertyGrid.HiddenProperties = null;
+            this.mujFilteredPropertyGrid.Location = new System.Drawing.Point(3, 3);
+            this.mujFilteredPropertyGrid.Name = "mujFilteredPropertyGrid";
+            this.mujFilteredPropertyGrid.Size = new System.Drawing.Size(295, 1136);
+            this.mujFilteredPropertyGrid.TabIndex = 0;
+            this.mujFilteredPropertyGrid.ToolbarVisible = false;
+            this.mujFilteredPropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.mujFilteredPropertyGrid_PropertyValueChanged);
+            // 
             // TabPageFunkce
             // 
             this.TabPageFunkce.Controls.Add(this.splitContainer);
@@ -2361,18 +2374,6 @@
             this.tabControlProNastroje.TabIndex = 0;
             this.tabControlProNastroje.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControlProNastroje_KeyDown);
             this.tabControlProNastroje.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControlProNastroje_MouseUp);
-            // 
-            // mujFilteredPropertyGrid
-            // 
-            this.mujFilteredPropertyGrid.BrowsableProperties = null;
-            this.mujFilteredPropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mujFilteredPropertyGrid.HiddenAttributes = null;
-            this.mujFilteredPropertyGrid.HiddenProperties = null;
-            this.mujFilteredPropertyGrid.Location = new System.Drawing.Point(3, 3);
-            this.mujFilteredPropertyGrid.Name = "mujFilteredPropertyGrid";
-            this.mujFilteredPropertyGrid.Size = new System.Drawing.Size(295, 1136);
-            this.mujFilteredPropertyGrid.TabIndex = 0;
-            this.mujFilteredPropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.mujFilteredPropertyGrid_PropertyValueChanged);
             // 
             // UserControlNastroje
             // 

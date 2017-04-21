@@ -69,7 +69,7 @@
             this.InfoTextBox.Size = new System.Drawing.Size(222, 44);
             this.InfoTextBox.TabIndex = 2;
             this.InfoTextBox.TabStop = false;
-            this.InfoTextBox.Text = "Aplikace umožňující navrhování vzhledu zahrady";
+            this.InfoTextBox.Text = "Aplikace umožňuje navržení vzhledu zahrady";
             this.InfoTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CopyrightTextBox
