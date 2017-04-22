@@ -87,18 +87,13 @@ namespace Zahrada
 		private DashStyle _dashStyle; // proc je to uvedeno podruhe ?		
 		private bool _closed;
 
-		// nasatveni pruhlednosti prvkum
-		[NonSerialized]
-		private int _aplha;
-
-		[NonSerialized]
-		private float _pruhlednost = 100f;
-
-		private float _savedPruhlednost =100f;
+        // nasatveni pruhlednosti prvkum
+        private int _aplha;
+        private float _pruhlednost = 100f;
 
 
-		// Linear Gradient:
-		private bool _useGradientLine = false;
+        // Linear Gradient:
+        private bool _useGradientLine = false;
 		private Color _endColor = Color.White;
 		private int _endalpha = 255;
 		private int _gradientAngle = 0;
@@ -461,19 +456,19 @@ namespace Zahrada
 			}
 			set
 			{
-				try
-				{
-					filePath = value;
-					Bitmap bitm = new Bitmap(filePath);
-					TextureBrush tBrush = new TextureBrush(bitm);
-					tBrush.WrapMode = WrapMode.Tile;
-					FillTexture = tBrush;
-				}
-				catch
-				{
-					MessageBox.Show("Textura nebyla načtena !", "Otevření selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					filePath = "";
-				}
+                try
+                {
+                    filePath = value;
+                    Bitmap bitm = new Bitmap(filePath);
+                    TextureBrush tBrush = new TextureBrush(bitm);
+                    tBrush.WrapMode = WrapMode.Tile;
+                    FillTexture = tBrush;
+                }
+                catch
+                {
+                    MessageBox.Show("Textura nebyla načtena !", "Otevření selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    filePath = "";
+                }
 				
 			}
 		}
@@ -524,21 +519,21 @@ namespace Zahrada
 			}
 		}
 
-		//[Category("Vzhled"), Description("Nastavit barvu Pera")]
-		public virtual Color Pero_barva
-		{
-			get
-			{
-				return _penColor;
-			}
-			set
-			{
-				_penColor = value;
-			}
-		}
+        //[Category("Vzhled"), Description("Nastavit barvu Pera")]
+        public virtual Color Pero_barva
+        {
+            get
+            {
+                return _penColor;
+            }
+            set
+            {
+                _penColor = value;
+            }
+        }
 
-		//[Category("Vzhled"), Description("Nastavit šířku Pera")]
-		public virtual float Pero_šířka
+        //[Category("Vzhled"), Description("Nastavit šířku Pera")]
+        public virtual float Pero_šířka
 		{
 			get
 			{
@@ -571,48 +566,34 @@ namespace Zahrada
 			}
 		}
 
-		[Category("Vzhled"), Description("Průhlednost prvku v procentech. 100 procent znamená neprůhledný." )]
-		public float Průhlednost
-		{
-			get
-			{
-				return _pruhlednost;
-			}
-			set
-			{
-				if (value <= 1)
-				{
-					_pruhlednost = 1;
-				}
-				else if (value >100)
-				{
-					_pruhlednost = 100;
-				}
-				else
-				{
-					_pruhlednost = value;
-				}                    
-				Alpha = (int)(_pruhlednost * 2.55);
-				_savedPruhlednost = _pruhlednost;
+        [Category("Vzhled"), Description("Průhlednost prvku v procentech. 100 procent znamená neprůhledný." )]
+        public float Průhlednost
+        {
+            get
+            {
+                return _pruhlednost;
+            }
+            set
+            {
+                if (value <= 1)
+                {
+                    _pruhlednost = 1;
+                }
+                else if (value >100)
+                {
+                    _pruhlednost = 100;
+                }
+                else
+                {
+                    _pruhlednost = value;
+                }                    
+                Alpha = (int)(_pruhlednost * 2.55);
 
-			}
-		}
+            }
+        }
 
-		public float SavedPruhlednost
-		{
-			get
-			{
-				return _savedPruhlednost;
-			}
-
-			set
-			{
-				_pruhlednost = _savedPruhlednost;
-			}
-		}
-
-		//[Category("GradientBrush"), Description("True: Use gradient fill color")]
-		public virtual bool UseGradientLineColor
+        //[Category("GradientBrush"), Description("True: Use gradient fill color")]
+        public virtual bool UseGradientLineColor
 		{
 			get
 			{
@@ -722,31 +703,29 @@ namespace Zahrada
 		}
         // jakou TEXTUROU vyplnen
 
-
-        // Dulezite - na pruhlednost - kazdemu prvku 
         public Bitmap ChangeOpacity(Image img, float opacityvalue)
-		{
-			Bitmap bmp = new Bitmap(img.Width, img.Height); // Determining Width and Height of Source Image
-			Graphics graphics = Graphics.FromImage(bmp);
-			ColorMatrix colormatrix = new ColorMatrix();
-			colormatrix.Matrix33 = opacityvalue;
-			ImageAttributes imgAttribute = new ImageAttributes();
-			imgAttribute.SetColorMatrix(colormatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
-			graphics.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, imgAttribute);
-			graphics.Dispose();   // Releasing all resource used by graphics 
-			return bmp;
-		}
+        {
+            Bitmap bmp = new Bitmap(img.Width, img.Height); // Determining Width and Height of Source Image
+            Graphics graphics = Graphics.FromImage(bmp);
+            ColorMatrix colormatrix = new ColorMatrix();
+            colormatrix.Matrix33 = opacityvalue;
+            ImageAttributes imgAttribute = new ImageAttributes();
+            imgAttribute.SetColorMatrix(colormatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+            graphics.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, imgAttribute);
+            graphics.Dispose();   // Releasing all resource used by graphics 
+            return bmp;
+        }
 
 
 
-		#endregion
+        #endregion
 
-		#region Virtualni + verejne pristupne metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
+        #region Virtualni + verejne pristupne metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
 
-		/// <summary>
-		/// Nakresli tento Element do objektu Graphics
-		/// </summary>        
-		public virtual void Draw(Graphics g, int dx, int dy, float zoom)
+        /// <summary>
+        /// Nakresli tento Element do objektu Graphics
+        /// </summary>        
+        public virtual void Draw(Graphics g, int dx, int dy, float zoom)
 		{ }
 
 
@@ -1089,18 +1068,10 @@ namespace Zahrada
 		}
 
 		// doplneno at mi Ele vrati texture Brush !!
-		public TextureBrush GetTextureBrush()
+		protected TextureBrush GetTextureBrush()
 		{
 			return FillTexture;
 		}
-
-        /*
-        // pro nastavovani pruhlednosti
-        public TextureBrush GetTB()
-        {
-            return FillTexture;
-        }
-        */
 
 		/// <summary>
 		/// Vybere stetec Brush z vlastnosti Elementu (pokud je Element vyplnen Filled)

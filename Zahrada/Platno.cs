@@ -275,7 +275,7 @@ namespace Zahrada
             set { showDebug = value; }
         }
 
-        //[Category("Plán - popis"), Description("Interp.Mode")]
+        [Category("Graphics"), Description("Interp.Mode")]
         public InterpolationMode InterpolationMode
         {
             get
@@ -289,7 +289,7 @@ namespace Zahrada
         }
 
 
-        //[Category("Plán - popis"), Description("Smooth.Mode")]
+        [Category("Graphics"), Description("Smooth.Mode")]
         public SmoothingMode SmoothingMode
         {
             get
@@ -302,7 +302,7 @@ namespace Zahrada
             }
         }
 
-        //[Category("Plán - popis"), Description("Txt.Rend.Hint")]
+        [Category("Graphics"), Description("Txt.Rend.Hint")]
         public TextRenderingHint TextRenderingHint
         {
             get
@@ -404,7 +404,6 @@ namespace Zahrada
         public string Zvětšení
         {
             get { return ((_zoom * 4*100).ToString()+" %"); }
-           // get { return _zoom.ToString(); }
             //set { }
         }
         
@@ -755,9 +754,6 @@ namespace Zahrada
             offScreenDC = Graphics.FromImage(offScreenBmp);
             offScreenDC.TextRenderingHint = TextRenderingHint.AntiAlias;
             offScreenDC.SmoothingMode = SmoothingMode.AntiAlias;
-            //offScreenDC.TextRenderingHint = TextRenderingHint;
-            //offScreenDC.SmoothingMode = SmoothingMode;
-
             offScreenDC.Clear(BackColor);
 
 
@@ -1708,10 +1704,8 @@ namespace Zahrada
         public void ZoomIn()
         {
             if (Zoom <= 15f)
-            {
-                // toto bylo puvodne
-                Zoom = (float)(Zoom * 2);
-                
+            { 
+                Zoom = (float)(Zoom * 2);                
                 kolikNasobneZoom = Zoom;                
                 PushPlease();
             }
@@ -1723,9 +1717,7 @@ namespace Zahrada
         {
             if (Zoom > 0.01f && Zoom <= 21f)
             {
-                //toto bzlo puvodne
-                Zoom = (float)(Zoom / 2);
-               
+                Zoom = (float)(Zoom / 2);                
                 kolikNasobneZoom = Zoom;                
                 PushPlease();
             }
@@ -1765,9 +1757,9 @@ namespace Zahrada
             {
                 if (Fit2grid & Mřížka > 0)
                 {
-                    // toto bylo puvodne
+                    //int gr = gridSize;
                     dx = (int)(dx + (e.X / (Zoom)));
-                    dy = (int)(dy + (e.Y / (Zoom)));                   
+                    dy = (int)(dy + (e.Y / (Zoom)));
 
                     dx = Mřížka * ((dx) / Mřížka);
                     dy = Mřížka * ((dy) / Mřížka);
@@ -1777,10 +1769,8 @@ namespace Zahrada
                 }
                 else
                 {
-                    // toto bylo puvodne
                     dx = (int)(dx + (e.X / (Zoom)));
                     dy = (int)(dy + (e.Y / (Zoom)));
-                    
                     ZoomOut();
                 }
 
@@ -1792,9 +1782,9 @@ namespace Zahrada
             {
                 if (Fit2grid & Mřížka > 0)
                 {
-                    // toto bylo puvodne
+                    //int grid = gridSize;
                     dx = (int)(dx - (e.X / (Zoom * 2)));
-                    dy = (int)(dy - (e.Y / (Zoom * 2)));                    
+                    dy = (int)(dy - (e.Y / (Zoom * 2)));
 
                     dx = Mřížka * ((dx) / Mřížka);
                     dy = Mřížka * ((dy) / Mřížka);
@@ -1804,10 +1794,8 @@ namespace Zahrada
                 }
                 else
                 {
-                    // toto bylo puvodne
                     dx = (int)(dx - (e.X / (Zoom * 2)));
                     dy = (int)(dy - (e.Y / (Zoom * 2)));
-                    
                     ZoomIn();
                 }
             }
@@ -2011,8 +1999,6 @@ namespace Zahrada
             return false;
         }
 
-
-
         // dve pomocne metody pred ulozenim / po nahrani
         private void BeforeSave()
         {
@@ -2023,43 +2009,10 @@ namespace Zahrada
             shapes.AySave = Výška;
             shapes.ZoomSave = Zoom;
 
-            // dulezita funkce pro nastaveni pruhlednosti texturam na 100%. Pokud to neudelam, obrazky textur budou pri ulozeni v 
-            // jine pruhlednosti a uz nepujdou vratit zpet do sve 100% pruhl.
-            // Musim to udelat pred ulozenim. Po otevreni se totiz Pruhednost elementum nasatvuje podle promenne _savedPruhlednost.
 
-            try
-            {
-                foreach (Ele el in shapes.List)
-                {
-                    if(el.TextureFilled)
-                    {
-                        TextureBrush texture = el.GetTextureBrush();
-                        if (texture == null)
-                        {
-                            el.ObrBitmap = el.ImageOfTexture;
-                            el.ObrBitmap = el.ChangeOpacity(el.ObrBitmap, (1f));
-                        }
-                        else
-                        {
-                            Bitmap novy;
-                            el.ObrImage = texture.Image;
-                            el.ObrImage = el.ChangeOpacity(el.ObrImage, (1f));                         
-                            novy = new Bitmap(el.ObrImage);
-                            el.PrevodImageNaBitmap = novy;
-                            el.ImageOfTexture = el.PrevodImageNaBitmap; 
-                        }
-                    }
-                }  
-            }
-
-            catch (Exception e)
-            {
-                MessageBox.Show("Projekt nebyl uložen !", "Uložení selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // MessageBox.Show("Výjimka:" + e.ToString(), "Save error:");
-                SaveSuccess = false;
-            }
-
-            shapes.AfterLoad();           
+            // maze undo Buffer !!!
+            shapes.AfterLoad();
+            
 
         }
 
