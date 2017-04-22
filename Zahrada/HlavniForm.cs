@@ -587,6 +587,7 @@ namespace Zahrada
         #endregion
 
 
+
         #region Tlacitka na Zadavani rozmeru planu / Velikost Mrize
         // Rozmery platna na DropDownButton ... pro jednotlive polozky tohoto DropDown tlacitka
 
