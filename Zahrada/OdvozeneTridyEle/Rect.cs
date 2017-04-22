@@ -9,6 +9,9 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    /// <summary>
+    /// Obdelnik - univerzalni tvar
+    /// </summary>
     [Serializable]
     public class Rect : Ele
     {
@@ -26,14 +29,9 @@ namespace Zahrada.OdvozeneTridyEle
             Rotace = 0;
             rot = true;
         }
-
-
-
-
-
         #endregion
 
-        #region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid
+        #region Vlastnosti public + urcene pro muj Property Grid
 
         [CategoryAttribute("Element"), DescriptionAttribute("Obdélník")]
         public string Typ
@@ -116,8 +114,7 @@ namespace Zahrada.OdvozeneTridyEle
 
         #endregion
 
-
-        #region Prepsane zdedene metody  - Overridden methods
+        #region Prepsane override zdedene metody
 
         public override Ele Copy()
         {
@@ -141,11 +138,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.OnGrpX1Res = this.OnGrpX1Res;
             newE.OnGrpYRes = this.OnGrpYRes;
             newE.OnGrpY1Res = this.OnGrpY1Res;
-
-            newE.CopyGradProp(this);
-           
-
-
+            //newE.CopyGradProp(this); 
             return newE;
         }
 
@@ -217,7 +210,7 @@ namespace Zahrada.OdvozeneTridyEle
 
             }
 
-            // Vztvori Graphics Path a prida tam obdelnik:
+            // Vytvori Graphics Path a prida tam obdelnik:
             GraphicsPath myPath = new GraphicsPath();
             myPath.AddRectangle(new RectangleF((this.X + dx) * zoom, (this.Y + dy) * zoom, (this.X1 - this.X) * zoom, (this.Y1 - this.Y) * zoom));
 

@@ -10,13 +10,16 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    /// <summary>
+    /// Obrazek = zahradni prvek v planu ! 
+    /// </summary>
     [Serializable]
     public class ImageBox : Ele
     {
-        #region Clenske promenne tridy ImageBox
+        #region Clenske promenne tridy ImageBox, navic oproti Ele
 
         private Bitmap _img;
-        private bool _transparent = false;
+        //private bool _transparent = false;
         //private float _pruhlednost = 100f;
 
         #endregion
@@ -37,7 +40,7 @@ namespace Zahrada.OdvozeneTridyEle
 
         #endregion
 
-        #region Vlastnosti, kterym jsem navic nastavil Category a Description pro muj Property Grid
+        #region Vlastnosti public + urcene pro muj Property Grid
 
         [Category("Element"), Description("Zahradní prvek")]
         public string Typ
@@ -56,40 +59,7 @@ namespace Zahrada.OdvozeneTridyEle
 
                          
         }
-        // průhlednost - vůbec nepožívat - nikde není potřeba a nemám metody navíc
-        /*
-       [Category("Vzhled"), Description("Průhlednost zadaného prvku")]
-        public bool Průhlednost
-        {
-            get
-            {
-                return _transparent;
-            }
-            set
-            {
-                _transparent = value;
-            }
-        }
-
-        */
-        
-        /*
-        [Category("Vzhled"), Description("Průhlednost zadaného prvku")]
-        public float Průhlednost
-        {
-            get
-            {
-                return _pruhlednost;
-            }
-            set
-            {
-                _pruhlednost = value;
-                Alpha = (int)(_pruhlednost * 2.55);
-                
-            }
-        }
-        */
-        
+              
 
         [Category("Vzhled"), Description("Rotace pod úhlem")]
         public int Rotace
@@ -106,7 +76,7 @@ namespace Zahrada.OdvozeneTridyEle
 
         #endregion
 
-        #region Prepsane zdedene metody
+        #region Prepsane override zdedene metody
 
         public override Ele Copy()
         {
@@ -134,7 +104,7 @@ namespace Zahrada.OdvozeneTridyEle
 
             newE.Prvek = Prvek;
 
-            newE.CopyGradProp(this);
+            //newE.CopyGradProp(this);
 
             return newE;
         }
@@ -149,48 +119,9 @@ namespace Zahrada.OdvozeneTridyEle
         {
             undoEle = Copy();
         }
-        #endregion
-
-        #region Verejne metody tridy ImageBox
-
-        // tato metoda se pouziva pri dvojkliku na jiz exitujici obrazek
-        public void LoadImg()
-        {
-            string f_name = this.ImgLoader();
-            if (f_name != null)
-            {
-                try
-                {
-                    Bitmap loadTexture = new Bitmap(f_name);
-                    Prvek = loadTexture;
-                }
-                catch { }
-            }
-        }
-
-        // tato metoda se pouziva pri double clicku na exist obbrazek
-        private string ImgLoader()
-        {
-            try
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Title = "Vyber obrázek";
-                dialog.Filter = "jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
-                
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    return (dialog.FileName);
-                }
-            }
-            catch { }
-            return null;
-        }
 
         public override void Draw(Graphics g, int dx, int dy, float zoom)
         {
-            //dx = Img.Width;
-            //dy = Img.Height;
-
             Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
             myPen.DashStyle = DashStyleMy;
 
@@ -215,7 +146,7 @@ namespace Zahrada.OdvozeneTridyEle
 
                 if (Rotace > 0)
                 {
-                    
+
                     // aktivuje rotaci na grafickem objektu
                     Matrix mX = new Matrix();
 
@@ -223,106 +154,74 @@ namespace Zahrada.OdvozeneTridyEle
 
                     //mX.RotateAt(Rotation, new PointF(((X1-X)*zoom)/2, ((Y1-Y)*zoom/2)));
                     curG.Transform = mX;
-                    
                     mX.Dispose();
-
-                    /*
-                    //curG.DrawImage(Img, (dim - Img.Width) / 2, (dim - Img.Height) / 2, Img.Width, Img.Height);
-
-                    // nove
-                    //curG.DrawImage(Img, 0, 0, Img.Width, Img.Width);
-                    curG.DrawImage(Img, 0,0 , (X1 - X), (Y + X1 - X));
-                    if (Transparent)
-                        curBitmap.MakeTransparent(backColor); // zde provadim pruhlednost
-
-                    curG.Save();
-                    // zde kreslim tmp Bitmapu na platno - to je to this
-                    //g.DrawImage(curBitmap, (this.X + dx) * zoom, (Y + dy) * zoom, (X1 - this.X) * zoom, (Y1 - Y) * zoom);
-                    g.DrawImage(curBitmap, (this.X + dx) * zoom, (Y + dy) * zoom, (X1-X) * zoom, (Y+X1-X) * zoom);
-                    curG.Dispose();
-                    curBitmap.Dispose();
-                    */
 
                 }
 
 
-                // Kreslim img pres tmp Bitmapu 
-                //Prvek = ChangeOpacity((Image)(Prvek), Alpha);
+                // Kreslim img pres tmp Bitmapu    
+                curG.DrawImage(Prvek, (dim - Prvek.Width) / 2, (dim - Prvek.Height) / 2, Prvek.Width, Prvek.Height);
 
-                    curG.DrawImage(Prvek, (dim - Prvek.Width) / 2, (dim - Prvek.Height) / 2, Prvek.Width, Prvek.Height);
-                //curG.DrawImage(Img, 0, 0, Img.Width, Img.Height);
-
-                /*
-                    if (Průhlednost)
-                        curBitmap.MakeTransparent(backColor); // zde provadim pruhlednost
-                    */
-                //float p = Alpha / 100;
-                curBitmap = ChangeOpacity(curBitmap, (Průhlednost/100));
-                //curBitmap = SetImageOpacity((Image)(curBitmap), 0.1f);
-                //Prvek = SetImageOpacity((Image)(curBitmap), 5f);
+                // Zmena pruhllednosti obrazku .....
+                curBitmap = ChangeOpacity(curBitmap, (Průhlednost / 100));
 
                 curG.Save();
-                    // zde kreslim tmp Bitmapu na platno - to je to this
-                    g.DrawImage(curBitmap, (this.X + dx) * zoom, (Y + dy) * zoom, (X1 - this.X) * zoom, (Y1 - Y) * zoom);
-                    //g.DrawImage(curBitmap, (this.X+dx) * zoom, (this.Y+dy ) * zoom, (this.X1) * zoom, (this.Y1) * zoom);
-                    curG.Dispose();
-                    curBitmap.Dispose();
-
-
-                
-
+                // zde kreslim tmp Bitmapu na platno - to je to this
+                g.DrawImage(curBitmap, (this.X + dx) * zoom, (Y + dy) * zoom, (X1 - this.X) * zoom, (Y1 - Y) * zoom);
+                curG.Dispose();
+                curBitmap.Dispose();
             }
 
             if (Ohraničení)
                 g.DrawRectangle(myPen, (this.X + dx) * zoom, (Y + dy) * zoom, (X1 - this.X) * zoom, (Y1 - Y) * zoom);
-                //g.DrawRectangle(myPen, (this.X + dx) * zoom, (Y + dy) * zoom, (X1) * zoom, (Y1) * zoom);
 
             myPen.Dispose();
 
         }
-
-
         #endregion
-        
 
+        #region Verejne metody tridy ImageBox
+
+        // nakonec zadne nebudou ....
 
         /*
-        public Bitmap SetImageOpacity(Image image, float opacity)
+       // tato metoda se pouziva pri dvojkliku na jiz exitujici obrazek
+       public void LoadImg()
+       {
+           string f_name = this.ImgLoader();
+           if (f_name != null)
+           {
+               try
+               {
+                   Bitmap loadTexture = new Bitmap(f_name);
+                   Prvek = loadTexture;
+               }
+               catch { }
+           }
+       }
+       */
+        /*
+        // tato metoda se pouziva pri double clicku na exist obbrazek
+        private string ImgLoader()
         {
             try
             {
-                //create a Bitmap the size of the image provided  
-                Bitmap bmp = new Bitmap(image.Width, image.Height);
-
-                //create a graphics object from the image  
-                using (Graphics gfx = Graphics.FromImage(bmp))
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Title = "Vyber obrázek";
+                dialog.Filter = "jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
+                
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-
-                    //create a color matrix object  
-                    ColorMatrix matrix = new ColorMatrix();
-
-                    //set the opacity  
-                    matrix.Matrix33 = opacity;
-
-                    //create image attributes  
-                    ImageAttributes attributes = new ImageAttributes();
-
-                    //set the color(opacity) of the image  
-                    attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
-
-                    //now draw the image  
-                    gfx.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, attributes);
+                    return (dialog.FileName);
                 }
-                return bmp;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-            
+            catch { }
+            return null;
         }
         */
+
+
+        #endregion
 
     }
 }

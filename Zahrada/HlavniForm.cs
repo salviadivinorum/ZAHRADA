@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-
 namespace Zahrada
 {
     public partial class HlavniForm : Form
@@ -19,23 +18,17 @@ namespace Zahrada
         #region Clenske promenne Hlavniho formulare
 
         // promenna udalost na klikani tlacitek
-        public event EventHandler OnButtonZoomPusClick;
-        public event EventHandler OnButtonZoomMinusClick;
-        private bool mrizZapnuta = true;
-        private int ulozGrid = 0;
+       // public event EventHandler OnButtonZoomPusClick;
+        //public event EventHandler OnButtonZoomMinusClick;
+        //private bool mrizZapnuta = true;
+        //private int ulozGrid = 0;
+
         private const int RGBMAX = 255;
         private string CustomPlanSizeString { get; set; } // automaticka vlastnost pro vlastni velikost planu ...
         private float CustomX { get; set; } // custom sirka planu
         private float CustomY { get; set; }// custom vyska planu
         private bool savedPlanAfteQuerry = false;
-
-
-        // procesy externich programu, ktere si hlidam:
-        // Proces help file:
-       // private Process procesUkazCHMsoubor;
-       // private List<Process> procesy = new List<Process>();
-
-        //public event ObjectSelectedEventHandler ObjectSelected;
+        
 
         #endregion
 
@@ -44,15 +37,13 @@ namespace Zahrada
         {
             InitializeComponent();
             myInit();
-
-            // this.FormClosing += new FormClosingEventHandler(HlavniForm_FormClosing); // kvuli spravenme ukonceni aplikace !!!!
-           // exitToolStripMenuItem.Click += new EventHandler(exitToolStripMenuItem_Click);
+           
         }
 
-        /// <summary>
-        /// Na vlozeny toolBox Nastroje nalinkuje platno vlozenePlatno
-        /// </summary>
-        private void myInit()  // vlozenyToolBox ovlada vlozenePlatno
+
+        // Na vlozeny toolBox Nastroje nalinkuje platno vlozenePlatno
+        // vlozenyToolBox ovlada vlozenePlatno !
+        private void myInit()  
         {
             vlozenyToolBox.SetPlatno(vlozenePlatno); // nalinkuju vlozenyToolBox z navrhare na vlozenePlatno z navrhare
                                                      //vlozenePlatno.Platno_DoubleClick(null, null); // timto si pomaham - inicializuju vlastne mujFiltredPropertyGrid a Platno - ramecek A4
@@ -60,23 +51,13 @@ namespace Zahrada
             // uprava platna do Zoom = 0.25, posun o 100 pixelu dolu a doprava
             vlozenePlatno.dx = 100;
             vlozenePlatno.dy = 100;
-            vlozenePlatno.Zoom = 0.25f;
-            //vlozenePlatno.NajdiZoomComboBoxvMainForm();
-            //vlozenePlatno.UpravZoomVComboBoxu(1);
+            vlozenePlatno.Zoom = 0.25f;            
 
             vlozenyToolBox.NajdiUndoReodBtnsVmainForm();
             vlozenePlatno.NajdiStatusStripVmainForm(); // potrebuju pro text ve statusstripu
             toolStrip1.BackColor = Color.FromArgb(17, Color.CadetBlue);
-            statusStrip.BackColor = Color.FromArgb(17, Color.CadetBlue);
-            //vlozenePlatno.Focus();
-
-
-            //this.vlozenePlatno.ParentForm = this;
-            //OnButtonZoomPusClick += new EventHandler(KlikNaPlus); // priradim udalost na tlacitko + Zoom
-            //OnButtonZoomMinusClick += new EventHandler(KlikNaMinus); // priradim udal na tlac - Zoom
-
-            // ObjectSelected += new ObjectSelectedEventHandler(OnBasicObjectSelected);
-            //vlozenePlatno.SetMainForm(this);
+            statusStrip.BackColor = Color.FromArgb(17, Color.CadetBlue);         
+            
         }
         #endregion
 
@@ -86,19 +67,12 @@ namespace Zahrada
             this.WindowState = FormWindowState.Maximized; // maximalizace formul. okna
             penWidthtoolStripComboBox.SelectedIndex = 1; // comboboxy nahe v toolstripu
             colorFillingOnOffToolStripComboBox.SelectedIndex = 0;
-            textureFillingOnOffToolStripComboBox.SelectedIndex = 0;
-
-            //gridToolStripComboBox.SelectedIndex = 0;
-            //zoomToolStripComboBox.SelectedIndex = 1;
-           // closedToolStripComboBox.SelectedIndex = 0;
+            textureFillingOnOffToolStripComboBox.SelectedIndex = 0;            
             vlozenePlatno.Zoom = 0.25f;
             
-            
-            // vlozenePlatno.Scale(new Size(2f, 2f))
         }
 
-        #endregion
-        
+        #endregion        
 
         #region Tlacitka na Barvu Pera, Barvu Fillingu, Vzor Textury
        
@@ -151,10 +125,8 @@ namespace Zahrada
         // Label namisto tlacitka FillColor
         #region FillColor Label
         private void fillColorToolStripLabel_Click(object sender, EventArgs e)
-        {
-            //mujColorDialog.Color = fillColorToolStripButton.BackColor;
-            mujColorDialog.ShowDialog(this);
-            //fillColorToolStripButton.BackColor = mujColorDialog.Color;
+        {            
+            mujColorDialog.ShowDialog(this);            
             vlozenePlatno.SetFillColor(mujColorDialog.Color);
             vlozenePlatno.ChangeOption("select");
 
@@ -198,10 +170,8 @@ namespace Zahrada
         #region Vzor Textury Label
         private void texturaToolStripLabel_Click(object sender, EventArgs e)
         {
-
             vlozenePlatno.TextureLoader();
             vlozenePlatno.ChangeOption("select");
-
             vlozenePlatno.PushPlease();
             vlozenePlatno.Focus();
             vlozenePlatno.Redraw(true);
@@ -214,10 +184,8 @@ namespace Zahrada
 
             Image bitm = vlozenePlatno.creationTexturePattern.Image;
 
-
             // Cast to allow reuse of method.
             ToolStripItem tsi = (ToolStripItem)sender;
-
 
             // Set background.
             tsi.BackgroundImage = bitm;
@@ -251,28 +219,18 @@ namespace Zahrada
 
         #endregion
 
-
         #region Tlacitka na Zoom
         // zakladni Zoom In + 
         public void zoomINtoolStripButton_Click(object sender, EventArgs e)
-        {
-
-            // int sirkaPlatna = vlozenePlatno.Size.Width;
-            // int vyskaPlatna = vlozenePlatno.Size.Height;
-
-
-            //vlozenePlatno.ZoomIn();
-
-
+        {            
             int ix = (int)vlozenePlatno.Size.Width / 2;
             int iy = (int)vlozenePlatno.Size.Height / 2;
-
 
             if (vlozenePlatno.Zoom <= 15f)
             {
                 if (vlozenePlatno.Fit2grid & vlozenePlatno.Mřížka > 0)
                 {
-                    //int grid = gridSize;
+                   
                     vlozenePlatno.dx = (int)(vlozenePlatno.dx - (ix / (vlozenePlatno.Zoom * 2)));
                     vlozenePlatno.dy = (int)(vlozenePlatno.dy - (iy / (vlozenePlatno.Zoom * 2)));
 
@@ -280,7 +238,7 @@ namespace Zahrada
                     vlozenePlatno.dy = vlozenePlatno.Mřížka * ((vlozenePlatno.dy) / vlozenePlatno.Mřížka);
 
                     vlozenePlatno.ZoomIn();
-                    //gridSize = grid;
+                   
                 }
                 else
                 {
@@ -292,13 +250,9 @@ namespace Zahrada
 
         }
 
-        // zkaldni Zoom Out -
+        // zakladni Zoom Out -
         public void zoomOUTtoolStripButton_Click(object sender, EventArgs e)
         {
-
-            //vlozenePlatno.ZoomOut();
-
-
             int ix = (int)vlozenePlatno.Size.Width / 2;
             int iy = (int)vlozenePlatno.Size.Height / 2;
 
@@ -326,13 +280,9 @@ namespace Zahrada
 
             }
 
-
-
-
         }
 
         #endregion
-
 
         #region Tlacitka na Vypnout/Zapnout Filling a Texturu
         // FILLING barvou On/Off
@@ -340,20 +290,14 @@ namespace Zahrada
         {
             vlozenePlatno.Focus();
             if (colorFillingOnOffToolStripComboBox.SelectedIndex == 0)
-            {
-                // fillColorToolStripButton.BackColor = Color.Transparent;
-                vlozenePlatno.SetColorFilled(false);
-                //vlozenePlatno.Redraw(true);             
+            {                
+                vlozenePlatno.SetColorFilled(false);   
             }
             else if (colorFillingOnOffToolStripComboBox.SelectedIndex == 1)
             {
                 textureFillingOnOffToolStripComboBox.SelectedIndex = 0;
                 vlozenePlatno.SetTextureFilled(false);
-
-
                 vlozenePlatno.SetColorFilled(true);
-
-                // vlozenePlatno.Redraw(true);
                 vlozenePlatno.ChangeOption("select");
             }
 
@@ -370,14 +314,12 @@ namespace Zahrada
             if (textureFillingOnOffToolStripComboBox.SelectedIndex == 0)
             {
                 vlozenePlatno.SetTextureFilled(false);
-
             }
             else
             {
                 vlozenePlatno.SetTextureFilled(true);
                 colorFillingOnOffToolStripComboBox.SelectedIndex = 0;
                 vlozenePlatno.SetColorFilled(false);
-
             }
 
             vlozenePlatno.PushPlease();
@@ -387,7 +329,6 @@ namespace Zahrada
 
 
         #endregion
-
 
         #region Undo/Redo sipky
         // osetreni undo/redo sipek
@@ -437,7 +378,6 @@ namespace Zahrada
             }
 
 
-
             vlozenePlatno.PushPlease();
             vlozenePlatno.Focus();
             vlozenePlatno.Redraw(true);
@@ -465,7 +405,6 @@ namespace Zahrada
                     this.Text = "Navrhování zahrad - " + vlozenePlatno.jmenoNoveOtevreneho;
                     vlozenyToolBox.CheckedRBSave();
                     vlozenyToolBox.Refresh();
-
                 }
             }
             else
@@ -624,30 +563,17 @@ namespace Zahrada
 
         #endregion
 
-
         #region Tlacitka Print, Preview
         // Print Preview tlacitko ...
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // float z = vlozenePlatno.Zoom;
             vlozenePlatno.PreviewBeforePrinting(0.25f);
         }
-
 
         // Print tlacitko ...
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            vlozenePlatno.PrintMe();
-            /*
-            vlozenePlatno.printDialog1.AllowSomePages = true;
-            vlozenePlatno.printDialog1.ShowHelp = true;
-            vlozenePlatno.printDialog1.Document = vlozenePlatno.docToPrint;
-            DialogResult result = vlozenePlatno.printDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                vlozenePlatno.docToPrint.Print();
-            }
-            */
+            vlozenePlatno.PrintMe();         
 
         }
         #endregion

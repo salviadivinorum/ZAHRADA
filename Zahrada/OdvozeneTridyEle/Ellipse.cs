@@ -9,6 +9,9 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    /// <summary>
+    /// Trida Ellipse - klasicka elipsa
+    /// </summary>
     [Serializable]
     public class Ellipse : Ele
     {
@@ -28,8 +31,7 @@ namespace Zahrada.OdvozeneTridyEle
 
         #endregion
 
-
-        #region Vlastnosti, kterym jsem navic pridal Category a Description v mem Property Gridu
+        #region Vlastnosti public + urcene pro muj Property Grid
         [Category("Vzhled"), Description("Úhel rotace")]     
         public int Rotace
         {
@@ -101,14 +103,7 @@ namespace Zahrada.OdvozeneTridyEle
         }
 
 
-        #endregion
-
-
-        #region Vlastnosti tridy Ellipse
-        // zatim bez obecnych vlastnosti
-
-        #endregion
-
+        #endregion        
 
         #region Prepsane zdedene metody
 
@@ -122,7 +117,6 @@ namespace Zahrada.OdvozeneTridyEle
             newE.TextureFilled = TextureFilled;
             newE.ImageOfTexture = ImageOfTexture;
 
-
             newE.iAmAline = iAmAline;
             newE.Alpha = Alpha;
             newE.DashStyleMy = DashStyleMy;
@@ -134,7 +128,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.OnGrpYRes = OnGrpYRes;
             newE.OnGrpY1Res = OnGrpY1Res;
 
-            newE.CopyGradProp(this);
+            //newE.CopyGradProp(this);
 
             return newE;
         }
@@ -247,7 +241,6 @@ namespace Zahrada.OdvozeneTridyEle
         }
 
         #endregion
-
 
     }
 }

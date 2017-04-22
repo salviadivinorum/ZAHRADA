@@ -16,7 +16,7 @@ namespace Zahrada.OdvozeneTridyEle
     public class Group : Ele
     {
 
-        #region Clenske promenne tridy Group
+        #region Clenske promenne tridy Group, navic oproti Ele
 
         // podobjekty obsazene ve skupine Group
         ArrayList objs;
@@ -29,7 +29,7 @@ namespace Zahrada.OdvozeneTridyEle
         GroupDisplay _groupDisplay = GroupDisplay.Default;
 
         string _name = "";
-        public static int ngrp; // pouziva se ke generovani jmen skupin
+        public static int ngrp; // pouziva se ke generovani jmen skupin, pozdeji vyuziju
 
 
         #endregion
@@ -73,7 +73,7 @@ namespace Zahrada.OdvozeneTridyEle
         }
         #endregion
 
-        #region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid
+        #region Vlastnosti public + urcene pro muj Property Grid
 
         [Category("Element"), Description("Seskupení elementů")]
         public string Typ
@@ -105,24 +105,25 @@ namespace Zahrada.OdvozeneTridyEle
             get
             {
                 
-                return this._groupDisplay;
+                return _groupDisplay;
             }
             set
             {
-                this._groupDisplay = value;
+                _groupDisplay = value;
             }
         }
 
+        
         [Category("Group"), Description("Zrcadlení podle X - ON/OFF ")]
         public bool XMirror
         {
             get
             {
-                return this._xMirror;
+                return _xMirror;
             }
             set
             {
-                this._xMirror = value;
+                _xMirror = value;
             }
         }
         [Category("Group"), Description("Zrcadlení podle Y - ON/OFF ")]
@@ -130,14 +131,14 @@ namespace Zahrada.OdvozeneTridyEle
         {
             get
             {
-                return this._yMirror;
+                return _yMirror;
             }
             set
             {
-                this._yMirror = value;
+                _yMirror = value;
             }
         }
-
+        
 
 
         [Category("Group"), Description("Měřítko X Zoom ")]
@@ -145,12 +146,12 @@ namespace Zahrada.OdvozeneTridyEle
         {
             get
             {
-                return this.gprZoomX;
+                return gprZoomX;
             }
             set
             {
                 if (value > 0)
-                    this.gprZoomX = value;
+                    gprZoomX = value;
             }
         }
 
@@ -169,7 +170,8 @@ namespace Zahrada.OdvozeneTridyEle
         }
 
 
-
+        #region Vse co se tykalo Gradientu - jsem zakomentoval
+        /*
         [Category("GradientBrush"), Description("True: use gradient fill color")]
         public override bool UseGradientLineColor
         {
@@ -280,7 +282,9 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-                
+        */ 
+        #endregion
+
 
 
         [Description("Obsluhuje skupinu Group jako GraphicsPath")]
@@ -358,7 +362,7 @@ namespace Zahrada.OdvozeneTridyEle
 
         #endregion
 
-        #region Ostatni Vlastnosti tridy Group
+        #region Ostatni public Vlastnosti tridy Group
         public string GetSetName
         {
             get
@@ -371,9 +375,18 @@ namespace Zahrada.OdvozeneTridyEle
                     _name = value;
             }
         }
+
+        public void SetZoom(int x, int y)
+        {
+            float dx = (X1 - x) * 2;
+            float dy = (Y1 - y) * 2;
+
+            GrpZoomX = (Sirka - dx) / Sirka;
+            GrpZoomY = (Sirka - dy) / Vyska;
+        }
         #endregion
 
-        #region Prepsane zdedene Vlastnosti tridy Group
+        #region Prepsane override zdedene Vlastnosti
 
         public override bool ColorFilled
         {
@@ -385,7 +398,7 @@ namespace Zahrada.OdvozeneTridyEle
             {
                 base.ColorFilled = value;
                 if (objs != null)
-                    foreach (Ele e in this.objs)
+                    foreach (Ele e in objs)
                     {
                         e.ColorFilled = value;
                     }
@@ -404,7 +417,7 @@ namespace Zahrada.OdvozeneTridyEle
             {
                 base.TextureFilled = value;
                 if (objs != null)
-                    foreach (Ele e in this.objs)
+                    foreach (Ele e in objs)
                     {
                         e.TextureFilled = value;
                     }
@@ -423,7 +436,7 @@ namespace Zahrada.OdvozeneTridyEle
             {
                 base.Alpha = value;
                 if (objs != null)
-                    foreach (Ele e in this.objs)
+                    foreach (Ele e in objs)
                     {
                         e.Alpha = value;
                         e.Průhlednost = Průhlednost;
@@ -441,7 +454,7 @@ namespace Zahrada.OdvozeneTridyEle
             {
                 base.FillColor = value;
                 if (objs != null)
-                    foreach (Ele e in this.objs)
+                    foreach (Ele e in objs)
                     {
                         e.FillColor = value;
                     }
@@ -459,7 +472,7 @@ namespace Zahrada.OdvozeneTridyEle
             {
                 base.FillTexture = value;
                 if (objs != null)
-                    foreach (Ele e in this.objs)
+                    foreach (Ele e in objs)
                     {
                         e.FillTexture = value;
                     }
@@ -510,7 +523,7 @@ namespace Zahrada.OdvozeneTridyEle
 
         #endregion
 
-        #region Prepsane zdedene metody  - Overridden methods
+        #region Prepsane override zdedene metody
 
         public override void AfterLoad()
         {
@@ -532,7 +545,7 @@ namespace Zahrada.OdvozeneTridyEle
 
         public override ArrayList DeGroup()
         {
-            return this.objs;
+            return objs;
         }
 
         public override void Move(int x, int y)
@@ -573,10 +586,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.OnGrpYRes = OnGrpYRes;
             newE.OnGrpY1Res = OnGrpY1Res;
 
-            newE.DisplayOfGroup = DisplayOfGroup;
-
-           // newE.Alpha = Alpha;
-           // newE.Průhlednost = Průhlednost;
+            newE.DisplayOfGroup = DisplayOfGroup;          
 
             if (newE._grapPath)
             {
@@ -595,14 +605,15 @@ namespace Zahrada.OdvozeneTridyEle
                 newE.Rotace = Rotace;
                 newE.Ohraničení = Ohraničení;
 
+                // Gradient vubec nebude ....
+                /*
                 newE.UseGradientLineColor = UseGradientLineColor;
                 newE.GradientAngle = GradientAngle;
                 newE.GradientLen = GradientLen;
                 newE.EndAlpha = EndAlpha;
                 newE.EndColor = EndColor;
                 newE.EndColorPosition = EndColorPosition;
-
-                
+                */               
 
             }
 
@@ -747,8 +758,7 @@ namespace Zahrada.OdvozeneTridyEle
                 {
                     e.AddGraphPath(gp, dx, dy, zoom);
                    
-                }
-                
+                }               
 
                
                 if (myBrush != null)
@@ -806,19 +816,16 @@ namespace Zahrada.OdvozeneTridyEle
             g.Restore(gs);//obnov predchozi transformaci
 
 
-
-
-
             if (selected)
             {
                 Brush myBrush = GetBrush(dx, dy, zoom);    
                 
 
 
-                Pen myPen = new Pen(this.Pero_barva, ScaledPenWidth(zoom));
-                myPen.DashStyle = this.DashStyleMy;
+                Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
+                myPen.DashStyle = DashStyleMy;
                 myPen.Color = Color.Red;
-                myPen.Color = this.Transparency(myPen.Color, 120);
+                myPen.Color = Transparency(myPen.Color, 120);
                 myPen.Width = myPen.Width + 1;
                 g.DrawRectangle(myPen, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
                       
@@ -832,46 +839,9 @@ namespace Zahrada.OdvozeneTridyEle
 
         }
 
+
+        #endregion
+
         
-        #endregion
-
-        #region Verejne metody pro tridu Group
-
-        // Toto je obsluha obrazku - nutno zprovoznit po vytvoreni tridy ImgBox:
-
-        /*
-        public void Load_IMG()
-        {
-            foreach (Ele e in this.objs)
-            {
-                if (e.OnGrpDClick)
-                {
-                    if (e is ImgBox)
-                    {
-                        ((ImgBox)e).Load_IMG();
-                    }
-                    if (e is Group)
-                    {
-                        ((Group)e).Load_IMG();
-                    }
-                }
-            }
-        }
-
-        */
-
-        public void SetZoom(int x, int y)
-        {
-            float dx = (X1 - x) * 2;
-            float dy = (Y1 - y) * 2;
-
-            GrpZoomX = (Sirka - dx) / Sirka;
-            GrpZoomY = (Sirka - dy) / Vyska;
-        }
-
-
-        #endregion
-
-
     }
 }

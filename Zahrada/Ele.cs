@@ -18,32 +18,39 @@ namespace Zahrada
 {
 	
 	/// <summary>
-	/// Zakladni abstraktni trida Ele - je to nejaky Element od ktereho se dedi dalsi tridy pro kresleni
+	/// Zakladni abstraktni trida Ele - je to fitkivni Element od ktereho se dedi dalsi tridy pro kresleni
 	/// </summary>
 	[Serializable]
 	public abstract class Ele
 	{
-		#region Clenske promenne tridy Ele
-		// pozor - nektere clenske promenne nemam spravne zapouzdrene - pres vlastnosti Get/Set		
-		public static float dpix; // public - tento clen je pristupny absolutne odevsad
-		public static float dpiy; // static - v kazdem elementu Ele je tento clen stejny - staticky
+        #region Clenske promenne tridy Ele		
+        // poznamka k zpouzdreni mych promennych ....
+        // private - pristupny pouze zevnitr teto jedne tridy
+        // internal - clenove pristupni pouze z aktualniho sestaveni - tzn. pouze z jednoho exe souboru nebo dll knihovny
+        // public - tento clen je pristupny absolutne odevsad
+        // static - v kazdem elementu Ele je tento clen stejny - staticky
 
-		protected bool IamGroup = false; // protected = tento clen je pristupny z abstarktni tridy a ve vsech zdedenych tridach
+        // poznamka k memu polymorfismu .....
+        // virtual (možná metoda, virtuální)= virtualni metoda - je metoda definovana v teto zakladni tride a muze byt prepsana v odvozenych tridach: public virtual Neco()
+        // override (potlacení metody) = u odvozenych trid se muze prepisovat puvodni virtual metoda. A to tak, ze se pred nazev metody da: public virtual Neco()
+        
+        protected bool IamGroup = false; // protected = tento clen je pristupny z abstarktni tridy a ve vsech zdedenych tridach
 		protected bool rot; // Muze rotovat
 
-		// private - pristupny pouze zevnitr teto jedne tridy
-		// internal - clenove pristupni pouze z aktualniho sestaveni - tzn. pouze z jeddnoho exe souboru nebo dll knihovny
-
-		// startovaci bod elementu
-		protected int X;
+        // startovaci bod elementu
+        protected int X;
 		protected int Y;
 
 		// koncovy bod elementu
 		protected int X1;
 		protected int Y1;
 
-		// Vycty vlastnosti (enumerace) pro Spojovane objekty (Grouped objects) - jejich vlastnosti {0,1,2, pripadne 3}
-		public enum OnGroupResize { Move, Resize, Nothing };
+        // pozor - nektere clenske promenne nemam spravne zapouzdrene - pres vlastnosti Get/Set		
+        public static float dpix; 
+        public static float dpiy; 
+
+        // Vycty vlastnosti (enumerace) pro Spojovane objekty (Grouped objects) - jejich vlastnosti {0,1,2, pripadne 3}
+        public enum OnGroupResize { Move, Resize, Nothing };
 		public enum GroupDisplay { Default, Intersect, Xor, Exclude };
 
 		// Zmena velikosti objektu pouzivajici X souradnici (zapadni-West)
@@ -60,11 +67,7 @@ namespace Zahrada
 
 		// Pri dvojkliku na Group objket - posunout objket dopredu do sub-objektu
 		protected bool _onGroupDoubleClick = true;
-
-		// virtual (možná metoda, virtuální)= virtualni metoda - je metoda definovana v teto zakladni tride a muze byt prepsana v odvozenych tridach: public virtual Neco()
-		// override (potlacení metody) = u odvozenych trid se muze prepisovat puvodni virtual metoda. A to tak, ze se pred nazev metody da: public virtual Neco()
-		// toto je příklad polymorfismu !!!
-
+   
 		// Ukladani startovaci pozice behem moving/resizing - presinovani/zmeny velikosti
 		protected int startX;
 		protected int startY;
@@ -100,7 +103,7 @@ namespace Zahrada
 
         // pokusim se odrusit jakykoliv linear
         
-
+        /*
 		// Linear Gradient:
 		private bool _useGradientLine = false;
 		private Color _endColor = Color.White;
@@ -108,9 +111,8 @@ namespace Zahrada
 		private int _gradientAngle = 0;
 		private int _gradientLen = 0;
 		private float _endColorPos = 1f;
-
-
-        
+        */
+                
 
 		// Group objekt - zoomovani:
 		protected float gprZoomX = 1f;
@@ -122,8 +124,7 @@ namespace Zahrada
 
 		// cesta k me nove texture pro tvary ...
 		private string filePath;
-
-
+        
 		// pouziti Textury:       
 		[NonSerialized]
 		private TextureBrush _texture;
@@ -140,17 +141,17 @@ namespace Zahrada
 		#region Konstruktor tridy Ele
 		public Ele()
 		{
-			// nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele
-			// predvyplnena textura pro Element			
-			Image obr = Properties.Resources.trava_velmi_husta; 
-			ImageOfTexture = (Bitmap)obr;																
-			FillColor = Color.Black;
+            // nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele	
+            // predvyplnena textura pro Ele, zjednodusil jsem si to	....
+            Image obr = Properties.Resources.trava_velmi_husta; 
+            ImageOfTexture = (Bitmap)obr;
+            // cerna barva vyplne - implicitne pro vsechny Ele ....
+            FillColor = Color.Black;
+            // zakladni barva pera = oraniceni, tj. Cerna ... 
+            Pero_barva = Color.Black; 
 
-			// zakladni barva pera - Cerna
-			Pero_barva = Color.Black;
-
-			// ostattni predvyplnene vlastnosti elementu
-			Pero_šířka = 1f;			
+            // ostattni predvyplnene vlastnosti elementu ...
+            Pero_šířka = 1f;			
 			ColorFilled = false;
 			Ohraničení = true;
 			DashStyleMy = DashStyle.Solid;
@@ -160,7 +161,7 @@ namespace Zahrada
 
 		#endregion
 
-		#region Destruktor tridy Ele - jen pro zajimavost
+		#region Destruktor tridy Ele - jen pro zajimavost kdy zafunguje Garbage Collector
 
 		~Ele()
 		{
@@ -169,7 +170,7 @@ namespace Zahrada
 		}
 		#endregion
 
-		#region Základní vlastnosti - neboli GETTERY pro tridu Ele, SETTERY mam pouze v zaloze
+		#region Základní vlastnosti - GETTERY, SETTERY - pro tridu Ele
 		// vkladani img textury elementu
 		public Bitmap ImageOfTexture
 		{
@@ -248,11 +249,14 @@ namespace Zahrada
 		}
 
 
-		#endregion
+        #endregion
 
-		#region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid		
+        #region Vlastnosti public, ktere ale nejsou urcene pro muj Filtered Property Grid	
 
-		//[DisplayName("Orientace")]
+        // je mozne je pozdeji pridat do Filtered Property Gridu jednoduchou upravou ve tride Nastroje
+        // v metode OnObjectSelected()
+
+        [DisplayName("Orientace")]
 		[Category("Pozice"), Description("X ")]
 		public int PosX
 		{
@@ -262,7 +266,7 @@ namespace Zahrada
 			}
 		}
 
-		[ Category("Pozice"), Description("Y ")]
+		[Category("Pozice"), Description("Y ")]
 		public int PosY
 		{
 			get
@@ -327,7 +331,7 @@ namespace Zahrada
 			}
 		}
 
-		//[Category("Group chování"), Description("On Group Resize X")]
+		[Category("Group chování"), Description("On Group Resize X")]
 		public OnGroupResize OnGrpXRes
 		{
 			get
@@ -340,7 +344,7 @@ namespace Zahrada
 			}
 		}
 
-		//[Category("Group chování"), Description("On Group Resize X1")]
+		[Category("Group chování"), Description("On Group Resize X1")]
 		public OnGroupResize OnGrpX1Res
 		{
 			get
@@ -353,7 +357,7 @@ namespace Zahrada
 			}
 		}
 
-		//[Category("Group chování"), Description("On Group Resize Y")]
+		[Category("Group chování"), Description("On Group Resize Y")]
 		public OnGroupResize OnGrpYRes
 		{
 			get
@@ -366,7 +370,7 @@ namespace Zahrada
 			}
 		}
 
-		//[Category("Group chování"), Description("On Group Resize Y1")]
+		[Category("Group chování"), Description("On Group Resize Y1")]
 		public OnGroupResize OnGrpY1Res
 		{
 			get
@@ -379,7 +383,7 @@ namespace Zahrada
 			}
 		}
 
-		//[Category("Group chování"), Description("Manage On Group Double Click")]
+		[Category("Group chování"), Description("Řízení Group - Double Click")]
 		public bool OnGrpDClick
 		{
 			get
@@ -394,7 +398,7 @@ namespace Zahrada
 
 		#endregion
 
-		#region Vlastnosti do Property Gridu typu "virtual", ktere navic budu pozdeji prepisovat ve zdeddenych tridach Ele
+		#region Vlastnosti urcene pro muj Filtered Property Grid a jsou typu  public a virtual - budu je prepisovat ve zdedenych tridach Ele
 		//[Category("Vzhled"), Description("Nastaví styl hraniční čáry")]
 		public virtual DashStyle DashStyleMy
 		{
@@ -449,11 +453,7 @@ namespace Zahrada
 			{
 				_fillColor = value;
 			}
-		}
-
-
-
-	   
+		}	   
 
 		
 		// nastavuju cestu k nove texture ... pouzivam zde svou pomocnou tridu FileLocationEditor
@@ -498,10 +498,7 @@ namespace Zahrada
 			}
 		}
 
-
-
-
-		// vyplneny texturou ANO/ NE
+        // vyplneny texturou ANO/ NE
 		//[Category("Vzhled"), Description("Vyplněný Vypnout / Zapnout")]
 		public virtual bool TextureFilled
 		{
@@ -559,7 +556,7 @@ namespace Zahrada
 
 
 
-		//[Category("Vzhled"), Description("Průhlednost")]
+		//[Category("Vzhled"), Description("ALPHA - Průhlednost")]
 		public virtual int Alpha
 		{
 			get
@@ -605,6 +602,7 @@ namespace Zahrada
 			}
 		}
 
+        // jedna z poslednich vlastnosti - pred dokoncenim projektu - nutnost ulozit pruhlednot do jine promenne v Ele
 		public float SavedPruhlednost
 		{
 			get
@@ -618,6 +616,11 @@ namespace Zahrada
 			}
 		}
 
+
+        #region Konec gradientu - jeho vlastnosti okomentovane
+        // konec silenosti s gradientem ....
+
+        /*
 		//[Category("GradientBrush"), Description("True: Use gradient fill color")]
 		public virtual bool UseGradientLineColor
 		{
@@ -709,14 +712,15 @@ namespace Zahrada
 			}
 		}
 
+        */ 
+        #endregion
 
 
+        #endregion
 
-		#endregion
+        #region Verejne pristupne metody - Public - pro tridu Ele
 
-		#region Verejne pristupne metody - Public - pro tridu Ele
-
-		public void AddRotation(int a)
+        public void AddRotation(int a)
 
 		{
 			SetRotation = (GetRotation + a);
@@ -730,10 +734,18 @@ namespace Zahrada
         // jakou TEXTUROU vyplnen
 
 
+        // doplneno at mi Ele vrati texture Brush !!
+        public TextureBrush GetTextureBrush()
+        {
+            return FillTexture;
+        }
+
+
+
         // Dulezite - na pruhlednost - kazdemu prvku 
         public Bitmap ChangeOpacity(Image img, float opacityvalue)
 		{
-			Bitmap bmp = new Bitmap(img.Width, img.Height); // Determining Width and Height of Source Image
+			Bitmap bmp = new Bitmap(img.Width, img.Height); // Urci Sirku a Vysku zdrojoveho Image - dulezite !
 			Graphics graphics = Graphics.FromImage(bmp);
 			ColorMatrix colormatrix = new ColorMatrix();
 			colormatrix.Matrix33 = opacityvalue;
@@ -748,7 +760,7 @@ namespace Zahrada
 
 		#endregion
 
-		#region Virtualni + verejne pristupne metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
+		#region Virtualni metody pro tridu Ele - Public Virtual - (k prepsani override v potomcich teto tridy)
 
 		/// <summary>
 		/// Nakresli tento Element do objektu Graphics
@@ -838,20 +850,11 @@ namespace Zahrada
 		/// </summary>
 		/// <param name="gridsize"></param>
 		public virtual void Fit2grid(int gridsize)
-		{
-			/*
-			startX = (int)(startX *25.4/dpix);
-			startY = (int)(startY*25.4 / dpiy);
-			startX1 = (int)(startX1 *25.4 /dpix);
-			startY1 = (int)(startY1*25.4 /dpiy);
-			*/
-
-			
+		{			
 			startX = gridsize * (int)(startX / gridsize);
 			startY = gridsize * (int)(startY / gridsize);
 			startX1 = gridsize * (int)(startX1 / gridsize);
-			startY1 = gridsize * (int)(startY1 / gridsize);
-			
+			startY1 = gridsize * (int)(startY1 / gridsize);			
 		}
 
 		
@@ -969,28 +972,34 @@ namespace Zahrada
 
 		}
 
-		#endregion
+        #endregion
 
-		#region Chranene - Protected - Metody pro tridu Ele (ktere dedi uplne stejne potomci tridy Ele)
-		/// <summary>
-		/// Z daneho objektu Element zkopiruje gradient vlastnosti
-		/// </summary>		
-		protected void CopyGradProp(Ele ele)
-		{
-			_useGradientLine = ele._useGradientLine;
-			_endColor = ele._endColor;
-			_endalpha = ele._endalpha;
-			_gradientLen = ele._gradientLen;
-			_gradientAngle = ele._gradientAngle;
-			_endColorPos = ele._endColorPos;
-
-		}
+        #region Chranene - Protected - Metody pro tridu Ele (ktere dedi uplne stejne potomci tridy Ele)
 
 
-		/// <summary>
-		/// Vyplnit Element paralelnimi linkami (lines)
-		/// </summary>
-		protected void FillWithLines(Graphics g, int dx, int dy, float zoom, GraphicsPath myPath, float gridSize, float gridRot)
+        #region CopyGradProp - Nebudu potrebovat
+        /*
+        /// <summary>
+        /// Z daneho objektu Element zkopiruje gradient vlastnosti
+        /// </summary>		
+        protected void CopyGradProp(Ele ele)
+        {
+            _useGradientLine = ele._useGradientLine;
+            _endColor = ele._endColor;
+            _endalpha = ele._endalpha;
+            _gradientLen = ele._gradientLen;
+            _gradientAngle = ele._gradientAngle;
+            _endColorPos = ele._endColorPos;
+
+        } 
+        */
+        #endregion
+
+         /*
+        /// <summary>
+        /// Vyplnit Element paralelnimi linkami (lines)
+        /// </summary>
+        protected void FillWithLines(Graphics g, int dx, int dy, float zoom, GraphicsPath myPath, float gridSize, float gridRot)
 		{
 			GraphicsState gs = g.Save();//store previos trasformation
 			g.SetClip(myPath, CombineMode.Intersect);
@@ -1013,6 +1022,8 @@ namespace Zahrada
 			g.Restore(gs);
 			//g.ResetClip();
 		}
+
+        */
 
 		/// <summary>
 		/// Pouziva se k definici tloustky pera
@@ -1095,19 +1106,8 @@ namespace Zahrada
 			return Color.FromArgb(v, c);
 		}
 
-		// doplneno at mi Ele vrati texture Brush !!
-		public TextureBrush GetTextureBrush()
-		{
-			return FillTexture;
-		}
 
-        /*
-        // pro nastavovani pruhlednosti
-        public TextureBrush GetTB()
-        {
-            return FillTexture;
-        }
-        */
+        
 
 		/// <summary>
 		/// Vybere stetec Brush z vlastnosti Elementu (pokud je Element vyplnen Filled)
@@ -1116,6 +1116,7 @@ namespace Zahrada
 		{
 			if (ColorFilled)
 			{
+                /*
 				if (UseGradientLineColor)
 				{
 					float wid;
@@ -1144,7 +1145,9 @@ namespace Zahrada
 					//return FillTexture;
 				   
 				}
-			}
+                */
+                return new SolidBrush(Transparency(FillColor, Alpha));
+            }
 			else
 			{
 				return null;
@@ -1173,12 +1176,16 @@ namespace Zahrada
 			to._onGroupY1Res = from._onGroupY1Res;
 			to._onGroupYRes = from._onGroupYRes;
 
+            // promenne o gradientu - rusim
+            /*
 			to._useGradientLine = from._useGradientLine;
 			to._endColor = from._endColor;
 			to._endalpha = from._endalpha;
 			to._gradientLen = from._gradientLen;
 			to._gradientAngle = from._gradientAngle;
 			to._endColorPos = from._endColorPos;
+
+            */
 
 			// zapouzdrene clenske promenne:
 			to.Alpha = from.Alpha;			
@@ -1201,7 +1208,7 @@ namespace Zahrada
 				
 		#endregion
 
-		#region Soukrome metody - Private - pro tridu Ele
+		#region Ciste soukrome metody - Private - pro tridu Ele
 
 		/// <summary>
 		/// Vraci hodnotu X souradnice Elementu - nevim kde vsude se tato metoda pouziva

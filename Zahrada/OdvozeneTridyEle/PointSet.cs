@@ -9,11 +9,13 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.OdvozeneTridyEle
 {
-
+    /// <summary>
+    /// PoinSet je volna cara nebo rovny polygon
+    /// </summary>
     [Serializable]
     public class PointSet : Ele
     {
-        #region Clenske promenne tridy PointSet - coz je vlastne Polygon
+        #region Clenske promenne tridy PointSet - tj. Polygonu
         public ArrayList points;
         private bool _curved = false;
         private bool _closed = false;
@@ -36,14 +38,9 @@ namespace Zahrada.OdvozeneTridyEle
             rot = true; //muze rotovat?
         }
 
-        #endregion
+        #endregion        
 
-        #region Soukrome metody - Private - pro tridu PointSet
-          
-
-        #endregion
-
-        #region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid
+        #region Vlastnosti public + urcene pro muj Property Grid
 
         // Zde mela vlozen zvlastni editor bodu pro vlastnost 
         [Category("Polygon"),Description("Body polygonu")]
@@ -164,12 +161,9 @@ namespace Zahrada.OdvozeneTridyEle
 
         #endregion
 
-        #region Verejne pristupne metody - Public - pro tridu PointSet
+        #region Verejne public metody - pro tridu PointSet
 
-        // Pochopit o co vlastne jde ....
-        /// <summary>
-        /// Nastav konecnou zmenenou velikost Elementu SetPoint
-        /// </summary>
+        //Nastav konecnou zmenenou velikost Elementu SetPoint, jeho bodu
         public void SetupSize()
         {
             if (points != null)
@@ -189,7 +183,7 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        // pochopit o co tady jde ....
+        // repozice bodu polygonu ...
         public void RePos()
         {
             if (points != null)
@@ -220,7 +214,7 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        // pochopit o co tady jde ....
+        // predloz mi skutecne body ....
         public ArrayList GetRealPosPoints()
         {
             ArrayList a = new ArrayList();
@@ -231,31 +225,25 @@ namespace Zahrada.OdvozeneTridyEle
             return a;
         }
 
-        /// <summary>
-        /// Prida bod do polygonu
-        /// </summary>
+        
+        //Prida bod do polygonu
         public void AddPoint(Point p)
         {
             points.Add(p);
         }
 
 
-        /// <summary>
-        /// Odstrani bod z polygonu
-        /// </summary>
+       
+        // Odstrani bod z polygonu        
         public void RmPoint(Point p)
         {
             points.Remove(p);
         }
 
-        
-
-
        
         #endregion
-
        
-        #region Prepsane zdedene metody  - Overridden methods
+        #region Prepsane override zdedene metody
 
         /// <summary>
         /// Volano na konci po dokonceni Move/Redim Elemenetu PointSet. Navic pro kazdy bod polygonu ukoncuje Zoom.
@@ -435,7 +423,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.OnGrpYRes = OnGrpYRes;
             newE.OnGrpY1Res = OnGrpY1Res;
 
-            newE.CopyGradProp(this);
+            //newE.CopyGradProp(this);
 
             newE.Closed = Closed;
             newE.Zakřivení = Zakřivení;

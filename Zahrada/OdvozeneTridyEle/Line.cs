@@ -8,10 +8,13 @@ using System.ComponentModel;
 
 namespace Zahrada.OdvozeneTridyEle
 {
+    /// <summary>
+    /// Line je zakladni cara v projektu
+    /// </summary>
     [Serializable]
     public class Line : Ele
     {
-        #region Clenske promenne tridy Line
+        #region Clenske promenne tridy Line, navic oproti Ele
         private LineCap _startCap;
         private LineCap _endCap;
         #endregion
@@ -41,8 +44,7 @@ namespace Zahrada.OdvozeneTridyEle
         }
         #endregion
 
-
-        #region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid
+        #region Vlastnosti public + urcene pro muj Property Grid
         [Category ("Čára - vzhled"), Description("Tvar počátku čáry")]
         public LineCap StartCap
         {
@@ -107,11 +109,9 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-
         #endregion
-
-
-        #region Prepsane zdedene metody  - Overridden methods
+        
+        #region Prepsane override zdedene metod
 
         /// <summary>
         /// Klonuj Element Cara
@@ -174,8 +174,7 @@ namespace Zahrada.OdvozeneTridyEle
         {
             gp.AddLine((GetX + dx) * zoom, (GetY + dy) * zoom, (GetX1 + dx) * zoom, (GetY1 + dy) * zoom);
         }
-
-
+        
 
         /// <summary>
         /// Nakresli Caru do objektu Graphics
