@@ -551,6 +551,7 @@ namespace Zahrada
 		}
 
 
+
 		//[Category("Vzhled"), Description("Průhlednost")]
 		public virtual int Alpha
 		{
