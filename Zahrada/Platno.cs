@@ -1406,7 +1406,7 @@ namespace Zahrada
                         }
                         else
                         {
-                            if (this.shapes.selEle is PointSet)
+                            if (this.shapes.selEle is Polygon)
                             {//POLYGON MANAGEMENT START
                                 shapes.AddPoint();
                                 
@@ -1568,9 +1568,9 @@ namespace Zahrada
                 if (shapes.selEle != null)
                 {
                     
-                    if (shapes.selEle is PointSet)
+                    if (shapes.selEle is Polygon)
                     {
-                        ((PointSet)shapes.selEle).SetupSize();
+                        ((Polygon)shapes.selEle).SetupSize();
                         shapes.sRec = new SelPoly(shapes.selEle);  // vytvorim ovladaci obdelnik kolem ...
                         
                     }

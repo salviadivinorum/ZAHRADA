@@ -16,7 +16,7 @@ namespace Zahrada.PomocneTridy
 
         public SelPoly(Ele el) : base(el)
         {
-            Setup((PointSet)el);
+            Setup((Polygon)el);
         }
 
         #endregion
@@ -24,7 +24,7 @@ namespace Zahrada.PomocneTridy
 
         #region Verejne pristupne metody pro tridu SelPoly
 
-        public void Setup(PointSet el)
+        public void Setup(Polygon el)
         {
             if (rot)
             {
@@ -79,7 +79,7 @@ namespace Zahrada.PomocneTridy
         }
 
 
-        public void ReCreateCreationHandles(PointSet el)
+        public void ReCreateCreationHandles(Polygon el)
         {
             ArrayList tmp = new ArrayList();
             foreach (Handle h in handles)

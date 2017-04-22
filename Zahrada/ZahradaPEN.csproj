@@ -91,7 +91,7 @@
     <Compile Include="OdvozeneTridyEle\Group.cs" />
     <Compile Include="OdvozeneTridyEle\ImageBox.cs" />
     <Compile Include="OdvozeneTridyEle\Line.cs" />
-    <Compile Include="OdvozeneTridyEle\PointSet.cs" />
+    <Compile Include="OdvozeneTridyEle\Polygon.cs" />
     <Compile Include="OdvozeneTridyEle\Rect.cs" />
     <Compile Include="OdvozeneTridyEle\Stext.cs" />
     <Compile Include="OdvozeneTridyEle\Textura.cs" />

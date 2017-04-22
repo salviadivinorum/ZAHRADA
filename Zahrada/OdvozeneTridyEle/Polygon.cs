@@ -10,7 +10,7 @@ using Zahrada.PomocneTridy;
 namespace Zahrada.OdvozeneTridyEle
 {
     [Serializable]
-    public class PointSet : Ele
+    public class Polygon : Ele
     {
         #region Clenske promenne tridy PointSet - coz je vlastne Polygon
         public ArrayList points;
@@ -19,7 +19,7 @@ namespace Zahrada.OdvozeneTridyEle
         #endregion
 
         #region Konstruktor tridy PointSet
-        public PointSet(int x, int y, int x1, int y1, ArrayList a)
+        public Polygon(int x, int y, int x1, int y1, ArrayList a)
         {
             X = x;
             Y = y;
@@ -414,7 +414,7 @@ namespace Zahrada.OdvozeneTridyEle
                 }
             }
 
-            PointSet newE = new PointSet(X, Y, X1, Y1, aa);
+            Polygon newE = new Polygon(X, Y, X1, Y1, aa);
             newE.Pero_barva = Pero_barva;
             newE.Pero_šířka = Pero_šířka;
             newE.FillColor = FillColor;
@@ -449,9 +449,9 @@ namespace Zahrada.OdvozeneTridyEle
         public override void CopyFrom(Ele ele)
         {
             CopyStdProp(ele, this);
-            Rotace = ((PointSet)ele).Rotace;
-            Zakřivení = ((PointSet)ele).Zakřivení;
-            Closed = ((PointSet)ele).Closed;
+            Rotace = ((Polygon)ele).Rotace;
+            Zakřivení = ((Polygon)ele).Zakřivení;
+            Closed = ((Polygon)ele).Closed;
         }
 
         /// <summary>
