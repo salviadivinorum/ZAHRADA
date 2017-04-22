@@ -96,10 +96,7 @@ namespace Zahrada
 		private float _pruhlednost = 100f;
 
 		private float _savedPruhlednost =100f;
-
-
-
-
+        
 
         // pokusim se odrusit jakykoliv linear
         
