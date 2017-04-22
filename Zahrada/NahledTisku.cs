@@ -11,15 +11,21 @@ using System.Windows.Forms;
 
 namespace Zahrada
 {
+    /// <summary>
+    /// Formularove okno pro tisk planu
+    /// </summary>
     public partial class NahledTisku : Form
     {
-        
+        #region Konstruktor okna
         public NahledTisku()
         {
             InitializeComponent();
             ReallyCenterToScreen();
         }
 
+        #endregion
+
+        #region Klikani na tlacitka ve formu
         private void CloseToolStripButton_Click(object sender, EventArgs e)
         {
             Close();
@@ -41,23 +47,19 @@ namespace Zahrada
         // stisk Nastaveni tisku ...
         private void NastaveniToolStripButton_Click(object sender, EventArgs e)
         {
-           
             DialogResult dlg = printDialog1.ShowDialog();
-            // neumim to osetrit lepe - idealni by bylo tlacitko "Pouzit" z Dialogu, ale to WinForms asi nezna
+            // neumim to osetrit lepe - idealni by bylo tlacitko "Pouzit" z Dialogu, ale to WinForms nezna
             if (dlg != DialogResult.Cancel)
-            {                
+            {
                 PrinterSettings mysettings = printDialog1.PrinterSettings;
                 docToPrint.PrinterSettings = mysettings;
-                // refresh kontrolky PreviewControl po zmene tiskarny ...
                 PrintPreviewControl.Document = docToPrint;
                 PrintPreviewControl.Refresh();
-               
             }
-            
+        } 
+        #endregion
 
-        }
-
-        #region Zoomování náhledu tisku
+        #region Zoomování náhledu tisku - klikani na tlacitka
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             PrintPreviewControl.Zoom = (float)Convert.ToDouble(toolStripMenuItem1.Text) / 100;
@@ -94,6 +96,8 @@ namespace Zahrada
         }
         #endregion
 
+        #region Pomocna centrovaci metoda vzskakovaciho okna
+
         // pomocna metoda - vycentruje modalni vyskakovaci okna do stredu obrazovky
         protected void ReallyCenterToScreen()
         {
@@ -107,6 +111,7 @@ namespace Zahrada
             };
         }
 
+        #endregion
 
     }
 

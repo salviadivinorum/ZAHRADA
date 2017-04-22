@@ -61,7 +61,7 @@ namespace Zahrada
         }
         #endregion
 
-        #region Obsluha podruznych udalosti - Load, apod
+        #region Obsluha udalosti Load okna HlavniForm
         private void hlavniFormularoveOkno_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized; // maximalizace formul. okna
@@ -585,7 +585,6 @@ namespace Zahrada
             vlozenePlatno.ExportTo();
         } 
         #endregion
-
         
         #region Tlacitka na Zadavani rozmeru planu / Velikost Mrize
         // Rozmery platna na DropDownButton ... pro jednotlive polozky tohoto DropDown tlacitka
@@ -704,28 +703,7 @@ namespace Zahrada
             //vlozenePlatno.shapes.indeOfSavedPlan = 0; // pro budouci load planu
 
         }
-
-        // pomocna metoda k un-check v tool strip DropDownButton - vsem polozkam Item
-        /*
-        private void Unmark()
-        {
-            object ob1;
-            object ob2;
-            ToolStripMenuItem b;
-            foreach (object a in FrameToolStripDropDownButton.DropDownItems)
-            {
-                ob1 = a.GetType();
-                ob2 = typeof(ToolStripSeparator);
-
-                if (ob1 != ob2)
-                {
-                    b = (ToolStripMenuItem)a;
-                    b.Checked = false;
-                }
-            }
-        }
-
-        */
+        
         // odznaci ve Vlastni rozmeru to co je potreba ... a oznaci co je treba
         private void Unmark2Special()
         {
@@ -802,10 +780,7 @@ namespace Zahrada
             switch (text)
             {
                 case "Mříž Vypnuta":
-                    grs = 0;
-                    //UnmarkToolStripDropDownItems(GridToolStripDropDownButton);
-                    //item.Checked = true;
-                    //item.
+                    grs = 0;                    
                     break;
                 case "Mříž 1cm":
                     grs = 1;
@@ -866,7 +841,6 @@ namespace Zahrada
         }
         #endregion
 
-
         #region Tlacitka Help, About me
         // Maly WinForm o me
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -875,14 +849,12 @@ namespace Zahrada
             form.ShowDialog();
         }
         
-        #endregion
-                
+        #endregion                
 
         #region Ukonceni aplikace
         // Ukonceni programu - tlacitkem
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             Close();
         }
 
@@ -919,7 +891,6 @@ namespace Zahrada
 
 
         #endregion
-
 
         #region Obsluha tlačítek v Menu baru
 
@@ -1018,8 +989,7 @@ namespace Zahrada
         {
             vlozenyToolBox.deleteBtn_Click(null, null);
         }
-
-
+        
         private void nápovedaCelkovatoolStripMenuItem_Click(object sender, EventArgs e)
         {
             vlozenePlatno.OtevriOknoNapovedy();
