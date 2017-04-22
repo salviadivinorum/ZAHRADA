@@ -311,7 +311,7 @@ namespace Zahrada
 		public void MovePoint(int dx, int dy)
 		{
 			((SelPoly)sRec).MovePoints(dx, dy);
-			((SelPoly)sRec).ReCreateCreationHandles((Polygon)selEle);
+			((SelPoly)sRec).ReCreateCreationHandles((PointSet)selEle);
 		}
 
 		
@@ -324,7 +324,7 @@ namespace Zahrada
 				int i = ((SelPoly)this.sRec).GetIndex();
 				if (i > 0)
 				{
-					((Polygon)this.selEle).points.Insert(i - 1, p);
+					((PointSet)this.selEle).points.Insert(i - 1, p);
 					sRec = new SelPoly(selEle);// vytvori uchopovy obdelnik
 				}
 			}			
@@ -492,7 +492,7 @@ namespace Zahrada
 				selEle.Select();
 				selEle.Select(r);
 				// nyni vytvorim uchopovy objekt
-				if (selEle is Polygon)
+				if (selEle is PointSet)
 					sRec = new SelPoly(selEle); //vytvori uchopovy obdelnik typu polygonovy vyber
 				else
 					sRec = new SelRect(selEle); //vytvori uchopovy obdelnik typu obdelnikovy vyber
@@ -539,7 +539,7 @@ namespace Zahrada
 			}
 			if (selEle != null)
 			{
-				if (selEle is Polygon)
+				if (selEle is PointSet)
 					sRec = new SelPoly(selEle);//vytvori uchopovy obdelnik typu polygonovy vyber
 				else
 					sRec = new SelRect(selEle);//vytvori uchopovy obdelnik typu obdlenikovy vyber
@@ -694,7 +694,7 @@ namespace Zahrada
 				y1 = y + minDim;*/
 			
 			DeSelect();
-			Polygon r = new Polygon(x, y, x1, y1, aa);
+			PointSet r = new PointSet(x, y, x1, y1, aa);
 
 			r.Closed = closed;
 			r.Pero_barva = penC;
