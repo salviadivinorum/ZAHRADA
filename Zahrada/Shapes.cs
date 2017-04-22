@@ -124,13 +124,19 @@ namespace Zahrada
 		public void AfterLoad() // Tato metoda zdvojuje praci metodz InitUndoBuff() - je zbytecna !!
 		{
 			InitUndoBuff();
-			/*
+            /*
 			foreach (Ele e in List)
 				e.AfterLoad();
 			*/
-		}
 
-		public void CopyMultiSelected(int dx, int dy)
+            foreach (Ele el in List)
+            {
+                el.Průhlednost = el.SavedPruhlednost;
+            }
+
+        }
+
+        public void CopyMultiSelected(int dx, int dy)
 		{
 			ArrayList tmpList = new ArrayList();
 			foreach (Ele elem in List)
