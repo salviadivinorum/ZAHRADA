@@ -77,14 +77,15 @@ namespace Zahrada
 		protected LineCap end;
 		protected DashStyle dashstyle; // carkovana care jako vypln objektu
 
-		protected int _rotation; // to nevim co je za clena
+        // vnitrni stavy elementu - dle jejich nazvu ....
+		protected int _rotation; 
 		private Color _penColor;
 		private float _penWidth;
 		private Color _fillColor;
 		private bool _colorFilled;
 		private bool _textureFilled;
 		private bool _showBorder;
-		private DashStyle _dashStyle; // proc je to uvedeno podruhe ?		
+		private DashStyle _dashStyle; 	
 		private bool _closed;
 
 		// nasatveni pruhlednosti prvkum
@@ -97,6 +98,12 @@ namespace Zahrada
 		private float _savedPruhlednost =100f;
 
 
+
+
+
+        // pokusim se odrusit jakykoliv linear
+        
+
 		// Linear Gradient:
 		private bool _useGradientLine = false;
 		private Color _endColor = Color.White;
@@ -104,6 +111,9 @@ namespace Zahrada
 		private int _gradientAngle = 0;
 		private int _gradientLen = 0;
 		private float _endColorPos = 1f;
+
+
+        
 
 		// Group objekt - zoomovani:
 		protected float gprZoomX = 1f;
