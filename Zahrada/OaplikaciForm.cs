@@ -10,8 +10,12 @@ using System.Windows.Forms;
 
 namespace Zahrada
 {
+    /// <summary>
+    /// Okno s informací o tvůrci applikace
+    /// </summary>
     public partial class OaplikaciForm : Form
     {
+        #region Konstruktor okna
         public OaplikaciForm()
         {
             InitializeComponent();
@@ -19,19 +23,13 @@ namespace Zahrada
             ReallyCenterToScreen();
         }
 
-
         private void MyInit()
         {
             CopyrightTextBox.Text = "(c) 2017 David Jaroš"
                 + Environment.NewLine +
-                "Freeware pro akademické" 
-                + Environment.NewLine+
+                "Freeware pro akademické"
+                + Environment.NewLine +
                 "a nekomerční použití";
-        }
-
-        private void OKbutton_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         // pomocna metoda - vycentruje modalni vyskakovaci okna do stredu obrazovky
@@ -46,7 +44,18 @@ namespace Zahrada
                 Y = Math.Max(workingArea.Y, workingArea.Y + (workingArea.Height - this.Height) / 2)
             };
         }
-    }
 
+
+        #endregion
+        
+        #region Stisk OK tlacitka
+        private void OKbutton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        #endregion
+
+    }
 
 }

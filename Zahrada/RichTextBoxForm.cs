@@ -12,26 +12,16 @@ using Zahrada.UndoRedoBufferTridy;
 namespace Zahrada
 {
     /// <summary>
-    /// Toto bude formular pro zadavani textu ve formatu RTF Rich text format
+    /// Formularove okno pro zadani textu ve formatu RTF - Rich text format - do planu zahrady
     /// </summary>
     public partial class RichTextBoxForm : Form
     {
+        #region Konstruktor okna
+
         public RichTextBoxForm()
         {
             InitializeComponent();
             ReallyCenterToScreen();
-        }
-
-        private void RTFOKBtn_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-            Close();            
-        }
-
-        private void RTFCancelBtn_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
         }
 
         // pomocna metoda - vycentruje modalni vyskakovaci okna do stredu obrazovky
@@ -47,6 +37,23 @@ namespace Zahrada
             };
         }
 
+        #endregion
+
+        #region Obsluha OK a CANCEL tlacitka
+
+        private void RTFOKBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void RTFCancelBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        } 
+
+        #endregion
 
     }
 }

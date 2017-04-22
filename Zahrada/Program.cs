@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace Zahrada
 {
+    /// <summary>
+    /// Hlavní vstupní bod aplikace "Navrhování zahrad"
+    /// </summary>
     static class Program
-    {
-        /// <summary>
-        /// Hlavní vstupní bod aplikace.
-        /// </summary>
+    {        
         [STAThread]
         static void Main()
         {
@@ -26,8 +26,10 @@ namespace Zahrada
             Application.Run(new HlavniForm()); // hlavni spousteci bod aplikace
         }
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")] // proti rozmazani ikon - import knihovny user32.dll aby mohla byt volana funkce SetProcessDPIaware
-        private static extern bool SetProcessDPIAware(); // toto je funkce, ktera nastavi cely proces jako DPI aware (dots per inch]
+        // proti rozmazani ikon - import knihovny user32.dll aby mohla byt volana funkce SetProcessDPIaware
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        // toto je funkce, ktera nastavi cely proces jako DPI aware (dots per inch):
+        private static extern bool SetProcessDPIAware();
 
     }
 }
