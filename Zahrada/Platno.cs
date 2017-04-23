@@ -2124,7 +2124,7 @@ namespace Zahrada
         // otevreni okna napovedy
         public void OtevriOknoNapovedy()
         {
-            if (!File.Exists(Path.Combine(Application.StartupPath, "Zahrada-napoveda.chm")))
+            if (!File.Exists(Path.Combine(Application.StartupPath, "zahrada-napoveda.chm")))
             {
                 infoStatLabel.Text = "Soubor nápovědy nebyl nalezen !";                
                 return;
@@ -2132,7 +2132,7 @@ namespace Zahrada
             else
             {
                 string cesta;
-                cesta = Path.Combine(Application.StartupPath, "Zahrada-napoveda.chm");
+                cesta = Path.Combine(Application.StartupPath, "zahrada-napoveda.chm");
 
                 if (procesy.Count() == 0)
                 {
