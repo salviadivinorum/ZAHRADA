@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 
 namespace Zahrada.OdvozenyPropertyGrid
-{  
+{
 	/// <summary>
 	/// This class overrides the standard PropertyGrid provided by Microsoft.
 	/// It also allows to hide (or filter) the properties of the SelectedObject displayed by the PropertyGrid.
-	/// Article on CodeProject : http://www.codeproject.com/Articles/13342/Filtering-properties-in-a-PropertyGrid
+	/// Article: "Filtering properties in a PropertyGrid"
+	/// CodeProject URL : http://www.codeproject.com/Articles/13342/Filtering-properties-in-a-PropertyGrid
 	/// </summary>    
 	public partial class FilteredPropertyGrid : PropertyGrid
 	{

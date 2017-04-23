@@ -7,7 +7,7 @@ using Zahrada.PomocneTridy;
 namespace Zahrada.PomocneTridy
 {
     /// <summary>
-    /// Uchop pouzity v polygonech pro vytvoreni noveho uchopu uprostred mezi stavajicimi uchopy
+    /// Uchop Handle pouzity v Polygonech pro vytvoreni noveho uchopu uprostred mezi stavajicimi uchopy
     /// </summary>
     [Serializable]
     public class NewPointHandle : Handle
@@ -15,9 +15,7 @@ namespace Zahrada.PomocneTridy
         #region Clenske promenne tridy NewPointHandle
 
         PointWrapper linkedPoint;
-        PointWrapper realPoint;
-        // GrArc linkedArc; // GrArc se pouziva v Graph - to nebudu pouzivat
-
+        PointWrapper realPoint;  
         Ele el;
         public int index = 0;
 
@@ -40,12 +38,13 @@ namespace Zahrada.PomocneTridy
         #endregion
 
         #region Vlastnosti tridy NewPointHandle
+
         public  PointWrapper GetRealPoint
         {
             get { return realPoint; }
         }
 
-        public void SetRealPoint(PointWrapper p) // tuto metodu pozdeji prepsat jako vlastnost !! SETTER
+        public void SetRealPoint(PointWrapper p) 
         {
             realPoint = p;
         }
@@ -55,29 +54,10 @@ namespace Zahrada.PomocneTridy
             get { return linkedPoint; }
         }
 
-        #endregion
-
-
-        #region Verejne metody pro tridu NewPointHandle
-
-        // nebudu je pouzivat - jedna se o manipulaci se tridou Graph
-        /*
-        public GrArc getArc()
-        {
-            return linkedArc;
-        }
-        public void setArc(GrArc a)
-        {
-            linkedArc = a;
-        }
-        */
-
-        //public PointWrapper GetRealPoint
-
-
-        #endregion
+        #endregion       
 
         #region Prepsane zdedene metody
+
         public override void Move(int x, int y)
         {
             base.Move(x, y);

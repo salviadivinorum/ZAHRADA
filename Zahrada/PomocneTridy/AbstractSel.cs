@@ -8,14 +8,14 @@ namespace Zahrada.PomocneTridy
 {
 
     /// <summary>
-    /// Abstraktni trida - kolekce uchopu - pro operace typu redim/move/rotate nad vsemi elementy
+    /// Abstraktni trida - kolekce uchopu kolem elementu - pro operace typu redim/move/rotate nad vsemi elementy
     /// </summary>
     [Serializable]
     public abstract class AbstractSel : Ele
     {
         #region Clenske promenne tridy AbstractSel
 
-        protected ArrayList handles;
+        protected ArrayList handles; // drzi si v sobe kolekci uchopu kolem libovolneho Ele
 
         #endregion
 
@@ -36,13 +36,13 @@ namespace Zahrada.PomocneTridy
             gprZoomY = el.GetGprZoomY;
             iAmAline = el.iAmAline;
             IamGroup = el.AmIaGroup;            
-            this.EndMoveRedim();
+            EndMoveRedim();
         }
 
 
         #endregion
 
-        #region Prepsane metody zdedene od tridy Ele
+        #region Prepsane override metody zdedene od tridy Ele
 
         public override void EndMoveRedim()
         {
@@ -115,11 +115,9 @@ namespace Zahrada.PomocneTridy
         {
             IamGroup = i;
         }
-
-
-        /// <summary>
-        /// Rekurzivne rozhoduje nad kterym uchopem je bod (x,y)
-        /// </summary>
+        
+       
+        // Rekurzivne se rozhoduje nad kterym uchopem je bod (x,y)        
         public string IsOver(int x, int y)
         {
             string ret;
@@ -134,9 +132,6 @@ namespace Zahrada.PomocneTridy
 
             return "NO";
         }
-
-
-
 
         
         #endregion

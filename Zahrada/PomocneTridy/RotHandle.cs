@@ -13,6 +13,7 @@ namespace Zahrada.PomocneTridy
     public class RotHandle : Handle
     {
         #region Konstruktor tridy RotHandle
+
         public RotHandle(Ele e, string o) :base(e,o)  // to je konstruktor, ktery vola konstruktor sveho predka (base)
         { }
 
@@ -72,7 +73,6 @@ namespace Zahrada.PomocneTridy
         }
 
         #endregion
-
 
     }
 }

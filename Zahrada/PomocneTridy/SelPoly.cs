@@ -8,21 +8,18 @@ using Zahrada.OdvozeneTridyEle;
 
 namespace Zahrada.PomocneTridy
 {
+    /// <summary>
+    /// Trida pro vyber polygonu - Rovneho nebo typu Volna cara
+    /// </summary>
     [Serializable]
     public class SelPoly : AbstractSel
     {
-
         #region Konstruktor tridy SelPoly
 
-        public SelPoly(Ele el) : base(el)
+        public SelPoly(Ele el) : base(el) // volam konstruktor predka + novinky
         {
             Setup((PointSet)el);
         }
-
-        #endregion
-
-
-        #region Verejne pristupne metody pro tridu SelPoly
 
         public void Setup(PointSet el)
         {
@@ -78,7 +75,48 @@ namespace Zahrada.PomocneTridy
             handles.Add(new RedimHandle(this, "NE"));
         }
 
+        #endregion
 
+        #region Prepsane zdedene metody
+
+        public override void Redim(int x, int y, string redimSt)
+        {
+            base.Redim(x, y, redimSt);
+            foreach (Handle h in handles)
+            {
+                if (h is NewPointHandle)
+                {
+                    h.visible = false;
+                }
+            }
+        }
+
+        public override void Rotate(float x, float y)
+        {
+            base.Rotate(x, y);
+            foreach (Handle h in handles)
+            {
+                if (h is PointHandle | h is NewPointHandle)
+                {
+                    h.visible = false;
+                }
+            }
+        }
+
+        public override void Draw(Graphics g, int dx, int dy, float zoom)
+        {
+            base.Draw(g, dx, dy, zoom);
+            Pen myPen = new Pen(Color.Blue, 1f);
+            myPen.DashStyle = DashStyle.Dash;
+            g.DrawRectangle(myPen, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
+            myPen.Dispose();
+        }
+
+
+        #endregion
+
+        #region Verejne pristupne metody pro tridu SelPoly
+               
         public void ReCreateCreationHandles(PointSet el)
         {
             ArrayList tmp = new ArrayList();
@@ -103,10 +141,10 @@ namespace Zahrada.PomocneTridy
                 c++;
                 if (prec != null)
                 {
-                    minx = System.Math.Min(p.X, prec.X);
-                    miny = System.Math.Min(p.Y, prec.Y);
-                    maxx = System.Math.Max(p.X, prec.X);
-                    maxy = System.Math.Max(p.Y, prec.Y);
+                    minx = Math.Min(p.X, prec.X);
+                    miny = Math.Min(p.Y, prec.Y);
+                    maxx = Math.Max(p.X, prec.X);
+                    maxy = Math.Max(p.Y, prec.Y);
                     PointWrapper newP = new PointWrapper(minx + (int)((maxx - minx) / 2), miny + (int)((maxy - miny) / 2));
                     handles.Add(new NewPointHandle(this, "NEWP", newP, c));
                 }
@@ -182,43 +220,5 @@ namespace Zahrada.PomocneTridy
 
         #endregion
 
-        #region Prepsane zdedene metody
-
-        public override void Redim(int x, int y, string redimSt)
-        {
-            base.Redim(x, y, redimSt);
-            foreach (Handle h in handles)
-            {
-                if (h is NewPointHandle)
-                {
-                    h.visible = false;
-                }
-            }
-        }
-
-        public override void Rotate(float x, float y)
-        {
-            base.Rotate(x, y);
-            foreach (Handle h in handles)
-            {
-                if (h is PointHandle | h is NewPointHandle)
-                {
-                    h.visible = false;
-                }
-            }
-        }
-
-        public override void Draw(Graphics g, int dx, int dy, float zoom)
-        {
-            base.Draw(g, dx, dy, zoom);
-            Pen myPen = new Pen(Color.Blue, 1f);
-            myPen.DashStyle = DashStyle.Dash;
-            g.DrawRectangle(myPen, (X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom);
-            myPen.Dispose();
-        }
-
-
-
-        #endregion
     }
 }

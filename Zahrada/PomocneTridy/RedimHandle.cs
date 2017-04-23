@@ -7,7 +7,7 @@ using Zahrada.PomocneTridy;
 namespace Zahrada.PomocneTridy
 {
     /// <summary>
-    /// Zakladni 1 odvozeny uchop Handle (od base class), ktery slouzi pro vsechny akce typu redim/rotate/move
+    /// Odvozeny uchop od Handle, ktery slouzi pro vsechny akce typu redim/rotate/move
     /// </summary>
     [Serializable]
     public class RedimHandle : Handle
@@ -76,10 +76,6 @@ namespace Zahrada.PomocneTridy
             myBrush.Dispose();
             whitePen.Dispose();
         }
-
-
-
-
 
         #endregion
 

@@ -7,9 +7,9 @@ using Zahrada.PomocneTridy;
 
 namespace Zahrada.PomocneTridy
 {
-
     /// <summary>
-    /// Kolekce uchopu do tvaru ctverce pro obecne operace nad elemety typu: redim/move/rotate
+    /// Trida pro vyber ostatnich elementu na Platne vyjma Polygonu - je to vyber pomoci ctverce
+    /// tyka se to pro obecne operace nad elemety typu: redim/move/rotate
     /// </summary>
     [Serializable]
     public class SelRect : AbstractSel
@@ -21,13 +21,7 @@ namespace Zahrada.PomocneTridy
             Setup();
         }
 
-        #endregion
-
-        #region Verejne pristupne metody pro tridu SelRect
-
-        /// <summary>
-        /// Nastavuje uchopy objektu - samotnemu elementu, nebo skupine elementu (group)
-        /// </summary>
+        //Nastavuje uchopy objektu - samotnemu elementu, nebo pozdeji - skupine elementu (Group)
         public void Setup()
         {
             if (!AmIaGroup)
@@ -54,7 +48,7 @@ namespace Zahrada.PomocneTridy
                     //SW
                     handles.Add(new RedimHandle(this, "SW"));
                     //W
-                    handles.Add(new RedimHandle(this, "W"));                    
+                    handles.Add(new RedimHandle(this, "W"));
                 }
             }
             else
@@ -77,10 +71,7 @@ namespace Zahrada.PomocneTridy
             }
         }
 
-
-
-
-        #endregion
+        #endregion       
 
         #region Prepsane zdedene metody
 
@@ -98,7 +89,6 @@ namespace Zahrada.PomocneTridy
         }
 
         #endregion
-
 
     }
 }

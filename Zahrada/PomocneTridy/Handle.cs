@@ -10,10 +10,7 @@ namespace Zahrada.PomocneTridy
     /// </summary>
     [Serializable]
     public abstract class Handle : Ele
-    {
-        // Abstract modifikator znaci, ze to je trida, ktera je urcena pouze jako korenova trida pro dalsi tridy. Abstraktni trida vyzaduje dedicnost dalsich trid. Abstraktni trida nemuze byt instancovana
-        // Sealed modifikator znaci, ze to je trida, ktera zakazuje dedicnost od sebe
-
+    { 
         #region Clenske promenne tridy Handle
 
         public string op;

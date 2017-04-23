@@ -31,17 +31,7 @@ namespace Zahrada.PomocneTridy
             RePosition(e);
         }
 
-        #endregion
-
-        #region Verejne metody pro tridu PointHandle
-        /*
-        public PointWrapper GetPoint()
-        {
-            return linkedPoint;
-        }
-        */
-
-        #endregion
+        #endregion       
 
         #region Vlastnosti tridy PointHandle
         public PointWrapper GetPoint
@@ -52,6 +42,7 @@ namespace Zahrada.PomocneTridy
         #endregion
 
         #region Prepsane zdedene metody
+
         public override bool IsSelected()
         {
             return (selected | linkedPoint.selected);
@@ -94,6 +85,6 @@ namespace Zahrada.PomocneTridy
 
         } 
         #endregion
-    }
-       
+
+    }       
 }

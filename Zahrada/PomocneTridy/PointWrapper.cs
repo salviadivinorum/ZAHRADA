@@ -10,7 +10,7 @@ namespace Zahrada.PomocneTridy
 {
     
     /// <summary>
-    /// trida PointWrapper - slouzi k ukladani a k aktualizaci bodu - points - v ArrayListu
+    /// PointWrapper je obalovaci trida a slouzi k ukladani a k aktualizaci bodu - Point - v ArrayListu Handle
     /// </summary>
     [Serializable]
     public class PointWrapper
@@ -38,10 +38,54 @@ namespace Zahrada.PomocneTridy
         }
 
 
+        #endregion        
+
+        #region Vlastnosti public + pro muj Property Grid
+
+        [Category("Pozice"), Description("hodnota X ")]
+        public int X
+        {
+            get
+            {
+                return p.X;
+            }
+            set
+            {
+                p.X = value;
+            }
+        }
+
+        [Category("Pozice"), Description("hodnota Y ")]
+        public int Y
+        {
+            get
+            {
+                return p.Y;
+            }
+            set
+            {
+                p.Y = value;
+            }
+        }
+
+        [Category("Pozice"), Description("Vlastní bod ")]
+        public Point Point
+        {
+            get
+            {
+                return p;
+            }
+            set
+            {
+                p = value;
+            }
+        }
+
+
 
         #endregion
 
-        #region Verejne pristupne - public - metody tridy PointWrapper
+        #region Verejne pristupne public metody tridy PointWrapper
 
         public void Zoom(float dx, float dy)
         {
@@ -90,51 +134,6 @@ namespace Zahrada.PomocneTridy
         {
             Y = (-1) * p.Y + hei;
             startp = p;
-        }
-
-
-
-        #endregion
-
-
-        #region Vlastnosti, kterym jsem priradil navic jmeno kategorie a description - pro muj Property Grid
-        [Category("Pozice"), Description("hodnota X ")]
-        public int X
-        {
-            get
-            {
-                return p.X;
-            }
-            set
-            {
-                p.X = value;
-            }
-        }
-
-        [Category("Pozice"), Description("hodnota Y ")]
-        public int Y
-        {
-            get
-            {
-                return p.Y;
-            }
-            set
-            {
-                p.Y = value;
-            }
-        }
-
-        [Category("Pozice"), Description("Vlastní bod ")]
-        public Point Point
-        {
-            get
-            {
-                return p;
-            }
-            set
-            {
-                p = value;
-            }
         }
 
 
