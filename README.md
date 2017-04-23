@@ -7,7 +7,7 @@ Spuštění projektu ve vývojovém prostředí Visual Studio 2017 souborem Zahr
 
 Zdrojový kód- prohlížení bez IDE
 --------------------------------
-Dokumentace zdrojového kódu umístěna v dresáři "Zahrada dokumentace"
+Dokumentace zdrojového kódu umístěna v dresáři "Dokumentace kódu".
 
 Spuštění aplikace - bez IDE
 ---------------------------
