@@ -10,7 +10,8 @@ namespace Zahrada
     /// Hlavní vstupní bod aplikace "Navrhování zahrad"
     /// </summary>
     static class Program
-    {        
+    {
+        
         [STAThread]
         static void Main()
         {
@@ -27,6 +28,7 @@ namespace Zahrada
         }
 
         // proti rozmazani ikon - import knihovny user32.dll aby mohla byt volana funkce SetProcessDPIaware
+        /// <exclude />
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         // toto je funkce, ktera nastavi cely proces jako DPI aware (dots per inch):
         private static extern bool SetProcessDPIAware();
