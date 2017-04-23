@@ -12,15 +12,31 @@ using Zahrada.UndoRedoBufferTridy;
 
 namespace Zahrada
 {
-    #region Delegati (metody) pro nasledujici Udalosti nad objekty - pouziti je v mych dvou UserControl: Nastroje a Platno
-    // metoda pro obsluhu zmen vlastnosti - delegat pro udalost event ... a jeji argumenty
-    public delegate void OptionChangedEventHandler(object sender, OptionEventArgs e);
+	#region Delegati (metody) pro nasledujici Udalosti nad objekty - pouziti je v mych dvou UserControl: Nastroje a Platno
+	
+	/// <summary>
+	/// Metoda pro obsluhu ZMEN vlastnosti - delegat pro udalost event a jeji argumenty
+	/// </summary>
+	/// <param name="sender">The sender.</param>
+	/// <param name="e">The <see cref="OptionEventArgs"/> instance containing the event data.</param>
+	public delegate void OptionChangedEventHandler(object sender, OptionEventArgs e);
+	
 
-    // metoda pro obsluhu vybraneho objektu - delegat pro udalost event ... a jeji argumenty
-    public delegate void ObjectSelectedEventHandler(object sender, PropertyEventArgs e);
+	  
+	/// <summary>
+	/// Metoda pro obsluhu VYBRANÉHO objektu - delegat pro udalost event a jeji argumenty   
+	/// </summary>
+	/// <param name="sender">The sender.</param>
+	/// <param name="e">The <see cref="PropertyEventArgs"/> instance containing the event data.</param>
+	public delegate void ObjectSelectedEventHandler(object sender, PropertyEventArgs e);
 
-    // nova udalostni trida s vnitrnimi daty objektu o stavu objektu, ktery ma vysilat pro zmenu svych vlastnosti
-    public class PropertyEventArgs : EventArgs 
+	
+	
+	/// <summary>
+	/// Udalostni trida s vnitrnimi daty objektu - o jeho stavu, ktery ma vysilat - pro zmenu svych vlastnosti   
+	/// </summary>
+	/// <seealso cref="System.EventArgs" />
+	public class PropertyEventArgs : EventArgs 
 	{
 		public Ele[] ele; // pole elementu obsazenych v nejakem objektu
 		public bool undoable; // zda-li je objekt undo - mozny
@@ -34,9 +50,13 @@ namespace Zahrada
 			redoable = r;
 		}
 	}
+	
 
-    // nova udalostni trida s vntirni textovou promennou urcujici moznosti prace nad objektem
-    public class OptionEventArgs : EventArgs 
+	/// <summary>
+	/// Udalostni trida s vnitrni textovou promennou urcujici moznosti prace nad objektem
+	/// </summary>
+	/// <seealso cref="System.EventArgs" />
+	public class OptionEventArgs : EventArgs 
 	{
 		public string option;
 
@@ -47,6 +67,7 @@ namespace Zahrada
 			// toto je dulezite - objekty vysilaji textovou zpravu "select: a tu posloucha muj toolBox Nastroje 
 		}
 	}
+
 
 	#endregion
 
@@ -129,15 +150,15 @@ namespace Zahrada
 		public void AfterLoad() // Tato metoda zdvojuje praci metody InitUndoBuff()
 		{
 			InitUndoBuff();
-           
-            foreach (Ele el in List)
-            {
-                el.Průhlednost = el.SavedPruhlednost;
-            }
+		   
+			foreach (Ele el in List)
+			{
+				el.Průhlednost = el.SavedPruhlednost;
+			}
 
-        }
+		}
 
-        public void CopyMultiSelected(int dx, int dy)
+		public void CopyMultiSelected(int dx, int dy)
 		{
 			ArrayList tmpList = new ArrayList();
 			foreach (Ele elem in List)
@@ -162,9 +183,9 @@ namespace Zahrada
 			}
 		}
 
-              
-        //Vraci kopii vybraneho elementu
-        public Ele CpSelected()
+			  
+		//Vraci kopii vybraneho elementu
+		public Ele CpSelected()
 		{
 			if (selEle != null)
 			{
@@ -174,7 +195,7 @@ namespace Zahrada
 			return null;
 		}
 
-        		
+				
 		// Kopiruje oznaceny objekt, oznaci ho jako vybrany		
 		public void CopySelected(int dx, int dy)
 		{
@@ -196,7 +217,7 @@ namespace Zahrada
 			}
 		}
 
-        	
+			
 		// Smaze vybrany objekt		
 		public void RmSelected()
 		{
@@ -335,7 +356,7 @@ namespace Zahrada
 			}
 		}
 
-        // Zakladni metoda pro prichytavani elementu k mrizce
+		// Zakladni metoda pro prichytavani elementu k mrizce
 		public void Fit2Grid(int gridsize)
 		{
 			foreach (Ele e in List)
@@ -361,8 +382,8 @@ namespace Zahrada
 		}
 
 
-        // Volam postupne nahoru od tridy Shapes pres platno do toolboxu, 
-        // v nemz je pro mujPropertyGrid obsluha udalosti PropertyValueChanged		
+		// Volam postupne nahoru od tridy Shapes pres platno do toolboxu, 
+		// v nemz je pro mujPropertyGrid obsluha udalosti PropertyValueChanged		
 		public void PropertyChanged()
 		{
 			foreach (Ele e in List)
@@ -392,7 +413,7 @@ namespace Zahrada
 			return myArray;
 		}
 
-        //  Vraci seznam s vybranymi elementy. Pouziti je v metode SaveObj	
+		//  Vraci seznam s vybranymi elementy. Pouziti je v metode SaveObj	
 		public ArrayList GetSelectedList()
 		{
 			ArrayList tmpL = new ArrayList();
@@ -534,7 +555,7 @@ namespace Zahrada
 
 		#region Verejne metody tridy Shapes pro Undo/Redo operace
 
-        // Prace s Unod/Redo nad objekty v undobufferu
+		// Prace s Unod/Redo nad objekty v undobufferu
 		public bool UndoEnabled()
 		{
 			return undoB.UndoAble();
@@ -604,7 +625,7 @@ namespace Zahrada
 		#endregion
 
 		#region Verejne metody pro obecne vykreslovani Draw (vsech/vybranych) objektu
-        		
+				
 		// Vykresli Vsechny objekty		
 		public void Draw(Graphics g, int dx, int dy, float zoom)
 		{
@@ -620,7 +641,7 @@ namespace Zahrada
 					sRec.Draw(g, dx, dy, zoom);
 		}
 
-        	
+			
 		// Vykresli vsechny Nevybrane objekty	
 		public void DrawUnselected(Graphics g, int dx, int dy, float zoom)
 		{
@@ -660,7 +681,7 @@ namespace Zahrada
 		#endregion
 
 		#region Verejne metody pro pridavani Elementu do seznamu List - pouzivam v udalostech MouseUp nad platnem
-      
+	  
 		// Do Listu prida Polygon - vseobecny	
 		public void AddPoly(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, ArrayList aa, bool curv, bool closed, bool textureFilled, TextureBrush textura)
 		{    
@@ -716,7 +737,7 @@ namespace Zahrada
 			selEle = r;
 			selEle.Select();
 		}
-        
+		
 		
 		// Do Listu prida Caru	
 		public void AddLine(int x, int y, int x1, int y1, Color penC, float penW)

@@ -12,6 +12,11 @@ using System.Windows.Forms;
 
 namespace Zahrada
 {
+    /// <summary>
+    /// Hlavni formularove okno aplikace. Obsahuje tridy Platno a Nastroje.
+    /// Coz jsou uzivatelske ovladaci prvky.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class HlavniForm : Form
     {
 

@@ -1,6 +1,6 @@
 ﻿namespace Zahrada
 {
-    public partial class UserControlNastroje
+    public partial class Nastroje
     {        
 
         /// <summary> 
@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlNastroje));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Nastroje));
             this.imageListProVytvoritZmenit = new System.Windows.Forms.ImageList(this.components);
             this.imageListProTabControl = new System.Windows.Forms.ImageList(this.components);
             this.ToolTipProTalcitka = new System.Windows.Forms.ToolTip(this.components);

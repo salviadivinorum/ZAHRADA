@@ -10,7 +10,7 @@ namespace Zahrada
     /// <summary>
     /// Uzivatelsky ovladaci prvek nad tridou Platno
     /// </summary>
-    public partial class UserControlNastroje : UserControl
+    public partial class Nastroje : UserControl
     {
         #region Clenske promenne tridy Nastroje
         
@@ -24,7 +24,7 @@ namespace Zahrada
         #endregion
 
         #region Konstruktor tridy Nastroje
-        public UserControlNastroje()
+        public Nastroje()
         {
             InitializeComponent();
             PruvodceListBox.SelectedIndex = 0;          

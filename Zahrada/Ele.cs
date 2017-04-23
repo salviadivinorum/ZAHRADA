@@ -51,10 +51,18 @@ namespace Zahrada
 
 		// pozor - nektere clenske promenne nemam spravne zapouzdrene - pres vlastnosti Get/Set		
 		public static float dpix; 
-		public static float dpiy; 
+		public static float dpiy;
 
-		// Vycty vlastnosti (enumerace) pro Spojovane objekty (Grouped objects) - jejich vlastnosti {0,1,2, pripadne 3}
+		
+		/// <summary>
+		/// Vycet pro operace se spojovanymi elementy - move, resize a nothing, obecne {0,1,2}  
+		/// </summary>
 		public enum OnGroupResize { Move, Resize, Nothing };
+
+
+		/// <summary>
+		/// Vycet pro pruniky seskupovanych elementu, obecne {0,1,2,3}  
+		/// </summary>
 		public enum GroupDisplay { Default, Intersect, Xor, Exclude };
 
 		// Zmena velikosti objektu pouzivajici X souradnici (zapadni-West)
@@ -716,7 +724,7 @@ namespace Zahrada
 			}
 		}
 
-		*/ 
+		*/
 		#endregion
 
 
@@ -724,21 +732,29 @@ namespace Zahrada
 
 		#region Verejne pristupne metody - Public - pro tridu Ele
 
+		/// <summary>
+		/// Elelemtu umozni rotaci o velikost (int a)
+		/// </summary>
 		public void AddRotation(int a)
 
 		{
 			SetRotation = (GetRotation + a);
 		}
 
-		// metoda pro resize textury v pozadi Elementu
-		public static Image resizeImage(Image imgToResize, Size size)
+
+		/// <summary>
+		/// Metoda pro resize textury v pozadi Elementu.       
+		/// </summary>
+		public static Image ResizeImage(Image imgToResize, Size size)
 		{
 			return (Image)(new Bitmap(imgToResize, size));
 		}
-		// jakou TEXTUROU vyplnen
 
-
-		// doplneno at mi Ele vrati texture Brush !!
+		
+		
+		/// <summary>
+		/// Vraci TextureBrush zvoleneho Ele
+		/// </summary>
 		public TextureBrush GetTextureBrush()
 		{
 			return FillTexture;
@@ -746,7 +762,10 @@ namespace Zahrada
 
 
 
-		// Dulezite - na pruhlednost - kazdemu prvku 
+		// Dulezite - na pruhlednost - kazdemu prvku         
+		/// <summary>
+		/// Obecna zmena pruhlednosti obrazku a textur ve formatu Imege
+		/// </summary>
 		public Bitmap ChangeOpacity(Image img, float opacityvalue)
 		{
 			Bitmap bmp = new Bitmap(img.Width, img.Height); // Urci Sirku a Vysku zdrojoveho Image - dulezite !

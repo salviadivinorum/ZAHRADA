@@ -94,7 +94,6 @@
     <Compile Include="OdvozeneTridyEle\PointSet.cs" />
     <Compile Include="OdvozeneTridyEle\Rect.cs" />
     <Compile Include="OdvozeneTridyEle\Stext.cs" />
-    <Compile Include="OdvozeneTridyEle\Textura.cs" />
     <Compile Include="OdvozenyPropertyGrid\FilteredPropertyGrid.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -119,6 +118,7 @@
     <Compile Include="PomocneTridy\RotHandle.cs" />
     <Compile Include="PomocneTridy\SelPoly.cs" />
     <Compile Include="PomocneTridy\SelRect.cs" />
+    <Compile Include="PomocneTridy\Textura.cs" />
     <Compile Include="PomocneTridy\ZoomHandle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
