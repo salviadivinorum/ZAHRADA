@@ -10,7 +10,7 @@ using Zahrada.PomocneTridy;
 namespace Zahrada.OdvozeneTridyEle
 {
     /// <summary>
-    /// Trida Group - seskupeni elementu
+    /// Trida Group slouzi k seskupeni elementu
     /// </summary>
     [Serializable]
     public class Group : Ele

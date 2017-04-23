@@ -11,9 +11,9 @@ using System.Runtime.InteropServices;
 namespace Zahrada.PomocneTridy
 {
     /// <summary>
-    /// Article: "UserControl: How to add MouseWheel Listener?"
-    /// StackOverflow URL: http://stackoverflow.com/questions/7852824/usercontrol-how-to-add-mousewheel-listener
     /// This class overrides standard WinForms event named Control.MouseWheel for scrolling UI up and down
+    /// Article: "UserControl: How to add MouseWheel Listener?"
+    /// StackOverflow URL: http://stackoverflow.com/questions/7852824/usercontrol-how-to-add-mousewheel-listener    /// 
     /// </summary>
     public static class MouseWheelHandler
     {

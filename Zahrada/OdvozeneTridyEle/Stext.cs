@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 namespace Zahrada.OdvozeneTridyEle
 {
 	/// <summary>
-	/// Element jako Jednoduchy text
+	/// Stext predstavuje jednoduchy text, ktery umi zobrazit GDI+
 	/// </summary>
 	[Serializable]
 	public class Stext : Ele
@@ -91,33 +91,33 @@ namespace Zahrada.OdvozeneTridyEle
 			set { text = value; }
 		}
 
-        [Category("Vzhled"), Description("Zvolený font textu")]
-        public Font Font
-        {
-            get { return f; }
-            set { f = value; }
-        }
+		[Category("Vzhled"), Description("Zvolený font textu")]
+		public Font Font
+		{
+			get { return f; }
+			set { f = value; }
+		}
 
 
-        [Category("Vzhled"), Description("Nastavit barvu Pera")]
-        public override Color Pero_barva
-        {
-            get
-            {
-                return base.Pero_barva;
-            }
-            set
-            {
-                base.Pero_barva = value;
+		[Category("Vzhled"), Description("Nastavit barvu Pera")]
+		public override Color Pero_barva
+		{
+			get
+			{
+				return base.Pero_barva;
+			}
+			set
+			{
+				base.Pero_barva = value;
 
-            }
-        }
+			}
+		}
 
-        #endregion
+		#endregion
 
-        #region Prepsane override zdedene metody
+		#region Prepsane override zdedene metody
 
-        public override void AddGp(GraphicsPath gp, int dx, int dy, float zoom)
+		public override void AddGp(GraphicsPath gp, int dx, int dy, float zoom)
 		{
 			gp.AddRectangle(new RectangleF((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom));
 
@@ -196,14 +196,14 @@ namespace Zahrada.OdvozeneTridyEle
 			if (texture == null)
 			{
 				ObrBitmap = ImageOfTexture;
-                ObrBitmap = ChangeOpacity(ObrBitmap, (Průhlednost / 100));
-                texture2 = new TextureBrush(ObrBitmap);
+				ObrBitmap = ChangeOpacity(ObrBitmap, (Průhlednost / 100));
+				texture2 = new TextureBrush(ObrBitmap);
 			}
 			else
 			{
 				ObrImage = texture.Image;
-                ObrImage = ChangeOpacity(ObrImage, (Průhlednost / 100));
-                texture2 = new TextureBrush(ObrImage);
+				ObrImage = ChangeOpacity(ObrImage, (Průhlednost / 100));
+				texture2 = new TextureBrush(ObrImage);
 				PrevodImageNaBitmap = new Bitmap(ObrImage);
 				ImageOfTexture = PrevodImageNaBitmap;
 
@@ -223,15 +223,15 @@ namespace Zahrada.OdvozeneTridyEle
 
 			Pen myPen = new Pen(Pero_barva, ScaledPenWidth(zoom));
 			myPen.DashStyle = DashStyleMy;
-            myPen.Color = Transparency(Pero_barva, Alpha);
+			myPen.Color = Transparency(Pero_barva, Alpha);
 
-            if (selected)
+			if (selected)
 			{
 				myPen.Color = Color.Red;
 				myPen.Color = this.Transparency(myPen.Color, 120);
 				myPen.Width = myPen.Width + 1;
 			}
-            
+			
 
 			if (TextureFilled || ColorFilled)
 			{
@@ -252,22 +252,22 @@ namespace Zahrada.OdvozeneTridyEle
 
 			Font tmpf = new Font(CharFont.FontFamily, CharFont.Size * zoom, CharFont.Style);
 			g.DrawString(Text, tmpf, new SolidBrush(this.Pero_barva), new RectangleF((X + dx) * zoom, (Y + dy) * zoom, (X1 - X) * zoom, (Y1 - Y) * zoom), stringFormat);
-            
+			
 			texture2.Dispose();
 			//obr.Dispose();
 			// myPath.Dispose();
 			myPen.Dispose();
 			// translateMatrix.Dispose();
-            
+			
 			tmpf.Dispose();
 			myPen.Dispose();
 
-            
+			
 			if (myBrush != null)
 				myBrush.Dispose();
 
 			g.Restore(gs);// obnovi predchozi transformaci
-            
+			
 		}
 		#endregion
 

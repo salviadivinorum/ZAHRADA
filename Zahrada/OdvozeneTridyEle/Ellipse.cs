@@ -10,7 +10,7 @@ using Zahrada.PomocneTridy;
 namespace Zahrada.OdvozeneTridyEle
 {
     /// <summary>
-    /// Trida Ellipse - klasicka elipsa
+    /// Trida Ellipse je klasicka elipsa
     /// </summary>
     [Serializable]
     public class Ellipse : Ele

@@ -10,7 +10,7 @@ using Zahrada.PomocneTridy;
 namespace Zahrada.OdvozeneTridyEle
 {
     /// <summary>
-    /// Obdelnik - univerzalni tvar
+    /// Rectangle je obdelnik - univerzalni tvar
     /// </summary>
     [Serializable]
     public class Rect : Ele
