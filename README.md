@@ -13,9 +13,11 @@ Spuštění aplikace - bez IDE
 ---------------------------
 Aplikace je připravená ke spuštění samostatně bez vývojového prostředí.
 
-Ideálně: tlačítkem Clone or Download -> Donload ZIP.
+1.) Stáhnout projekt do počítače: tlačítkem Clone or Download -> Donload ZIP.
 
-Nebo: je potřeba stáhnout na pevný disk počítače všechny 3 soubory v adresáři "Samostatně spustitelný soubor". Spuštění aplikace potom souborem "zahrada.exe".
+2.) rozbalit ZIP
+
+3.) v adresáři "Samostatně spustitelný soubor" spustit soubor "zahrada.exe".
 
 UML dokumentace
 ----------------
