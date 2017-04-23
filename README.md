@@ -12,7 +12,9 @@ Dokumentace zdrojového kódu umístěna v dresáři "Dokumentace kódu".
 Spuštění aplikace - bez IDE
 ---------------------------
 Aplikace je připravená ke spuštění samostatně bez vývojového prostředí.
+
 Ideálně: tlačítkem Clone or Download -> Donload ZIP.
+
 Nebo: je potřeba stáhnout na pevný disk počítače všechny 3 soubory v adresáři "Samostatně spustitelný soubor". Spuštění aplikace potom souborem "zahrada.exe".
 
 UML dokumentace
