@@ -12,11 +12,15 @@ using Zahrada.UndoRedoBufferTridy;
 
 namespace Zahrada
 {
-	#region Delegati (metody) pro nasledujici Udalosti nad objekty - pouziti je v mych dvou UserControl: Nastroje a Platno
-	public delegate void OptionChangedEventHandler(object sender, OptionEventArgs e); // metoda pro obsluhu zmen vlastnosti - delegat pro udalost event ... a jeji argumenty
-	public delegate void ObjectSelectedEventHandler(object sender, PropertyEventArgs e); // metoda pro obsluhu vybraneho objektu - delegat pro udalost event ... a jeji argumenty
+    #region Delegati (metody) pro nasledujici Udalosti nad objekty - pouziti je v mych dvou UserControl: Nastroje a Platno
+    // metoda pro obsluhu zmen vlastnosti - delegat pro udalost event ... a jeji argumenty
+    public delegate void OptionChangedEventHandler(object sender, OptionEventArgs e);
 
-	public class PropertyEventArgs : EventArgs // nova udalostni trida s vnitrnimi daty objektu o stavu objektu, ktery ma vysilat pro zmenu svych vlastnosti
+    // metoda pro obsluhu vybraneho objektu - delegat pro udalost event ... a jeji argumenty
+    public delegate void ObjectSelectedEventHandler(object sender, PropertyEventArgs e);
+
+    // nova udalostni trida s vnitrnimi daty objektu o stavu objektu, ktery ma vysilat pro zmenu svych vlastnosti
+    public class PropertyEventArgs : EventArgs 
 	{
 		public Ele[] ele; // pole elementu obsazenych v nejakem objektu
 		public bool undoable; // zda-li je objekt undo - mozny
@@ -31,7 +35,8 @@ namespace Zahrada
 		}
 	}
 
-	public class OptionEventArgs : EventArgs // nova udalostni trida s vntirni textovou promennou urcujici moznosti prace nad objektem
+    // nova udalostni trida s vntirni textovou promennou urcujici moznosti prace nad objektem
+    public class OptionEventArgs : EventArgs 
 	{
 		public string option;
 
@@ -52,9 +57,9 @@ namespace Zahrada
 	public class Shapes
 	{
 		#region Clenske promenne tridy Shapes
-		public ArrayList List; // ZAKLADNI Seznam objektu na platne "platno"
+		public ArrayList List; // ZAKLADNI Seznam objektu na platne "Platno"
 		public AbstractSel sRec; // promenna objektu Uchop - k manipulaci s objekty pomoci uchopu
-		public Ele selEle; // Vybrany Element Ele
+		public Ele selEle; // Vybrany element Ele
 		public int minDim = 10;
 
 		//undo/redo buffer 
@@ -72,6 +77,7 @@ namespace Zahrada
 		#endregion
 
 		#region Konstruktor tridy Shapes
+
 		public Shapes(float dpix, float dpiy)
 		{
 			List = new ArrayList();
@@ -97,7 +103,6 @@ namespace Zahrada
 		/// <summary>
 		/// Pomocna metoda k ovladani v Property Gridu 
 		/// </summary>
-		/// <returns></returns>
 		private int CountSelected()
 		{
 			int i = 0;
@@ -121,14 +126,10 @@ namespace Zahrada
 			return (List.Count > 0);
 		}
 
-		public void AfterLoad() // Tato metoda zdvojuje praci metodz InitUndoBuff() - je zbytecna !!
+		public void AfterLoad() // Tato metoda zdvojuje praci metody InitUndoBuff()
 		{
 			InitUndoBuff();
-            /*
-			foreach (Ele e in List)
-				e.AfterLoad();
-			*/
-
+           
             foreach (Ele el in List)
             {
                 el.Průhlednost = el.SavedPruhlednost;
@@ -161,12 +162,9 @@ namespace Zahrada
 			}
 		}
 
-		
-
-		/// <summary>
-		/// Vraci kopii vybraneho elementu
-		/// </summary>
-		public Ele CpSelected()
+              
+        //Vraci kopii vybraneho elementu
+        public Ele CpSelected()
 		{
 			if (selEle != null)
 			{
@@ -176,10 +174,8 @@ namespace Zahrada
 			return null;
 		}
 
-
-		/// <summary>
-		/// Kopiruje oznaceny objekt, oznaci ho jako vybrany
-		/// </summary>
+        		
+		// Kopiruje oznaceny objekt, oznaci ho jako vybrany		
 		public void CopySelected(int dx, int dy)
 		{
 			if (selEle != null)
@@ -200,10 +196,8 @@ namespace Zahrada
 			}
 		}
 
-
-		/// <summary>
-		/// Smaze vybrany objekt
-		/// </summary>
+        	
+		// Smaze vybrany objekt		
 		public void RmSelected()
 		{
 			ArrayList tmpList = new ArrayList();
@@ -229,9 +223,8 @@ namespace Zahrada
 			}
 		}
 
-		/// <summary>
-		/// Seskupi oznacene objekty
-		/// </summary>
+		
+		// Seskupi oznacene objekty		
 		public void GroupSelected()
 		{
 			ArrayList tmpList = new ArrayList();
@@ -266,9 +259,8 @@ namespace Zahrada
 			undoB = new UndoBuffer(20);
 		}
 
-		/// <summary>
-		/// Rozlozi skupinu elementu
-		/// </summary>
+		
+		// Rozlozi skupinu elementu	
 		public void DeGroupSelected()
 		{
 			ArrayList tmpList = new ArrayList();
@@ -302,7 +294,7 @@ namespace Zahrada
 			}
 			if (found)
 			{
-				// ldyz seskupuji / rozkladam Group musim resetovat UndoBuffer
+				// kdyyz seskupuji / rozkladam Group musim resetovat UndoBuffer
 				undoB = new UndoBuffer(20);
 			}
 
@@ -343,7 +335,7 @@ namespace Zahrada
 			}
 		}
 
-
+        // Zakladni metoda pro prichytavani elementu k mrizce
 		public void Fit2Grid(int gridsize)
 		{
 			foreach (Ele e in List)
@@ -368,9 +360,9 @@ namespace Zahrada
 			}
 		}
 
-		/// <summary>
-		/// Volam postupne nahoru od tridy Shapes pres platno do toolboxu, v nemz je pro mujPropertyGrid obsluha udalosti PropertyValueChanged
-		/// </summary>
+
+        // Volam postupne nahoru od tridy Shapes pres platno do toolboxu, 
+        // v nemz je pro mujPropertyGrid obsluha udalosti PropertyValueChanged		
 		public void PropertyChanged()
 		{
 			foreach (Ele e in List)
@@ -382,9 +374,8 @@ namespace Zahrada
 			}
 		}
 
-		/// <summary>
-		/// Vraci pole s vybranymi elementy. Pouziti je pro Property Grid
-		/// </summary>
+		
+		// Vraci pole s vybranymi elementy. Pouziti je pro Property Grid	
 		public Ele[] GetSelectedArray()
 		{
 			Ele[] myArray = new Ele[CountSelected()];
@@ -401,9 +392,7 @@ namespace Zahrada
 			return myArray;
 		}
 
-		/// <summary>
-		///  Vraci seznam s vybranymi elementy. Pouziti je v metode SaveObj
-		/// </summary>
+        //  Vraci seznam s vybranymi elementy. Pouziti je v metode SaveObj	
 		public ArrayList GetSelectedList()
 		{
 			ArrayList tmpL = new ArrayList();
@@ -417,9 +406,8 @@ namespace Zahrada
 			return tmpL;
 		}
 
-		/// <summary>
-		/// Nastavuje seznam elementu List. Pouziti je v metode LoadObj
-		/// </summary>
+	
+		// Nastavuje seznam elementu List. Pouziti je v metode LoadObj		
 		public void SetList(ArrayList a)
 		{
 			foreach (Ele e in a)
@@ -429,9 +417,8 @@ namespace Zahrada
 			}
 		}
 
-		/// <summary>
-		/// Posun do popredi
-		/// </summary>
+		
+		// Posun do popredi	
 		public void MoveFront()
 		{
 			if (selEle != null)
@@ -441,9 +428,8 @@ namespace Zahrada
 			}
 		}
 
-		/// <summary>
-		/// Posun do pozadi
-		/// </summary>
+		
+		// Posun do pozadi	
 		public void MoveBack()
 		{
 			if (selEle != null)
@@ -454,9 +440,8 @@ namespace Zahrada
 			}
 		}
 
-		/// <summary>
-		/// Zrus vyber vsech elementu
-		/// </summary>
+		
+		// Zrus vyber vsech elementu		
 		public void DeSelect()
 		{
 			foreach (Ele obj in List)
@@ -468,9 +453,8 @@ namespace Zahrada
 		}
 
 
-		/// <summary>
-		/// Vybere posledni shape obsahujici souradnice x,y
-		/// </summary>
+		
+		// Vybere posledni shape obsahujici souradnice x,y		
 		public void ClickOnShape(int x, int y, RichTextBox r)
 		{
 			sRec = null;
@@ -499,9 +483,8 @@ namespace Zahrada
 			}
 		}
 
-		/// <summary>
-		/// Vybere vsechny elementy (objekty) ve Vyberovem obdelniku
-		/// </summary>
+	
+		// Vybere vsechny elementy (objekty) ve Vyberovem obdelniku	
 		public void MultiSelect(int startX, int startY, int endX, int endY, RichTextBox r)
 		{
 			sRec = null;
@@ -550,6 +533,8 @@ namespace Zahrada
 		#endregion
 
 		#region Verejne metody tridy Shapes pro Undo/Redo operace
+
+        // Prace s Unod/Redo nad objekty v undobufferu
 		public bool UndoEnabled()
 		{
 			return undoB.UndoAble();
@@ -619,11 +604,8 @@ namespace Zahrada
 		#endregion
 
 		#region Verejne metody pro obecne vykreslovani Draw (vsech/vybranych) objektu
-
-
-		/// <summary>
-		/// Vykresli vsechny objekty
-		/// </summary>
+        		
+		// Vykresli Vsechny objekty		
 		public void Draw(Graphics g, int dx, int dy, float zoom)
 		{
 			bool almostOneSelected = false; 
@@ -638,10 +620,8 @@ namespace Zahrada
 					sRec.Draw(g, dx, dy, zoom);
 		}
 
-
-		/// <summary>
-		/// Vykresli vsechny Nevybrane objekty
-		/// </summary>
+        	
+		// Vykresli vsechny Nevybrane objekty	
 		public void DrawUnselected(Graphics g, int dx, int dy, float zoom)
 		{
 			g.PageScale = 10f; // nevim proc tu je to 10f
@@ -656,9 +636,8 @@ namespace Zahrada
 			}
 		}
 
-		/// <summary>
-		/// Vykresli vsechny vybrane obejkty
-		/// </summary>
+		
+		// Vykresli vsechny vybrane obejkty	
 		public void DrawSelected(Graphics g, int dx, int dy, float zoom)
 		{
 			bool almostOneSelected = false;
@@ -681,11 +660,8 @@ namespace Zahrada
 		#endregion
 
 		#region Verejne metody pro pridavani Elementu do seznamu List - pouzivam v udalostech MouseUp nad platnem
-
-
-		/// <summary>
-		/// Do Listu prida Polygon - vseobecny
-		/// </summary>
+      
+		// Do Listu prida Polygon - vseobecny	
 		public void AddPoly(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, ArrayList aa, bool curv, bool closed, bool textureFilled, TextureBrush textura)
 		{    
 			/*if (x1 - minDim <= x)
@@ -714,9 +690,8 @@ namespace Zahrada
 		}
 
 
-		/// <summary>
-		/// Do Listu prida Obdelnik
-		/// </summary>
+		
+		// Do Listu prida Obdelnik	
 		public void AddRect(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
 		{
 			if (x1 - minDim <= x)
@@ -741,40 +716,9 @@ namespace Zahrada
 			selEle = r;
 			selEle.Select();
 		}
-
-		// Arc uz neni
-		/*
-		/// <summary>
-		/// Do Listu prida Oblouk
-		/// </summary>
-		public void AddArc(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
-		{
-			if (x1 - minDim <= x)
-				x1 = x + minDim;
-			if (y1 - minDim <= y)
-				y1 = y + minDim;
-
-			DeSelect();
-			Arc r = new Arc(x, y, x1, y1);
-			r.PenColor = penC;
-			r.PenWidth = penW;
-			r.FillColor = fillC;
-			r.ColorFilled = filled;
-			r.TextureFilled = textureFilled;
-			r.FillTexture = textura;
-
-			List.Add(r);			
-			StoreDo("I", r);
-
-			sRec = new SelRect(r); // nad obloukem je uchopovy obdelnik do tvaru obdelnika nad hranici tavru
-			selEle = r;
-			selEle.Select();
-		}
-		*/
-			
-		/// <summary>
-		/// Do Listu prida Caru
-		/// </summary>
+        
+		
+		// Do Listu prida Caru	
 		public void AddLine(int x, int y, int x1, int y1, Color penC, float penW)
 		{
 
@@ -791,9 +735,8 @@ namespace Zahrada
 			selEle.Select();
 		}
 		
-		/// <summary>
-		/// Do Listu prida Jednoduchy text
-		/// </summary>
+		
+		// Do Listu prida Jednoduchy text	
 		public void AddSimpleTextBox(int x, int y, int x1, int y1, RichTextBox t, Color penC, Color fillC, float penW, bool filled, bool textureFilled, TextureBrush textura)
 		{
 			if (x1 - minDim <= x)
@@ -825,9 +768,8 @@ namespace Zahrada
 		}
 
 
-		/// <summary>
-		/// Do Listu prida ImageBox - obrazek
-		/// </summary>
+		
+		// Do Listu prida ImageBox - obrazek = zahradni prvek	
 		public void AddImageBox(int x, int y, int x1, int y1, string st, Color penC, float penW)
 		{
 			if (x1 - (minDim*10) <= x)
@@ -860,9 +802,8 @@ namespace Zahrada
 			selEle.Select();
 		}
 
-		/// <summary>
-		/// Do Listu prida Elipsu
-		/// </summary>
+		
+		// Do Listu prida Elipsu	
 		public void AddElipse(int x, int y, int x1, int y1, Color penC, Color fillC, float penW, bool colorFilled, bool textureFilled, TextureBrush textura)
 		{
 			if (x1 - minDim <= x)
@@ -879,7 +820,7 @@ namespace Zahrada
 			r.TextureFilled = textureFilled;
 			r.FillTexture = textura;
 
-			this.List.Add(r);
+			List.Add(r);
 			
 			StoreDo("I", r);
 
@@ -889,9 +830,6 @@ namespace Zahrada
 		}
 		
 		#endregion
-
-
-
 
 	}
 }
