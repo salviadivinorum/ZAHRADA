@@ -7,16 +7,21 @@ using Zahrada.UndoRedoBufferTridy;
 
 namespace Zahrada.UndoRedoBufferTridy
 {
+    /// <summary>
+    /// Trida na kterou se pri volani Undo a Redo v platne a v nastrojich odkazuji
+    /// </summary>
     [Serializable]
     public class UndoBuffer
     {
         #region Clenske promenne tridy UndoBuffer
+
         private BufferedObject top;
         private BufferedObject bottom;
         private BufferedObject current;
         private int _buffSize;
         private int _nElem;
         private bool atBottom;
+
         #endregion
 
         #region Konstruktor tridy UndoBuffer
@@ -24,7 +29,7 @@ namespace Zahrada.UndoRedoBufferTridy
         public UndoBuffer(int i)
         {
             BuffSize = i;
-            _nElem = 0; // pocitadlo elementu - otestuj to
+            _nElem = 0; // pocitadlo elementu v bufferu
             bottom = null;
             top = null;
             current = null;
@@ -35,6 +40,7 @@ namespace Zahrada.UndoRedoBufferTridy
         #endregion
 
         #region Vlastnosti tridy UndoBuffer
+
         public int BuffSize
         {
             get

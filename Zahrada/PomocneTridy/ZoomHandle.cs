@@ -7,12 +7,11 @@ using Zahrada.PomocneTridy;
 namespace Zahrada.PomocneTridy
 {
     /// <summary>
-    /// Uchop pro ZOOMovani - nevim asi nikde neni pouzity
+    /// Uchop pro ZOOMovani elementu. Urceno pro pozdejsi dokonceni !
     /// </summary>
     [Serializable]
     public class ZoomHandle : Handle
     {
-
         #region Konstruktor tridy ZoomHandle
 
         public ZoomHandle(Ele e, string o) :base(e,o)
@@ -24,6 +23,7 @@ namespace Zahrada.PomocneTridy
         #endregion
 
         #region Prepsane zdedene metody
+
         public override void RePosition(Ele e)
         {
             float zx = (e.Sirka - (e.Sirka * e.GetGprZoomX)) / 2;

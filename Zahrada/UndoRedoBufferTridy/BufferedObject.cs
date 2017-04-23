@@ -15,16 +15,20 @@ namespace Zahrada.UndoRedoBufferTridy
     public class BufferedObject
     {
         #region Clenske promenne tridy BufferedObject
+
         public BufferedObject next;
         public BufferedObject prev;
         public object elem;
+
         #endregion
 
         #region Konstruktor tridy BufferedObject
+
         public BufferedObject(object o)
         {
             elem = o;
         }
+
         #endregion
 
     }
