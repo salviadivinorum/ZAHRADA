@@ -1,17 +1,21 @@
 # ZAHRADA
 Projekt k mé aplikaci Navrhování zahrad
 
-Zdrojový kód
---------------
+Zdrojový kód - spuštění v IDE
+------------------------------
 Spuštění projektu ve vývojovém prostředí Visual Studio 2017 souborem Zahrada.sln. Použitý programovací jazyk Visual C#/.NET verze 4.6.1
 
-Spuštění
----------
-Aplikace je navíc připravená ke spuštění také samostatně bez vývojového prostředí - v adresáři bin spustit soubor Zahrada.exe.
+Zdrojový kód- prohlížení bez IDE
+--------------------------------
+Dokumentace zdrojového kódu umístěna v dresáři "Zahrada dokumentace"
+
+Spuštění aplikace - bez IDE
+---------------------------
+Aplikace je připravená ke spuštění samostatně bez vývojového prostředí - je potřeba stáhnout na pevný disk počítače všechny 3 soubory zv adresáři "bin". Spuštění aplikace potom souborem "zahrada.exe".
 
 UML dokumentace
 ----------------
-Class Diagram a Use Case Diagram k projektu se nacházejí ve složce Zahrada UML diagramy.
+Diagram tříd a Diagram případů užití se nacházejí ve složce Zahrada UML diagramy.
 
 
 
