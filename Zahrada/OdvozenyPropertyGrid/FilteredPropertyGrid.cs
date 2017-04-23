@@ -9,23 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-
 namespace Zahrada.OdvozenyPropertyGrid
-{   /// <summary>
+{  
+	/// <summary>
 	/// This class overrides the standard PropertyGrid provided by Microsoft.
 	/// It also allows to hide (or filter) the properties of the SelectedObject displayed by the PropertyGrid.
-	/// Cerpano z : https://www.codeproject.com/articles/28933/a-c-advanced-customizable-propertygrid-contro
-	/// </summary>
-	/// 
+	/// Article on CodeProject : http://www.codeproject.com/Articles/13342/Filtering-properties-in-a-PropertyGrid
+	/// </summary>    
 	public partial class FilteredPropertyGrid : PropertyGrid
 	{
 		/// <summary>Contain a reference to the collection of properties to show in the parent PropertyGrid.</summary>
 		/// <remarks>By default, m_PropertyDescriptors contain all the properties of the object. </remarks>
 		List<PropertyDescriptor> m_PropertyDescriptors = new List<PropertyDescriptor>();
+		
 		/// <summary>Contain a reference to the array of properties to display in the PropertyGrid.</summary>
 		private AttributeCollection m_HiddenAttributes = null, m_BrowsableAttributes = null;
+		
 		/// <summary>Contain references to the arrays of properties or categories to hide.</summary>
 		private string[] m_BrowsableProperties = null, m_HiddenProperties = null;
+		
 		/// <summary>Contain a reference to the wrapper that contains the object to be displayed into the PropertyGrid.</summary>
 		private ObjectWrapper m_Wrapper = null;
 
@@ -151,6 +153,7 @@ namespace Zahrada.OdvozenyPropertyGrid
 				}
 			}
 		}
+		
 		/// <summary>Allows to hide a set of properties to the parent PropertyGrid.</summary>
 		/// <param name="propertyname">A set of attributes that filter the original collection of properties.</param>
 		/// <remarks>For better performance, include the BrowsableAttribute with true value.</remarks>
@@ -159,6 +162,7 @@ namespace Zahrada.OdvozenyPropertyGrid
 			if(filteredoriginalpropertydescriptors == null || filteredoriginalpropertydescriptors.Count == 0) throw new ArgumentException("Attribute not found",attribute.ToString());
 			foreach(PropertyDescriptor propertydescriptor in filteredoriginalpropertydescriptors) HideProperty(propertydescriptor);
 		}
+		
 		/// <summary>Add all the properties that match an attribute to the list of properties to be displayed in the PropertyGrid.</summary>
 		/// <param name="property">The attribute to be added.</param>
 		private void ShowAttribute(Attribute attribute) {
@@ -166,11 +170,13 @@ namespace Zahrada.OdvozenyPropertyGrid
 			if(filteredoriginalpropertydescriptors == null || filteredoriginalpropertydescriptors.Count == 0) throw new ArgumentException("Attribute not found",attribute.ToString());
 			foreach(PropertyDescriptor propertydescriptor in filteredoriginalpropertydescriptors) ShowProperty(propertydescriptor);
 		}
+		
 		/// <summary>Add a property to the list of properties to be displayed in the PropertyGrid.</summary>
 		/// <param name="property">The property to be added.</param>
 		private void ShowProperty(PropertyDescriptor property) {
 			if(!m_PropertyDescriptors.Contains(property)) m_PropertyDescriptors.Add(property);
 		}
+		
 		/// <summary>Allows to hide a property to the parent PropertyGrid.</summary>
 		/// <param name="propertyname">The name of the property to be hidden.</param>
 		private void HideProperty(PropertyDescriptor property) {

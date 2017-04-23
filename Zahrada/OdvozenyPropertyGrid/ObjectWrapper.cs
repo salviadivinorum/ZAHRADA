@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 
-/// <summary>
-/// Pomocny obalovac pro filtredPropertyGrid
-/// Cerpano z : https://www.codeproject.com/articles/28933/a-c-advanced-customizable-propertygrid-contro
-/// </summary>
+
 namespace Zahrada.OdvozenyPropertyGrid
 {
-	/// <summary>This class is a wrapper. It contains the object the propertyGrid has to display.</summary>
+	/// <summary>
+	/// This class is a wrapper. It contains the object the propertyGrid has to display.
+	/// Article on CodeProject : http://www.codeproject.com/Articles/13342/Filtering-properties-in-a-PropertyGrid
+	/// </summary>
 	internal class ObjectWrapper : ICustomTypeDescriptor
 	{
 		/// <summary>Contain a reference to the selected objet that will linked to the parent PropertyGrid.</summary>
 		private object m_SelectedObject = null;
+		
 		/// <summary>Contain a reference to the collection of properties to show in the parent PropertyGrid.</summary>
 		/// <remarks>By default, m_PropertyDescriptors contain all the properties of the object. </remarks>
 		List<PropertyDescriptor> m_PropertyDescriptors = new List<PropertyDescriptor>();
