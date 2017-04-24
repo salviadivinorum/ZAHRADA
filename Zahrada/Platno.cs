@@ -889,7 +889,7 @@ namespace Zahrada
             if (e.Button == MouseButtons.Left)
             {
                 #region START LEFT MOUSE BUTTON PRESSED
-                mouseSx = true; // I start pressing SX
+                mouseSx = true; // zacinam stisk SX
 
                 switch (option)
                 {
@@ -961,7 +961,7 @@ namespace Zahrada
 
 
         #region CONTEXT MENU na PRAVEM TLACITKU - oblusha zde
-        // Co delat kdyz dam na context menu - vymazat
+        // Co delat kdyz dam na context menu volbu Vymazat
         private void DeleteContextToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (shapes.selEle != null & shapes.sRec != null)
@@ -1080,11 +1080,7 @@ namespace Zahrada
                                 shapes.Fit2Grid(Mřížka);
                                 shapes.sRec.Fit2grid(Mřížka);
                             }
-                            break;
-                           
-
-
-
+                            break;    
                         case "C":
                             // Move vybrán
                             if (shapes.selEle != null & shapes.sRec != null)
@@ -1114,7 +1110,7 @@ namespace Zahrada
                             }
                             break;
                         default:
-                            // redim selected
+                            // redim vybrano
                             if (shapes.selEle != null & shapes.sRec != null)
                             {
                                 shapes.selEle.Redim(tmpX - tmpstartX, tmpY - tmpstartY, redimStatus);
@@ -1389,7 +1385,7 @@ namespace Zahrada
                         break;
                     #endregion
                     #region Rect - obdelnik
-                    case "DR": //DrawRect
+                    case "DR": // Obdelnik
 
                         if (status == "drawrect")
                         {
@@ -1399,14 +1395,14 @@ namespace Zahrada
                         break;
                     #endregion  
                     #region Polygon & Volna cara
-                    case "PEN": 
+                    case "PEN": // Volna cara
                         shapes.AddPoly(startX, startY, tmpX, tmpY, creationPenColor, creationFillColor, creationPenWidth, creationColorFilled, penPointList, true, uzavrenaKrivka, creationTextureFilled, creationTexturePattern);
                         penPointList = null;
                         visPenPointList = null;
                         ChangeOption("select");
                         krivka = true;
                         break;
-                    case "POLY":                        
+                    case "POLY": // Polygon                       
                         {
                             // toto je tehdy kdyz jsem nestiskl "A" pri zadavani polygonu ...
                             if(penPointList != null)
@@ -1428,7 +1424,7 @@ namespace Zahrada
                     
                     #endregion                    
                     #region Elipsa                
-                    case "ELL": 
+                    case "ELL": // Elipsa
 
                         if (status == "drawrect")
                         {
@@ -1439,7 +1435,7 @@ namespace Zahrada
                         
                     #endregion                    
                     #region Textový box
-                    case "STB": //DrawSimpleTextBox
+                    case "STB": // Jednoduchy text, vola muj RichTextBoxForm pro vlozeni retezce
                         if (status == "drawrect")
                         {
                             Cursor = System.Windows.Forms.Cursors.WaitCursor;
@@ -1465,7 +1461,7 @@ namespace Zahrada
                         break;
                     #endregion
                     #region Obrazek
-                    case "IB": 
+                    case "IB": // obrazek je mysleno = zahradni prvek
                         if (status == "drawrect")
                         {
                             // load obrazku ...
@@ -1486,7 +1482,7 @@ namespace Zahrada
                        
                     #endregion
                     #region Prima cara
-                    case "LINE":
+                    case "LINE": // obycejna cara !
 
                         if (status == "drawrect")
                         {
