@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using Zahrada.PomocneTridy;
-using Zahrada.UndoRedoBufferTridy;
 
 namespace Zahrada.UndoRedoBufferTridy
 {

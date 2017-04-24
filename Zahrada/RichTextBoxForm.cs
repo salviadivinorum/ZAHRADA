@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using Zahrada.OdvozeneTridyEle;
-using Zahrada.PomocneTridy;
-using Zahrada.UndoRedoBufferTridy;
 
 namespace Zahrada
 {
