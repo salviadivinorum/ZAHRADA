@@ -40,7 +40,9 @@ namespace Zahrada.OdvozeneTridyEle
             StartCap = LineCap.Custom;
             EndCap = LineCap.Custom;
             EndMoveRedim();
-            
+
+            TextureFilled = false;
+
         }
         #endregion
 

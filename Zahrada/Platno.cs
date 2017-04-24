@@ -1926,7 +1926,7 @@ namespace Zahrada
             {
                 foreach (Ele el in shapes.List)
                 {
-                    if(el.TextureFilled)
+                    if(el.TextureFilled && el.ImageOfTexture != null)
                     {
                         TextureBrush texture = el.GetTextureBrush();
                         if (texture == null)

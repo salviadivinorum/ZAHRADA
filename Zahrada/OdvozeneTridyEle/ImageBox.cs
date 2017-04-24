@@ -36,6 +36,7 @@ namespace Zahrada.OdvozeneTridyEle
             EndMoveRedim();
             rot = true;
             Ohraničení = false;
+            TextureFilled = false;
         }
 
         #endregion

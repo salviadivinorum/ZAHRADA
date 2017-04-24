@@ -35,7 +35,11 @@ namespace Zahrada.OdvozeneTridyEle
             //
             EndMoveRedim();
             Rotace = 0;
-            rot = true; //muze rotovat?
+            rot = true; //muze rotovat
+
+            Image obr = Properties.Resources.trava_velmi_husta;
+            ImageOfTexture = (Bitmap)obr;
+            TextureFilled = true;
         }
 
         #endregion        

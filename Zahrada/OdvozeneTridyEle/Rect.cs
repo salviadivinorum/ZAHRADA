@@ -28,6 +28,10 @@ namespace Zahrada.OdvozeneTridyEle
             EndMoveRedim();
             Rotace = 0;
             rot = true;
+
+            Image obr = Properties.Resources.trava_velmi_husta;
+            ImageOfTexture = (Bitmap)obr;
+            TextureFilled = true;
         }
         #endregion
 

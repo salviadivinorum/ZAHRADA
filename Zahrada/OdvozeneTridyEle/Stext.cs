@@ -31,6 +31,10 @@ namespace Zahrada.OdvozeneTridyEle
 			Rotace = 0;
 			// CharFont = new Font(FontFamily.GenericMonospace, 8); ;
 			rot = true;
+
+			Image obr = Properties.Resources.trava_velmi_husta;
+			ImageOfTexture = (Bitmap)obr;
+			TextureFilled = true;
 		}
 
 		#endregion

@@ -37,6 +37,7 @@ namespace Zahrada.PomocneTridy
             iAmAline = el.iAmAline;
             IamGroup = el.AmIaGroup;            
             EndMoveRedim();
+            TextureFilled = false;
         }
 
 

@@ -23,6 +23,7 @@ namespace Zahrada.PomocneTridy
         // konstruktor pro odvozene tridy od tridy Handle
         public Handle()
         {
+            TextureFilled = false;
 
         }
 

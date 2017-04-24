@@ -70,6 +70,10 @@ namespace Zahrada.OdvozeneTridyEle
             GetSetName = "Itm" + ngrp.ToString();
             ngrp++;
 
+            Image obr = Properties.Resources.trava_velmi_husta;
+            ImageOfTexture = (Bitmap)obr;
+            TextureFilled = true;
+
         }
         #endregion
 

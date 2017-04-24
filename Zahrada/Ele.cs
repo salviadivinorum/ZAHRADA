@@ -156,8 +156,11 @@ namespace Zahrada
 		{
 			// nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele	
 			// predvyplnena textura pro Ele, zjednodusil jsem si to	....
-			Image obr = Properties.Resources.trava_velmi_husta; 
-			ImageOfTexture = (Bitmap)obr;
+
+			//Image obr = Properties.Resources.trava_velmi_husta; 
+			//ImageOfTexture = (Bitmap)obr;
+
+
 			// cerna barva vyplne - implicitne pro vsechny Ele ....
 			FillColor = Color.Black;
 			// zakladni barva pera = oraniceni, tj. Cerna ... 
