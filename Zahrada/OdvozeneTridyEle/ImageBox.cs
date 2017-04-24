@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-
 using System.ComponentModel;
-using Zahrada.PomocneTridy;
+
 
 namespace Zahrada.OdvozeneTridyEle
 {
@@ -176,50 +172,7 @@ namespace Zahrada.OdvozeneTridyEle
             myPen.Dispose();
 
         }
-        #endregion
-
-        #region Verejne metody tridy ImageBox
-
-        // nakonec zadne nebudou ....
-
-        /*
-       // tato metoda se pouziva pri dvojkliku na jiz exitujici obrazek
-       public void LoadImg()
-       {
-           string f_name = this.ImgLoader();
-           if (f_name != null)
-           {
-               try
-               {
-                   Bitmap loadTexture = new Bitmap(f_name);
-                   Prvek = loadTexture;
-               }
-               catch { }
-           }
-       }
-       */
-        /*
-        // tato metoda se pouziva pri double clicku na exist obbrazek
-        private string ImgLoader()
-        {
-            try
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Title = "Vyber obrázek";
-                dialog.Filter = "jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
-                
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    return (dialog.FileName);
-                }
-            }
-            catch { }
-            return null;
-        }
-        */
-
-
-        #endregion
+        #endregion      
 
     }
 }

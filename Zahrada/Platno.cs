@@ -24,8 +24,7 @@ namespace Zahrada
     /// </summary>
     [Serializable]
     public partial class Platno : UserControl
-    {       
-        
+    { 
         #region Clenske promenne tridy Platno
         private string status;
         public string option;
@@ -146,6 +145,9 @@ namespace Zahrada
         // jedna se o jediny proces mé vlastní Nápovědy - Proces help file:
         private Process procesUkazCHMsoubor;
         private List<Process> procesy = new List<Process>();
+
+        // WinForms pomucka pro vystup objektu na tiskrnu 
+        private PrintDocument docToPrint2 = new PrintDocument();
 
 
         #endregion
@@ -1984,43 +1986,63 @@ namespace Zahrada
 
         #endregion
 
-        #region Print & Preview
+        #region Print & Preview  
 
-        public PrintDocument docToPrint2 = new PrintDocument();
-
-        public void PreviewBeforePrinting(float zoom)
+        // volano po stisku tlacitka Nahled tisku ...
+        public void PreviewBeforePrinting(float zoom) 
         {
-            Color c = Pozadí;
-            Pozadí = Color.White;
-            InitializePrintPreviewControl(zoom); // volano po stiski tlacitka preview
-            Pozadí = c;
-           // InicializujDocToPrint();
+            try
+            {
+                Color c = Pozadí;
+                Pozadí = Color.White;
+
+                // volano po stiski tlacitka preview
+                // vyvola muj vlastni nahledForm formularove okno s mym vlastnim nahledem tisku, jsou tam procenta atd ...
+                InitializePrintPreviewControl(zoom);
+                Pozadí = c;
+                // InicializujDocToPrint();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Tisk projektu se nezdařil !", "Tisk selhal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
+            }
 
         }
 
-        public void PrintMe() // volano po stisku Tisk tlacitka ...
+        // volano po stisku tlacitka Tisk (primy tisk)
+        public void PrintMe() 
         {
-            Color c = Pozadí;
-            Pozadí = Color.White;
-            InicializujDocToPrint2(); // priradil jsem spravne docToPrin2
-            shapes.DeSelect();  
-            printDialog1.AllowSomePages = true;
-            printDialog1.ShowHelp = true;
-            printDialog1.Document = docToPrint2;   
-            
-            DialogResult result = printDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {                
-                PrinterSettings mysettings = printDialog1.PrinterSettings;
-                docToPrint2.PrinterSettings = mysettings;                
-                printPreviewDialog1.Document = docToPrint2;                
-                printPreviewDialog1.ShowDialog();             
+            try
+            {
+                Color c = Pozadí;
+                Pozadí = Color.White;
+                InicializujDocToPrint2(); // priradil jsem spravne docToPrin2
+                shapes.DeSelect();
+                printDialog1.AllowSomePages = true;
+                printDialog1.ShowHelp = true;
+                printDialog1.Document = docToPrint2;
+
+                DialogResult result = printDialog1.ShowDialog(); // tento dialog ma ve WinForms automaticky i svuj vlastni preview print
+                if (result == DialogResult.OK)
+                {
+                    PrinterSettings mysettings = printDialog1.PrinterSettings;
+                    docToPrint2.PrinterSettings = mysettings;
+                    printPreviewDialog1.Document = docToPrint2;
+                    printPreviewDialog1.ShowDialog();
+                }
+                Pozadí = c;
             }
-            Pozadí = c;
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Tisk projektu se nezdařil !", "Tisk selhal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
+            }
 
         }
                 
-
+        // oteviram me okno s nahledem tisku ...
         private void InitializePrintPreviewControl(float zoom)
         {
             shapes.DeSelect();
@@ -2032,51 +2054,67 @@ namespace Zahrada
             nahledForm.PrintPreviewControl.UseAntiAlias = true;         
             nahledForm.docToPrint.PrintPage += new PrintPageEventHandler(docToPrint_PrintPage);            
             nahledForm.ShowDialog(); // modalni okno
-            // nahledForm.Show(); // modeless okno (nemodalni)
+            // nahledForm.Show(); // modeless okno (nemodalni) - taky by to slo, nekdy jinkdy
 
         }
 
-       // udalost co vlastne tisknout - Graphics muj ...
+       // Tohle je podstatne
+       // udalost CO vlastne tisknout - muj Graphics ... me aktualni platno, to je vse.
         private void docToPrint_PrintPage(object sender, PrintPageEventArgs e)
         {
 
             Graphics g = e.Graphics;
-            //shapes.Draw(g, 0, 0, 1f); // tady je Zoom pro tisk !!           
+            //shapes.Draw(g, 0, 0, 1f); // tady je Zoom pro tisk !!  
+            
+            // zjednodusil jsem si to. Tisknu JEN aktualni obrazovku
+            // dalsi vyvoj aplikace bude smerovat k tisku jinym zpusobem ...
             g.DrawImageUnscaled(offScreenBmp, 0, 0); 
             //g.Dispose();
         }
 
-        // udalost pro docToPrint2
+        // Inicializuje primy tisk na tiskarnu bez meho NahledFormu. Toto je klasicke reseni WinForms.
         private void InicializujDocToPrint2()
         {
             shapes.DeSelect();
+            docToPrint2.DocumentName = "Výkres zahrady";
             docToPrint2.PrintPage += new PrintPageEventHandler(docToPrint_PrintPage);
         }
 
         #endregion
 
         #region Export nakresleneho do PNG/JPG/GIF
+
         public void ExportTo()
         {
             ForceEsc();
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();           
-            saveFileDialog1.Filter = "PNG files (*.png)|*.png|JPG files (*.jpg)|*.jpg|GIF files (*.gif)|*.gif";
-            //saveFileDialog1.InitialDirectory = Config.Instance().GetSetting("FileDir/Path", Application.StartupPath);
-            //string flnm = docManager.fileName;
-            string flnm = "Export.png";           
-            saveFileDialog1.FileName = flnm;
-            DialogResult res = saveFileDialog1.ShowDialog(this);
-            if (res != DialogResult.OK)
-                return;
-            flnm = saveFileDialog1.FileName;          
-            
-            Bitmap bp3 = offScreenBmp;          
-            Color tohle = Pozadí;
-            Pozadí = Color.White;            
-            SaveImage(bp3, flnm);
-            Pozadí = tohle;
+            try
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "PNG files (*.png)|*.png|JPG files (*.jpg)|*.jpg|GIF files (*.gif)|*.gif";
+                //saveFileDialog1.InitialDirectory = Config.Instance().GetSetting("FileDir/Path", Application.StartupPath);
+                //string flnm = docManager.fileName;
+                string flnm = "Export.png";
+                saveFileDialog1.FileName = flnm;
+                DialogResult res = saveFileDialog1.ShowDialog(this);
+                if (res != DialogResult.OK)
+                    return;
+                flnm = saveFileDialog1.FileName;
+
+                Bitmap bp3 = offScreenBmp;
+                Color tohle = Pozadí;
+                Pozadí = Color.White;
+                SaveImage(bp3, flnm);
+                Pozadí = tohle;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Export projektu se nazdařil !", "Export selhal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // MessageBox.Show("Výjimka:" + e.ToString(), "Save error:");
+            }
+
         }
 
+        // klasicke operace pro obrazky ve WinForms
         void SaveImage(Image img, string flnm)
         {
             ImageCodecInfo myImageCodecInfo;
@@ -2094,6 +2132,7 @@ namespace Zahrada
             img.Save(flnm, myImageCodecInfo, myEncoderParameters);
         }
 
+        // klasicke operace pro obrazky ve WinForms
         string GetMimeType(string flnm)
         {
             if (flnm.LastIndexOf("jpg") > 0)
@@ -2104,6 +2143,8 @@ namespace Zahrada
                 return "image/" + "gif";
             return "";
         }
+
+        // klasicke operace pro obrazky ve WinForms
         private static ImageCodecInfo GetEncoderInfo(String mimeType)
         {
             int j;
@@ -2122,7 +2163,10 @@ namespace Zahrada
         #endregion
 
         #region Pomocná metoda k nalezení StatusBaru a Info-Labelu v něm (v nadrazenem okne - HlavniForm)
+
         // pri inicializaci si hledam StatusStrip/InfoStatLabel v MainForm ... volano z MainForm
+        // toto je nepekne, bohuzel. Vyssi level WPF uz to resi jinak, ma k tomu jiny jazyk - XAML
+        // ve WinForms pouzivam okliku Find a First, ale legalni
         StatusStrip mujStatusStrip;
         public ToolStripStatusLabel infoStatLabel;
         public void NajdiStatusStripVmainForm()
