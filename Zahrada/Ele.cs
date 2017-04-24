@@ -142,6 +142,7 @@ namespace Zahrada
 		private TextureBrush _texture;
 		private Bitmap imgOfTexture;
 
+
 		// prace se swapovanim textur do Bitmap / Image pri Save / Load:
 		// automaticke vlastnosti get+set, jmeno zapozdrene promenne je nevylovitelne-unspeakable....
 		public Bitmap ObrBitmap { get; set; }
