@@ -142,7 +142,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.OnGrpX1Res = this.OnGrpX1Res;
             newE.OnGrpYRes = this.OnGrpYRes;
             newE.OnGrpY1Res = this.OnGrpY1Res;
-            //newE.CopyGradProp(this); 
+            
             return newE;
         }
 

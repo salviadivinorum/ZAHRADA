@@ -173,124 +173,7 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-
-        #region Vse co se tykalo Gradientu - jsem zakomentoval
-        /*
-        [Category("GradientBrush"), Description("True: use gradient fill color")]
-        public override bool UseGradientLineColor
-        {
-            get
-            {
-                return base.UseGradientLineColor;
-            }
-            set
-            {
-                base.UseGradientLineColor = value;
-                if (this.objs != null)
-                    foreach (Ele e in this.objs)
-                    {
-                        e.UseGradientLineColor = value;
-                    }
-            }
-        }
-
-        [Category("GradientBrush"), Description("End Color Position [0..1])")]
-        public override float EndColorPosition
-        {
-            get
-            {
-                return base.EndColorPosition;
-            }
-            set
-            {
-                base.EndColorPosition = value;
-                if (this.objs != null)
-                    foreach (Ele e in this.objs)
-                    {
-                        e.EndColorPosition = value;
-                    }
-            }
-        }
-
-
-        [Category("GradientBrush"), Description("Gradient End Color")]
-        public override Color EndColor
-        {
-            get
-            {
-                return base.EndColor;
-            }
-            set
-            {
-                base.EndColor = value;
-                if (this.objs != null)
-                    foreach (Ele e in this.objs)
-                    {
-                        e.EndColor = value;
-                    }
-            }
-        }
-
-
-        [Category("GradientBrush"), Description("End Color Trasparency")]
-        public override int EndAlpha
-        {
-            get
-            {
-                return base.EndAlpha;
-            }
-            set
-            {
-                base.EndAlpha = value;
-                if (this.objs != null)
-                    foreach (Ele e in this.objs)
-                    {
-                        e.EndAlpha = value;
-                    }
-            }
-        }
-
-        [Category("GradientBrush"), Description("Gradient Dimension")]
-        public override int GradientLen
-        {
-            get
-            {
-                return base.GradientLen;
-            }
-            set
-            {
-                base.GradientLen = value;
-                if (this.objs != null)
-                    foreach (Ele e in this.objs)
-                    {
-                        e.GradientLen = value;
-                    }
-            }
-        }
-
-        [Category("GradientBrush"), Description("Gradient Angle")]
-        public override int GradientAngle
-        {
-            get
-            {
-                return base.GradientAngle;
-            }
-            set
-            {
-                base.GradientAngle = value;
-                if (this.objs != null)
-                    foreach (Ele e in this.objs)
-                    {
-                        e.GradientAngle = value;
-                    }
-            }
-        }
-
-        */ 
-        #endregion
-
-
-
+  
         [Description("Obsluhuje skupinu Group jako GraphicsPath")]
         public bool graphPath
         {
@@ -609,15 +492,7 @@ namespace Zahrada.OdvozeneTridyEle
                 newE.Rotace = Rotace;
                 newE.Ohraničení = Ohraničení;
 
-                // Gradient vubec nebude ....
-                /*
-                newE.UseGradientLineColor = UseGradientLineColor;
-                newE.GradientAngle = GradientAngle;
-                newE.GradientLen = GradientLen;
-                newE.EndAlpha = EndAlpha;
-                newE.EndColor = EndColor;
-                newE.EndColorPosition = EndColorPosition;
-                */               
+                       
 
             }
 

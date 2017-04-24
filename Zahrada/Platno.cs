@@ -1735,11 +1735,24 @@ namespace Zahrada
                 dlg.Filter = "png files (*.png)|*.png|jpg files (*.jpg)|*.jpg|bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";               
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    return (dlg.FileName);
+                    try
+                    {
+                        Bitmap successload = new Bitmap(dlg.FileName);
+                        successload.Dispose();
+                        return (dlg.FileName);
+                    }
+                    catch (Exception e)
+                    {
+                        // otevreni probehlo, ale format nacteneho obrazku byl neplatny
+                        MessageBox.Show("Neplatný formát zahradního prvku !", "Otevření selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return null; 
+                    }
+                    
                 }
             }
             catch (Exception e)
             {
+                // jiny duvod selhani nacitani obrazku:
                 MessageBox.Show("Zahradní prvek nebyl načten !", "Otevření selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
             }

@@ -110,21 +110,7 @@ namespace Zahrada
 		[NonSerialized]
 		private float _pruhlednost = 100f;
 
-		private float _savedPruhlednost =100f;
-		
-
-		// pokusim se odrusit jakykoliv linear
-		
-		/*
-		// Linear Gradient:
-		private bool _useGradientLine = false;
-		private Color _endColor = Color.White;
-		private int _endalpha = 255;
-		private int _gradientAngle = 0;
-		private int _gradientLen = 0;
-		private float _endColorPos = 1f;
-		*/
-				
+		private float _savedPruhlednost =100f;				
 
 		// Group objekt - zoomovani:
 		protected float gprZoomX = 1f;
@@ -154,24 +140,21 @@ namespace Zahrada
 		#region Konstruktor tridy Ele
 		public Ele()
 		{
-			// nastavuju si zde vsechny pocatecni vlastnosti abstraktniho objektu Ele	
-			// predvyplnena textura pro Ele, zjednodusil jsem si to	....
-
-			//Image obr = Properties.Resources.trava_velmi_husta; 
-			//ImageOfTexture = (Bitmap)obr;
-
-
 			// cerna barva vyplne - implicitne pro vsechny Ele ....
 			FillColor = Color.Black;
 			// zakladni barva pera = oraniceni, tj. Cerna ... 
 			Pero_barva = Color.Black; 
 
-			// ostattni predvyplnene vlastnosti elementu ...
+			// ostatni predvyplnene vlastnosti elementu ...
 			Pero_šířka = 1f;			
 			ColorFilled = false;
 			Ohraničení = true;
 			DashStyleMy = DashStyle.Solid;
-			Alpha = 255;    
+			Alpha = 255;
+
+			// moznost, ktera neni vyuzita ....
+			//Image obr = Properties.Resources.trava_velmi_husta; 
+			//ImageOfTexture = (Bitmap)obr;
 		}
 
 
@@ -637,105 +620,6 @@ namespace Zahrada
 		}
 
 
-		#region Konec gradientu - jeho vlastnosti okomentovane
-		// konec silenosti s gradientem ....
-
-		/*
-		//[Category("GradientBrush"), Description("True: Use gradient fill color")]
-		public virtual bool UseGradientLineColor
-		{
-			get
-			{
-				return _useGradientLine;
-			}
-			set
-			{
-				_useGradientLine = value;
-			}
-		}
-
-		//[Category("GradientBrush"), Description("End Color Position [0..1]")]
-		public virtual float EndColorPosition
-		{
-			get
-			{
-				return _endColorPos;
-			}
-			set
-			{
-				if (value > 1)
-					value = 1;
-				else if (value < 0)
-					value = 0;
-				_endColorPos = value;
-			}
-		}
-
-		//[Category("GradientBrush"), Description("Gradient End Color")]
-		public virtual Color EndColor
-		{
-			get
-			{
-				return _endColor;
-			}
-			set
-			{
-				_endColor = value;
-			}
-		}
-
-		//[CategoryAttribute("GradientBrush"), DescriptionAttribute("End Color Trasparency")]
-		public virtual int EndAlpha
-		{
-			get
-			{
-				return _endalpha;
-			}
-			set
-			{
-				if (value < 0)
-					_endalpha = 0;
-				else
-					if (value > 255)
-					_endalpha = 255;
-				else
-					_endalpha = value;
-			}
-		}
-
-		//[CategoryAttribute("GradientBrush"), DescriptionAttribute("Gradient Dimension")]
-		public virtual int GradientLen
-		{
-			get
-			{
-				return _gradientLen;
-			}
-			set
-			{
-				if (value >= 0)
-					_gradientLen = value;
-				else
-					_gradientLen = 0;
-			}
-		}
-
-		//[CategoryAttribute("GradientBrush"), DescriptionAttribute("Gradient Angle")]
-		public virtual int GradientAngle
-		{
-			get
-			{
-				return _gradientAngle;
-			}
-			set
-			{
-				_gradientAngle = value;
-			}
-		}
-
-		*/
-		#endregion
-
-
 		#endregion
 
 		#region Verejne pristupne metody - Public - pro tridu Ele
@@ -1005,57 +889,8 @@ namespace Zahrada
 
 		#endregion
 
-		#region Chranene - Protected - Metody pro tridu Ele (ktere dedi uplne stejne potomci tridy Ele)
-
-
-		#region CopyGradProp - Nebudu potrebovat
-		/*
-		/// <summary>
-		/// Z daneho objektu Element zkopiruje gradient vlastnosti
-		/// </summary>		
-		protected void CopyGradProp(Ele ele)
-		{
-			_useGradientLine = ele._useGradientLine;
-			_endColor = ele._endColor;
-			_endalpha = ele._endalpha;
-			_gradientLen = ele._gradientLen;
-			_gradientAngle = ele._gradientAngle;
-			_endColorPos = ele._endColorPos;
-
-		} 
-		*/
-		#endregion
-
-		 /*
-		/// <summary>
-		/// Vyplnit Element paralelnimi linkami (lines)
-		/// </summary>
-		protected void FillWithLines(Graphics g, int dx, int dy, float zoom, GraphicsPath myPath, float gridSize, float gridRot)
-		{
-			GraphicsState gs = g.Save();//store previos trasformation
-			g.SetClip(myPath, CombineMode.Intersect);
-			Matrix mx = g.Transform; // get previous trasformation
-			PointF p = new PointF(zoom * (X + dx + (X1 - X) / 2), zoom * (Y + dy + (Y1 - Y) / 2));
-			if (_rotation > 0)
-				mx.RotateAt(_rotation, p, MatrixOrder.Append); //add a trasformation
-			mx.RotateAt(gridRot, p, MatrixOrder.Append); //add a trasformation
-			g.Transform = mx;
-
-			int max = Math.Max(Sirka, Vyska);
-			Pen linePen = new Pen(Color.Gray);
-			//linePen.DashStyle = DashStyle.Dash;
-			int nY = (int)(max * 3 / (gridSize));
-			for (int i = 0; i <= nY; i++)
-			{
-				g.DrawLine(linePen, (X - max + dx) * zoom, (Y - max + dy + i * gridSize) * zoom, (X + dx + max * 2) * zoom, (Y - max + dy + i * gridSize) * zoom);
-			}
-			linePen.Dispose();
-			g.Restore(gs);
-			//g.ResetClip();
-		}
-
-		*/
-
+		#region Chranene - Protected - Metody pro tridu Ele a nasledne POUZE pro jeji prime potomky 
+			
 		/// <summary>
 		/// Pouziva se k definici tloustky pera
 		/// </summary>
@@ -1147,36 +982,7 @@ namespace Zahrada
 		{
 			if (ColorFilled)
 			{
-				/*
-				if (UseGradientLineColor)
-				{
-					float wid;
-					float hei;
-					if (GradientLen > 0)
-					{
-						wid = GradientLen;
-						hei = GradientLen;
-					}
-					else
-					{
-						wid = ((X1 - X) + 2 * GetDimX()) * zoom;
-						hei = ((Y1 - Y) + 2 * GetDimY()) * zoom;
-					}
-					LinearGradientBrush br = new LinearGradientBrush(
-						new RectangleF((X - GetDimX() + dx) * zoom, (Y - GetDimY() + dy) * zoom, wid, hei), 
-						Transparency(FillColor, Alpha), Transparency(EndColor, EndAlpha), GradientAngle, true);
-
-					br.SetBlendTriangularShape(EndColorPosition, 0.95f);
-					br.WrapMode = WrapMode.TileFlipXY;
-					return br;
-				}
-				else
-				{
-					return new SolidBrush(Transparency(FillColor, Alpha));
-					//return FillTexture;
-				   
-				}
-				*/
+				
 				return new SolidBrush(Transparency(FillColor, Alpha));
 			}
 			else
@@ -1206,19 +1012,7 @@ namespace Zahrada
 			to._onGroupXRes = from._onGroupXRes;
 			to._onGroupY1Res = from._onGroupY1Res;
 			to._onGroupYRes = from._onGroupYRes;
-
-			// promenne o gradientu - rusim
-			/*
-			to._useGradientLine = from._useGradientLine;
-			to._endColor = from._endColor;
-			to._endalpha = from._endalpha;
-			to._gradientLen = from._gradientLen;
-			to._gradientAngle = from._gradientAngle;
-			to._endColorPos = from._endColorPos;
-
-			*/
-
-			// zapouzdrene clenske promenne:
+			
 			to.Alpha = from.Alpha;			
 			to.FillColor = from.FillColor;
 			to.ColorFilled = from.ColorFilled;

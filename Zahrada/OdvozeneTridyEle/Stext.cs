@@ -156,8 +156,6 @@ namespace Zahrada.OdvozeneTridyEle
 			newE.OnGrpYRes = OnGrpYRes;
 			newE.OnGrpY1Res = OnGrpY1Res;
 
-			//newE.CopyGradProp(this);
-
 			newE.Text = Text;
 			newE.CharFont = CharFont;
 			newE.StrAlign = StrAlign;

@@ -425,9 +425,7 @@ namespace Zahrada.OdvozeneTridyEle
             newE.OnGrpXRes = OnGrpXRes;
             newE.OnGrpX1Res = OnGrpX1Res;
             newE.OnGrpYRes = OnGrpYRes;
-            newE.OnGrpY1Res = OnGrpY1Res;
-
-            //newE.CopyGradProp(this);
+            newE.OnGrpY1Res = OnGrpY1Res;           
 
             newE.Closed = Closed;
             newE.Zakřivení = Zakřivení;
