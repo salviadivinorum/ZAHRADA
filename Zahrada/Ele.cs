@@ -169,12 +169,16 @@ namespace Zahrada
 			DashStyleMy = DashStyle.Solid;
 			Alpha = 255;    
 		}
-		
+
 
 		#endregion
 
-		#region Destruktor tridy Ele - jen pro zajimavost kdy zafunguje Garbage Collector
+		#region Destruktor tridy Ele - jen pro zajimavost kdy zafunguje Garbage Collector        
 
+		/// <summary>
+		/// Destruktor instancí tříd Ele. O to se v C# stará Garbage Collector.
+		/// Uvedeno pouze pro testovací účely.
+		/// </summary>
 		~Ele()
 		{
 			string vystup = "Znicene objekty Carbage Collectorem: " + GetX.ToString() + " " + GetY.ToString();

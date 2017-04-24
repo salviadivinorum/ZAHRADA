@@ -1470,8 +1470,17 @@ namespace Zahrada
                         {
                             // load obrazku ...
                             string f_name = ImgLoader();
-                            shapes.AddImageBox(startX, startY, tmpX, tmpY, f_name, creationPenColor, creationPenWidth);                            
+                            if(f_name != null)
+                            {
+                                shapes.AddImageBox(startX, startY, tmpX, tmpY, f_name, creationPenColor, creationPenWidth);                               
+                            }
+                            else
+                            {
+                                ChangeStatus(""); // nebyl zadny vybran obrazek pres ImgLoader()
+
+                            }
                             ChangeOption("select");
+
                         }
                         break;
                        
@@ -1738,7 +1747,7 @@ namespace Zahrada
                 MessageBox.Show("Zahradní prvek nebyl načten !", "Otevření selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //MessageBox.Show("Výjimka:" + e.ToString(), "Load error:");
             }
-            return null;
+            return null; // vyber obrazku byl zrusen, vraci null
         }
 
         #endregion        
