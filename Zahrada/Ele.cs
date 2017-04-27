@@ -32,8 +32,9 @@ namespace Zahrada
 		// poznamka k memu polymorfismu .....
 		// virtual (možná metoda, virtuální)= virtualni metoda - je metoda definovana v teto zakladni tride a muze byt prepsana v odvozenych tridach: public virtual Blabla()
 		// override (potlacení metody) = u odvozenych trid se muze prepisovat puvodni virtual metoda. A to tak, ze se pred nazev metody da: public override Blabla()
+		// protected = tento clen je pristupny z abstarktni tridy a ve vsech zdedenych tridach
 
-		protected bool IamGroup = false; // protected = tento clen je pristupny z abstarktni tridy a ve vsech zdedenych tridach
+		protected bool IamGroup = false; 
 		protected bool rot; // Muze rotovat
 
 		// startovaci bod elementu

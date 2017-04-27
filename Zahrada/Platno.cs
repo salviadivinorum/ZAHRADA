@@ -2052,7 +2052,11 @@ namespace Zahrada
             nahledForm.PrintPreviewControl.Document.DocumentName = "Výkres zahrady";     
             nahledForm.PrintPreviewControl.Zoom = zoom;   
             nahledForm.PrintPreviewControl.UseAntiAlias = true;         
-            nahledForm.docToPrint.PrintPage += new PrintPageEventHandler(docToPrint_PrintPage);            
+            nahledForm.docToPrint.PrintPage += new PrintPageEventHandler(docToPrint_PrintPage);   
+            
+
+            //nahledForm.docToPrint.PrinterSettings.
+
             nahledForm.ShowDialog(); // modalni okno
             // nahledForm.Show(); // modeless okno (nemodalni) - taky by to slo, nekdy jinkdy
 
@@ -2127,7 +2131,7 @@ namespace Zahrada
             myImageCodecInfo = GetEncoderInfo(mimetype);
             myEncoder = Encoder.Quality;
             myEncoderParameters = new EncoderParameters(1);
-            myEncoderParameter = new EncoderParameter(myEncoder, (long)55);
+            myEncoderParameter = new EncoderParameter(myEncoder, (long)100);
             myEncoderParameters.Param[0] = myEncoderParameter;
             img.Save(flnm, myImageCodecInfo, myEncoderParameters);
         }

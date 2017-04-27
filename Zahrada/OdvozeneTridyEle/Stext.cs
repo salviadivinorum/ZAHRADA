@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 namespace Zahrada.OdvozeneTridyEle
 {
 	/// <summary>
-	/// Stext predstavuje jednoduchy text, ktery umi zobrazit GDI+
+	/// Stext predstavuje jednoduchy text, ktery umi zobrazit GDI+. K zadavani textu pouzivam sólo formular.
 	/// </summary>
 	[Serializable]
 	public class Stext : Ele

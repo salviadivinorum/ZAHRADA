@@ -39,12 +39,21 @@ namespace Zahrada.OdvozenyPropertyGrid
 			set { m_PropertyDescriptors = value; }
 		}
 
-		#region ICustomTypeDescriptor Members
+		#region ICustomTypeDescriptor Members        
+		/// <summary>
+		/// Returns the properties for this instance of a component using the attribute array as a filter.
+		/// </summary>
+		/// <param name="attributes">An array of type <see cref="T:System.Attribute" /> that is used as a filter.</param>
+		/// <returns>A <see cref="T:System.ComponentModel.PropertyDescriptorCollection" /> that represents the filtered properties for this component instance.</returns>
 		public PropertyDescriptorCollection GetProperties(Attribute[] attributes)
 		{
 			return GetProperties();
 		}
 
+		/// <summary>
+		/// Returns the properties for this instance of a component.
+		/// </summary>
+		/// <returns>A <see cref="T:System.ComponentModel.PropertyDescriptorCollection" /> that represents the properties for this component instance.</returns>
 		public PropertyDescriptorCollection GetProperties()
 		{
 			return new PropertyDescriptorCollection(m_PropertyDescriptors.ToArray(), true);
@@ -98,16 +107,30 @@ namespace Zahrada.OdvozenyPropertyGrid
 			return TypeDescriptor.GetEditor(this, editorBaseType, true);
 		}
 
+		/// <summary>
+		/// Returns the events for this instance of a component using the specified attribute array as a filter.
+		/// </summary>
+		/// <param name="attributes">An array of type <see cref="T:System.Attribute" /> that is used as a filter.</param>
+		/// <returns>An <see cref="T:System.ComponentModel.EventDescriptorCollection" /> that represents the filtered events for this component instance.</returns>
 		public EventDescriptorCollection GetEvents(Attribute[] attributes)
 		{
 			return TypeDescriptor.GetEvents(m_SelectedObject, attributes, true);
 		}
 
+		/// <summary>
+		/// Returns the events for this instance of a component.
+		/// </summary>
+		/// <returns>An <see cref="T:System.ComponentModel.EventDescriptorCollection" /> that represents the events for this component instance.</returns>
 		public EventDescriptorCollection GetEvents()
 		{
 			return TypeDescriptor.GetEvents(m_SelectedObject, true);
 		}
 
+		/// <summary>
+		/// Returns an object that contains the property described by the specified property descriptor.
+		/// </summary>
+		/// <param name="pd">A <see cref="T:System.ComponentModel.PropertyDescriptor" /> that represents the property whose owner is to be found.</param>
+		/// <returns>An <see cref="T:System.Object" /> that represents the owner of the specified property.</returns>
 		public object GetPropertyOwner(PropertyDescriptor pd)
 		{
 			return m_SelectedObject;

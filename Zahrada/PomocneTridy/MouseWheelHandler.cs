@@ -21,6 +21,10 @@ namespace Zahrada.PomocneTridy
             ctrl.Disposed += (s, e) => Application.RemoveMessageFilter(filter);
         }
 
+        /// <summary>
+        /// Class MouseWheelMessageFilter. Controls parent window mouse move and click.
+        /// </summary>
+        /// <seealso cref="System.Windows.Forms.IMessageFilter" />
         class MouseWheelMessageFilter
             : IMessageFilter
         {

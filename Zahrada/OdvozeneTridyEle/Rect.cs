@@ -11,7 +11,6 @@ namespace Zahrada.OdvozeneTridyEle
     [Serializable]
     public class Rect : Ele
     {
-
         #region Konstruktor tridy Rect
 
         public Rect(int x, int y, int x1, int y1)
@@ -127,17 +126,16 @@ namespace Zahrada.OdvozeneTridyEle
             newE.TextureFilled = TextureFilled;
             newE.ImageOfTexture = ImageOfTexture;
 
-
-            newE.DashStyleMy = DashStyleMy;
             newE.Alpha = Alpha;
+            newE.DashStyleMy = DashStyleMy;
             newE.iAmAline = iAmAline;
             newE.Rotace = Rotace;
             newE.Ohraničení = Ohraničení;
 
-            newE.OnGrpXRes = this.OnGrpXRes;
-            newE.OnGrpX1Res = this.OnGrpX1Res;
-            newE.OnGrpYRes = this.OnGrpYRes;
-            newE.OnGrpY1Res = this.OnGrpY1Res;
+            newE.OnGrpXRes = OnGrpXRes;
+            newE.OnGrpX1Res = OnGrpX1Res;
+            newE.OnGrpYRes = OnGrpYRes;
+            newE.OnGrpY1Res = OnGrpY1Res;
             
             return newE;
         }
@@ -246,7 +244,6 @@ namespace Zahrada.OdvozeneTridyEle
 
 
         #endregion
-
 
     }
 }

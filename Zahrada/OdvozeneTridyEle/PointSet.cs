@@ -8,7 +8,8 @@ using Zahrada.PomocneTridy;
 namespace Zahrada.OdvozeneTridyEle
 {
     /// <summary>
-    /// PoinSet je volna cara nebo rovny polygon
+    /// PoinSet je volna cara nebo rovny polygon. PointSet je OBECNY nazev pro mou mnozinu bodu ve tride GraphicsPath a pouzivam jeji
+    /// metody AddPolygon a AddLines, vcetne zakriveni AddCurve a AddClosedCurve.
     /// </summary>
     [Serializable]
     public class PointSet : Ele
@@ -34,11 +35,15 @@ namespace Zahrada.OdvozeneTridyEle
             EndMoveRedim();
             Rotace = 0;
             rot = true; //muze rotovat
-
+            
+            
             Image obr = Properties.Resources.trava_velmi_husta;
             ImageOfTexture = (Bitmap)obr;
             TextureFilled = true;
         }
+
+        
+       
 
         #endregion        
 
@@ -412,10 +417,9 @@ namespace Zahrada.OdvozeneTridyEle
             newE.ColorFilled = ColorFilled;
             newE.TextureFilled = TextureFilled;
             newE.ImageOfTexture = ImageOfTexture;
-
-
-            newE.DashStyleMy = DashStyleMy;
+            
             newE.Alpha = Alpha;
+            newE.DashStyleMy = DashStyleMy;           
             newE.iAmAline = iAmAline;
             newE.Rotace = Rotace;
             newE.Ohraničení = Ohraničení;
@@ -427,6 +431,8 @@ namespace Zahrada.OdvozeneTridyEle
 
             newE.Closed = Closed;
             newE.Zakřivení = Zakřivení;
+
+            
 
             return newE;
 
