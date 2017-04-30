@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Zahrada
 {
@@ -24,7 +25,8 @@ namespace Zahrada
         private float CustomX { get; set; } // custom sirka planu
         private float CustomY { get; set; }// custom vyska planu
         private bool savedPlanAfteQuerry = false;
-        
+        private static ArrayList nactenyListdoMainForm;
+
 
         #endregion
 
@@ -455,6 +457,9 @@ namespace Zahrada
                     vlozenyToolBox.CheckRBLoad2(); // CheckedRBLoad2(); // radiobuttony chcecke obnovi
                     vlozenyToolBox.Refresh();
                     MarkFrameToolStripMenuItem();
+
+                    // to jsem tady vlozil na prani Vecerky 30.4.2017
+                    nactenyListdoMainForm = (ArrayList)vlozenePlatno.shapes.List.Clone();
                 }
             }
 
@@ -506,8 +511,36 @@ namespace Zahrada
         }
 
         // Zakladni metoda - dotaz pri Otevirani/Ukladani souboru
+        // zde zkusim obejit dotazovani pri NEZMENENEM planu - jen pokracovat dale
         private void UlozitSouborAnoNe()
         {
+            /*
+            if(nactenyListdoMainForm == null)
+            {
+                nactenyListdoMainForm = vlozenePlatno.shapes.List;
+            }
+            else
+            {
+
+            }
+            */
+
+            bool shodne = vlozenePlatno.Compare(vlozenePlatno.shapes.List, nactenyListdoMainForm);
+            //bool shodne2 = vlozenePlatno.shapes.List.Equals(Platno.nactenyList);
+            //bool shodne3 = nactenyListdoMainForm.Equals(vlozenePlatno.shapes.List);
+            if (shodne)
+            {
+                MessageBox.Show("Oba Listy byly shodne");
+            }
+            else
+            {
+                MessageBox.Show("Nejaka drobna zmena byla provedena");
+            }
+
+
+
+
+
             string messge = "Přejete si uložit stávající plán zahrady ?";
             string caption = "Uložení plánu";
             MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;

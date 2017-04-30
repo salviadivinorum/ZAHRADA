@@ -149,6 +149,11 @@ namespace Zahrada
         // WinForms pomucka pro vystup objektu na tiskrnu 
         private PrintDocument docToPrint2 = new PrintDocument();
 
+        // pokus na ulozeni shapes po otevreni a operace zavreni - bez dotazu
+        public Shapes nactenyShapes;
+        public static ArrayList nactenyList;
+        public List<string> nactenyListradiobuttonu;
+
 
         #endregion
 
@@ -1799,7 +1804,9 @@ namespace Zahrada
 
         #region Load/Save projektu
 
+      
         // Zakladni Load/Save mych souboru:
+        // Volano pri Ulozit jako ...
         public bool Saver()
         {
             try
@@ -1839,7 +1846,7 @@ namespace Zahrada
             return false;
         }
 
-
+        // Volano jen pri zakladni volbe Uloz
         public bool SimpleSaver()
         {
             try
@@ -1973,6 +1980,7 @@ namespace Zahrada
 
         }
 
+        
         private void AfterLoad()
         {
             dx = shapes.dxSave;
@@ -1982,7 +1990,53 @@ namespace Zahrada
             Zoom = shapes.ZoomSave;
             shapes.AfterLoad();
             PushPlease();
+
+            // ukladam si do prave nacteneho  - List a Shapes
+            //nactenyShapes = shapes;
+            nactenyList = shapes.List;
         }
+
+
+
+        // hluboka kontrola nacteneho shapeu s prave uzaviranym
+
+        public bool Compare<T>(T Object1, T object2)
+        {
+            //Get the type of the object
+            Type type = typeof(T);
+
+            //return false if any of the object is false
+            if (object.Equals(Object1, default(T)) || object.Equals(object2, default(T)))
+                return false;
+
+            //Loop through each properties inside class and get values for the property from both the objects and compare
+            foreach (System.Reflection.PropertyInfo property in type.GetProperties())
+            {
+                if (property.Name != "ExtensionData")
+                {
+                    string Object1Value = string.Empty;
+                    string Object2Value = string.Empty;
+                    if (type.GetProperty(property.Name).GetValue(Object1, null) != null)
+                        Object1Value = type.GetProperty(property.Name).GetValue(Object1, null).ToString();
+                    if (type.GetProperty(property.Name).GetValue(object2, null) != null)
+                        Object2Value = type.GetProperty(property.Name).GetValue(object2, null).ToString();
+                    if (Object1Value.Trim() != Object2Value.Trim())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+
+
+
+
+
+
+
+
 
         #endregion
 
@@ -2258,6 +2312,11 @@ namespace Zahrada
         }
 
         #endregion
+
+
+
+    
+
 
     }
 }
