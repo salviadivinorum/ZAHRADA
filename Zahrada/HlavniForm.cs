@@ -459,7 +459,8 @@ namespace Zahrada
                     MarkFrameToolStripMenuItem();
 
                     // to jsem tady vlozil na prani Vecerky 30.4.2017
-                    nactenyListdoMainForm = (ArrayList)vlozenePlatno.shapes.List.Clone();
+                    //nactenyListdoMainForm = (ArrayList)vlozenePlatno.shapes.List.Clone();
+                    nactenyListdoMainForm = vlozenePlatno.shapes.List;
                 }
             }
 
@@ -525,10 +526,11 @@ namespace Zahrada
             }
             */
 
-            bool shodne = vlozenePlatno.Compare(vlozenePlatno.shapes.List, nactenyListdoMainForm);
-            //bool shodne2 = vlozenePlatno.shapes.List.Equals(Platno.nactenyList);
-            //bool shodne3 = nactenyListdoMainForm.Equals(vlozenePlatno.shapes.List);
-            if (shodne)
+            //bool shodne = vlozenePlatno.Compare(vlozenePlatno.shapes.List, nactenyListdoMainForm);
+            bool shodne2 = vlozenePlatno.shapes.List.Equals(Platno.nactenyList);
+            bool shodne3 = nactenyListdoMainForm.Equals(vlozenePlatno.shapes.List);
+            bool shodne4 = nactenyListdoMainForm == vlozenePlatno.shapes.List;
+            if (shodne4)
             {
                 MessageBox.Show("Oba Listy byly shodne");
             }
