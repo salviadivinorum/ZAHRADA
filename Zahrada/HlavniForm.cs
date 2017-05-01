@@ -404,15 +404,16 @@ namespace Zahrada
             vlozenyToolBox.CheckedRBSave();
             if (vlozenePlatno.jmenoNoveOtevreneho != "")
             {
-                vlozenePlatno.SimpleSaver();
+                // Serializuju List a ukladam ho do stringu inList ...
+                inList = vlozenePlatno.shapes.List.SerializeToString();
+
+                vlozenePlatno.SimpleSaver();               
+
                 if (vlozenePlatno.SaveSuccess)
                 {
                     this.Text = "Navrhování zahrad - " + vlozenePlatno.jmenoNoveOtevreneho;
                     vlozenyToolBox.CheckedRBSave();
                     vlozenyToolBox.Refresh();
-
-                    // po uspesnem obycejnem savu serializuju List a ukladam ho do stringu inList ...
-                    inList = vlozenePlatno.shapes.List.SerializeToString();
                 }
             }
             else
@@ -425,20 +426,17 @@ namespace Zahrada
         // Save As tlacitko ...
         private void saveAsToolStripButton_Click(object sender, EventArgs e)
         {
+            // serializuju List a ukladam ho do stringu inList ...
+            inList = vlozenePlatno.shapes.List.SerializeToString();
 
-            vlozenePlatno.Saver();
+            vlozenePlatno.Saver();           
+
             if (vlozenePlatno.SaveSuccess)
             {
                 this.Text = "Navrhování zahrad - " + vlozenePlatno.jmenoNoveOtevreneho;
                 vlozenyToolBox.CheckedRBSave();
-                vlozenyToolBox.Refresh();
-
-                // po uspesnem savu as ... serializuju List a ukladam ho do stringu inList ...
-                inList = vlozenePlatno.shapes.List.SerializeToString();
-
+                vlozenyToolBox.Refresh();    
             }
-
-
         }
 
         // Open tlacitko ...
