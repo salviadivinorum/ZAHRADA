@@ -992,8 +992,8 @@ namespace Zahrada
             if (e.Button == MouseButtons.Left)
             #region LEFT mouse button pressed
             {
-                //ShowDebug = true;
-                
+                //ShowDebug = true;  
+
                 if (option == "POLY" & Keyboard.IsKeyDown(Key.A))
                 {
                     pocX = e.X;
@@ -2277,6 +2277,7 @@ namespace Zahrada
         }
 
         #endregion    
+
 
 
     }

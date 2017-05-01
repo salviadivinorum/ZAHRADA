@@ -916,7 +916,7 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel,
             this.InfoToolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 778);
+            this.statusStrip.Location = new System.Drawing.Point(0, 952);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1504, 25);
             this.statusStrip.TabIndex = 10;
@@ -949,7 +949,7 @@
             this.vlozenyToolBox.Location = new System.Drawing.Point(0, 62);
             this.vlozenyToolBox.Margin = new System.Windows.Forms.Padding(4);
             this.vlozenyToolBox.Name = "vlozenyToolBox";
-            this.vlozenyToolBox.Size = new System.Drawing.Size(350, 704);
+            this.vlozenyToolBox.Size = new System.Drawing.Size(350, 878);
             this.vlozenyToolBox.TabIndex = 8;
             // 
             // vlozenePlatno
@@ -974,7 +974,7 @@
             this.vlozenePlatno.Rámeček = true;
             this.vlozenePlatno.ShowDebug = false;
             this.vlozenePlatno.Šířka = 2100;
-            this.vlozenePlatno.Size = new System.Drawing.Size(1139, 704);
+            this.vlozenePlatno.Size = new System.Drawing.Size(1139, 878);
             this.vlozenePlatno.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.vlozenePlatno.TabIndex = 9;
             this.vlozenePlatno.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
@@ -985,7 +985,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1504, 803);
+            this.ClientSize = new System.Drawing.Size(1504, 977);
             this.Controls.Add(this.vlozenyToolBox);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.vlozenePlatno);
@@ -993,7 +993,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1500, 850);
+            this.MinimumSize = new System.Drawing.Size(1000, 750);
             this.Name = "HlavniForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Navrhování zahrad - nový projekt";

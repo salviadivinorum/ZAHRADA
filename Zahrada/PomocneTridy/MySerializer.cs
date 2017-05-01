@@ -5,8 +5,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace Zahrada.PomocneTridy
 {
     /// <summary>
-    /// Trida s pomocnou metodou SerializeToString() pro serializaci Listu do Stringu. Pouzivam pres this object, nemusim tvorit tak instanci tridy.
-    /// Timto zpusobem si kontroluju vystup zda-li se zmenil a odstarnil jsem otravne dialogy typu Ulozit  projekt Ano/Ne.
+    /// Pomocna trida s metodou SerializeToString() pro serializaci Listu do Stringu. Pouzivam pres this object, nemusim tvorit tak instanci tridy.
+    /// Timto zpusobem si kontroluju na vystupu zda-li se List zmenil. A odstranil jsem tak otravne dialogy typu Ulozit projekt Ano/Ne.
     /// </summary>
     public static class MySerializer
     {
