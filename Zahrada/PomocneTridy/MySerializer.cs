@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
+
 
 namespace Zahrada.PomocneTridy
 {
@@ -13,15 +15,25 @@ namespace Zahrada.PomocneTridy
        
         public static string SerializeToString(this object o)
         {
-            if (!o.GetType().IsSerializable)
+            try
             {
-                return null;
-            }
+                if (!o.GetType().IsSerializable)
+                {
+                    return null;
+                }
 
-            using (MemoryStream stream = new MemoryStream())
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    new BinaryFormatter().Serialize(stream, o);
+                    return Convert.ToBase64String(stream.ToArray());
+                }
+            }
+            catch (Exception e )
             {
-                new BinaryFormatter().Serialize(stream, o);
-                return Convert.ToBase64String(stream.ToArray());
+                // MessageBox.Show("Projekt nebyl uložen !", "Uložení selhalo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // MessageBox.Show("Výjimka:" + e.ToString(), "Save error:");
+                return null;
+
             }
         }
     }
