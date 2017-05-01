@@ -39,8 +39,7 @@ namespace Zahrada
         private float _zoom = 1f;
         private bool _A4 = true;
         private int _Ax = 2100;
-        private int _Ay = 2970;
-       
+        private int _Ay = 2970;       
 
         private int _dx = 0;
         private int _dy = 0;
@@ -2277,11 +2276,7 @@ namespace Zahrada
 
         }
 
-        #endregion
-
-
-
-    
+        #endregion    
 
 
     }

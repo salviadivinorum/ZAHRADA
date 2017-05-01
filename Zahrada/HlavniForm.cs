@@ -26,8 +26,7 @@ namespace Zahrada
         // dva serializovane Listy - 1. pri nacteni projektu pak provnavam s 2. pri otevirani dalsiho souboru/vytvareni noveho souboru/
         // nebo pri ukoncovani programu
         private string inList;
-        private string outList;
-       
+        private string outList;       
 
         #endregion
 

@@ -848,9 +848,7 @@ namespace Zahrada
 		}
 		
 		#endregion
-
-	   
-
+		  
 
 	}
 }
