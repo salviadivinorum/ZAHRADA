@@ -111,6 +111,7 @@
     <Compile Include="PomocneTridy\FileLocationEditor.cs" />
     <Compile Include="PomocneTridy\Handle.cs" />
     <Compile Include="PomocneTridy\MouseWheelHandler.cs" />
+    <Compile Include="PomocneTridy\MySerializer.cs" />
     <Compile Include="PomocneTridy\NewPointHandle.cs" />
     <Compile Include="PomocneTridy\PointHandle.cs" />
     <Compile Include="PomocneTridy\PointWrapper.cs" />

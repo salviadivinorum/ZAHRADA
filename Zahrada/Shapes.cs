@@ -88,7 +88,7 @@ namespace Zahrada
 		public int dySave;
 		public int AxSave;
 		public int AySave;
-		public int indeOfSavedPlan;
+		public int indexOfSavedPlan;
 		public float ZoomSave;
 		public List<string> listradiobuttonu; 
 
@@ -849,7 +849,7 @@ namespace Zahrada
 		
 		#endregion
 
-       
+	   
 
 
 	}

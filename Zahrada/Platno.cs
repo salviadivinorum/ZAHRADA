@@ -110,13 +110,7 @@ namespace Zahrada
 
         System.Windows.Forms.Cursor addPointCursor = GetCursor("newPoint3.cur", System.Windows.Forms.Cursors.Cross);
         System.Windows.Forms.Cursor delPointCursor = GetCursor("delPoint3.cur", System.Windows.Forms.Cursors.Default);
-
-                
-        // trida Platno musi nejak vedet o sve nadrizene tride
-        //public ToolStripComboBox nalezenyZoomCBvToolStrip;
-        //public ToolStrip nalezenyToolStripvMainForm;
-        //public ToolStripComboBox nalezenyClosedCBvToolStrip;
-  
+          
         // pridano - kvuli polygonu
         private ArrayList bb = new ArrayList();
 
@@ -148,11 +142,7 @@ namespace Zahrada
 
         // WinForms pomucka pro vystup objektu na tiskrnu 
         private PrintDocument docToPrint2 = new PrintDocument();
-
-        // pokus na ulozeni shapes po otevreni a operace zavreni - bez dotazu
-        public Shapes nactenyShapes;
-        public static ArrayList nactenyList;
-        public List<string> nactenyListradiobuttonu;
+      
 
 
         #endregion
@@ -1976,7 +1966,8 @@ namespace Zahrada
                 SaveSuccess = false;
             }
 
-            shapes.AfterLoad();           
+            shapes.AfterLoad();
+            //shapes.DeSelect();
 
         }
 
@@ -1988,49 +1979,24 @@ namespace Zahrada
             Šířka = shapes.AxSave;
             Výška = shapes.AySave;
             Zoom = shapes.ZoomSave;
+            
             shapes.AfterLoad();
+            //shapes.DeSelect();
             PushPlease();
-
-            // ukladam si do prave nacteneho  - List a Shapes
-            //nactenyShapes = shapes;
-            nactenyList = shapes.List;
         }
 
-
-
-        // hluboka kontrola nacteneho shapeu s prave uzaviranym
-
-        public bool Compare<T>(T Object1, T object2)
+        
+        // A4 papir posouvam zpet do pocatecni pozice a ZOOM 100% ...
+        public void nastavA4doPocatku()
         {
-            //Get the type of the object
-            Type type = typeof(T);
-
-            //return false if any of the object is false
-            if (object.Equals(Object1, default(T)) || object.Equals(object2, default(T)))
-                return false;
-
-            //Loop through each properties inside class and get values for the property from both the objects and compare
-            foreach (System.Reflection.PropertyInfo property in type.GetProperties())
-            {
-                if (property.Name != "ExtensionData")
-                {
-                    string Object1Value = string.Empty;
-                    string Object2Value = string.Empty;
-                    if (type.GetProperty(property.Name).GetValue(Object1, null) != null)
-                        Object1Value = type.GetProperty(property.Name).GetValue(Object1, null).ToString();
-                    if (type.GetProperty(property.Name).GetValue(object2, null) != null)
-                        Object2Value = type.GetProperty(property.Name).GetValue(object2, null).ToString();
-                    if (Object1Value.Trim() != Object2Value.Trim())
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
+            dx = 100;
+            dy = 100;                     
+            Zoom = 0.25f;
+            
         }
+        
 
-
-
+       
 
 
 

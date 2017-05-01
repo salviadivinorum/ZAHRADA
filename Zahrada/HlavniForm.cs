@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections;
+using Zahrada.PomocneTridy;
+
 
 namespace Zahrada
 {
@@ -12,21 +14,20 @@ namespace Zahrada
     public partial class HlavniForm : Form
     {
 
-        #region Clenske promenne Hlavniho formulare
-
-        // promenna udalost na klikani tlacitek
-       // public event EventHandler OnButtonZoomPusClick;
-        //public event EventHandler OnButtonZoomMinusClick;
-        //private bool mrizZapnuta = true;
-        //private int ulozGrid = 0;
+        #region Clenske promenne Hlavniho formulare      
 
         private const int RGBMAX = 255;
         private string CustomPlanSizeString { get; set; } // automaticka vlastnost pro vlastni velikost planu ...
         private float CustomX { get; set; } // custom sirka planu
         private float CustomY { get; set; }// custom vyska planu
         private bool savedPlanAfteQuerry = false;
-        private static ArrayList nactenyListdoMainForm;
 
+        // pomocne Listy k porovnani 
+        // dva serializovane Listy - 1. pri nacteni projektu pak provnavam s 2. pri otevirani dalsiho souboru/vytvareni noveho souboru/
+        // nebo pri ukoncovani programu
+        private string inList;
+        private string outList;
+       
 
         #endregion
 
@@ -54,8 +55,15 @@ namespace Zahrada
             vlozenyToolBox.NajdiUndoReodBtnsVmainForm();
             vlozenePlatno.NajdiStatusStripVmainForm(); // potrebuju pro text ve statusstripu
             toolStrip1.BackColor = Color.FromArgb(17, Color.CadetBlue);
-            statusStrip.BackColor = Color.FromArgb(17, Color.CadetBlue);         
+            statusStrip.BackColor = Color.FromArgb(17, Color.CadetBlue);
+
+            // pri zacatku si do inListu ulozim string  - tojest serializovany List, ktery je zpocatku prazdny ...
+            //vlozenePlatno.shapes.DeSelect();
             
+           // vlozenePlatno.ForceEsc();
+
+            inList = vlozenePlatno.shapes.List.SerializeToString();
+
         }
         #endregion
 
@@ -403,6 +411,9 @@ namespace Zahrada
                     this.Text = "Navrhování zahrad - " + vlozenePlatno.jmenoNoveOtevreneho;
                     vlozenyToolBox.CheckedRBSave();
                     vlozenyToolBox.Refresh();
+
+                    // po uspesnem obycejnem savu serializuju List a ukladam ho do stringu inList ...
+                    inList = vlozenePlatno.shapes.List.SerializeToString();
                 }
             }
             else
@@ -423,15 +434,17 @@ namespace Zahrada
                 vlozenyToolBox.CheckedRBSave();
                 vlozenyToolBox.Refresh();
 
+                // po uspesnem savu as ... serializuju List a ukladam ho do stringu inList ...
+                inList = vlozenePlatno.shapes.List.SerializeToString();
+
             }
 
 
-            //vlozenePlatno.shapes.indeOfSavedPlan = FrameToolStripDropDownButton.Se
         }
 
         // Open tlacitko ...
         private void openToolStripButton_Click(object sender, EventArgs e)
-        {
+        {  
             if(vlozenePlatno.shapes.List.Count != 0)
             {
                 UlozitSouborAnoNe();
@@ -458,11 +471,13 @@ namespace Zahrada
                     vlozenyToolBox.Refresh();
                     MarkFrameToolStripMenuItem();
 
-                    // to jsem tady vlozil na prani Vecerky 30.4.2017
-                    //nactenyListdoMainForm = (ArrayList)vlozenePlatno.shapes.List.Clone();
-                    nactenyListdoMainForm = vlozenePlatno.shapes.List;
+                    // to jsem tady vlozil na prani Dr. Vecerky 1.5.2017       
+                    // po dokonceni oteviraci procedury si do stringu inList ulozim serializovany List 
+                    // nacteneho projektu ze tridy Shapes ...                   
+                    inList = vlozenePlatno.shapes.List.SerializeToString();
                 }
             }
+            
 
 
         }
@@ -471,7 +486,7 @@ namespace Zahrada
         private void MarkFrameToolStripMenuItem()
         {
             UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
-            int index = vlozenePlatno.shapes.indeOfSavedPlan;
+            int index = vlozenePlatno.shapes.indexOfSavedPlan;
             switch (index)
             {
                 case 0:
@@ -510,58 +525,96 @@ namespace Zahrada
 
             }
         }
+             
+
+
 
         // Zakladni metoda - dotaz pri Otevirani/Ukladani souboru
         // zde zkusim obejit dotazovani pri NEZMENENEM planu - jen pokracovat dale
         private void UlozitSouborAnoNe()
-        {
-            /*
-            if(nactenyListdoMainForm == null)
+        {            
+            vlozenePlatno.shapes.DeSelect();
+            vlozenePlatno.Redraw(true);
+
+            // to jsem tady vlozil na prani Dr. Vecerky 1.5.2017       
+            // provadim vystupni kontrolu Listu takto ....
+            // do stringu outList ulozim serializovany List konecneho projektu a pak ho porovnam s inListem
+            // pokud jsou shodne Listy (stringy), znamena to, ze nedoslo ke zmenam objektu a vynechavam dotazy na ukladani
+            // projektu, ktery NEBYL NIJAK POZMENEN ! (zbytecne dotazovani a vyskakovaci okna):
+            outList = vlozenePlatno.shapes.List.SerializeToString();
+
+            bool shodne;
+            if (inList != null && outList !=null)
             {
-                nactenyListdoMainForm = vlozenePlatno.shapes.List;
+                shodne = inList.Equals(outList);
             }
             else
             {
-
+                shodne = false;
             }
-            */
+                       
 
-            //bool shodne = vlozenePlatno.Compare(vlozenePlatno.shapes.List, nactenyListdoMainForm);
-            bool shodne2 = vlozenePlatno.shapes.List.Equals(Platno.nactenyList);
-            bool shodne3 = nactenyListdoMainForm.Equals(vlozenePlatno.shapes.List);
-            bool shodne4 = nactenyListdoMainForm == vlozenePlatno.shapes.List;
-            if (shodne4)
+
+            if (!shodne)
             {
-                MessageBox.Show("Oba Listy byly shodne");
-            }
-            else
-            {
-                MessageBox.Show("Nejaka drobna zmena byla provedena");
-            }
 
+                string messge = "Přejete si uložit provedené změny ?";
+                string caption = "Uložení plánu";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+                DialogResult result;
 
+                result = MessageBox.Show(this, messge, caption, buttons, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
 
-
-
-            string messge = "Přejete si uložit stávající plán zahrady ?";
-            string caption = "Uložení plánu";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
-            DialogResult result;
-
-            result = MessageBox.Show(this, messge, caption, buttons, MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign);
-
-            if (result == DialogResult.Yes)
-            {
-                //vlozenyToolBox.CheckedRBSave();
-                vlozenePlatno.Saver();
-                if (vlozenePlatno.SaveSuccess)
+                if (result == DialogResult.Yes)
                 {
+                    //vlozenyToolBox.CheckedRBSave();
+                    vlozenePlatno.Saver();
+                    if (vlozenePlatno.SaveSuccess)
+                    {
+                        vlozenePlatno.shapes.List.Clear();
+
+                        // nastavuju pocatecni stav - A4 papir ve 100% ZOOM
+                        // a simuluju klik na A4 tlacitko
+                        A4PortraitToolStripMenuItem_Click(null, null);
+                        vlozenePlatno.nastavA4doPocatku();
+
+                        vlozenePlatno.Redraw(true);
+                        this.Text = "Navrhování zahrad - nový projekt";
+                        vlozenePlatno.jmenoNoveOtevreneho = "";
+                        savedPlanAfteQuerry = true;                       
+
+
+                    }
+                    else
+                    {
+                        savedPlanAfteQuerry = false;
+                        return;
+                    }
+
+                }
+                else if (result == DialogResult.No)
+                {
+
+                    savedPlanAfteQuerry = true;
                     vlozenePlatno.shapes.List.Clear();
+
+
+                    // nastavuju pocatecni stav - A4 papir ve 100% ZOOM
+                    // a simuluju klik na A4 tlacitko
+                    A4PortraitToolStripMenuItem_Click(null, null);
+                    vlozenePlatno.nastavA4doPocatku();
+
+
                     vlozenePlatno.Redraw(true);
                     this.Text = "Navrhování zahrad - nový projekt";
                     vlozenePlatno.jmenoNoveOtevreneho = "";
-                    savedPlanAfteQuerry = true;
+
+
+                    // po uspesnem dokonceni inicializace noveho souboru,serializuju a ukladam prazdny List do stringu inList ...
+                    inList = vlozenePlatno.shapes.List.SerializeToString();
+                    // return;
+
 
 
                 }
@@ -570,27 +623,31 @@ namespace Zahrada
                     savedPlanAfteQuerry = false;
                     return;
                 }
-
-            }
-            else if (result == DialogResult.No)
-            {
-
-                savedPlanAfteQuerry = true;
-                vlozenePlatno.shapes.List.Clear();
-                vlozenePlatno.Redraw(true);
-                this.Text = "Navrhování zahrad - nový projekt";
-                vlozenePlatno.jmenoNoveOtevreneho = "";
-                // return;
-
-
-
             }
             else
             {
-                savedPlanAfteQuerry = false;
-                return;
+                // zde doplneno
+                savedPlanAfteQuerry = true;
+                vlozenePlatno.shapes.List.Clear();
+
+
+                // nastavuju pocatecni stav - A4 papir ve 100% ZOOM
+                // a simuluju klik na A4 tlacitko
+                A4PortraitToolStripMenuItem_Click(null, null);
+                vlozenePlatno.nastavA4doPocatku();
+
+                this.Text = "Navrhování zahrad - nový projekt";
+                vlozenePlatno.jmenoNoveOtevreneho = "";
+                vlozenePlatno.Redraw(true);
+
+                // kdyz nedoslo vubec zadne zmene v projektu  - serializuju a ukladam prazdny List do stringu inList ...
+                inList = vlozenePlatno.shapes.List.SerializeToString();
+
             }
         }
+        
+                
+
 
         #endregion
 
@@ -626,7 +683,7 @@ namespace Zahrada
             vlozenePlatno.Šířka = 4200;
             vlozenePlatno.Výška = 2970;
 
-            vlozenePlatno.shapes.indeOfSavedPlan = 3; // pro budouci load planu
+            vlozenePlatno.shapes.indexOfSavedPlan = 3; // pro budouci load planu
             //Unmark();
             UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A3LandcapeToolStripMenuItem.Checked = true;
@@ -643,7 +700,7 @@ namespace Zahrada
             vlozenePlatno.Šířka = 2970;
             vlozenePlatno.Výška = 4200;
 
-            vlozenePlatno.shapes.indeOfSavedPlan = 2; // pro budouci load planu
+            vlozenePlatno.shapes.indexOfSavedPlan = 2; // pro budouci load planu
             //Unmark();
             UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A3PortraitToolStripMenuItem.Checked = true;
@@ -660,7 +717,7 @@ namespace Zahrada
             vlozenePlatno.Šířka = 2970;
             vlozenePlatno.Výška = 2100;
 
-            vlozenePlatno.shapes.indeOfSavedPlan = 1; // pro budouci load planu
+            vlozenePlatno.shapes.indexOfSavedPlan = 1; // pro budouci load planu
             // Unmark();
             UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A4LandcapeToolStripMenuItem.Checked = true;
@@ -678,7 +735,7 @@ namespace Zahrada
             vlozenePlatno.Šířka = 2100;
             vlozenePlatno.Výška = 2970;
             
-            vlozenePlatno.shapes.indeOfSavedPlan = 0; // pro budouci load planu
+            vlozenePlatno.shapes.indexOfSavedPlan = 0; // pro budouci load planu
             // Unmark();
             UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
             A4PortraitToolStripMenuItem.Checked = true;
@@ -716,7 +773,7 @@ namespace Zahrada
                     UnmarkToolStripDropDownItems(FrameToolStripDropDownButton);
                     CustumSizeToolStripMenuItem.Checked = true;
 
-                    vlozenePlatno.shapes.indeOfSavedPlan = 4; // pro budouci load planu
+                    vlozenePlatno.shapes.indexOfSavedPlan = 4; // pro budouci load planu
 
                 }
                 else
@@ -902,23 +959,40 @@ namespace Zahrada
         // Posledni dotaz na ulozeni ulohy pred zavrenim aplikace
         private void PoseldniDotazAkonec()
         {
-            string messge = "Přejete si uložit stávající plán zahrady ?";
-            string caption = "Uložení plánu";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
+            // posledni pomocna serializace ...
+            outList = vlozenePlatno.shapes.List.SerializeToString();
 
-            result = MessageBox.Show(this, messge, caption, buttons, MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2);
-
-            if (result == DialogResult.Yes)
+            bool shodne;
+            if (inList != null && outList != null)
             {
-                vlozenePlatno.Saver();
-
+                shodne = inList.Equals(outList);
+            }
+            else
+            {
+                shodne = false;
             }
 
+            //bool jeVseUlozenoAmuzuSkoncit = inList.Equals(outList);
+
+
+            if (!shodne)
+            {
+                string messge = "Přejete si uložit provedené změny ?";
+                string caption = "Uložení plánu";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+
+                result = MessageBox.Show(this, messge, caption, buttons, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2);
+
+                if (result == DialogResult.Yes)
+                {
+                    vlozenePlatno.Saver();
+
+                }
+            }            
+
         }
-
-
 
 
         #endregion
