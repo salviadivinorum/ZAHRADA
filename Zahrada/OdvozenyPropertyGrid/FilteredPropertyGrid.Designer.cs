@@ -23,8 +23,7 @@
         #region Kód vygenerovaný pomocí Návrháře komponent
 
         /// <summary> 
-        /// Metoda vyžadovaná pro podporu Návrháře - neupravovat
-        /// obsah této metody v editoru kódu.
+        /// Metoda vyžadovaná pro podporu Návrháře - neupravovat obsah této metody v editoru kódu.
         /// </summary>
         private void InitializeComponent()
         {

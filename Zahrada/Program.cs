@@ -4,12 +4,14 @@ using System.Windows.Forms;
 namespace Zahrada
 {
     /// <summary>
-    /// Hlavní vstupní bod aplikace "Navrhování zahrad"
+    /// Hlavní vstupní bod aplikace.
+    /// Aplikace NAVRHOVÁNÍ ZAHRAD je určena pouze pro akademické a nekomerční využití
+    /// (c) 2017 David Jaroš
     /// </summary>
     static class Program
     {
         /// <summary>
-        /// Vstupní bod aplikace
+        /// Vstupní bod aplikace Navrhování zahrad
         /// </summary>
         [STAThread]
         static void Main()
@@ -28,7 +30,7 @@ namespace Zahrada
 
                
         /// <summary>
-        /// Proti rozmazani ikon - import knihovny user32.dll aby mohla byt volana funkce SetProcessDPIaware 
+        /// Proti rozmazani ikon - import knihovny user32.dll, aby mohla byt volana funkce SetProcessDPIaware 
         /// </summary>
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         // toto je funkce, ktera nastavi cely proces jako DPI aware (dots per inch):

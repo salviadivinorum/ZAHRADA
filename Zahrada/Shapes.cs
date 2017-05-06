@@ -847,8 +847,7 @@ namespace Zahrada
 			selEle.Select();
 		}
 		
-		#endregion
-		  
+		#endregion		  
 
 	}
 }

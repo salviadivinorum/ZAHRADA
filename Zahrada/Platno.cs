@@ -1792,7 +1792,6 @@ namespace Zahrada
         #endregion
 
         #region Load/Save projektu
-
       
         // Zakladni Load/Save mych souboru:
         // Volano pri Ulozit jako ...
@@ -1875,7 +1874,7 @@ namespace Zahrada
         }
 
 
-
+        // zakladni Loader ulozeneho projektu zahrady
         public bool Loader()
         {
             try
@@ -1970,7 +1969,7 @@ namespace Zahrada
 
         }
 
-        
+        // Nahravam ulozenou pozici platna, rozmer planu, ulozeny Zoom a natalcim to do meho PropertyGridu
         private void AfterLoad()
         {
             dx = shapes.dxSave;
@@ -1985,7 +1984,7 @@ namespace Zahrada
         }
 
         
-        // A4 papir posouvam zpet do pocatecni pozice a ZOOM 100% ...
+        // A4 papir posouvam zpet do pocatecni pozice a ZOOM 100%
         public void nastavA4doPocatku()
         {
             dx = 100;
@@ -1994,15 +1993,7 @@ namespace Zahrada
             
         }
         
-
-       
-
-
-
-
-
-
-
+        
         #endregion
 
         #region Print & Preview  
@@ -2277,8 +2268,6 @@ namespace Zahrada
         }
 
         #endregion    
-
-
 
     }
 }

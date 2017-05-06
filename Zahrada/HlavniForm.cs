@@ -17,14 +17,13 @@ namespace Zahrada
         #region Clenske promenne Hlavniho formulare      
 
         private const int RGBMAX = 255;
-        private string CustomPlanSizeString { get; set; } // automaticka vlastnost pro vlastni velikost planu ...
+        private string CustomPlanSizeString { get; set; } // automaticka vlastnost pro vlastni velikost planu
         private float CustomX { get; set; } // custom sirka planu
-        private float CustomY { get; set; }// custom vyska planu
+        private float CustomY { get; set; } // custom vyska planu
         private bool savedPlanAfteQuerry = false;
-
-        // pomocne Listy k porovnani 
-        // dva serializovane Listy - 1. pri nacteni projektu pak provnavam s 2. pri otevirani dalsiho souboru/vytvareni noveho souboru/
-        // nebo pri ukoncovani programu
+         
+        // dva pomocne serializovane Listy do MemoryStreamu
+        // 1.list pri nacteni projektu a pak provnavam s 2.listem pri otevirani dalsiho souboru/vytvareni noveho souboru/ukonceni aplikace        
         private string inList;
         private string outList;       
 
@@ -405,6 +404,7 @@ namespace Zahrada
             if (vlozenePlatno.jmenoNoveOtevreneho != "")
             {
                 // Serializuju List a ukladam ho do stringu inList ...
+                // toto slouzi ke zpetne kontrole zda-li jsem udelal nejake zmeny v planu pred Close/Load noveho projektu
                 inList = vlozenePlatno.shapes.List.SerializeToString();
 
                 vlozenePlatno.SimpleSaver();               
@@ -427,6 +427,7 @@ namespace Zahrada
         private void saveAsToolStripButton_Click(object sender, EventArgs e)
         {
             // serializuju List a ukladam ho do stringu inList ...
+            // toto slouzi ke zpetne kontrole zda-li jsem udelal nejake zmeny v planu pred Close/Load noveho projektu
             inList = vlozenePlatno.shapes.List.SerializeToString();
 
             vlozenePlatno.Saver();           
@@ -470,7 +471,8 @@ namespace Zahrada
 
                     // to jsem tady vlozil na prani Dr. Vecerky 1.5.2017       
                     // po dokonceni oteviraci procedury si do stringu inList ulozim serializovany List 
-                    // nacteneho projektu ze tridy Shapes ...                   
+                    // nacteneho projektu ze tridy Shapes ... 
+                    // toto slouzi ke zpetne kontrole zda-li jsem udelal nejake zmeny v planu pred Close/Load noveho projektu
                     inList = vlozenePlatno.shapes.List.SerializeToString();
                 }
             }
@@ -527,7 +529,7 @@ namespace Zahrada
 
 
         // Zakladni metoda - dotaz pri Otevirani/Ukladani souboru
-        // zde zkusim obejit dotazovani pri NEZMENENEM planu - jen pokracovat dale
+        // zde take obchazim otravne dotazovani pri NEZMENENEM planu - jen pokracovat dale
         private void UlozitSouborAnoNe()
         {            
             vlozenePlatno.shapes.DeSelect();
@@ -622,11 +624,9 @@ namespace Zahrada
                 }
             }
             else
-            {
-                // zde doplneno
+            {                
                 savedPlanAfteQuerry = true;
                 vlozenePlatno.shapes.List.Clear();
-
 
                 // nastavuju pocatecni stav - A4 papir ve 100% ZOOM
                 // a simuluju klik na A4 tlacitko
@@ -638,6 +638,7 @@ namespace Zahrada
                 vlozenePlatno.Redraw(true);
 
                 // kdyz nedoslo vubec zadne zmene v projektu  - serializuju a ukladam prazdny List do stringu inList ...
+                // toto slouzi ke zpetne kontrole zda-li jsem udelal nejake zmeny v planu pred Close/Load noveho projektu
                 inList = vlozenePlatno.shapes.List.SerializeToString();
 
             }
@@ -956,7 +957,7 @@ namespace Zahrada
         // Posledni dotaz na ulozeni ulohy pred zavrenim aplikace
         private void PoseldniDotazAkonec()
         {
-            // posledni pomocna serializace ...
+            // posledni pomocna serializace do MemoryStreamu...
             outList = vlozenePlatno.shapes.List.SerializeToString();
 
             bool shodne;
@@ -967,11 +968,9 @@ namespace Zahrada
             else
             {
                 shodne = false;
-            }
+            }                       
 
-            //bool jeVseUlozenoAmuzuSkoncit = inList.Equals(outList);
-
-
+            // posledni kontrola a pripadny dotaz, uz zadne otravne dialogy Ulozit Ano/Ne
             if (!shodne)
             {
                 string messge = "Přejete si uložit provedené změny ?";

@@ -1051,9 +1051,4 @@ namespace Zahrada
 
 	}
 
-
-	
-
-
-
 }

@@ -450,17 +450,12 @@ namespace Zahrada
             mojeplatno.shapes.listradiobuttonu = rbuttons;
         }
 
-        // nacist checke Rbuttony
+        // nacist checked Rbuttony - bohuzel rucne, mohl jsem pouzit Linq, ja vim
         public void CheckRBLoad2()
         {
 
-
-
             foreach (string b in mojeplatno.shapes.listradiobuttonu)
-            {
-                //jmenorb = "radioButton" + i.ToString();
-
-
+            {               
                 if (radioButton1.Name == b) radioButton1.Checked = true;
                 if (radioButton2.Name == b) radioButton2.Checked = true;
                 if (radioButton3.Name == b) radioButton3.Checked = true;
@@ -533,16 +528,11 @@ namespace Zahrada
                 if (radioButton82.Name == b) radioButton82.Checked = true;
                 if (radioButton83.Name == b) radioButton83.Checked = true;
                 if (radioButton84.Name == b) radioButton84.Checked = true;
-
             }
-
-
-
 
         }
 
-
-
+        // drsna kontrola ve WinForms formulari :-), opet bez pouziti Linq
         public void CheckedRBLoad()
         {
 
@@ -566,39 +556,17 @@ namespace Zahrada
                                     string b = "radioButton" + i.ToString();
                                     foreach (string button in mojeplatno.shapes.listradiobuttonu)
                                     {
-                                        //MessageBox.Show(f.Name.ToString());
                                         if (button == b)
                                         {
-
-                                            f.Checked = true;
-                                            // tabControlProNastroje.Refresh();
-
+                                            f.Checked = true;  
                                         }
-
                                     }
-
                                 }
-
-
-
-
-
-
                             }
-
                         }
                     }
-
-
                 }
-
-
             }
-
-
-
-
-
         }
         #endregion        
        
