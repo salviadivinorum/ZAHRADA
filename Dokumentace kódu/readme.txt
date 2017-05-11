@@ -17,21 +17,21 @@ Nadstavba OS: V operačním sytému musí být nainstalována systémová platfo
 Microsoft .NET verze 4.6 nebo vyšší. 
 Jedná se o desktopovou aplikaci.
 
-B) Instalace a spuštění aplikace
+C) Instalace a spuštění aplikace
 ---------------------------------
 Aplikace se nemusí instalovat. Lze ji spouštět přímo z média CD ROM otevřením souboru "zahrada.exe" z adresáře 
 "bin\Navrhování zahrad". Adresář lze nahrát na pevný disk počítače a aplikaci spouštět z tohoto umístění.
 Soubor "zahrada-napoveda.chm" obsahuje uživatelskou nápovědu aplikace a je nutné aby byla ve společném adresáři
 se souborem "zahrada-exe".
 
-C) OVLÁDÁNÍ aplikace myší:
+D) OVLÁDÁNÍ aplikace myší:
 --------------------------
 POSUN PLÁNU ZAHRADY po kreslící ploše - nutné použít kolečko myši, tj. stisknout kolečko + táhnout = funkce PAN.
 ZOOM plánu: kolečko dopředu nebo dozadu
 VÝBĚR nástrojů: levé nebo pravé tlačítko myši, podrobněji v uživatelské dokumentaci
 
 
-D) Adresářová struktura a soubory v nich
+E) Adresářová struktura a soubory v nich
 ------------------------------------------
 bin\
 spustitelný soubor aplikace a uživatelská nápověda
@@ -58,14 +58,14 @@ bin\Navrhování zahrad\Export plánu\
 vyexportované plány zahrad do souborů PNG a PDF
 
 
-E) Další vývoj aplikace
+F) Další vývoj aplikace
 ------------------------
 Projekt s aplikací pro návrh a projektování zahrad se bude dále vyvíjet.
 Nová vylepšení jsou dostupná on-line v repozitáři GitHub na adrese: https://github.com/salviadivinorum/ZAHRADA
 Krátká videoprezentace aplikace je uložena na YouTube: https://www.youtube.com/watch?v=2NOysevKehc
 
 
-F) Licence
+G) Licence
 -----------
 Aplikace NAVRHOVÁNÍ ZAHRAD je určena pouze pro akademické a nekomerční využití
 (c) 2017 David Jaroš
