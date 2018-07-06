@@ -76,7 +76,7 @@ namespace Zahrada.OdvozeneTridyEle
             }
         }
 
-        [Category("Polygon"), Description("Uzavření polygonu")]
+        [Category("Vzhled"), Description("Uzavření polygonu")]
         public bool Closed
         {
             get

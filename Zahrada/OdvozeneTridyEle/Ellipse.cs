@@ -147,7 +147,7 @@ namespace Zahrada.OdvozeneTridyEle
             Brush myBrush = GetBrush(dx, dy, zoom);
 
             // prace s texturou a osetreni pri Load / Save protoze C# neumi serializaci TextureBrush tridy
-            // musim zde zbytecne tvorit 2 tridy Texturebrush ....
+            // musim zde zbytecne tvorit 2 tridy Texturebrush ...
             TextureBrush texture = GetTextureBrush();
             TextureBrush texture2;
 
@@ -203,17 +203,6 @@ namespace Zahrada.OdvozeneTridyEle
             translateMatrix.RotateAt(Rotace, new PointF((X + dx + (X1 - X) / 2) * zoom, (Y + dy + (Y1 - Y) / 2) * zoom));
             
             myPath.Transform(translateMatrix);
-
-            // Nakresli transformovanou elipsu na obrazovku
-            /*
-            if (ColorFilled)
-            {
-                //g.FillPath(myBrush, myPath);
-                g.FillPath(texture2, myPath);
-                if (ShowBorder)
-                    g.DrawPath(myPen, myPath);
-            }
-            */
 
             if (TextureFilled || ColorFilled)
             {

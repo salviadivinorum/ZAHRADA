@@ -640,6 +640,7 @@ namespace Zahrada
                 // kdyz nedoslo vubec zadne zmene v projektu  - serializuju a ukladam prazdny List do stringu inList ...
                 // toto slouzi ke zpetne kontrole zda-li jsem udelal nejake zmeny v planu pred Close/Load noveho projektu
                 inList = vlozenePlatno.shapes.List.SerializeToString();
+                
 
             }
         }
@@ -884,7 +885,7 @@ namespace Zahrada
                     grs = 50;
                     break;
                 case "Mříž 100cm":
-                    grs = 100;
+                    grs = 100;                    
                     break;
                 case "Mříž 250cm":
                     grs = 250;
