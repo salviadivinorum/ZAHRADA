@@ -7,18 +7,18 @@ Projekt napsán ve vývojovém prostředí Micosoft Visual Studio 2017. Spuště
 
 Spuštění aplikace
 -----------------
-Aplikace je připravená ke spuštění samostatně bez vývojového prostředí.
+Aplikace je připravená ke spuštění samostatně bez vývojového prostředí
 
-1.) Stáhnout projekt do počítače: tlačítkem Clone or Download -> Donload ZIP.
+1.) Stáhnout projekt do počítače: tlačítkem Clone or Download -> Download ZIP
 
 2.) rozbalit ZIP
 
-3.) v adresáři "Samostatně spustitelný soubor" spustit soubor "zahrada.exe".
+3.) v adresáři "Samostatně spustitelný soubor" spustit soubor "zahrada.exe"
 
-4.) dokumentace zdrojového kódu umístěna v dresáři "Dokumentace kódu".
+4.) dokumentace zdrojového kódu umístěna v dresáři "Dokumentace kódu"
 
 UML dokumentace
 ----------------
-Diagram tříd a Diagram případů užití se nacházejí ve složce Zahrada UML diagramy.
+Diagram tříd a Diagram případů užití se nacházejí ve složce Zahrada UML diagramy
 
 
