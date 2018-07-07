@@ -40,7 +40,7 @@ doc\
 text bakalářské práce v PDF a ZIP archiv s LaTeX zdrojovým kódem pro vygenerovani PDF souboru
 
 src\
-zdrojový kód aplikace k otevření ve Visual Studiu 2017 a dokumentace kódu v souboru "zahrada-dokumentace-kodu.chm".
+zdrojový kód aplikace k otevření ve Visual Studiu 2017 a dokumentace kódu v souboru "zahrada-dokumentace-kodu.chm"
 
 Podadresáře v adresáři bin\Navrhování zahrad\
 ----------------------------------------------
