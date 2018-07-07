@@ -14,9 +14,7 @@ namespace Zahrada.OdvozeneTridyEle
     {
         #region Clenske promenne tridy ImageBox, navic oproti Ele
 
-        private Bitmap _img;
-        //private bool _transparent = false;
-        //private float _pruhlednost = 100f;
+        private Bitmap _img;      
 
         #endregion
 
